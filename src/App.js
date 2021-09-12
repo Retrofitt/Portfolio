@@ -28,7 +28,7 @@ function App() {
   return (<div className="App">
 
     <nav className='nav-bar'>
-      <Link to='/'>Home</Link>
+      <Link to='/'>Home Sweet Home</Link>
       <Link to='/about'>About</Link>
       <Link to='/projects'>Projects</Link>
       <Link to='/photography'>Photography</Link>
