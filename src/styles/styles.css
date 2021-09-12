@@ -1,0 +1,81 @@
+
+body{
+  background-color: rgba(0, 0, 0, 0.89);
+}
+
+.App {
+  text-align: center;
+  margin: auto;
+  text-decoration: none;
+  color: white;
+  
+}
+
+.App nav{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(0, 0, 0);
+  
+}
+
+
+nav a{
+  text-decoration: none;
+  color: white;
+  padding: 2vh 5vw;
+}
+
+nav a:hover{
+  text-decoration: none;
+  background-color: rgb(77, 77, 77);
+  padding: 2vh 5vw;
+}
+
+
+.component{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 50vw;
+  background-color: red;
+}
+.photo-container{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  object-fit: cover;
+  flex-basis: 25%;
+  margin: 3vh 3vw;
+}
+
+
+.photos img{
+  max-width: 100%;
+  max-height: 100%;
+  transition: all 1s;
+}
+.photos img:hover{
+  transition: transform 1s;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.548)
+  
+}
+
+.single-photo{
+  margin: 4vh 4vw;
+  height: 85vh;
+  width: auto;
+}
+
+.single-photo img{
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.548)
+}
