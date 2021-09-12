@@ -22,15 +22,6 @@ import photo9 from './assests/photos/photo9.jpg'
 
 
 function App() {
-<<<<<<< HEAD
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Yooooo</h2>
-      </header>
-    </div>
-  );
-=======
 
   const photos = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9,]
 
@@ -66,7 +57,6 @@ function App() {
     </Switch>
 
   </div>);
->>>>>>> experimental
 }
 
 export default App;
