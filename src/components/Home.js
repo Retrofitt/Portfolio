@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom"
 
 
-export default function Home(){
-
+export default function Home(props){
+    const {logo} = props
     return(<div className='component'>
-        <h2>Home</h2>
+        <Link to='/about'>
+            <img src={logo} alt='no'/>
+        </Link>
     </div>)
 }

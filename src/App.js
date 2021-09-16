@@ -19,16 +19,25 @@ import photo6 from './assests/photos/photo6.jpg'
 import photo7 from './assests/photos/photo7.jpg'
 import photo8 from './assests/photos/photo8.jpg'
 import photo9 from './assests/photos/photo9.jpg'
+import logo1 from './assests/logo/logo1.png'
+import ig from './assests/logo/ig.png'
+import linkedin from './assests/logo/linkedin.png'
+import twitter from './assests/logo/twitter.png'
+import github from './assests/logo/github.png'
 
 
 function App() {
 
   const photos = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9,]
 
+  const socials = [ig, linkedin, twitter, github]
+
+  console.log(socials)
+
   return (<div className="App">
 
     <nav className='nav-bar'>
-      <Link to='/'>Home Sweet Home</Link>
+      <Link to='/'>Home</Link>
       <Link to='/about'>About</Link>
       <Link to='/projects'>Projects</Link>
       <Link to='/photography'>Photography</Link>
@@ -37,7 +46,7 @@ function App() {
 
     <Switch>
       <Route path='/contact'>
-        <Contact/>
+        <Contact socials={socials}/>
       </Route>
       <Route path={'/photography/:id'}>
         <Photo photos={photos}/>
@@ -52,7 +61,7 @@ function App() {
         <About/>
       </Route>
       <Route path='/'>
-        <Home/>
+        <Home logo={logo1}/>
       </Route>
     </Switch>
 
