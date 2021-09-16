@@ -19,20 +19,20 @@ import photo6 from './assests/photos/photo6.jpg'
 import photo7 from './assests/photos/photo7.jpg'
 import photo8 from './assests/photos/photo8.jpg'
 import photo9 from './assests/photos/photo9.jpg'
-import logo1 from './assests/logo/logo1.png'
-import ig from './assests/logo/ig.png'
-import linkedin from './assests/logo/linkedin.png'
-import twitter from './assests/logo/twitter.png'
-import github from './assests/logo/github.png'
 
 
 function App() {
+<<<<<<< HEAD
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h2>Yooooo</h2>
+      </header>
+    </div>
+  );
+=======
 
   const photos = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9,]
-
-  const socials = [ig, linkedin, twitter, github]
-
-  console.log(socials)
 
   return (<div className="App">
 
@@ -46,7 +46,7 @@ function App() {
 
     <Switch>
       <Route path='/contact'>
-        <Contact socials={socials}/>
+        <Contact/>
       </Route>
       <Route path={'/photography/:id'}>
         <Photo photos={photos}/>
@@ -61,11 +61,12 @@ function App() {
         <About/>
       </Route>
       <Route path='/'>
-        <Home logo={logo1}/>
+        <Home/>
       </Route>
     </Switch>
 
   </div>);
+>>>>>>> experimental
 }
 
 export default App;
