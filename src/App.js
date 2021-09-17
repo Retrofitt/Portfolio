@@ -50,8 +50,6 @@ function App() {
   }
 
 
-
-  const id = useParams()
   return (<div className="App">
 
     <nav className='nav-bar'>
