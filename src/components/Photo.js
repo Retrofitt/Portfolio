@@ -12,7 +12,7 @@ export default function Photo(props){
     
 
     useEffect(()=>{
-        setPhoto(photos[id])
+        setPhoto(photos[id].image)
     }, [id])
 
     return(<div className='single-photo'>

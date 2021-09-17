@@ -1,5 +1,6 @@
 import React from "react";
 import {Route, Link, Switch} from 'react-router-dom'
+import { useParams } from "react-router";
 
 import Home from './components/Home'
 import About from './components/About'
@@ -28,12 +29,29 @@ import github from './assests/logo/github.png'
 
 function App() {
 
-  const photos = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9,]
+  const photos = [
+    {image:photo1},
+    {image:photo2}, 
+    {image:photo3}, 
+    {image:photo4}, 
+    {image:photo5}, 
+    {image:photo6}, 
+    {image:photo7}, 
+    {image:photo8}, 
+    {image:photo9}
+  ]
 
-  const socials = [ig, linkedin, twitter, github]
 
-  console.log(socials)
+  const socials = {
+    ig:ig, 
+    linkedin:linkedin, 
+    twitter:twitter, 
+    github:github
+  }
 
+
+
+  const id = useParams()
   return (<div className="App">
 
     <nav className='nav-bar'>
