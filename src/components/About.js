@@ -27,7 +27,7 @@ export default function About(){
         </div>
 
         <div className='question-container'>
-            <h2>What are your Front-End Skills?</h2>
+            <h2>What Coding Language's and Libraries do you know?</h2>
             <div className='row'>
                 <ul>
                     <li>HTML</li>
@@ -45,14 +45,6 @@ export default function About(){
             </div>
 
         </div>
-        
-        <div className='question-container'>
-            <h2>What are your Back-End Skills?</h2>
-                <ul>
-                    <li>n/a</li>
-                </ul>
-        </div>
-       
         
     </div>)
 }
