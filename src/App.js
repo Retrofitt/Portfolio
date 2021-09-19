@@ -54,16 +54,10 @@ function App() {
 
     <nav className='nav-bar'>
       <Link to='/'>Home</Link>
-      <Link to='/about'>About</Link>
       <Link to='/projects'>Projects</Link>
       <Link to='/photography'>Photography</Link>
-      <Link to='/contact'>Contact</Link>
     </nav>
-
     <Switch>
-      <Route path='/contact'>
-        <Contact socials={socials}/>
-      </Route>
       <Route path={'/photography/:id'}>
         <Photo photos={photos}/>
       </Route>
@@ -77,7 +71,7 @@ function App() {
         <About/>
       </Route>
       <Route path='/'>
-        <Home logo={logo1}/>
+        <Home logo={logo1} socials={socials}/>
       </Route>
     </Switch>
 
