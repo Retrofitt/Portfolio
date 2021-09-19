@@ -155,12 +155,12 @@ display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
 margin: 10vh 10vw;
-
 }
 
 .project-divs a{
   text-decoration: none;
-  color: white;
+  color: rgb(255, 255, 255);
+  
 }
 
 .project-divs a:hover{
@@ -179,5 +179,20 @@ margin: 10vh 10vw;
   margin: 2vh 1vw;
   background-color: rgba(0, 0, 0, 0.123);
   box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.548); 
+  font-weight: bold;
+  text-shadow: 3px 3px 8px  rgb(0, 0, 0); 
+  transition: all 1s;
 }
 
+
+
+.one{
+  background-image: url('../assests/photos/ghbusinesscard.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.one:hover{
+  background-image: url('../assests/photos/ghbusinesscard2.png');
+  transition: all 1s;
+}
