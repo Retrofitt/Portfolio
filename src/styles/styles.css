@@ -70,7 +70,6 @@ nav a:hover{
   padding: 5vh 22vw;
 }
 
-
 .question-container{
   display: flex;
   flex-direction: column;
@@ -84,10 +83,6 @@ nav a:hover{
   transition: all .6s;
 }
 
-.question-container:hover{
-  transform: scale(1.4);
-  transition: transform .6s;
-}
 
 /* .photos */
 
@@ -160,6 +155,7 @@ display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
 margin: 10vh 10vw;
+
 }
 
 .project-divs a{
@@ -179,8 +175,9 @@ margin: 10vh 10vw;
   height: 30vh;
   width: 20vw;
   flex-basis: 30%;
-  border: 1px solid white;
   border-radius: 20px;
   margin: 2vh 1vw;
+  background-color: rgba(0, 0, 0, 0.123);
+  box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.548); 
 }
 
