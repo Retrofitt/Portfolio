@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom"
- import Contact from "./Contact"
+import { Link } from "react-router-dom";
+import Contact from "./Contact";
 
-export default function Home(props){
-    const {logo, socials} = props
+export default function Home(props) {
+  const { logo1, socials } = props;
 
-    console.log(socials)
+  console.log(socials);
 
-    return(<div className='component'>
-        <Link to='/about'>
-            <img src={logo} alt='no'/>
-        </Link>
-        <Contact socials={socials} />
-    </div>)
+  return (
+    <div className="myLogo">
+      <Link to="/about">
+        <img src={logo1} alt="no" style={{ height: "60vh" }} />
+      </Link>
+      <Contact socials={socials} />
+    </div>
+  );
 }

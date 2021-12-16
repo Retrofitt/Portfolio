@@ -1,18 +1,34 @@
+import { useState } from "react";
+import { Image } from "antd";
+import "antd/dist/antd.css";
 
-import { Link } from 'react-router-dom'
+export default function Photography(props) {
+  const { photos } = props;
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-export default function Photography(props){
-    const {photos} = props
-    console.log(photos)
-    return(<div className='photo-container'>
-    {photos.map( (photo, i) =>{
-        return <div key={i} className='photos'>
-            <Link  to={`/photography/${i}`}>
-                <img src={photo.image} alt='photos'/>
-            </Link>
-            
-        </div>
-    })}
-</div>)
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  return (
+    <div className="photo-container">
+      {photos.map((photo, i) => {
+        return (
+          <div key={i} className="photos">
+            <Image.PreviewGroup>
+              <Image width={200} src={photo.image} />
+            </Image.PreviewGroup>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
