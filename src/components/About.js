@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div className="about-container">
       <div className="question-container">
-        <h2>Who are you?</h2>
+        <h2>Who is Rafael Mendoza?</h2>
         <p>
           Attending Bloom Institute of Technology's (f.k.a Lambda School)
           "Full-Stack" curriculum, he is a full stack software engineer as well
