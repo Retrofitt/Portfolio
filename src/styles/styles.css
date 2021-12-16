@@ -21,7 +21,7 @@ body {
 }
 
 .App h2 {
-  color: red;
+  color: rgb(200, 255, 239);
 }
 
 .App nav {
@@ -44,7 +44,7 @@ nav a {
 
 nav a:hover {
   text-decoration: none;
-  color: red;
+  color: rgb(200, 255, 239);
   padding: 2vh 5vw;
 }
 
