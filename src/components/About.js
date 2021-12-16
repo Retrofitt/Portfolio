@@ -4,11 +4,14 @@ export default function About() {
       <div className="question-container">
         <h2>Who are you?</h2>
         <p>
-          My name is Rafael, I'm both an aspiring fullstack engineer and an
-          aspiring photographer. At an early age my father helped me put a
-          computer together that would go on to be my first gaming pc back in
-          2001 and my interest in both hardware and software would only grow
-          over the next 20 years.
+          Attending Bloom Institute of Technology's (f.k.a Lambda School)
+          "Full-Stack" curriculum, he is a full stack software engineer as well
+          as an aspiring photographer who doesn't settle for anything less than
+          success. He understand that the journey he is on is a life long
+          journey to hone his abilities as a software engineer and he looks
+          forward to every experience presented to him. Currently looking for
+          positions available around Southern California or with remote
+          possibilities but open to relocation if needed.
         </p>
       </div>
 
