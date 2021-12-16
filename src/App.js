@@ -55,6 +55,7 @@ function App() {
         </Link>
         <Link to="/photography">Photography</Link>
       </nav>
+      <div className="spacer"></div>
       <Switch>
         <Route path={"/photography/:id"}>
           <Photo photos={photos} />
