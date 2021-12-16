@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import About from "./About";
 import Contact from "./Contact";
 
 export default function Home(props) {
@@ -7,11 +8,12 @@ export default function Home(props) {
   console.log(socials);
 
   return (
-    <div className="myLogo">
-      <Link to="/about">
+    <div>
+      <div className="myLogo">
         <img src={logo1} alt="no" style={{ height: "60vh" }} />
-      </Link>
+      </div>
       <Contact socials={socials} />
+      <About />
     </div>
   );
 }

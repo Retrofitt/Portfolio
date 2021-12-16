@@ -49,8 +49,10 @@ function App() {
   return (
     <div className="App">
       <nav className="nav-bar">
-        <Link to="/">Home</Link>
         <Link to="/projects">Projects</Link>
+        <Link to="/">
+          <img src={logo1} alt="no" style={{ height: "4vh" }} />
+        </Link>
         <Link to="/photography">Photography</Link>
       </nav>
       <Switch>
@@ -62,9 +64,6 @@ function App() {
         </Route>
         <Route path="/projects">
           <Projects />
-        </Route>
-        <Route path="/about">
-          <About />
         </Route>
         <Route path="/">
           <Home logo1={logo1} socials={socials} />
