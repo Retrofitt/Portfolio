@@ -11,36 +11,40 @@ export default function About(){
 
         <div className='question-container'>
             <h2>What are some of your interest/hobbies?</h2>
+            <div className='row'>
                 <ul>
                     <li>Photography / Videography</li>
                     <li>E-Sports / Video Games</li>
                     <li>Art (Mainly Graphic Design)</li>
+
+                </ul>
+                <ul>
                     <li>Skateboarding</li>
                     <li>Camping / Outdoor Activities</li>
-                </ul>
+                </ul>   
+            </div>
+
         </div>
 
         <div className='question-container'>
-            <h2>What are your Front-End Skills?</h2>
-            <ul>
-                <li>HTML</li>
-                <li>JavaScript</li>
+            <h2>What Coding Language's and Libraries do you know?</h2>
+            <div className='row'>
                 <ul>
-                    <li>React</li>
-                    <li>Redux</li> 
-                    <li>Axios</li> 
-                </ul>
-                <li>CSS</li>
-            </ul>    
-        </div>
-        
-        <div className='question-container'>
-            <h2>What are your Back-End Skills?</h2>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                </ul> 
+
                 <ul>
-                    <li>n/a</li>
-                </ul>
+                    <li>JavaScript</li>
+                        <ul>
+                            <li>React</li>
+                            <li>Redux</li> 
+                            <li>Axios</li> 
+                        </ul>
+                </ul>       
+            </div>
+
         </div>
-       
         
     </div>)
 }

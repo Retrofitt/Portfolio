@@ -1,6 +1,13 @@
-
-body{
+body {
   background-color: #131313;
+  /* font-family: 'Bebas Neue', cursive; */
+  font-family: "Kanit", sans-serif;
+  font-size: 1rem;
+  background: url(../assests/background/backgroundimg.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .App {
@@ -8,61 +15,77 @@ body{
   margin: auto;
   text-decoration: none;
   color: white;
-  
+  background: rgba(0, 0, 0, 0.493);
+  height: 100%;
+  width: 100%;
 }
 
-.App h2{
+.App h2 {
   color: red;
-  
 }
 
-.App nav{
+.App nav {
   display: flex;
   justify-content: space-between;
   background-color: black;
-  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.548);  
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.548);
 }
 
-
-nav a{
+nav a {
   text-decoration: none;
   font-weight: bold;
   color: white;
   padding: 2vh 5vw;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
-nav a:hover{
+nav a:hover {
   text-decoration: none;
   color: red;
   padding: 2vh 5vw;
 }
 
-
-.component{
+.myLogo {
   margin: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
-  width: 50vw;
-  padding: 20vh 0vw;
+  height: 100%;
+  width: 100%;
+  padding: 10vh 0vw;
 }
-.component a{
+.myLogo a {
   height: 100%;
 }
-.component a img{
+.myLogo a img {
   height: 100%;
   transition: all 1s;
 }
-.component a img:hover{
+.myLogo a img:hover {
   transform: scale(1.1);
   transition: transform 1s;
   cursor: pointer;
-
 }
+
+/* socials */
+
+.social-container {
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.social-container a {
+  transition: all 1s;
+}
+.social-container a:hover {
+  transform: scale(0.8);
+  transition: transform 1s;
+}
+
 /* about */
-.about-container{
+.about-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,31 +93,31 @@ nav a:hover{
   padding: 5vh 22vw;
 }
 
-
-.question-container{
+.question-container {
+  width: 60vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.123);
+  background-color: rgba(0, 0, 0, 0.541);
   border-radius: 20px;
   padding: 5vh;
   margin: 5vh 0vw;
-  box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.548); 
-  transition: all .6s;
+  box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.548);
+  transition: all 0.6s;
 }
 
-.question-container:hover{
-  transform: scale(1.4);
-  transition: transform .6s;
+.row {
+  display: flex;
 }
 
 /* .photos */
 
-
-.photo-container{
+.photo-container {
+  margin: auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
 }
 .photos {
@@ -106,81 +129,100 @@ nav a:hover{
   margin: 3vh 3vw;
 }
 
-
-.photos img{
+.photos img {
   max-width: 100%;
   max-height: 100%;
   transition: all 1s;
-  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.548);  
-  border-radius: 50px;
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.548);
 }
-.photos img:hover{
+.photos img:hover {
   transition: transform 1s;
   transform: scale(1.1);
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.548);
 }
 
-.single-photo{
+.single-photo {
   margin: 4vh 4vw;
   height: 85vh;
   width: auto;
 }
 
-.single-photo img{
+.single-photo img {
   max-width: 100%;
   max-height: 100%;
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.548)
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.548);
 }
-
-
-/* socials */
-
-
-.social-container{
-  margin-top: 40vh;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-.social-container a{
-  transition: all 1s;
-}
-.social-container a:hover{
-  transform: scale(.8);
-  transition: transform 1s;
-}
-
-
 
 /* .project */
-
-
-.project-divs{
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-margin: 10vh 10vw;
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  height: 93.4vh;
 }
 
-.project-divs a{
+.project-divs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10vh 10vw;
+  height: fit-content;
+}
+
+.project-divs a {
   text-decoration: none;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
-.project-divs a:hover{
+.project-divs a:hover {
   text-decoration: none;
   color: red;
 }
 
-.project{
+.project {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 30vh;
   width: 20vw;
   flex-basis: 30%;
-  border: 1px solid white;
   border-radius: 20px;
   margin: 2vh 1vw;
+  background-color: rgba(0, 0, 0, 0.123);
+  box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.548);
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgb(0, 0, 0);
+  transition: all 1s;
 }
 
+.one {
+  background-image: url("../assests/photos/ghbusinesscard.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.one:hover {
+  background-image: url("../assests/photos/ghbusinesscard2.png");
+  transition: all 1s;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+  box-shadow: inset 0 0 5px black;
+  border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: red;
+}
