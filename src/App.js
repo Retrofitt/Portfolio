@@ -1,13 +1,9 @@
 import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
-import { useParams } from "react-router";
 
 import Home from "./components/Home";
-import About from "./components/About";
-import Contact from "./components/Contact";
 import Photography from "./components/Photography";
 import Projects from "./components/Projects";
-import Photo from "./components/Photo";
 
 import "./styles/styles.css";
 
@@ -36,7 +32,7 @@ function App() {
     { image: photo6 },
     { image: photo7 },
     { image: photo8 },
-    { image: photo9 },
+    // { image: photo9 },
   ];
 
   const socials = {
@@ -48,26 +44,23 @@ function App() {
 
   return (
     <div className="App">
-      <nav className="nav-bar">
+      {/* <nav className="nav-bar">
         <Link to="/projects">Projects</Link>
         <Link to="/">
           <img src={logo1} alt="no" style={{ height: "4vh" }} />
         </Link>
         <Link to="/photography">Photography</Link>
-      </nav>
+      </nav> */}
       <div className="spacer"></div>
       <Switch>
-        <Route path={"/photography/:id"}>
-          <Photo photos={photos} />
-        </Route>
-        <Route path="/photography">
+        {/* <Route path="/photography">
           <Photography photos={photos} />
         </Route>
         <Route path="/projects">
           <Projects />
-        </Route>
+        </Route> */}
         <Route path="/">
-          <Home logo1={logo1} socials={socials} />
+          <Home logo1={logo1} socials={socials} photos={photos} />
         </Route>
       </Switch>
     </div>

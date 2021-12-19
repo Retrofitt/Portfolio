@@ -3,11 +3,19 @@ body {
   /* font-family: 'Bebas Neue', cursive; */
   font-family: "Kanit", sans-serif;
   font-size: 1rem;
-  background: url(../assests/background/backgroundimg.jpg);
+  background: url(../assests/background/backgroundimg.jpg) rgba(0, 0, 0, 0.363);
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  background-blend-mode: multiply;
+  text-align: center;
+  margin: auto;
+  text-decoration: none;
+  color: white;
+  height: 350%;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .App {
@@ -15,74 +23,32 @@ body {
   margin: auto;
   text-decoration: none;
   color: white;
-  background: rgba(0, 0, 0, 0.493);
-  height: 100%;
-  width: 100%;
+  /* background: rgb(0, 0, 0); */
+  height: 100vh;
+  width: 100vw;
 }
 
 .App h2 {
-  color: rgb(200, 255, 239);
-}
-
-.App nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: black;
-  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.548);
-  position: fixed;
-  width: 100%;
-}
-
-nav a {
-  text-decoration: none;
-  font-weight: bold;
-  color: white;
-  padding: 2vh 5vw;
-  transition: all 0.2s;
-}
-
-nav a:hover {
-  text-decoration: none;
-  color: rgb(200, 255, 239);
-  padding: 2vh 5vw;
-}
-
-nav a img {
-  height: 100%;
-  transition: all 2s;
-}
-
-nav a img:hover {
-  transform: scale(1.4);
-  transition: transform 2s;
-  cursor: pointer;
+  color: rgba(0, 0, 0, 0.514);
+  font-style: italic;
+  font-weight: 900;
 }
 
 .spacer {
-  width: 100%;
   height: 95px;
 }
 
 .myLogo {
-  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
   padding-top: 8vh;
 }
 
 .myLogo img {
   height: 100%;
-  transition: all 1s;
 }
-/* .myLogo img:hover {
-  transform: scale(1.1);
-  transition: transform 1s;
-} */
 
 /* socials */
 
@@ -90,6 +56,7 @@ nav a img:hover {
   display: flex;
   justify-content: center;
   align-content: center;
+  margin-bottom: 2vh;
 }
 .social-container a {
   transition: all 1s;
@@ -108,18 +75,71 @@ nav a img:hover {
   padding: 5vh 22vw;
 }
 
+.question-container-header {
+  color: black;
+  background: rgba(255, 255, 255, 0.589);
+  height: 3vh;
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 1.4vh;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 6vh;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.question-container-header h2 {
+  padding-right: 1vw;
+  padding-bottom: 0.3vh;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 1.6vw;
+  padding-bottom: 1.2vh;
+}
+.red {
+  border-radius: 100%;
+  background-color: rgba(248, 66, 66, 0.808);
+  height: 1.4vh;
+  width: 0.85vw;
+  overflow: hidden;
+  margin: 0.2vw;
+}
+
+.yellow {
+  border-radius: 100%;
+  background-color: rgba(255, 255, 0, 0.808);
+  height: 1.4vh;
+  width: 0.85vw;
+  overflow: hidden;
+  margin: 0.2vw;
+}
+
+.green {
+  border-radius: 100%;
+  background-color: rgba(111, 250, 111, 0.808);
+  height: 1.4vh;
+  width: 0.85vw;
+  overflow: hidden;
+  margin: 0.2vw;
+}
+
 .question-container {
-  width: 60vw;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.541);
-  border-radius: 20px;
-  padding: 5vh;
-  margin: 5vh 0vw;
-  box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.548);
+  padding: 5vh 14vw;
+  box-shadow: 1px 4px 12px 2px rgba(0, 0, 0, 0.384);
   transition: all 0.6s;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .row {
@@ -140,21 +160,48 @@ nav a img:hover {
 }
 
 /* .photos */
+.photo-container-header {
+  color: black;
+  background: rgba(255, 255, 255, 0.589);
+  height: 3vh;
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 1.4vh;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 6vh;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.photo-container-header h2 {
+  padding-right: 1.2vw;
+  padding-bottom: 0.3vh;
+}
 
 .photo-container {
+  margin: 5vw;
+  margin-bottom: 200px;
+}
+.photo-content {
   margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.541);
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 .photos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   object-fit: cover;
-  flex-basis: 25%;
-  margin: 3vh 3vw;
+  flex-basis: 20%;
+  margin: 3vh;
 }
 
 .photos img {
@@ -182,16 +229,43 @@ nav a img:hover {
 }
 
 /* .project */
+.ant-card {
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.ant-card-bordered {
+  background-color: rgba(255, 255, 255, 0.945);
+  border: 0px;
+}
+
+.ant-card-body {
+  color: white;
+  padding: 0 2vw;
+  padding-top: 1vh;
+}
+
+.card-div {
+  padding: 0 2vw;
+}
+.ant-card-actions {
+  width: 300;
+  background-color: rgba(255, 255, 255, 0);
+  border-top: 0px;
+  border-radius: 25px;
+}
+
 .projects {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  height: 93.4vh;
 }
 
 .project-divs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  align-items: center;
   margin: 10vh 10vw;
   height: fit-content;
 }
@@ -235,12 +309,12 @@ nav a img:hover {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(10, 10, 10);
+  background: rgba(0, 0, 0, 0.904);
 }
 
 /* Handle */
@@ -251,5 +325,5 @@ nav a img:hover {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
 }

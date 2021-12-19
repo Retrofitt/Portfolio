@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
 import About from "./About";
 import Contact from "./Contact";
+import Photography from "./Photography";
+import Projects from "./Projects";
 
 export default function Home(props) {
-  const { logo1, socials } = props;
+  const { logo1, socials, photos } = props;
 
   console.log(socials);
 
@@ -13,7 +14,9 @@ export default function Home(props) {
         <img src={logo1} alt="no" style={{ height: "60vh" }} />
       </div>
       <Contact socials={socials} />
+      <Projects />
       <About />
+      <Photography photos={photos} />
     </div>
   );
 }
