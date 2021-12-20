@@ -66,7 +66,7 @@ export default function Projects() {
             <hr />
             <p>
               This project uses Redux asynchronous action creators to display
-              requests made to an API that returns a random anime quote.
+              requests made to an API.
             </p>
           </Card>
         </div>
