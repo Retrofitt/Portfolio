@@ -2,9 +2,9 @@ import { Card, Avatar } from "antd";
 import ghb from "../assests/projects/githubapi.jpg";
 import raq from "../assests/projects/randomanimequote.jpg";
 import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
+  GithubOutlined,
+  LoginOutlined,
+  CaretUpOutlined,
 } from "@ant-design/icons";
 
 export default function Projects() {
@@ -21,15 +21,25 @@ export default function Projects() {
             }}
             cover={<img alt="example" src={ghb} />}
             actions={[
-              <SettingOutlined key="setting" style={{ color: "white" }} />,
-              <EditOutlined key="edit" style={{ color: "white" }} />,
-              <EllipsisOutlined key="ellipsis" style={{ color: "white" }} />,
+              <a
+                href="https://github.com/Retrofitt/web-module-project-lifecycle/tree/rafael-mendoza"
+                title="GitHub Repo"
+              >
+                <GithubOutlined key="setting" style={{ color: "white" }} />
+              </a>,
+              <a
+                href="https://retrosghbusinesscard.vercel.app//"
+                title="GitHub User Card"
+              >
+                <LoginOutlined key="setting" style={{ color: "white" }} />
+              </a>,
             ]}
           >
-            <h3>Insert description here.</h3>
+            <h3>Github User Card</h3>
+            <hr />
             <p>
-              Insert description here. Insert description here. Insert
-              description here. Insert description here.
+              This project showcases ability to make requests and render the
+              responses using React.js
             </p>
           </Card>
         </div>
@@ -42,15 +52,25 @@ export default function Projects() {
             }}
             cover={<img alt="example" src={raq} />}
             actions={[
-              <SettingOutlined key="setting" style={{ color: "white" }} />,
-              <EditOutlined key="edit" style={{ color: "white" }} />,
-              <EllipsisOutlined key="ellipsis" style={{ color: "white" }} />,
+              <a
+                href="https://github.com/Retrofitt/web-module-project-async-redux/tree/main"
+                title="GitHub Repo"
+              >
+                <GithubOutlined key="setting" style={{ color: "white" }} />
+              </a>,
+              <a
+                href="https://random-anime-quote.vercel.app/"
+                title="Random Anime Quote"
+              >
+                <LoginOutlined key="setting" style={{ color: "white" }} />
+              </a>,
             ]}
           >
-            <h3>Insert description here.</h3>
+            <h3>Random Anime Quote</h3>
+            <hr />
             <p>
-              Insert description here. Insert description here. Insert
-              description here. Insert description here.
+              This project uses Redux asynchronous action creators to display
+              requests made to an API that returns a random anime quote.
             </p>
           </Card>
         </div>
