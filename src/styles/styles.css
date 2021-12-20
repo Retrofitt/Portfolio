@@ -58,8 +58,7 @@ body {
   text-shadow: 1px 1px rgba(0, 0, 0, 0.651);
 }
 .nav-link {
-  height: 2.3vh;
-  overflow: hidden;
+  line-height: 80%;
 }
 .nav a {
   color: white;
