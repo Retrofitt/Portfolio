@@ -121,8 +121,8 @@ body {
   align-items: center;
   overflow: hidden;
   margin-top: 6vh;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .no-padding {
   margin-top: 0vh;
@@ -135,7 +135,7 @@ body {
 .button-container {
   display: flex;
   flex-direction: row;
-  padding-left: 1.6vw;
+  padding-left: 0.8vw;
   padding-bottom: 1.2vh;
 }
 .red {
@@ -175,8 +175,8 @@ body {
   padding: 5vh 14vw;
   box-shadow: 1px 4px 12px 2px rgba(0, 0, 0, 0.384);
   transition: all 0.6s;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .row {
@@ -208,8 +208,8 @@ body {
   padding-top: 1.4vh;
   align-items: center;
   overflow: hidden;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .photo-container-header h2 {
   padding-right: 1.2vw;
@@ -228,8 +228,8 @@ body {
   flex-wrap: wrap;
   width: fit-content;
   background-color: rgba(0, 0, 0, 0.541);
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .photos {
   display: flex;
@@ -266,7 +266,7 @@ body {
 
 /* .project */
 .ant-card {
-  border-radius: 25px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -275,6 +275,10 @@ body {
   border: 0px;
 }
 
+.ant-image {
+  border-radius: 10px;
+  overflow: hidden;
+}
 .ant-card-body {
   height: 13vh;
   color: white;

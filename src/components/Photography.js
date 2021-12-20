@@ -18,7 +18,7 @@ export default function Photography(props) {
         {photos.map((photo, i) => {
           return (
             <div key={i} className="photos">
-              <div style={{ borderRadius: "25px", overflow: "hidden" }}>
+              <div>
                 <Image.PreviewGroup get>
                   <Image width={200} src={photo.image} />
                 </Image.PreviewGroup>

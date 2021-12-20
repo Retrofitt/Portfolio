@@ -15,7 +15,7 @@ export default function About() {
         <div className="question-container">
           <p>
             Attending Bloom Institute of Technology's (f.k.a Lambda School)
-            "Full-Stack" curriculum, he is a full stack software engineer as
+            "Full-Stack" curriculum, Rafael is a full stack software engineer as
             well as an aspiring photographer who doesn't settle for anything
             less than success. He understand that the journey he is on is a life
             long journey to hone his abilities as a software engineer and he
