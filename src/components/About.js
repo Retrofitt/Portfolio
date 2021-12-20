@@ -23,8 +23,12 @@ export default function About() {
             looking for positions available around Southern California or with
             remote possibilities but open to relocation if needed.
           </p>
+          <p className="italic">
+            Hobbies Include: Photography, Videography, eSports, Video Games,
+            Art, Graphic Design, Skateboarding, Camping, Outdoor Activities
+          </p>
         </div>
-        <div className="question-container-header">
+        {/* <div className="question-container-header">
           <div className="button-container">
             <div className="red"></div>
             <div className="yellow"></div>
@@ -44,7 +48,7 @@ export default function About() {
               <li>Camping / Outdoor Activities</li>
             </ul>
           </div>
-        </div>
+        </div> */}
         <div className="question-container-header">
           <div className="button-container">
             <div className="red"></div>
