@@ -16,7 +16,7 @@ body {
   margin: auto;
   text-decoration: none;
   color: white;
-  height: 320%;
+  height: 380%;
   width: 100vw;
   overflow-x: hidden;
 }
@@ -81,7 +81,7 @@ body {
 }
 
 .component-padding {
-  margin-top: 11vh;
+  margin-top: 24vh;
 }
 /* socials */
 
