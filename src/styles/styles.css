@@ -34,7 +34,7 @@ body {
   color: white;
   display: flex;
   justify-content: end;
-  padding-right: 2vw;
+  padding-right: 4vw;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.651);
   font-weight: 700;
 }
