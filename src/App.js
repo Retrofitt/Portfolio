@@ -39,7 +39,29 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App" id="App">
+      <nav className="nav">
+        <div className="nav-link">
+          <a href="#App">
+            <p>RafaelMendoza( )</p>
+          </a>
+        </div>
+        <div className="nav-link">
+          <a href="#projects">
+            <p>.projects</p>
+          </a>
+        </div>
+        <div className="nav-link">
+          <a href="#about">
+            <p>.about</p>
+          </a>
+        </div>
+        <div className="nav-link">
+          <a href="#photography">
+            <p>.photography</p>
+          </a>
+        </div>
+      </nav>
       <div className="spacer"></div>
       <Switch>
         <Route path="/">

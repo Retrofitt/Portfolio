@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div className="about-container">
       <div>
-        <div className="question-container-header">
+        <div className="question-container-header no-padding">
           <div className="button-container">
             <div className="red"></div>
             <div className="yellow"></div>

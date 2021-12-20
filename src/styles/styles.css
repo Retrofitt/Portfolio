@@ -1,6 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #131313;
-  /* font-family: 'Bebas Neue', cursive; */
   font-family: "Kanit", sans-serif;
   font-size: 1rem;
   background: url(../assests/background/backgroundimg.jpg) rgba(0, 0, 0, 0.363);
@@ -23,11 +26,18 @@ body {
   margin: auto;
   text-decoration: none;
   color: white;
-  /* background: rgb(0, 0, 0); */
   height: 100vh;
   width: 100vw;
 }
 
+.App h1 {
+  color: white;
+  display: flex;
+  justify-content: end;
+  padding-right: 2vw;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.651);
+  font-weight: 700;
+}
 .App h2 {
   color: rgba(0, 0, 0, 0.514);
   font-style: italic;
@@ -37,6 +47,22 @@ body {
 .App h3 {
   color: rgb(255, 255, 255);
   font-weight: 900;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  position: fixed;
+  margin: 2vh 2vw;
+  font-weight: 700;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.651);
+}
+.nav-link {
+  height: 2.3vh;
+  overflow: hidden;
+}
+.nav a {
+  color: white;
 }
 
 .spacer {
@@ -55,6 +81,9 @@ body {
   height: 100%;
 }
 
+.component-padding {
+  margin-top: 10vh;
+}
 /* socials */
 
 .social-container {
@@ -77,7 +106,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5vh 22vw;
+  padding: 0vh 22vw;
 }
 
 .question-container-header {
@@ -94,6 +123,9 @@ body {
   margin-top: 6vh;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
+}
+.no-padding {
+  margin-top: 0vh;
 }
 .question-container-header h2 {
   padding-right: 1vw;
@@ -176,7 +208,6 @@ body {
   padding-top: 1.4vh;
   align-items: center;
   overflow: hidden;
-  margin-top: 6vh;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
 }
@@ -186,7 +217,7 @@ body {
 }
 
 .photo-container {
-  margin: 5vw;
+  margin: 0vh 5vw;
   margin-bottom: 200px;
 }
 .photo-content {
@@ -274,7 +305,6 @@ body {
   flex-wrap: wrap;
   align-items: center;
   margin: 0vh 10vw;
-  margin-top: 10vh;
   height: fit-content;
 }
 
