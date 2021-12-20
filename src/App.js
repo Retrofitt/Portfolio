@@ -1,9 +1,7 @@
 import React from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Home from "./components/Home";
-import Photography from "./components/Photography";
-import Projects from "./components/Projects";
 
 import "./styles/styles.css";
 
@@ -15,7 +13,6 @@ import photo5 from "./assests/photos/photo5.jpg";
 import photo6 from "./assests/photos/photo6.jpg";
 import photo7 from "./assests/photos/photo7.jpg";
 import photo8 from "./assests/photos/photo8.jpg";
-import photo9 from "./assests/photos/photo9.jpg";
 import logo1 from "./assests/logo/logo1.png";
 import ig from "./assests/logo/ig.png";
 import linkedin from "./assests/logo/linkedin.png";
@@ -32,7 +29,6 @@ function App() {
     { image: photo6 },
     { image: photo7 },
     { image: photo8 },
-    // { image: photo9 },
   ];
 
   const socials = {
@@ -44,21 +40,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <nav className="nav-bar">
-        <Link to="/projects">Projects</Link>
-        <Link to="/">
-          <img src={logo1} alt="no" style={{ height: "4vh" }} />
-        </Link>
-        <Link to="/photography">Photography</Link>
-      </nav> */}
       <div className="spacer"></div>
       <Switch>
-        {/* <Route path="/photography">
-          <Photography photos={photos} />
-        </Route>
-        <Route path="/projects">
-          <Projects />
-        </Route> */}
         <Route path="/">
           <Home logo1={logo1} socials={socials} photos={photos} />
         </Route>

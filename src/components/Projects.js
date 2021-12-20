@@ -1,11 +1,7 @@
-import { Card, Avatar } from "antd";
+import { Card } from "antd";
 import ghb from "../assests/projects/githubapi.jpg";
 import raq from "../assests/projects/randomanimequote.jpg";
-import {
-  GithubOutlined,
-  LoginOutlined,
-  CaretUpOutlined,
-} from "@ant-design/icons";
+import { GithubOutlined, LoginOutlined } from "@ant-design/icons";
 
 export default function Projects() {
   const { Meta } = Card;
