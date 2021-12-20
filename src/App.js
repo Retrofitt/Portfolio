@@ -39,10 +39,10 @@ function App() {
   };
 
   return (
-    <div className="App" id="App">
+    <div className="App" id="home">
       <nav className="nav">
         <div className="nav-link">
-          <a href="#App">
+          <a href="#home">
             <p>RafaelMendoza( )</p>
           </a>
         </div>
