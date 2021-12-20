@@ -34,12 +34,12 @@ export default function About() {
         </div>
         <div className="question-container">
           <div className="row">
-            <ul>
+            <ul style={{ textAlign: "left" }}>
               <li>Photography / Videography</li>
               <li>E-Sports / Video Games</li>
               <li>Art (Mainly Graphic Design)</li>
             </ul>
-            <ul>
+            <ul style={{ textAlign: "left" }}>
               <li>Skateboarding</li>
               <li>Camping / Outdoor Activities</li>
             </ul>
