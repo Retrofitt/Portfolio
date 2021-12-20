@@ -12,7 +12,7 @@ export default function Photography(props) {
           <div className="yellow"></div>
           <div className="green"></div>
         </div>
-        <h2>Photography.map()</h2>
+        <h2></h2>
       </div>
       <div className="photo-content">
         {photos.map((photo, i) => {

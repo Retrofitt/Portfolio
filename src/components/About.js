@@ -9,7 +9,7 @@ export default function About() {
             <div className="green"></div>
           </div>
           <div>
-            <h2>whoIsRafaelMendoza.exe</h2>
+            <h2>who is rafael mendoza?</h2>
           </div>
         </div>
         <div className="question-container">
@@ -30,7 +30,7 @@ export default function About() {
             <div className="yellow"></div>
             <div className="green"></div>
           </div>
-          <h2>interests.exe</h2>
+          <h2>what are some of his hobbies?</h2>
         </div>
         <div className="question-container">
           <div className="row">
@@ -51,7 +51,7 @@ export default function About() {
             <div className="yellow"></div>
             <div className="green"></div>
           </div>
-          <h2>technologiesKnown.exe</h2>
+          <h2>what technologies does he know?</h2>
         </div>
         <div className="question-container">
           <div className="techs">
