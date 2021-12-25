@@ -3,14 +3,7 @@ export default function About() {
     <div className="about-container">
       <div>
         <div className="question-container-header no-padding">
-          <div className="button-container">
-            <div className="red"></div>
-            <div className="yellow"></div>
-            <div className="green"></div>
-          </div>
-          <div>
-            <h2>who is rafael mendoza?</h2>
-          </div>
+          <h2>who is rafael mendoza?</h2>
         </div>
         <div className="question-container">
           <p>
@@ -28,39 +21,14 @@ export default function About() {
             Art, Graphic Design, Skateboarding, Camping, Outdoor Activities
           </p>
         </div>
-        {/* <div className="question-container-header">
-          <div className="button-container">
-            <div className="red"></div>
-            <div className="yellow"></div>
-            <div className="green"></div>
-          </div>
-          <h2>what are some of his hobbies?</h2>
-        </div>
-        <div className="question-container">
-          <div className="row">
-            <ul style={{ textAlign: "left" }}>
-              <li>Photography / Videography</li>
-              <li>E-Sports / Video Games</li>
-              <li>Art (Mainly Graphic Design)</li>
-            </ul>
-            <ul style={{ textAlign: "left" }}>
-              <li>Skateboarding</li>
-              <li>Camping / Outdoor Activities</li>
-            </ul>
-          </div>
-        </div> */}
         <div className="question-container-header">
-          <div className="button-container">
-            <div className="red"></div>
-            <div className="yellow"></div>
-            <div className="green"></div>
-          </div>
           <h2>what technologies does he know?</h2>
         </div>
         <div className="question-container">
           <div className="techs">
             <a href="https://html.spec.whatwg.org/multipage/">
               <img
+                className="whiteImg"
                 src="https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/html-5.svg"
                 width="24"
                 title="HTML5"
@@ -166,6 +134,7 @@ export default function About() {
             </a>
             <a href="https://reactrouter.com/">
               <img
+                className="whiteImg"
                 src="https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/react-router.svg"
                 height="24"
                 title="React-Router"
@@ -173,6 +142,7 @@ export default function About() {
             </a>
             <a href="https://www.w3.org/TR/CSS/">
               <img
+                className="whiteImg"
                 src="https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/css-3.svg"
                 width="24"
                 title="CSS3"
@@ -236,6 +206,7 @@ export default function About() {
             </a>
             <a href="https://vercel.com/">
               <img
+                className="whiteImg"
                 src="https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/vercel.svg"
                 width="30"
                 title="Vercel"
