@@ -3,22 +3,15 @@ html {
 }
 
 body {
-  background-color: #131313;
   font-family: "Kanit", sans-serif;
   font-size: 1rem;
-  background: url(../assests/background/backgroundimg.jpg) rgba(0, 0, 0, 0.363);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-blend-mode: multiply;
   text-align: center;
   margin: auto;
   text-decoration: none;
   color: white;
-  height: 380%;
   width: 100vw;
   overflow-x: hidden;
+  background-color: black;
 }
 
 .App {
@@ -33,13 +26,13 @@ body {
 .App h1 {
   color: white;
   display: flex;
-  justify-content: center;
-  /* padding-right: 4vw; */
+  justify-content: right;
+  padding-right: 4vw;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.651);
   font-weight: 700;
 }
 .App h2 {
-  color: rgba(0, 0, 0, 0.514);
+  color: white;
   font-style: italic;
   font-weight: 900;
 }
@@ -56,12 +49,27 @@ body {
   margin: 2vh 2vw;
   font-weight: 700;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.651);
+  z-index: 100;
 }
 .nav-link {
   line-height: 80%;
 }
 .nav a {
   color: white;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -100;
+}
+
+.main {
+  position: relative;
+  z-index: +100%;
 }
 
 .spacer {
@@ -81,7 +89,7 @@ body {
 }
 
 .component-padding {
-  margin-top: 24vh;
+  margin-top: 12vh;
 }
 /* socials */
 
@@ -109,19 +117,13 @@ body {
 }
 
 .question-container-header {
-  color: black;
-  background: rgba(255, 255, 255, 0.589);
-  height: 3vh;
-  width: 90vw;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
   padding-top: 1.4vh;
   align-items: center;
   overflow: hidden;
   margin-top: 6vh;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  padding-left: 5vw;
 }
 .no-padding {
   margin-top: 0vh;
@@ -129,6 +131,22 @@ body {
 .question-container-header h2 {
   padding-right: 1vw;
   padding-bottom: 0.3vh;
+}
+
+.question-container img {
+  transition: transform 1s;
+}
+
+.question-container img:hover {
+  transition: transform 1s;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.548);
+}
+
+.whiteImg {
+  background-color: white;
+  border-radius: 4px;
+  padding: 1.2px;
 }
 
 .button-container {
@@ -168,11 +186,8 @@ body {
   width: 90vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.541);
-  padding: 5vh 14vw;
-  box-shadow: 1px 4px 12px 2px rgba(0, 0, 0, 0.384);
+  text-align: left;
+  padding: 0vh 6vw;
   transition: all 0.6s;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -204,7 +219,6 @@ body {
 /* .photos */
 .photo-container-header {
   color: black;
-  background: rgba(255, 255, 255, 0.589);
   height: 3vh;
   width: 90vw;
   display: flex;
@@ -232,7 +246,6 @@ body {
   align-items: center;
   flex-wrap: wrap;
   width: fit-content;
-  background-color: rgba(0, 0, 0, 0.541);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -243,6 +256,10 @@ body {
   object-fit: cover;
   flex-basis: 20%;
   margin: 3vh;
+}
+
+.ant-image {
+  box-shadow: 0.1px 0.1px 10px black;
 }
 
 .photos img {
@@ -300,6 +317,24 @@ body {
   background-color: rgba(255, 255, 255, 0);
   border-top: 0px;
   border-radius: 25px;
+}
+
+#projects {
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  padding: 5vh;
+}
+
+#about {
+  position: relative;
+  background-color: #131313;
+  padding: 5vh;
+}
+
+#photography {
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  height: 85vh;
 }
 
 .projects {
