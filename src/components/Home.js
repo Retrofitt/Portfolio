@@ -11,7 +11,7 @@ export default function Home(props) {
 
   return (
     <div>
-      <video autoPlay muted loop id="myVideo">
+      <video autoPlay muted loop id="my-video">
         <source src={background} type="video/mp4" />
         Browser does not support video background.;
       </video>

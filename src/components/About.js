@@ -5,7 +5,7 @@ export default function About() {
         <div className="question-container-header no-padding">
           <h2>who is rafael mendoza?</h2>
         </div>
-        <div className="question-container">
+        <div className="question-container-one">
           <p>
             Attending Bloom Institute of Technology's (f.k.a Lambda School)
             "Full-Stack" curriculum, Rafael is a full stack software engineer as
@@ -24,7 +24,7 @@ export default function About() {
         <div className="question-container-header">
           <h2>what technologies does he know?</h2>
         </div>
-        <div className="question-container">
+        <div className="question-container-two">
           <div className="techs">
             <a href="https://html.spec.whatwg.org/multipage/">
               <img
