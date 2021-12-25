@@ -6,14 +6,7 @@ export default function Photography(props) {
 
   return (
     <div className="photo-container">
-      <div className="photo-container-header">
-        <div className="button-container">
-          <div className="red"></div>
-          <div className="yellow"></div>
-          <div className="green"></div>
-        </div>
-        <h2></h2>
-      </div>
+      <div className="photo-container-header"></div>
       <div className="photo-content">
         {photos.map((photo, i) => {
           return (
