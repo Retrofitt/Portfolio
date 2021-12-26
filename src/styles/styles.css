@@ -91,7 +91,7 @@ body {
 }
 
 .myLogo img {
-  height: 100%;
+  height: 60vh;
 }
 
 .component-padding {
@@ -336,7 +336,7 @@ body {
 #projects {
   position: relative;
   background-color: rgb(8, 8, 8);
-  padding: 5vh;
+  padding: 5vh 5vw;
 }
 
 #about {
@@ -423,4 +423,35 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(255, 255, 255);
+}
+
+/* Responsive Design */
+
+@media (max-width: 500px) {
+  .main {
+    margin: 18vh;
+  }
+  .spacer {
+    display: none;
+  }
+  .myLogo img {
+    height: 44vh;
+  }
+  .social-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  .nav {
+    display: none;
+  }
+  .ant-image {
+    flex-basis: 34.5%;
+  }
+  .ant-card-body {
+    height: fit-content;
+  }
+  .card-div {
+    margin: 4vh;
+  }
 }

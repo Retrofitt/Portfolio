@@ -17,7 +17,7 @@ export default function Home(props) {
       </video>
       <div className="main">
         <div className="myLogo" id="myLogo">
-          <img src={logo1} alt="no" style={{ height: "60vh" }} />
+          <img src={logo1} alt="no" />
         </div>
         <Contact socials={socials} />
       </div>
