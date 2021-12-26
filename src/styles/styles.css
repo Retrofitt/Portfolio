@@ -50,10 +50,12 @@ body {
   flex-direction: column;
   text-align: left;
   position: fixed;
-  margin: 2vh 2vw;
+  padding: 2vh 1vw;
   font-weight: 700;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.651);
   z-index: 100;
+  background-color: rgba(34, 34, 34, 0.178);
+  border-bottom-right-radius: 6px;
 }
 .nav-link {
   line-height: 80%;
