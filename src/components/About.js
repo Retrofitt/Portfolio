@@ -21,6 +21,9 @@ export default function About() {
             Art, Graphic Design, Skateboarding, Camping, Outdoor Activities
           </p>
         </div>
+        <br />
+        <br />
+        <hr />
         <div className="question-container-header">
           <h2>what technologies does he know?</h2>
         </div>

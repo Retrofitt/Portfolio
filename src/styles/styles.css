@@ -23,6 +23,13 @@ body {
   width: 100vw;
 }
 
+.App hr {
+  background-color: rgba(44, 44, 44, 0.185);
+  height: 3px;
+  width: 86vw;
+  border: none;
+}
+
 .App h1 {
   color: white;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.651);
@@ -402,12 +409,12 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.904);
+  background: rgb(0, 0, 0);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(0, 0, 0);
+  background: rgb(230, 228, 228);
   border-radius: 24px;
 }
 
