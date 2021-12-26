@@ -7,14 +7,13 @@ export default function About() {
         </div>
         <div className="question-container-one">
           <p>
-            Attending Bloom Institute of Technology's (f.k.a Lambda School)
-            "Full-Stack" curriculum, Rafael is a full stack software engineer as
-            well as an aspiring photographer who doesn't settle for anything
-            less than success. He understand that the journey he is on is a life
-            long journey to hone his abilities as a software engineer and he
-            looks forward to every experience presented to him. Currently
-            looking for positions available around Southern California or with
-            remote possibilities but open to relocation if needed.
+            After Attending Bloom Institute of Technology's intensive Full Stack
+            program, Rafael is a software engineer who doesn't settle for
+            anything less than success. He understand that the journey he is on
+            is a life long journey to hone his abilities and he looks forward to
+            every experience presented to him. Currently looking for positions
+            available around Southern California or with remote possibilities
+            but open to relocation if needed.
           </p>
           <p className="italic">
             Hobbies Include: Photography, Videography, eSports, Video Games,
