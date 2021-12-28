@@ -275,30 +275,6 @@ body {
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.548);
 }
 
-/* .photos img {
-  max-width: 100%;
-  max-height: 100%;
-  transition: all 1s;
-  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.548);
-}
-.photos img:hover {
-  transition: transform 1s;
-  transform: scale(1.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.548);
-} */
-
-/* .single-photo {
-  margin: 4vh 4vw;
-  height: 85vh;
-  width: auto;
-}
-
-.single-photo img {
-  max-width: 100%;
-  max-height: 100%;
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.548);
-} */
-
 /* .project */
 .ant-card {
   border-radius: 10px;
@@ -324,9 +300,6 @@ body {
   overflow: hidden;
 }
 
-.card-div {
-  padding: 0 2vw;
-}
 .ant-card-actions {
   width: 300;
   background-color: #0c0c0c;
@@ -354,54 +327,22 @@ body {
 
 .projects {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.project-divs {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 0vh 10vw;
-  height: fit-content;
+.ant-card-body hr {
+  width: auto;
 }
 
-.project-divs a {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
+.card-div {
+  transition: 1.1s;
 }
 
-.project-divs a:hover {
-  text-decoration: none;
-  color: red;
-}
-
-.project {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30vh;
-  width: 20vw;
-  flex-basis: 30%;
-  border-radius: 20px;
-  margin: 2vh 1vw;
-  background-color: rgba(0, 0, 0, 0.123);
-  box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.548);
-  font-weight: bold;
-  text-shadow: 3px 3px 8px rgb(0, 0, 0);
-  transition: all 1s;
-}
-
-.one {
-  background-image: url("../assests/photos/ghbusinesscard.png");
-  background-position: center;
-  background-size: cover;
-}
-
-.one:hover {
-  background-image: url("../assests/photos/ghbusinesscard2.png");
-  transition: all 1s;
+.card-div:hover {
+  transition: 1.1s;
+  transform: scale(1.05);
 }
 
 /* width */
@@ -427,7 +368,7 @@ body {
 
 /* Responsive Design */
 
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .main {
     margin: 12vh;
   }
@@ -453,5 +394,34 @@ body {
   }
   .card-div {
     margin: 4vh;
+  }
+} */
+
+@media all and (orientation: portrait) {
+  .main {
+    margin: 12vh;
+  }
+  .spacer {
+    display: none;
+  }
+  .myLogo img {
+    height: 44vh;
+  }
+  .social-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  .nav {
+    display: none;
+  }
+  .ant-image {
+    flex-basis: 34.5%;
+  }
+  .ant-card-body {
+    height: fit-content;
+  }
+  .card-div {
+    margin: 4vh 0vw;
   }
 }

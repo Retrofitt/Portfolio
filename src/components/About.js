@@ -115,6 +115,7 @@ export default function About() {
             </a>
             <a href="https://sqlitestudio.pl/">
               <img
+                className="whiteImg"
                 src="https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/sqlite.svg"
                 width="60"
                 title="SQLite"
@@ -122,6 +123,7 @@ export default function About() {
             </a>
             <a href="https://www.postgresql.org/">
               <img
+                className="whiteImg"
                 src="https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/postgresql-logo.svg"
                 width="30"
                 title="PostgreSQL"
