@@ -1,3 +1,14 @@
+:root{
+ --primary-color: #131313;
+  --secondary-color: #0e0e0e;
+  --accent-color: #ff0000;
+  --text-color: #ffffff;
+  --font-family: "Kanit", sans-serif;
+
+}
+
+
+
 html {
   scroll-behavior: smooth;
 }
@@ -8,7 +19,7 @@ body {
   text-align: center;
   margin: auto;
   text-decoration: none;
-  color: white;
+  color:var(--text-color);
   width: 100vw;
   overflow-x: hidden;
   background-color: black;
@@ -18,7 +29,7 @@ body {
   text-align: center;
   margin: auto;
   text-decoration: none;
-  color: white;
+  color: var(--text-color);
   height: 100vh;
   width: 100vw;
 }
@@ -31,18 +42,18 @@ body {
 }
 
 .App h1 {
-  color: white;
+  color: var(--text-color);
   text-shadow: 1px 1px rgba(0, 0, 0, 0.651);
   font-weight: 700;
 }
 .App h2 {
-  color: white;
+  color: var(--text-color);
   font-style: italic;
   font-weight: 900;
 }
 
 .App h3 {
-  color: rgb(255, 255, 255);
+  color: var(--text-color);
   font-weight: 900;
 }
 .nav {
@@ -61,7 +72,7 @@ body {
   line-height: 80%;
 }
 .nav a {
-  color: white;
+  color: var(--text-color);
 }
 
 #my-video {
@@ -149,7 +160,7 @@ body {
 }
 
 .whiteImg {
-  background-color: white;
+  background-color: var(--text-color);
   border-radius: 4px;
   padding: 1.2px;
 }
@@ -294,7 +305,7 @@ body {
 .ant-card-body {
   background-color: #0e0e0e;
   height: 13vh;
-  color: white;
+  color: var(--text-color);
   padding: 0 2vw;
   padding-top: 1vh;
   overflow: hidden;

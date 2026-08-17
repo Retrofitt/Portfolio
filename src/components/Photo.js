@@ -1,22 +1,22 @@
-import '../styles/styles.css'
-import { useEffect, useState } from "react"
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { galleryPhotos } from "../data/photos";
+import "../styles/styles.css";
 
-export default function Photo(props){
+export default function Photo(props) {
+  const { photos = galleryPhotos } = props;
+  const [photo, setPhoto] = useState();
+  const { id } = useParams();
 
-    const { photos }= props;
-        
-    const [photo, setPhoto] = useState();
+  useEffect(() => {
+    if (photos && photos[id]) {
+      setPhoto(photos[id].image);
+    }
+  }, [id, photos]);
 
-    const { id } = useParams();
-    
-
-    useEffect(()=>{
-        setPhoto(photos[id].image)
-    }, [id])
-
-    return(<div className='single-photo'>
-        <img src={photo} alt='cat' />
-    </div>)
+  return (
+    <div className="single-photo">
+      {photo && <img src={photo} alt={`Photo ${id}`} />}
+    </div>
+  );
 }
-
