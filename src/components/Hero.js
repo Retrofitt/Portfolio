@@ -1,6 +1,6 @@
 import React from "react";
 import Contact from "./Contact";
-import backgroundVideo from "../assets/background/Black - 13495.mp4";
+import backgroundVideo from "../assets/background/background.mp4";
 import logo1 from "../assets/logo/logo1.png";
 
 export default function Hero() {

@@ -1,0 +1,8 @@
+{
+  "buildCommand": "react-scripts build",
+  "env": {
+    "CI": "false",
+    "GENERATE_SOURCEMAP": "false",
+    "NODE_OPTIONS": "--openssl-legacy-provider"
+  }
+}
