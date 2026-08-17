@@ -15,7 +15,6 @@ export default function Photography() {
     : photos.filter((p) => (p.category || "General") === activeCategory);
 
   const openLightbox = (index) => {
-    // Find index in filtered list
     setSelectedPhotoIndex(index);
   };
 
@@ -34,10 +33,15 @@ export default function Photography() {
   };
 
   return (
-    <section id="photography" className="py-24 bg-[#080d1a] relative overflow-hidden border-t border-white/5">
-      {/* Background glow */}
-      <div className="glow-orb w-[400px] h-[400px] bg-purple-500/5 left-1/3 top-1/2"></div>
-
+    <section
+      id="photography"
+      className="py-24 relative overflow-hidden"
+      style={{
+        backgroundColor: "#07090e",
+        borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.05)"
+      }}
+    >
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -54,11 +58,15 @@ export default function Photography() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all ${
-                activeCategory === cat
-                  ? "bg-emerald-500 text-slate-950 font-bold shadow-lg shadow-emerald-500/25"
-                  : "bg-slate-900/90 text-slate-400 hover:text-white border border-white/10 hover:border-white/20"
-              }`}
+              className="px-4 py-2 rounded-full text-xs font-semibold tracking-wide"
+              style={{
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                backgroundColor: activeCategory === cat ? "#38bdf8" : "rgba(13, 17, 26, 0.8)",
+                color: activeCategory === cat ? "#050608" : "#94a3b8",
+                border: activeCategory === cat ? "1px solid #38bdf8" : "1px solid rgba(255, 255, 255, 0.08)",
+                boxShadow: activeCategory === cat ? "0 0 15px rgba(56, 189, 248, 0.3)" : "none"
+              }}
             >
               {cat}
             </button>
@@ -66,7 +74,13 @@ export default function Photography() {
           {isAuthenticated && (
             <button
               onClick={() => setIsCMSOpen(true)}
-              className="px-3.5 py-2 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 flex items-center gap-1.5"
+              className="px-3.5 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5"
+              style={{
+                background: "rgba(56, 189, 248, 0.1)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
+                color: "#38bdf8",
+                cursor: "pointer"
+              }}
             >
               <span>+ Upload Photos</span>
             </button>
@@ -79,29 +93,45 @@ export default function Photography() {
             <div
               key={photo.id || index}
               onClick={() => openLightbox(index)}
-              className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-950 border border-white/10 hover:border-emerald-500/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-emerald-500/10"
+              className="relative aspect-square rounded-2xl overflow-hidden glass-card"
+              style={{
+                cursor: "pointer",
+                padding: "0",
+                background: "rgba(11, 14, 21, 0.8)",
+                border: "1px solid rgba(255, 255, 255, 0.08)"
+              }}
             >
               <img
                 src={photo.image}
                 alt={photo.alt || photo.title}
                 loading="lazy"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                className="w-full h-full"
+                style={{
+                  objectFit: "cover",
+                  display: "block",
+                  transition: "transform 0.5s ease"
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.08)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
               />
 
-              {/* Gradient & Hover Information */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4">
-                <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider mb-1">
+              {/* Gradient & Hover Caption */}
+              <div
+                className="absolute inset-0 flex flex-col justify-end p-4"
+                style={{
+                  background: "linear-gradient(to top, rgba(5, 7, 12, 0.9) 0%, rgba(5, 7, 12, 0.1) 60%, transparent 100%)",
+                  pointerEvents: "none"
+                }}
+              >
+                <span
+                  className="text-xs font-bold uppercase tracking-wider mb-1"
+                  style={{ color: "#38bdf8", fontSize: "10px" }}
+                >
                   {photo.category || "Photography"}
                 </span>
                 <p className="text-sm font-bold text-white leading-tight">
                   {photo.title || "Capture View"}
                 </p>
-                <div className="mt-2 flex items-center gap-1 text-[11px] text-slate-300 font-medium">
-                  <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-                  </svg>
-                  <span>Click to view</span>
-                </div>
               </div>
             </div>
           ))}

@@ -10,12 +10,35 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#04060d] border-t border-white/5 py-12 relative overflow-hidden">
+    <footer
+      className="py-12 relative overflow-hidden"
+      style={{
+        backgroundColor: "#030407",
+        borderTop: "1px solid rgba(255, 255, 255, 0.05)"
+      }}
+    >
       <div className="container-custom">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-white/5">
+        <div
+          className="flex flex-col md:flex-row items-center justify-between gap-8 pb-8"
+          style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.05)" }}
+        >
           {/* Brand Info */}
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-black text-slate-950 text-lg shadow-lg shadow-emerald-500/20">
+            <div
+              style={{
+                width: "2.5rem",
+                height: "2.5rem",
+                borderRadius: "0.75rem",
+                background: "linear-gradient(135deg, #38bdf8 0%, #10b981 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#050608",
+                fontWeight: "900",
+                fontSize: "1.125rem",
+                boxShadow: "0 0 15px rgba(56, 189, 248, 0.25)"
+              }}
+            >
               RM
             </div>
             <div>
@@ -36,14 +59,21 @@ export default function Footer() {
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-semibold text-slate-400 hover:text-emerald-400 transition-colors"
+                className="text-xs font-semibold"
+                style={{ color: "#94a3b8", textDecoration: "none" }}
               >
                 {s.name}
               </a>
             ))}
             <button
               onClick={() => setIsCMSOpen(true)}
-              className="text-xs font-semibold text-slate-500 hover:text-emerald-400 transition-colors ml-2"
+              className="text-xs font-semibold ml-2"
+              style={{
+                color: "#64748b",
+                background: "none",
+                border: "none",
+                cursor: "pointer"
+              }}
             >
               {isAuthenticated ? "CMS Studio" : "Admin"}
             </button>
@@ -52,10 +82,11 @@ export default function Footer() {
           {/* Back to Top */}
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-emerald-400 transition-colors px-3 py-2 rounded-lg bg-slate-900 border border-white/5"
+            className="btn-outline text-xs"
+            style={{ padding: "0.45rem 0.85rem" }}
           >
             <span>Back to top</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: "14px", height: "14px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
             </svg>
           </button>
@@ -65,7 +96,7 @@ export default function Footer() {
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
           <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
           <p className="flex items-center gap-2">
-            <span>Designed &amp; Engineered with React, Tailwind CSS &amp; Precision</span>
+            <span>Designed &amp; Engineered with React, Slate Glass &amp; Precision</span>
           </p>
         </div>
       </div>

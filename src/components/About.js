@@ -6,10 +6,15 @@ export default function About() {
   const { profile } = data;
 
   return (
-    <section id="about" className="py-24 bg-[#080d1a] relative overflow-hidden border-t border-b border-white/5">
-      {/* Ambient background glow */}
-      <div className="glow-orb w-[400px] h-[400px] bg-emerald-500/5 -left-20 top-1/3"></div>
-
+    <section
+      id="about"
+      className="py-24 relative overflow-hidden"
+      style={{
+        backgroundColor: "#07090e",
+        borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.05)"
+      }}
+    >
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -20,12 +25,18 @@ export default function About() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 items-start max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
           {/* Narrative / Left Column */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="glass-card p-8 rounded-2xl border-l-4 border-l-emerald-500">
+            <div
+              className="glass-card p-8 rounded-2xl"
+              style={{
+                borderLeft: "4px solid #38bdf8",
+                background: "rgba(12, 16, 24, 0.65)"
+              }}
+            >
               <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <span className="text-emerald-400">01.</span>
+                <span className="text-cyan-400 font-mono">01.</span>
                 <span>Engineering Philosophy</span>
               </h3>
               <p className="text-slate-300 text-base leading-relaxed mb-4">
@@ -38,9 +49,19 @@ export default function About() {
 
             {/* Core Disciplines */}
             <div className="glass-panel p-6 rounded-2xl">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span>Core Competencies &amp; Creative Disciplines</span>
+              <h4
+                className="text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-2"
+                style={{ color: "#94a3b8" }}
+              >
+                <span
+                  style={{
+                    width: "8px",
+                    height: "8px",
+                    borderRadius: "50%",
+                    backgroundColor: "#38bdf8"
+                  }}
+                ></span>
+                <span>Core Competencies &amp; Disciplines</span>
               </h4>
               <div className="flex flex-wrap gap-2">
                 {(profile.disciplines || [
@@ -53,7 +74,12 @@ export default function About() {
                 ]).map((discipline) => (
                   <span
                     key={discipline}
-                    className="px-3 py-1.5 rounded-lg bg-slate-900/90 border border-white/10 text-slate-300 text-xs font-semibold hover:border-emerald-500/40 hover:text-emerald-300 transition-colors"
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold"
+                    style={{
+                      background: "rgba(8, 11, 17, 0.9)",
+                      border: "1px solid rgba(255, 255, 255, 0.08)",
+                      color: "#cbd5e1"
+                    }}
                   >
                     {discipline}
                   </span>
@@ -62,7 +88,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* Stats & Quick Card / Right Column */}
+          {/* Stats & Recruiter Card / Right Column */}
           <div className="lg:col-span-5 space-y-6">
             {/* Stat Counters Grid */}
             <div className="grid grid-cols-2 gap-4">
@@ -74,9 +100,16 @@ export default function About() {
               ]).map((stat, i) => (
                 <div
                   key={stat.label || i}
-                  className="glass-card p-6 rounded-2xl text-center group hover:border-emerald-500/40 transition-all"
+                  className="glass-card p-6 rounded-2xl text-center"
                 >
-                  <p className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-emerald-400 to-cyan-400 mb-1 group-hover:scale-105 transition-transform">
+                  <p
+                    className="text-3xl sm:text-4xl font-black mb-1"
+                    style={{
+                      background: "linear-gradient(135deg, #38bdf8 0%, #10b981 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent"
+                    }}
+                  >
                     {stat.value}
                   </p>
                   <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
@@ -87,24 +120,47 @@ export default function About() {
             </div>
 
             {/* Recruiter Quick Card */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-[#0c1427] border border-emerald-500/20 shadow-xl">
+            <div
+              className="p-6 rounded-2xl"
+              style={{
+                background: "linear-gradient(135deg, rgba(13, 17, 26, 0.9) 0%, rgba(8, 11, 17, 0.95) 100%)",
+                border: "1px solid rgba(56, 189, 248, 0.25)",
+                boxShadow: "0 12px 30px rgba(0, 0, 0, 0.6)"
+              }}
+            >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div
+                  style={{
+                    width: "2.25rem",
+                    height: "2.25rem",
+                    borderRadius: "0.5rem",
+                    backgroundColor: "rgba(56, 189, 248, 0.15)",
+                    border: "1px solid rgba(56, 189, 248, 0.3)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#38bdf8"
+                  }}
+                >
+                  <svg style={{ width: "18px", height: "18px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white">Looking for Top Talent?</h4>
+                  <h4 className="text-sm font-bold text-white mb-0.5">Looking for Top Talent?</h4>
                   <p className="text-xs text-slate-400">Ready to onboard and make immediate impact</p>
                 </div>
               </div>
               <p className="text-xs text-slate-300 mb-4 leading-relaxed">
                 Open to Full-Time, Contract-to-Hire, and High-Impact Engineering roles across California and US Remote.
               </p>
-              <a href="#contact" className="btn-primary w-full text-xs py-2.5">
+              <a
+                href="#contact"
+                className="btn-primary w-full text-xs"
+                style={{ padding: "0.65rem 1rem", width: "100%" }}
+              >
                 <span>Direct Recruiter Inquiry</span>
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg style={{ width: "14px", height: "14px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>

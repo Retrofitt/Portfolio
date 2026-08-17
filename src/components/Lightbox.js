@@ -22,22 +22,47 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
   if (!isOpen || !photo) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center modal-overlay p-4 sm:p-8">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 modal-overlay"
+      style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
+    >
       {/* Background click to close */}
       <div className="absolute inset-0" onClick={onClose}></div>
 
       {/* Top Bar Controls */}
-      <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-        <div className="pointer-events-auto px-3.5 py-1.5 rounded-full bg-slate-950/80 border border-white/15 text-xs font-semibold text-slate-300 backdrop-blur-md">
+      <div
+        className="absolute z-20 flex items-center justify-between"
+        style={{ top: "1rem", left: "1rem", right: "1rem", pointerEvents: "none" }}
+      >
+        <div
+          className="px-3.5 py-1.5 rounded-full text-xs font-semibold"
+          style={{
+            pointerEvents: "auto",
+            background: "rgba(9, 12, 18, 0.9)",
+            border: "1px solid rgba(255, 255, 255, 0.15)",
+            color: "#cbd5e1",
+            backdropFilter: "blur(12px)"
+          }}
+        >
           <span>{currentIndex + 1}</span> / <span>{totalCount}</span>
         </div>
 
         <button
           onClick={onClose}
-          className="pointer-events-auto w-10 h-10 rounded-full bg-slate-950/80 hover:bg-red-500/80 text-white border border-white/15 flex items-center justify-center transition-all backdrop-blur-md"
+          className="flex items-center justify-center rounded-full"
+          style={{
+            pointerEvents: "auto",
+            width: "2.5rem",
+            height: "2.5rem",
+            background: "rgba(9, 12, 18, 0.9)",
+            border: "1px solid rgba(255, 255, 255, 0.15)",
+            color: "#ffffff",
+            cursor: "pointer",
+            backdropFilter: "blur(12px)"
+          }}
           aria-label="Close Lightbox"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg style={{ width: "20px", height: "20px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -49,10 +74,22 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
           e.stopPropagation();
           onPrev();
         }}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-slate-950/70 hover:bg-emerald-500 hover:text-slate-950 text-white border border-white/15 flex items-center justify-center transition-all backdrop-blur-md"
+        className="absolute z-20 flex items-center justify-center rounded-full"
+        style={{
+          left: "1rem",
+          top: "50%",
+          transform: "translateY(-50%)",
+          width: "3rem",
+          height: "3rem",
+          background: "rgba(9, 12, 18, 0.85)",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
+          color: "#ffffff",
+          cursor: "pointer",
+          backdropFilter: "blur(12px)"
+        }}
         aria-label="Previous Photo"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg style={{ width: "24px", height: "24px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
@@ -62,20 +99,42 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
           e.stopPropagation();
           onNext();
         }}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-slate-950/70 hover:bg-emerald-500 hover:text-slate-950 text-white border border-white/15 flex items-center justify-center transition-all backdrop-blur-md"
+        className="absolute z-20 flex items-center justify-center rounded-full"
+        style={{
+          right: "1rem",
+          top: "50%",
+          transform: "translateY(-50%)",
+          width: "3rem",
+          height: "3rem",
+          background: "rgba(9, 12, 18, 0.85)",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
+          color: "#ffffff",
+          cursor: "pointer",
+          backdropFilter: "blur(12px)"
+        }}
         aria-label="Next Photo"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg style={{ width: "24px", height: "24px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
       {/* Lightbox Content Container */}
-      <div className="relative z-10 max-w-5xl max-h-[85vh] flex flex-col items-center modal-content">
+      <div
+        className="relative z-10 flex flex-col items-center modal-content"
+        style={{ maxWidth: "80rem", maxHeight: "85vh" }}
+      >
         <img
           src={photo.image}
           alt={photo.alt || photo.title}
-          className="max-h-[75vh] w-auto object-contain rounded-xl shadow-2xl shadow-black border border-white/10"
+          style={{
+            maxHeight: "75vh",
+            width: "auto",
+            objectFit: "contain",
+            borderRadius: "0.75rem",
+            border: "1px solid rgba(255, 255, 255, 0.15)",
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.9)"
+          }}
         />
 
         {/* Caption & Category */}
@@ -84,7 +143,7 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
             {photo.title || "Visual Artistry"}
           </h4>
           {photo.category && (
-            <span className="text-xs text-emerald-400 font-medium">
+            <span className="text-xs text-cyan-400 font-medium">
               {photo.category}
             </span>
           )}

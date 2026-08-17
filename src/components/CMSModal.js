@@ -140,15 +140,46 @@ export default function CMSModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center modal-overlay p-3 sm:p-6 overflow-y-auto">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto modal-overlay"
+      style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
+    >
       {/* Background click */}
       <div className="fixed inset-0" onClick={() => setIsCMSOpen(false)}></div>
 
-      <div className="relative z-10 w-full max-w-5xl bg-[#090e1a] border border-white/15 rounded-2xl shadow-2xl shadow-black max-h-[92vh] flex flex-col modal-content my-auto">
+      <div
+        className="relative z-10 w-full max-w-5xl rounded-2xl flex flex-col modal-content my-auto"
+        style={{
+          background: "rgba(9, 11, 16, 0.95)",
+          border: "1px solid rgba(56, 189, 248, 0.2)",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.9)",
+          maxHeight: "92vh"
+        }}
+      >
         {/* Modal Top Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-slate-950/80 rounded-t-2xl">
+        <div
+          className="flex items-center justify-between px-6 py-4 rounded-t-2xl"
+          style={{
+            background: "rgba(6, 8, 12, 0.9)",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.08)"
+          }}
+        >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">
+            <div
+              style={{
+                width: "2rem",
+                height: "2rem",
+                borderRadius: "0.5rem",
+                background: "rgba(56, 189, 248, 0.15)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#38bdf8",
+                fontWeight: "bold",
+                fontSize: "0.875rem"
+              }}
+            >
               CMS
             </div>
             <div>
@@ -167,14 +198,22 @@ export default function CMSModal() {
             {isAuthenticated && (
               <button
                 onClick={logout}
-                className="btn-outline text-xs px-3 py-1 text-red-400 border-red-500/20 hover:border-red-500/40"
+                className="btn-danger text-xs px-3 py-1"
               >
                 Sign Out
               </button>
             )}
             <button
               onClick={() => setIsCMSOpen(false)}
-              className="w-8 h-8 rounded-lg bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center"
+              className="flex items-center justify-center rounded-lg"
+              style={{
+                width: "2rem",
+                height: "2rem",
+                background: "rgba(15, 20, 30, 0.8)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                color: "#cbd5e1",
+                cursor: "pointer"
+              }}
               aria-label="Close CMS"
             >
               ✕
@@ -185,8 +224,21 @@ export default function CMSModal() {
         {/* Auth Gate if not authenticated */}
         {!isAuthenticated ? (
           <div className="p-8 sm:p-12 flex flex-col items-center justify-center text-center max-w-md mx-auto">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div
+              style={{
+                width: "3.5rem",
+                height: "3.5rem",
+                borderRadius: "1rem",
+                background: "rgba(56, 189, 248, 0.1)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#38bdf8",
+                marginBottom: "1.5rem"
+              }}
+            >
+              <svg style={{ width: "28px", height: "28px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zM10 7a2 2 0 114 0v4H10V7z" />
               </svg>
             </div>
@@ -224,13 +276,20 @@ export default function CMSModal() {
                 />
               </div>
 
-              <div className="p-3 rounded-lg bg-slate-900 border border-white/5 text-[11px] text-slate-400">
-                <span>Default Demo Credentials: </span>
-                <span className="font-mono text-emerald-400 font-semibold">retro1</span> /{" "}
-                <span className="font-mono text-emerald-400 font-semibold">1234</span>
+              <div
+                className="p-3 rounded-lg text-xs"
+                style={{
+                  background: "rgba(6, 8, 14, 0.9)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  color: "#94a3b8"
+                }}
+              >
+                <span>Default Credentials: </span>
+                <span className="font-mono text-cyan-400 font-semibold">retro1</span> /{" "}
+                <span className="font-mono text-cyan-400 font-semibold">1234</span>
               </div>
 
-              <button type="submit" className="btn-primary w-full py-2.5 text-sm font-bold mt-2">
+              <button type="submit" className="btn-primary w-full text-sm font-bold mt-2" style={{ width: "100%" }}>
                 Unlock CMS Studio
               </button>
             </form>
@@ -239,7 +298,13 @@ export default function CMSModal() {
           /* Authenticated CMS Dashboard */
           <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
             {/* Sidebar Navigation */}
-            <div className="w-full md:w-56 bg-slate-950/60 border-b md:border-b-0 md:border-r border-white/10 p-3 flex md:flex-col gap-1 overflow-x-auto shrink-0">
+            <div
+              className="w-full md:w-56 p-3 flex md:flex-col gap-1 overflow-x-auto shrink-0"
+              style={{
+                background: "rgba(6, 8, 12, 0.8)",
+                borderRight: "1px solid rgba(255, 255, 255, 0.08)"
+              }}
+            >
               {[
                 { id: "profile", label: "Profile & Text", icon: "👤" },
                 { id: "photos", label: "Photo Studio", icon: "📷", count: data.photos.length },
@@ -250,11 +315,14 @@ export default function CMSModal() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all shrink-0 ${
-                    activeTab === tab.id
-                      ? "bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-500/20"
-                      : "text-slate-300 hover:text-white hover:bg-white/5"
-                  }`}
+                  className="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold shrink-0"
+                  style={{
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                    background: activeTab === tab.id ? "#38bdf8" : "transparent",
+                    color: activeTab === tab.id ? "#050608" : "#cbd5e1",
+                    border: "none"
+                  }}
                 >
                   <span className="flex items-center gap-2">
                     <span>{tab.icon}</span>
@@ -262,11 +330,12 @@ export default function CMSModal() {
                   </span>
                   {tab.count !== undefined && (
                     <span
-                      className={`text-[10px] px-1.5 py-0.5 rounded-full ${
-                        activeTab === tab.id
-                          ? "bg-slate-950/30 text-slate-950 font-bold"
-                          : "bg-slate-800 text-slate-400"
-                      }`}
+                      className="text-xs px-1.5 py-0.5 rounded-full"
+                      style={{
+                        fontSize: "10px",
+                        background: activeTab === tab.id ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.1)",
+                        color: activeTab === tab.id ? "#000" : "#94a3b8"
+                      }}
                     >
                       {tab.count}
                     </span>
@@ -361,7 +430,7 @@ export default function CMSModal() {
                     />
                   </div>
 
-                  <div className="pt-4 border-t border-white/10">
+                  <div className="pt-4" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
                     <h5 className="text-sm font-bold text-white mb-3">About Page Stories</h5>
                     <div className="space-y-4">
                       <div>
@@ -393,7 +462,7 @@ export default function CMSModal() {
                     </div>
                   </div>
 
-                  <button type="submit" className="btn-primary py-2.5 px-6 text-sm font-bold">
+                  <button type="submit" className="btn-primary" style={{ padding: "0.75rem 1.5rem" }}>
                     Save Profile Changes
                   </button>
                 </form>
@@ -403,7 +472,13 @@ export default function CMSModal() {
               {activeTab === "photos" && (
                 <div className="space-y-6">
                   {/* Upload Card */}
-                  <div className="glass-panel p-5 rounded-2xl border border-emerald-500/20">
+                  <div
+                    className="p-5 rounded-2xl"
+                    style={{
+                      background: "rgba(11, 14, 21, 0.8)",
+                      border: "1px solid rgba(56, 189, 248, 0.2)"
+                    }}
+                  >
                     <h4 className="text-sm font-bold text-white mb-1">Upload New Photo</h4>
                     <p className="text-xs text-slate-400 mb-4">
                       Upload from your device or paste an image URL to add to your photography gallery.
@@ -450,7 +525,7 @@ export default function CMSModal() {
                             type="file"
                             accept="image/*"
                             onChange={handlePhotoUpload}
-                            className="block w-full text-xs text-slate-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-500 file:text-slate-950 hover:file:bg-emerald-400"
+                            className="block w-full text-xs text-slate-400"
                           />
                         </div>
                       </div>
@@ -471,19 +546,25 @@ export default function CMSModal() {
                       </div>
 
                       {newPhoto.image && (
-                        <div className="p-2 rounded-xl bg-slate-950 border border-white/10 flex items-center gap-4">
+                        <div
+                          className="p-2 rounded-xl flex items-center gap-4"
+                          style={{
+                            background: "rgba(6, 8, 14, 0.9)",
+                            border: "1px solid rgba(255, 255, 255, 0.1)"
+                          }}
+                        >
                           <img
                             src={newPhoto.image}
                             alt="Preview"
-                            className="w-16 h-16 object-cover rounded-lg"
+                            style={{ width: "4rem", height: "4rem", objectFit: "cover", borderRadius: "0.5rem" }}
                           />
-                          <span className="text-xs text-emerald-400 font-medium">
+                          <span className="text-xs text-cyan-400 font-medium">
                             ✓ Image ready for publishing
                           </span>
                         </div>
                       )}
 
-                      <button type="submit" className="btn-primary py-2 px-4 text-xs font-bold">
+                      <button type="submit" className="btn-primary text-xs" style={{ padding: "0.6rem 1.2rem" }}>
                         Publish Photo to Gallery
                       </button>
                     </form>
@@ -498,18 +579,22 @@ export default function CMSModal() {
                       {data.photos.map((photo) => (
                         <div
                           key={photo.id}
-                          className="glass-card p-2 rounded-xl flex flex-col justify-between group relative"
+                          className="glass-card p-2 rounded-xl flex flex-col justify-between"
+                          style={{ background: "rgba(11, 14, 21, 0.7)" }}
                         >
-                          <div className="aspect-square rounded-lg overflow-hidden mb-2 bg-slate-950">
+                          <div
+                            className="aspect-square rounded-lg overflow-hidden mb-2"
+                            style={{ background: "#050608" }}
+                          >
                             <img
                               src={photo.image}
                               alt={photo.title}
-                              className="w-full h-full object-cover"
+                              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                             />
                           </div>
                           <div>
                             <p className="text-xs font-bold text-white truncate">{photo.title}</p>
-                            <span className="text-[10px] text-emerald-400">{photo.category}</span>
+                            <span className="text-xs text-cyan-400">{photo.category}</span>
                           </div>
                           <button
                             onClick={() => {
@@ -517,7 +602,8 @@ export default function CMSModal() {
                                 deletePhoto(photo.id);
                               }
                             }}
-                            className="mt-2 w-full py-1 rounded bg-red-500/20 hover:bg-red-500 text-red-400 hover:text-white text-[11px] font-semibold transition-colors"
+                            className="btn-danger text-xs mt-2"
+                            style={{ width: "100%", padding: "0.35rem" }}
                           >
                             Delete
                           </button>
@@ -531,8 +617,13 @@ export default function CMSModal() {
               {/* TAB 3: PROJECTS */}
               {activeTab === "projects" && (
                 <div className="space-y-6">
-                  {/* Add Project Form */}
-                  <div className="glass-panel p-5 rounded-2xl border border-emerald-500/20">
+                  <div
+                    className="p-5 rounded-2xl"
+                    style={{
+                      background: "rgba(11, 14, 21, 0.8)",
+                      border: "1px solid rgba(56, 189, 248, 0.2)"
+                    }}
+                  >
                     <h4 className="text-sm font-bold text-white mb-1">Add New Project</h4>
                     <p className="text-xs text-slate-400 mb-4">
                       Publish a new production engineering project to your showcase.
@@ -650,13 +741,12 @@ export default function CMSModal() {
                         />
                       </div>
 
-                      <button type="submit" className="btn-primary py-2 px-4 text-xs font-bold">
+                      <button type="submit" className="btn-primary text-xs" style={{ padding: "0.6rem 1.2rem" }}>
                         Add Project
                       </button>
                     </form>
                   </div>
 
-                  {/* Existing Projects List */}
                   <div>
                     <h5 className="text-sm font-bold text-white mb-3">
                       Current Projects ({data.projects.length})
@@ -666,18 +756,19 @@ export default function CMSModal() {
                         <div
                           key={proj.id}
                           className="glass-card p-4 rounded-xl flex items-center justify-between gap-4"
+                          style={{ background: "rgba(11, 14, 21, 0.7)" }}
                         >
                           <div className="flex items-center gap-3">
                             {proj.image && (
                               <img
                                 src={proj.image}
                                 alt={proj.title}
-                                className="w-12 h-12 rounded-lg object-cover"
+                                style={{ width: "3rem", height: "3rem", borderRadius: "0.5rem", objectFit: "cover" }}
                               />
                             )}
                             <div>
                               <h6 className="text-sm font-bold text-white">{proj.title}</h6>
-                              <span className="text-xs text-emerald-400">{proj.category}</span>
+                              <span className="text-xs text-cyan-400">{proj.category}</span>
                             </div>
                           </div>
                           <button
@@ -700,7 +791,13 @@ export default function CMSModal() {
               {/* TAB 4: EXPERIENCE */}
               {activeTab === "experience" && (
                 <div className="space-y-6">
-                  <div className="glass-panel p-5 rounded-2xl border border-emerald-500/20">
+                  <div
+                    className="p-5 rounded-2xl"
+                    style={{
+                      background: "rgba(11, 14, 21, 0.8)",
+                      border: "1px solid rgba(56, 189, 248, 0.2)"
+                    }}
+                  >
                     <h4 className="text-sm font-bold text-white mb-1">Add Work Experience</h4>
                     <form onSubmit={handleAddExpSubmit} className="space-y-4 mt-4">
                       <div className="grid sm:grid-cols-2 gap-4">
@@ -771,7 +868,7 @@ export default function CMSModal() {
                         />
                       </div>
 
-                      <button type="submit" className="btn-primary py-2 px-4 text-xs font-bold">
+                      <button type="submit" className="btn-primary text-xs" style={{ padding: "0.6rem 1.2rem" }}>
                         Add Experience
                       </button>
                     </form>
@@ -786,10 +883,11 @@ export default function CMSModal() {
                         <div
                           key={exp.id}
                           className="glass-card p-4 rounded-xl flex items-center justify-between gap-4"
+                          style={{ background: "rgba(11, 14, 21, 0.7)" }}
                         >
                           <div>
                             <h6 className="text-sm font-bold text-white">{exp.role}</h6>
-                            <p className="text-xs text-emerald-400">
+                            <p className="text-xs text-cyan-400">
                               {exp.company} • {exp.period}
                             </p>
                           </div>
@@ -813,20 +911,33 @@ export default function CMSModal() {
               {/* TAB 5: BACKUP & PRESETS */}
               {activeTab === "backup" && (
                 <div className="space-y-6">
-                  <div className="glass-card p-6 rounded-2xl space-y-4">
+                  <div
+                    className="p-6 rounded-2xl space-y-4"
+                    style={{
+                      background: "rgba(11, 14, 21, 0.7)",
+                      border: "1px solid rgba(255, 255, 255, 0.08)"
+                    }}
+                  >
                     <h4 className="text-base font-bold text-white">Export &amp; Portability</h4>
                     <p className="text-xs text-slate-300 leading-relaxed">
                       Download a complete JSON snapshot of your current portfolio, photos, and project data for instant backup or migration.
                     </p>
                     <button
                       onClick={exportDataJSON}
-                      className="btn-primary text-xs py-2.5 px-4 flex items-center gap-2"
+                      className="btn-primary text-xs flex items-center gap-2"
+                      style={{ padding: "0.65rem 1.2rem" }}
                     >
                       <span>📥 Download Full JSON Backup</span>
                     </button>
                   </div>
 
-                  <div className="glass-card p-6 rounded-2xl space-y-4">
+                  <div
+                    className="p-6 rounded-2xl space-y-4"
+                    style={{
+                      background: "rgba(11, 14, 21, 0.7)",
+                      border: "1px solid rgba(255, 255, 255, 0.08)"
+                    }}
+                  >
                     <h4 className="text-base font-bold text-white">Import Backup JSON</h4>
                     <p className="text-xs text-slate-300">
                       Paste a previously exported JSON backup to instantly restore all portfolio state.
@@ -840,13 +951,20 @@ export default function CMSModal() {
                     />
                     <button
                       onClick={handleImportSubmit}
-                      className="btn-secondary text-xs py-2 px-4"
+                      className="btn-secondary text-xs"
+                      style={{ padding: "0.5rem 1rem" }}
                     >
                       Import &amp; Overwrite State
                     </button>
                   </div>
 
-                  <div className="glass-card p-6 rounded-2xl border border-red-500/20 space-y-4">
+                  <div
+                    className="p-6 rounded-2xl space-y-4"
+                    style={{
+                      background: "rgba(20, 10, 15, 0.7)",
+                      border: "1px solid rgba(239, 68, 68, 0.25)"
+                    }}
+                  >
                     <h4 className="text-base font-bold text-red-400">Restore Factory Defaults</h4>
                     <p className="text-xs text-slate-400">
                       Reset all photos, projects, bio texts, and experience back to the curated initial California portfolio configuration.
@@ -857,7 +975,8 @@ export default function CMSModal() {
                           resetDefaults();
                         }
                       }}
-                      className="btn-danger text-xs py-2 px-4"
+                      className="btn-danger text-xs"
+                      style={{ padding: "0.5rem 1rem" }}
                     >
                       Reset Everything to Defaults
                     </button>

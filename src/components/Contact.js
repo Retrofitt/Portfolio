@@ -25,7 +25,6 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Form submission handling / mailto fallback
     setTimeout(() => {
       setIsSubmitting(false);
       showToast("Message recorded! Rafael will respond within 24 hours.", "success");
@@ -45,10 +44,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#060913] relative overflow-hidden">
-      {/* Glow */}
-      <div className="glow-orb w-[450px] h-[450px] bg-emerald-500/10 right-10 bottom-10"></div>
-
+    <section
+      id="contact"
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: "#050608" }}
+    >
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -59,10 +59,13 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
           {/* Contact Details & Info (Left) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="glass-card p-8 rounded-2xl">
+            <div
+              className="glass-card p-8 rounded-2xl"
+              style={{ background: "rgba(11, 14, 21, 0.7)" }}
+            >
               <h3 className="text-xl font-bold text-white mb-2">
                 Recruiter &amp; Engineering Inquiries
               </h3>
@@ -71,30 +74,50 @@ export default function Contact() {
               </p>
 
               {/* Status Indicator */}
-              <div className="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/20 mb-6 flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+              <div
+                className="p-4 rounded-xl mb-6 flex items-center gap-3"
+                style={{
+                  background: "rgba(6, 8, 14, 0.9)",
+                  border: "1px solid rgba(56, 189, 248, 0.2)"
+                }}
+              >
+                <div
+                  style={{
+                    width: "8px",
+                    height: "8px",
+                    borderRadius: "50%",
+                    backgroundColor: "#38bdf8",
+                    boxShadow: "0 0 10px #38bdf8"
+                  }}
+                ></div>
                 <div>
                   <p className="text-xs font-bold text-white">Fast Response Guaranteed</p>
-                  <p className="text-[11px] text-slate-400">Typical response time within 24 hours</p>
+                  <p className="text-xs text-slate-400" style={{ fontSize: "11px" }}>Typical response time within 24 hours</p>
                 </div>
               </div>
 
               {/* Copy Email Snippet */}
               <div className="space-y-2 mb-6">
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">
                   Primary Email
                 </label>
-                <div className="flex items-center justify-between p-3 rounded-xl bg-slate-950 border border-white/10">
-                  <span className="text-xs sm:text-sm font-mono text-emerald-400 truncate mr-2">
+                <div
+                  className="flex items-center justify-between p-3 rounded-xl"
+                  style={{
+                    background: "rgba(6, 8, 14, 0.95)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)"
+                  }}
+                >
+                  <span className="text-xs sm:text-sm font-mono truncate mr-2 text-cyan-400">
                     {profile.email || "mendoza.rafael28@gmail.com"}
                   </span>
                   <button
                     onClick={handleCopyEmail}
-                    className="btn-outline text-xs px-3 py-1.5 shrink-0"
+                    className="btn-outline text-xs"
                     type="button"
                   >
                     {copied ? (
-                      <span className="text-emerald-400 font-bold">✓ Copied</span>
+                      <span className="text-cyan-400 font-bold">✓ Copied</span>
                     ) : (
                       <span>Copy</span>
                     )}
@@ -103,22 +126,23 @@ export default function Contact() {
               </div>
 
               {/* Location & Socials */}
-              <div className="pt-6 border-t border-white/10">
+              <div className="pt-6" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
                 <p className="text-xs text-slate-400 mb-3 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{ width: "16px", height: "16px", color: "#38bdf8" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <span>{profile.location || "California, USA"} (Pacific Time)</span>
                 </p>
-                <div className="flex gap-3">
+                <div className="flex gap-2">
                   {socials.map((social) => (
                     <a
                       key={social.name}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1.5 rounded-lg bg-slate-950 border border-white/10 hover:border-emerald-500/40 text-slate-300 hover:text-emerald-300 text-xs font-semibold transition-all"
+                      className="btn-outline text-xs"
+                      style={{ padding: "0.35rem 0.75rem" }}
                     >
                       {social.name}
                     </a>
@@ -130,7 +154,10 @@ export default function Contact() {
 
           {/* Contact Message Form (Right) */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-8 rounded-2xl">
+            <div
+              className="glass-card p-8 rounded-2xl"
+              style={{ background: "rgba(11, 14, 21, 0.7)" }}
+            >
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
@@ -187,28 +214,18 @@ export default function Contact() {
                     placeholder="Tell me about the role, team, or project requirements..."
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="glass-input w-full text-sm resize-none"
+                    className="glass-input w-full text-sm"
+                    style={{ resize: "none" }}
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary w-full py-3 text-sm font-bold shadow-lg shadow-emerald-500/20"
+                  className="btn-primary w-full text-sm font-bold"
+                  style={{ width: "100%", padding: "0.85rem" }}
                 >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                      <span>Sending Message...</span>
-                    </span>
-                  ) : (
-                    <span className="flex items-center justify-center gap-2">
-                      <span>Send Direct Message</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </span>
-                  )}
+                  {isSubmitting ? "Sending Message..." : "Send Direct Message"}
                 </button>
               </form>
             </div>

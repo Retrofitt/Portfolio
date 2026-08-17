@@ -42,45 +42,84 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all ${
         isScrolled
-          ? "bg-[#060913]/85 backdrop-blur-md border-b border-white/10 py-3 shadow-2xl shadow-black/50"
-          : "bg-transparent py-5"
+          ? "py-3 glass-panel border-b border-white/10"
+          : "py-5 bg-transparent"
       }`}
+      style={{
+        background: isScrolled ? "rgba(6, 8, 12, 0.85)" : "transparent",
+        backdropFilter: isScrolled ? "blur(16px)" : "none",
+        WebkitBackdropFilter: isScrolled ? "blur(16px)" : "none",
+        transition: "all 0.3s ease"
+      }}
     >
       <div className="container-custom flex items-center justify-between">
         {/* Brand Logo */}
         <a
           href="#hero"
-          className="flex items-center gap-3 group text-decoration-none"
+          className="flex items-center gap-3"
+          style={{ textDecoration: "none" }}
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-black text-slate-950 text-lg shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+          <div
+            style={{
+              width: "2.5rem",
+              height: "2.5rem",
+              borderRadius: "0.75rem",
+              background: "linear-gradient(135deg, #38bdf8 0%, #10b981 100%)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#050608",
+              fontWeight: "900",
+              fontSize: "1.125rem",
+              boxShadow: "0 0 20px rgba(56, 189, 248, 0.25)"
+            }}
+          >
             RM
           </div>
           <div className="flex flex-col">
-            <span className="font-extrabold text-white text-base tracking-tight group-hover:text-emerald-400 transition-colors">
+            <span className="font-extrabold text-white text-base tracking-tight">
               {data.profile.name}
             </span>
-            <span className="text-[11px] text-emerald-400/90 font-medium flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="text-xs text-cyan-400 font-medium flex items-center gap-1.5">
+              <span
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  borderRadius: "50%",
+                  backgroundColor: "#38bdf8",
+                  boxShadow: "0 0 8px #38bdf8"
+                }}
+              ></span>
               {data.profile.statusBadge || "Available for CA roles"}
             </span>
           </div>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-white/10 backdrop-blur-md">
+        <nav
+          className="hidden md:flex items-center gap-1 p-1.5 rounded-full"
+          style={{
+            background: "rgba(15, 20, 30, 0.75)",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
+            backdropFilter: "blur(12px)"
+          }}
+        >
           {navItems.map((item) => {
             const isActive = activeSection === item.href.substring(1);
             return (
               <a
                 key={item.label}
                 href={item.href}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 ${
-                  isActive
-                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shadow-sm"
-                    : "text-slate-300 hover:text-white hover:bg-white/5"
-                }`}
+                className="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide"
+                style={{
+                  textDecoration: "none",
+                  transition: "all 0.2s ease",
+                  backgroundColor: isActive ? "rgba(56, 189, 248, 0.15)" : "transparent",
+                  color: isActive ? "#38bdf8" : "#94a3b8",
+                  border: isActive ? "1px solid rgba(56, 189, 248, 0.35)" : "1px solid transparent"
+                }}
               >
                 {item.label}
               </a>
@@ -93,15 +132,17 @@ export default function Navbar() {
           {/* CMS Admin Button */}
           <button
             onClick={() => setIsCMSOpen(true)}
-            className={`flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border transition-all ${
-              isAuthenticated
-                ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/25"
-                : "bg-slate-900/80 border-white/10 text-slate-400 hover:text-white hover:border-white/20"
-            }`}
+            className="flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border"
+            style={{
+              background: isAuthenticated ? "rgba(16, 185, 129, 0.12)" : "rgba(15, 20, 30, 0.8)",
+              borderColor: isAuthenticated ? "rgba(16, 185, 129, 0.4)" : "rgba(255, 255, 255, 0.1)",
+              color: isAuthenticated ? "#34d399" : "#94a3b8",
+              cursor: "pointer"
+            }}
             title={isAuthenticated ? "Open CMS Studio" : "Admin Login"}
           >
             <svg
-              className="w-3.5 h-3.5"
+              style={{ width: "14px", height: "14px" }}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -124,18 +165,26 @@ export default function Navbar() {
             </svg>
             <span>{isAuthenticated ? "CMS Studio" : "Admin"}</span>
             {isAuthenticated && (
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  borderRadius: "50%",
+                  backgroundColor: "#34d399"
+                }}
+              ></span>
             )}
           </button>
 
           {/* Direct Contact CTA */}
           <a
             href="#contact"
-            className="btn-primary text-xs py-2 px-4 shadow-emerald-500/10"
+            className="btn-primary"
+            style={{ padding: "0.55rem 1.1rem", fontSize: "0.8125rem" }}
           >
-            <span>Get In Touch</span>
+            <span>Let's Talk</span>
             <svg
-              className="w-3.5 h-3.5"
+              style={{ width: "14px", height: "14px" }}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -154,19 +203,29 @@ export default function Navbar() {
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={() => setIsCMSOpen(true)}
-            className="p-2 rounded-lg bg-slate-900 border border-white/10 text-slate-300"
+            className="p-2 rounded-lg"
+            style={{
+              background: "rgba(15, 20, 30, 0.8)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              color: "#cbd5e1"
+            }}
             aria-label="CMS Login"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: "16px", height: "16px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zM10 7a2 2 0 114 0v4H10V7z" />
             </svg>
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-lg bg-slate-900/90 border border-white/10 text-white"
+            className="p-2.5 rounded-lg"
+            style={{
+              background: "rgba(15, 20, 30, 0.9)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              color: "#ffffff"
+            }}
             aria-label="Toggle navigation menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: "22px", height: "22px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -179,14 +238,22 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#060913]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 transition-all">
+        <div
+          className="md:hidden px-6 py-6"
+          style={{
+            background: "rgba(6, 8, 12, 0.96)",
+            backdropFilter: "blur(20px)",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.1)"
+          }}
+        >
           <div className="flex flex-col gap-3">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 px-3 rounded-lg text-slate-200 hover:text-emerald-400 hover:bg-white/5 font-medium text-base transition-colors"
+                className="py-2 px-3 rounded-lg text-slate-200 font-medium text-base"
+                style={{ textDecoration: "none" }}
               >
                 {item.label}
               </a>
@@ -197,7 +264,12 @@ export default function Navbar() {
                   setMobileMenuOpen(false);
                   setIsCMSOpen(true);
                 }}
-                className="w-full text-center py-2.5 px-4 rounded-lg bg-slate-800 text-emerald-400 font-semibold text-sm border border-emerald-500/20"
+                className="w-full text-center py-2.5 px-4 rounded-lg font-semibold text-sm"
+                style={{
+                  background: "rgba(15, 20, 30, 0.9)",
+                  border: "1px solid rgba(56, 189, 248, 0.3)",
+                  color: "#38bdf8"
+                }}
               >
                 {isAuthenticated ? "Open CMS Studio" : "Admin CMS Login"}
               </button>
