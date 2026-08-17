@@ -41,6 +41,17 @@ export const skillsData = [
     icon: "https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/nodemon.svg",
   },
   {
+    name: "PHP",
+    url: "https://www.php.net/",
+    icon: "https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/php.svg",
+  },
+  {
+    name: "WordPress",
+    url: "https://wordpress.org/",
+    icon: "https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/wordpress.svg",
+    className: "whiteImg",
+  },
+  {
     name: "Python",
     url: "https://www.python.org/",
     icon: "https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/python.svg",

@@ -10,17 +10,23 @@ export default function About() {
         </div>
         <div className="question-container-one">
           <p>
-            After Attending Bloom Institute of Technology's intensive Full Stack
-            program, Rafael is a software engineer who doesn't settle for
-            anything less than success. He understand that the journey he is on
-            is a life long journey to hone his abilities and he looks forward to
-            every experience presented to him. Currently looking for positions
-            available around Southern California or with remote possibilities
-            but open to relocation if needed.
+            To me, code is raw marble. Just as ancient sculptors carved form
+            out of stone or painters bring life to a blank canvas, I view
+            software engineering as the ultimate creative medium for solving
+            complex, high-impact problems. I thrive on deep technical challenges
+            where precision, architecture, and ownership matter—building systems
+            that leave a lasting mark.
+          </p>
+          <p>
+            With over 4 years of professional engineering experience delivering
+            production software and custom digital solutions, I bridge the gap
+            between robust, scalable backend architecture and intuitive,
+            pixel-perfect frontend experiences with React and the modern
+            JavaScript ecosystem.
           </p>
           <p className="italic">
-            Hobbies Include: Photography, Videography, eSports, Video Games,
-            Art, Graphic Design, Skateboarding, Camping, Outdoor Activities
+            Creative Disciplines & Interests: Photography, Videography, Graphic
+            Design, UI/UX Architecture, Creative Direction, Outdoor Exploration
           </p>
         </div>
         <br />
