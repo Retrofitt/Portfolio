@@ -1,88 +1,111 @@
 import React from "react";
-import backgroundVideo from "../assets/background/background.mp4";
-import { socialsData } from "../data/socials";
+import { usePortfolio } from "../context/PortfolioContext";
 
 export default function Hero() {
+  const { data } = usePortfolio();
+  const { profile, socials } = data;
+
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
       id="hero"
+      className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-mesh"
     >
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      >
-        <source src={backgroundVideo} type="video/mp4" />
-        Your browser does not support HTML5 video.
-      </video>
+      {/* Background Decorative Glow Elements */}
+      <div className="glow-orb w-[500px] h-[500px] bg-emerald-500/10 top-[-100px] left-[10%] animate-pulse-slow"></div>
+      <div className="glow-orb w-[450px] h-[450px] bg-cyan-500/10 top-[20%] right-[10%] animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+      <div className="glow-orb w-[400px] h-[400px] bg-purple-500/05 bottom-0 left-[35%]"></div>
 
-      {/* Dark overlay for text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-950/70 via-brand-950/50 to-brand-950 z-10" />
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
-      {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-3xl mx-auto">
-        <p className="text-accent font-medium text-sm md:text-base tracking-widest uppercase mb-4 animate-fade-in">
-          Production Engineer &amp; Web Developer
-        </p>
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in-up">
-          Rafael{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-cyan-300">
-            Mendoza
+      <div className="container-custom relative z-10 text-center max-w-4xl mx-auto">
+        {/* Availability Badge */}
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-8 shadow-lg shadow-emerald-500/5 animate-fade-in">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span>{profile.statusBadge || "Available for CA & Remote Roles"}</span>
+        </div>
+
+        {/* Main Title & Gradient */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-[1.08] mb-6">
+          Hi, I'm{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+            {profile.name}
           </span>
         </h1>
-        <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 animate-fade-in-up max-w-2xl mx-auto">
-          4+ years building high-impact web experiences with HTML, CSS,
-          JavaScript, and PHP. I turn complex requirements into clean, performant
-          digital products.
+
+        {/* Dynamic Role & Headline */}
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-200 mb-6 tracking-tight">
+          {profile.role}
+        </h2>
+
+        {/* Bio summary */}
+        <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
+          {profile.bioLead}
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-up">
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
           <a href="#projects" className="btn-primary">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <span>Explore Featured Work</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
             </svg>
-            View Projects
           </a>
-          <a href="#contact" className="btn-outline">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+
+          <a href="#contact" className="btn-secondary">
+            <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            Get In Touch
+            <span>Book a Call / Email</span>
+          </a>
+
+          <a
+            href={profile.resumeUrl || "#contact"}
+            className="btn-outline text-xs px-4 py-3"
+            title="Download Resume"
+          >
+            <svg className="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Resume</span>
           </a>
         </div>
 
-        {/* Social Icons */}
-        <div className="flex justify-center gap-6 animate-fade-in">
-          {socialsData.map((social) => (
+        {/* Social Badges & Ticker */}
+        <div className="flex flex-wrap items-center justify-center gap-3 pt-6 border-t border-white/5">
+          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-2">
+            Connect:
+          </span>
+          {socials.map((social) => (
             <a
               key={social.name}
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              title={social.name}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-accent/20 border border-white/10 hover:border-accent/50 transition-all duration-300 hover:scale-110"
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-900/80 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-slate-300 hover:text-emerald-300 text-xs font-medium transition-all"
             >
-              <img
-                src={social.icon}
-                alt={social.name}
-                className="w-5 h-5 brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
-                loading="lazy"
-              />
+              {social.icon === "github" && (
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+              )}
+              {social.icon === "linkedin" && (
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              )}
+              {social.icon === "email" && (
+                <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              )}
+              <span>{social.name}</span>
             </a>
           ))}
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-        <svg className="w-6 h-6 text-accent/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
       </div>
     </section>
   );

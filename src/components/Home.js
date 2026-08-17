@@ -1,22 +1,22 @@
 import React from "react";
 import Hero from "./Hero";
-import Projects from "./Projects";
 import About from "./About";
+import Experience from "./Experience";
+import Projects from "./Projects";
+import Skills from "./Skills";
 import Photography from "./Photography";
+import Contact from "./Contact";
 
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col w-full">
       <Hero />
-      <section className="component-padding" id="projects">
-        <Projects />
-      </section>
-      <section id="about">
-        <About />
-      </section>
-      <section id="photography">
-        <Photography />
-      </section>
+      <About />
+      <Experience />
+      <Projects />
+      <Skills />
+      <Photography />
+      <Contact />
     </main>
   );
 }
