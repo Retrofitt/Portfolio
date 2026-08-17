@@ -18,11 +18,12 @@ export default function About() {
             that leave a lasting mark.
           </p>
           <p>
-            With over 4 years of professional engineering experience delivering
-            production software and custom digital solutions, I bridge the gap
-            between robust, scalable backend architecture and intuitive,
-            pixel-perfect frontend experiences with React and the modern
-            JavaScript ecosystem.
+            With over 4 years of professional experience building and optimizing
+            production web systems, I specialize in crafting high-impact UI/UX
+            and resilient web applications across HTML, CSS, JavaScript, and
+            PHP. I combine a strong design sensibility with software engineering
+            principles, leveraging React and modern toolchains to turn complex
+            requirements into clean, seamless digital experiences.
           </p>
           <p className="italic">
             Creative Disciplines & Interests: Photography, Videography, Graphic
