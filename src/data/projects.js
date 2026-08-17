@@ -5,10 +5,11 @@ import water from "../assets/projects/watermyplants.png";
 export const projectsData = [
   {
     id: "github-card",
-    title: "Github User Card",
+    title: "GitHub User Card",
     description:
-      "This project showcases ability to make requests and render the responses using React.js",
+      "A React application that fetches GitHub user data via the GitHub API and renders dynamic profile cards with follower information.",
     image: ghb,
+    techStack: ["React", "JavaScript", "REST API", "CSS"],
     githubUrl:
       "https://github.com/Retrofitt/web-module-project-lifecycle/tree/rafael-mendoza",
     liveUrl: "https://retrosghbusinesscard.vercel.app/",
@@ -17,8 +18,9 @@ export const projectsData = [
     id: "anime-quote",
     title: "Random Anime Quote",
     description:
-      "This project uses Redux asynchronous action creators to display requests made to an API.",
+      "Built with Redux and async action creators. Fetches and displays random anime quotes from an external API with state management.",
     image: raq,
+    techStack: ["React", "Redux", "Async/Await", "API"],
     githubUrl:
       "https://github.com/Retrofitt/web-module-project-async-redux/tree/main",
     liveUrl: "https://random-anime-quote.vercel.app/",
@@ -27,8 +29,9 @@ export const projectsData = [
     id: "water-my-plants",
     title: "Water My Plants",
     description:
-      "Created database and endpoints for an app that reminds signed up users when to water their plants",
+      "Full-stack app with user authentication. Backend REST API with database integration that reminds users when to water their plants.",
     image: water,
+    techStack: ["Node.js", "Express", "SQLite", "JWT", "React"],
     githubUrl:
       "https://github.com/LambdaBuildWeekWaterMyPlants/watermyplants-backend",
     liveUrl: "https://water-myplants-frontend.netlify.app/",
