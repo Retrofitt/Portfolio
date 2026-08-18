@@ -106,63 +106,79 @@ export const initialPortfolioData = {
   ],
   projects: [
     {
-      id: "realtime-chat-engine",
-      title: "Real-Time WebSocket Chat Engine",
-      category: "Full-Stack",
+      id: "weather-app",
+      title: "Weather App with API Integration",
+      category: "API & SSR",
       featured: true,
-      description: "High-concurrency, event-driven messaging platform engineered with Node.js, Express, and Socket.IO. Delivers full-duplex bi-directional communication, sub-15ms event broadcasting, automated connection lifecycle management, and scalable real-time state synchronization.",
-      image: water,
-      techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven Architecture", "ES6+ JavaScript", "HTML5"],
-      githubUrl: "https://github.com/Retrofitt/ChatApp",
-      liveUrl: "#",
-      metrics: "Sub-15ms Event Latency • Full-Duplex Bi-Directional Broadcasting",
+      appType: "weather",
+      description: "Asynchronous weather forecasting service engineered with Node.js, Express, and Axios. Features live external OpenWeatherMap REST API integration, dynamic Server-Side Rendering (SSR), query parameter sanitation, and secure dotenv credential isolation.",
+      image: raq,
+      techStack: ["Node.js", "Express.js", "Axios", "RESTful API", "Server-Side Rendering", "Dotenv", "OpenWeatherMap"],
+      metrics: "Live REST API Ingestion • Dynamic Server-Side HTML Rendering",
       highlights: [
-        "Architected an event-driven WebSocket communication layer using Socket.IO for low-latency bi-directional messaging.",
-        "Implemented graceful connection lifecycle state management (connect, disconnect, broadcast) preventing packet loss.",
-        "Configured scalable Express server integration with environment-variable port bindings and static asset distribution."
+        "Architected asynchronous Promise-based API hydration using Axios with automatic metric unit conversion.",
+        "Engineered server-side rendered HTML generation with city-level query parameter defaults and graceful 500 error catching.",
+        "Implemented strict environment variable abstraction (dotenv) for zero-exposure API credential management."
       ],
-      codeSnippet: `const express = require('express');
-const socketIO = require('socket.io');
+      codeSnippet: `// WeatherApp.js
+const express = require('express');
 require("dotenv").config();
+const axios = require('axios');
+
 const app = express();
-
-const server = app.listen(process.env.PORT || 3002, () => {
-    console.log(\`Chat app listening at http://localhost:\${process.env.PORT || 3002}\`);
-});
-
 app.use(express.static('public'));
 
-const io = socketIO(server);
+const port = process.env.PORT || 3000;
 
-io.on('connection', (socket) => {
-    console.log('New client connected');
+app.get('/', (req, res) => {
+    const city = req.query.city || 'New York';
+    
+    axios.get(\`https://api.openweathermap.org/data/2.5/weather?q=\${city}&appid=\${process.env.WEATHER_API_KEY}&units=metric\`)
+        .then(response => {
+            const weatherData = response.data;
+            res.send(\`
+                <!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>Weather App</title>
+                    </head>
+                    <body>
+                        <h1>Current Weather in \${city}</h1>
+                        <p><strong>Description:</strong> \${weatherData.weather[0].description}</p>
+                        <p><strong>Temperature:</strong> \${weatherData.main.temp}°C</p>
+                        <p><strong>Humidity:</strong> \${weatherData.main.humidity}%</p>
+                    </body>
+                </html>
+            \`);
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).send('Error fetching weather data');
+        });
+});
 
-    socket.on('disconnect', () => {
-        console.log('Client disconnected');
-    });
-
-    socket.on('send_message', (data) => {
-        io.emit('receive_message', data);
-    });
+app.listen(port, () => {
+    console.log(\`Weather app listening at http://localhost:\${port}\`);
 });`
     },
     {
-      id: "restful-task-api",
-      title: "RESTful Task & Microservice API",
-      category: "Backend",
+      id: "todo-crud-app",
+      title: "Todo List with CRUD Operations",
+      category: "RESTful API",
       featured: true,
-      description: "Production-grade RESTful CRUD microservice built with Express.js and Node.js. Implements strict HTTP response code standards (200, 201, 400, 404), parameterized route handling, JSON body parsing, and defensive parameter validation for scalable data mutations.",
+      appType: "todo",
+      description: "Full-cycle RESTful task management microservice engineered with Express.js and Node.js. Delivers deterministic CRUD endpoints (Create, Read, Update, Delete), strict HTTP status code semantics (200, 201, 400, 404), JSON body parsing, and route parameter validation.",
       image: ghb,
-      techStack: ["Node.js", "Express.js", "REST APIs", "CRUD", "Body-Parser", "JSON Schema", "Microservices"],
-      githubUrl: "https://github.com/Retrofitt/TodoApp",
-      liveUrl: "#",
-      metrics: "100% REST Standard Compliance • Strict Status Code Contract (200, 201, 400, 404)",
+      techStack: ["Node.js", "Express.js", "REST APIs", "CRUD Operations", "Body-Parser", "JSON Protocol", "Microservices"],
+      metrics: "100% REST Compliance • Strict Status Code Contract (200, 201, 400, 404)",
       highlights: [
-        "Engineered RESTful API endpoints supporting deterministic CRUD mutations (GET, POST, PUT, DELETE /todos/:id).",
-        "Enforced defensive input validation, integer sanitization, and graceful 400/404 HTTP error response handling.",
-        "Integrated JSON payload body-parser middleware with in-memory state manipulation architecture."
+        "Engineered RESTful endpoints supporting parameterized route mutations (GET, POST, PUT, DELETE /todos/:id).",
+        "Implemented defensive input validation, ID type casting, and structured 400/404 HTTP error handling.",
+        "Integrated body-parser JSON middleware for robust in-memory payload mutations ready for database adapters."
       ],
-      codeSnippet: `const express = require('express');
+      codeSnippet: `// TodoApp.js
+const express = require('express');
 require("dotenv").config();
 const bodyParser = require('body-parser');
 
@@ -219,61 +235,82 @@ app.listen(port, () => {
 });`
     },
     {
-      id: "weather-ssr-engine",
-      title: "Dynamic Weather API & SSR Dashboard",
-      category: "Full-Stack",
+      id: "websocket-chat-app",
+      title: "Simple Chat Application with WebSockets",
+      category: "WebSockets",
       featured: true,
-      description: "Asynchronous weather forecasting service integrating OpenWeatherMap REST API with Node.js, Express, and Axios. Features server-side rendering (SSR), dynamic query parameter parsing, secure environment credential isolation via Dotenv, and resilient 500 error catching.",
-      image: raq,
-      techStack: ["Node.js", "Express.js", "Axios", "REST API", "SSR", "Dotenv", "OpenWeatherMap"],
-      githubUrl: "https://github.com/Retrofitt/WeatherApp",
-      liveUrl: "#",
-      metrics: "Server-Side Rendered Output • Secure External REST API Aggregation",
+      appType: "chat",
+      description: "Low-latency real-time communication platform powered by Node.js, Express, and Socket.IO. Implements full-duplex WebSocket channels, bi-directional event emission pipelines, active connection lifecycle handling, and instant broadcast synchronization.",
+      image: water,
+      techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven", "HTML5 / DOM", "Real-Time Sync"],
+      metrics: "Sub-15ms Latency • Bi-Directional Full-Duplex Broadcasting",
       highlights: [
-        "Implemented asynchronous external REST API consumption using Axios with metric unit conversion.",
-        "Isolated sensitive API keys and configuration using dotenv environment variables.",
-        "Built resilient dynamic server-side template generation with fallback query defaulting and centralized error handling."
+        "Architected an event-driven WebSocket communication layer using Socket.IO for low-latency bi-directional messaging.",
+        "Implemented connection lifecycle hooks (connection, disconnect, send_message, receive_message) with instant broadcasting.",
+        "Constructed client-side event listeners dynamically hydrating chat message list with zero layout shift."
       ],
-      codeSnippet: `const express = require('express');
+      codeSnippet: `// ChatApp.js
+const express = require('express');
+const socketIO = require('socket.io');
 require("dotenv").config();
-const axios = require('axios');
-
 const app = express();
-app.use(express.static('public'));
 
-const port = process.env.PORT || 3000;
-
-app.get('/', (req, res) => {
-    const city = req.query.city || 'New York';
-    
-    axios.get(\`https://api.openweathermap.org/data/2.5/weather?q=\${city}&appid=\${process.env.WEATHER_API_KEY}&units=metric\`)
-        .then(response => {
-            const weatherData = response.data;
-            res.send(\`
-                <!DOCTYPE html>
-                <html lang="en">
-                    <head>
-                        <meta charset="UTF-8">
-                        <title>Weather App</title>
-                    </head>
-                    <body>
-                        <h1>Current Weather in \${city}</h1>
-                        <p><strong>Description:</strong> \${weatherData.weather[0].description}</p>
-                        <p><strong>Temperature:</strong> \${weatherData.main.temp}°C</p>
-                        <p><strong>Humidity:</strong> \${weatherData.main.humidity}%</p>
-                    </body>
-                </html>
-            \`);
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).send('Error fetching weather data');
-        });
+const server = app.listen(process.env.PORT || 3002, () => {
+    console.log(\`Chat app listening at http://localhost:\${process.env.PORT}\`);
 });
 
-app.listen(port, () => {
-    console.log(\`Weather app listening at http://localhost:\${port}\`);
-});`
+app.use(express.static('public'));
+
+const io = socketIO(server);
+
+io.on('connection', (socket) => {
+    console.log('New client connected');
+
+    socket.on('disconnect', () => {
+        console.log('Client disconnected');
+    });
+
+    socket.on('send_message', (data) => {
+        io.emit('receive_message', data);
+    });
+});
+
+// public/index.html
+/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Chat</title>
+</head>
+<body>
+  <h1>Chat App</h1>
+  <input type="text" id="messageInput" placeholder="Type a message...">
+  <button onclick="sendMessage()">Send</button>
+  <ul id="messages"></ul>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      if (input.value) {
+        socket.emit('send_message', { message: input.value });
+        input.value = '';
+      }
+    }
+
+    socket.on('receive_message', data => {
+      const messagesList = document.getElementById('messages');
+      const item = document.createElement('li');
+      item.textContent = data.message;
+      messagesList.appendChild(item);
+    });
+  </script>
+</body>
+</html>
+*/`
     }
   ],
   photos: [

@@ -4,36 +4,30 @@ import water from "../assets/projects/watermyplants.png";
 
 export const projectsData = [
   {
-    id: "realtime-chat-engine",
-    title: "Real-Time WebSocket Chat Engine",
+    id: "weather-app",
+    title: "Weather App with API Integration",
     description:
-      "High-concurrency, event-driven messaging platform engineered with Node.js, Express, and Socket.IO. Delivers full-duplex bi-directional communication, sub-15ms event broadcasting, automated connection lifecycle management, and scalable real-time state synchronization.",
-    image: water,
-    techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven", "HTML5"],
-    githubUrl: "https://github.com/Retrofitt/ChatApp",
-    liveUrl: "#",
-    metrics: "Sub-15ms Event Latency • Full-Duplex Bi-Directional Broadcasting",
-  },
-  {
-    id: "restful-task-api",
-    title: "RESTful Task & Microservice API",
-    description:
-      "Production-grade RESTful CRUD microservice built with Express.js and Node.js. Implements strict HTTP response code standards (200, 201, 400, 404), parameterized route handling, JSON body parsing, and defensive parameter validation.",
-    image: ghb,
-    techStack: ["Node.js", "Express.js", "REST APIs", "CRUD", "Body-Parser", "Microservices"],
-    githubUrl: "https://github.com/Retrofitt/TodoApp",
-    liveUrl: "#",
-    metrics: "100% REST Standard Compliance • Strict Status Code Contract",
-  },
-  {
-    id: "weather-ssr-engine",
-    title: "Dynamic Weather API & SSR Dashboard",
-    description:
-      "Asynchronous weather forecasting service integrating OpenWeatherMap REST API with Node.js, Express, and Axios. Features server-side rendering (SSR), dynamic query parameter parsing, and secure dotenv credential isolation.",
+      "Asynchronous weather forecasting service engineered with Node.js, Express, and Axios. Features live external OpenWeatherMap REST API integration, dynamic Server-Side Rendering (SSR), query parameter sanitation, and secure dotenv credential isolation.",
     image: raq,
-    techStack: ["Node.js", "Express.js", "Axios", "REST API", "SSR", "Dotenv"],
-    githubUrl: "https://github.com/Retrofitt/WeatherApp",
-    liveUrl: "#",
-    metrics: "Server-Side Rendered Output • Secure External REST API Aggregation",
+    techStack: ["Node.js", "Express.js", "Axios", "REST API", "SSR", "Dotenv", "OpenWeatherMap"],
+    metrics: "Live REST API Ingestion • Dynamic Server-Side HTML Rendering",
+  },
+  {
+    id: "todo-crud-app",
+    title: "Todo List with CRUD Operations",
+    description:
+      "Full-cycle RESTful task management microservice engineered with Express.js and Node.js. Delivers deterministic CRUD endpoints (Create, Read, Update, Delete), strict HTTP status code semantics (200, 201, 400, 404), JSON body parsing, and route parameter validation.",
+    image: ghb,
+    techStack: ["Node.js", "Express.js", "REST APIs", "CRUD Operations", "Body-Parser", "JSON Protocol"],
+    metrics: "100% REST Compliance • Strict Status Code Contract (200, 201, 400, 404)",
+  },
+  {
+    id: "websocket-chat-app",
+    title: "Simple Chat Application with WebSockets",
+    description:
+      "Low-latency real-time communication platform powered by Node.js, Express, and Socket.IO. Implements full-duplex WebSocket channels, bi-directional event emission pipelines, active connection lifecycle handling, and instant broadcast synchronization.",
+    image: water,
+    techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven", "HTML5 / DOM"],
+    metrics: "Sub-15ms Latency • Bi-Directional Full-Duplex Broadcasting",
   },
 ];

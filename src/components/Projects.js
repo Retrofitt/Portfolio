@@ -33,10 +33,10 @@ export default function Projects() {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="section-tag">Featured Engineering</span>
-          <h2 className="section-heading mt-2">Production Projects</h2>
+          <span className="section-tag">Interactive Engineering Suite</span>
+          <h2 className="section-heading mt-2">Core Software Projects</h2>
           <p className="section-subheading mt-3">
-            High-performance web systems, real-time architectures, and scalable RESTful microservices.
+            Real-time WebSocket systems, RESTful CRUD microservices, and asynchronous API architectures executable locally.
           </p>
         </div>
 
@@ -82,8 +82,9 @@ export default function Projects() {
               key={project.id}
               className="glass-card rounded-2xl overflow-hidden flex flex-col justify-between"
               style={{
-                background: "rgba(11, 14, 22, 0.75)",
+                background: "rgba(11, 14, 22, 0.8)",
                 border: "1px solid rgba(255, 255, 255, 0.08)",
+                boxShadow: "0 14px 35px -10px rgba(0, 0, 0, 0.7)",
               }}
             >
               {/* Image Preview Banner */}
@@ -116,6 +117,22 @@ export default function Projects() {
                     {project.category || "Full-Stack"}
                   </span>
                 </div>
+
+                {/* Live Sandbox Tag */}
+                <div className="absolute" style={{ top: "0.75rem", right: "0.75rem" }}>
+                  <span
+                    className="px-2 py-0.5 rounded-full text-xs font-mono font-semibold flex items-center gap-1.5"
+                    style={{
+                      background: "rgba(16, 185, 129, 0.15)",
+                      color: "#34d399",
+                      border: "1px solid rgba(16, 185, 129, 0.3)",
+                      backdropFilter: "blur(6px)",
+                    }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Local App
+                  </span>
+                </div>
               </div>
 
               {/* Card Details */}
@@ -131,14 +148,14 @@ export default function Projects() {
                     onClick={() => handleOpenModal(project)}
                     className="w-full mb-4 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 tracking-wide transition-all"
                     style={{
-                      background: "linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0.05) 100%)",
-                      border: "1px solid rgba(56, 189, 248, 0.35)",
+                      background: "linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(56, 189, 248, 0.08) 100%)",
+                      border: "1px solid rgba(56, 189, 248, 0.4)",
                       color: "#38bdf8",
                       cursor: "pointer",
-                      boxShadow: "0 4px 15px rgba(56, 189, 248, 0.1)",
+                      boxShadow: "0 4px 15px rgba(56, 189, 248, 0.12)",
                     }}
                   >
-                    <span>View Project & Architecture</span>
+                    <span>Launch App & View Architecture</span>
                     <svg style={{ width: "16px", height: "16px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -192,7 +209,7 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Project Details Modal */}
+      {/* Project Details & Interactive Local Sandbox Modal */}
       {isModalOpen && selectedProject && (
         <ProjectModal
           project={selectedProject}
