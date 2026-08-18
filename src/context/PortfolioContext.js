@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { initialPortfolioData } from "../data/portfolioDefaults";
 
-const STORAGE_KEY = "retro_portfolio_data_v5";
+const STORAGE_KEY = "retro_portfolio_data_v6";
 const AUTH_KEY = "retro_cms_auth_session";
 
 const PortfolioContext = createContext(null);

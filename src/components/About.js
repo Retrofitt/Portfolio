@@ -154,16 +154,32 @@ export default function About() {
               <p className="text-xs text-slate-300 mb-4 leading-relaxed">
                 Open to Full-Time, Contract-to-Hire, and High-Impact Engineering roles across California and US Remote.
               </p>
-              <a
-                href="#contact"
-                className="btn-primary w-full text-xs"
-                style={{ padding: "0.65rem 1rem", width: "100%" }}
-              >
-                <span>Direct Recruiter Inquiry</span>
-                <svg style={{ width: "14px", height: "14px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <a
+                  href="#contact"
+                  className="btn-primary text-xs flex-1 text-center"
+                  style={{ padding: "0.65rem 1rem" }}
+                >
+                  <span>Direct Recruiter Inquiry</span>
+                  <svg style={{ width: "14px", height: "14px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+                <a
+                  href={profile.resumeUrl || "/Rafael_Mendoza_Resume.pdf"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Rafael_Mendoza_Resume.pdf"
+                  className="btn-outline text-xs text-center flex items-center justify-center gap-1.5"
+                  style={{ padding: "0.65rem 1rem" }}
+                  title="Download PDF Resume"
+                >
+                  <svg style={{ width: "14px", height: "14px", color: "#38bdf8" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span>PDF Resume</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

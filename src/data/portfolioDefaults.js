@@ -16,20 +16,27 @@ export const initialPortfolioData = {
     name: "Rafael Mendoza",
     role: "Full-Stack Software Engineer & Creative Developer",
     statusBadge: "Available for CA & Remote Roles",
-    location: "California, USA",
-    email: "mendoza.rafael28@gmail.com",
-    headline: "Engineering High-Performance Web Systems & Modern Digital Experiences",
-    bioLead: "4+ years crafting resilient, performant full-stack web applications and fluid interactive interfaces. Specializing in modern React, TypeScript, Node.js, and cloud architectures.",
-    aboutStory1: "With over 4 years of engineering and production experience, I bridge the gap between robust engineering architecture and modern, pixel-perfect user experiences. My focus is delivering production-ready applications that load instantly, scale reliably, and convert users.",
-    aboutStory2: "I treat code like architecture — carefully structured, modular, and optimized for peak maintainability. Outside of engineering, I bring an artistic eye through photography, UI/UX design, and creative direction, allowing me to build products that look world-class and feel effortless to use.",
-    disciplines: ["Full-Stack Architecture", "UI/UX Engineering", "Creative Direction", "Performance Optimization", "Photography & Media"],
-    stats: [
-      { label: "Years Experience", value: "4+" },
-      { label: "Production Apps", value: "15+" },
-      { label: "Core Technologies", value: "25+" },
-      { label: "Client Satisfaction", value: "100%" }
+    location: "Corona, CA",
+    email: "RafaelMendozaJr94@gmail.com",
+    headline: "Engineering High-Performance Web Systems, Resilient Frontends & Modern Digital Experiences",
+    bioLead: "4+ years of professional production engineering experience. Specializing in modern HTML5, CSS3/Tailwind, JavaScript (ES6+), custom WordPress theme architecture, PHP backend logic, React.js, and Node.js REST/WebSocket APIs.",
+    aboutStory1: "With over 4 years of production software engineering experience at Doctor Genius and freelance studios, I specialize in architecting high-performance client websites, dynamic landing systems, and scalable full-stack applications. My day-to-day focuses on HTML5, CSS3, modern JavaScript, custom WordPress theme development, and PHP backend logic, maintaining a 100% on-time milestone delivery record and 99.9% uptime.",
+    aboutStory2: "I balance a pixel-perfect, artistic eye for creative UI/UX engineering with the critical-thinking rigor required for backend API design, WebSockets, and data management. Whether engineering custom animations, optimizing Core Web Vitals (sub-second LCP), or building RESTful microservices, I build software that performs reliably and feels effortless to use.",
+    disciplines: [
+      "Frontend & UI/UX Engineering",
+      "WordPress & PHP Architecture",
+      "JavaScript & React.js",
+      "RESTful APIs & WebSockets",
+      "Performance & Core Web Vitals",
+      "Creative Direction & Photography"
     ],
-    resumeUrl: "#contact"
+    stats: [
+      { label: "Years Production Exp", value: "4+" },
+      { label: "Client Sites Delivered", value: "100+" },
+      { label: "Core Technologies", value: "20+" },
+      { label: "On-Time Milestone Rate", value: "100%" }
+    ],
+    resumeUrl: "/Rafael_Mendoza_Resume.pdf"
   },
   socials: [
     {
@@ -44,64 +51,88 @@ export const initialPortfolioData = {
     },
     {
       name: "Email",
-      url: "mailto:mendoza.rafael28@gmail.com",
+      url: "mailto:RafaelMendozaJr94@gmail.com",
       icon: "email"
     }
   ],
   skills: [
-    { name: "React", category: "Frontend", level: 95, icon: "react" },
-    { name: "JavaScript (ES6+)", category: "Frontend", level: 95, icon: "javascript" },
-    { name: "TypeScript", category: "Frontend", level: 90, icon: "typescript" },
     { name: "HTML5 / Semantic Web", category: "Frontend", level: 98, icon: "html" },
-    { name: "CSS3 / Tailwind CSS", category: "Frontend", level: 96, icon: "tailwind" },
-    { name: "Redux & Context API", category: "Frontend", level: 90, icon: "redux" },
-    { name: "Next.js", category: "Frontend", level: 85, icon: "next" },
+    { name: "CSS3 / Tailwind CSS / SCSS", category: "Frontend", level: 96, icon: "tailwind" },
+    { name: "JavaScript (ES6+)", category: "Frontend", level: 95, icon: "javascript" },
+    { name: "React.js", category: "Frontend", level: 94, icon: "react" },
+    { name: "WordPress (Theme Dev & CMS)", category: "Frontend", level: 95, icon: "figma" },
+    { name: "UI/UX & Responsive Design", category: "Frontend", level: 94, icon: "figma" },
+    { name: "Redux & Context API", category: "Frontend", level: 88, icon: "redux" },
     
+    { name: "PHP", category: "Backend", level: 90, icon: "php" },
     { name: "Node.js", category: "Backend", level: 90, icon: "node" },
     { name: "Express.js", category: "Backend", level: 92, icon: "express" },
-    { name: "PHP", category: "Backend", level: 88, icon: "php" },
     { name: "RESTful APIs", category: "Backend", level: 95, icon: "api" },
-    { name: "GraphQL", category: "Backend", level: 82, icon: "graphql" },
-    
-    { name: "PostgreSQL", category: "Databases", level: 88, icon: "postgres" },
-    { name: "MongoDB", category: "Databases", level: 86, icon: "mongodb" },
-    { name: "SQLite", category: "Databases", level: 90, icon: "sqlite" },
-    { name: "Redis", category: "Databases", level: 80, icon: "redis" },
+    { name: "WebSockets (Socket.IO)", category: "Backend", level: 90, icon: "graphql" },
+    { name: "PostgreSQL & SQL", category: "Backend", level: 85, icon: "postgres" },
     
     { name: "Git & GitHub CI/CD", category: "Tools & DevOps", level: 94, icon: "git" },
-    { name: "Docker", category: "Tools & DevOps", level: 82, icon: "docker" },
+    { name: "VS Code & Debugging", category: "Tools & DevOps", level: 95, icon: "test" },
+    { name: "SEO & Core Web Vitals", category: "Tools & DevOps", level: 92, icon: "cloud" },
     { name: "Vercel / Netlify", category: "Tools & DevOps", level: 95, icon: "cloud" },
-    { name: "Jest / RTL", category: "Tools & DevOps", level: 85, icon: "test" },
+    { name: "Docker", category: "Tools & DevOps", level: 82, icon: "docker" },
     { name: "Figma", category: "Tools & DevOps", level: 90, icon: "figma" }
   ],
   experience: [
     {
       id: "exp-1",
-      role: "Lead Web Developer & Production Engineer",
-      company: "Freelance & Production Studio",
-      period: "2021 — Present",
-      location: "California",
-      description: "Designed, engineered, and shipped high-performance web systems and dynamic digital applications for tech companies, creative agencies, and startups across California.",
+      role: "Production Software Engineer & Web Developer",
+      company: "Doctor Genius",
+      period: "March 2022 — Present",
+      location: "Irvine, CA",
+      description: "Spearheaded client web development, custom feature engineering, and ongoing maintenance for high-volume client websites, ensuring 100% on-time milestone delivery and 99.9% uptime.",
       highlights: [
-        "Architected custom React & responsive frontends with sub-second page loads and 98+ Google Lighthouse scores.",
-        "Built secure REST APIs, automated workflows, and integrated CMS solutions to streamline client content updates.",
-        "Conducted UI/UX design audits and implemented modern design tokens, elevating brand conversion rates by over 35%."
+        "Engineered reusable frontend components, custom landing pages, and responsive UI layouts using HTML5, CSS3, and modern vanilla JavaScript.",
+        "Developed, customized, and maintained robust WordPress themes, templates, and PHP backend logic to streamline dynamic content rendering and client requests.",
+        "Managed ongoing CMS architecture, automated content pipelines, monthly digital content syndication, and SEO optimization to elevate client search visibility.",
+        "Resolved critical cross-browser compatibility issues, optimized Core Web Vitals (sub-second LCP, CLS reduction), and refactored legacy codebases."
       ],
-      technologies: ["React", "JavaScript", "Tailwind CSS", "Node.js", "PHP", "Figma", "REST APIs"]
+      technologies: ["WordPress", "HTML5", "CSS3", "JavaScript", "PHP", "SEO", "Core Web Vitals"]
     },
     {
       id: "exp-2",
-      role: "Full-Stack Software Engineer",
-      company: "Bloom Institute of Technology (Lambda School)",
-      period: "2020 — 2021",
-      location: "Remote",
-      description: "Intensive computer science and software engineering program emphasizing production software development, data structures, algorithms, and agile team collaboration.",
+      role: "Freelance Software Engineer & Web Developer",
+      company: "W Brand Studio",
+      period: "January 2022 — Present",
+      location: "Costa Mesa, CA",
+      description: "Architected and delivered bespoke web applications and interactive client websites utilizing WordPress, PHP, JavaScript, React.js, and CSS3.",
       highlights: [
-        "Built and deployed full-stack web applications with authentication, relational databases, and state management.",
-        "Collaborated in cross-functional agile scrums, conducting peer code reviews and sprint retrospectives.",
-        "Engineered scalable backends using Node.js, Express, and JWT security."
+        "Collaborated closely with creative directors and stakeholders to translate Figma design mockups into pixel-perfect, accessible, and performant web interfaces.",
+        "Integrated RESTful APIs, third-party webhook automations, and custom form handlers, boosting client lead capture efficiency by over 30%.",
+        "Maintained client web infrastructure, providing continuous performance profiling and rapid turnaround for feature enhancements."
       ],
-      technologies: ["React", "Redux", "Node.js", "Express", "PostgreSQL", "Jest", "Git"]
+      technologies: ["WordPress", "React", "PHP", "JavaScript", "CSS3", "Figma", "REST APIs"]
+    },
+    {
+      id: "exp-3",
+      role: "Full-Stack Software Engineering Graduate",
+      company: "BloomTech (FKA Lambda School)",
+      period: "June 2021 — December 2021",
+      location: "Remote",
+      description: "Completed 1,000+ hours of intensive full-stack software engineering training covering React, Redux, Node.js, Express, PostgreSQL, data structures, and algorithms.",
+      highlights: [
+        "Built full-stack web applications with authentication, relational databases, state management, and continuous deployment.",
+        "Collaborated in cross-functional agile scrums, conducting daily standups, peer code reviews, and sprint retrospectives."
+      ],
+      technologies: ["React", "Redux", "Node.js", "Express", "PostgreSQL", "Git", "Jest"]
+    },
+    {
+      id: "exp-4",
+      role: "Process Guide & Seasonal Team Lead",
+      company: "Amazon Fulfillment / Zumiez / Saddle Creek",
+      period: "2015 — 2017",
+      location: "Inland Empire, CA",
+      description: "Directed and mentored cross-functional teams under strict turnaround deadlines, standardizing operational workflows and upholding safety and quality metrics.",
+      highlights: [
+        "Led teams of associates during peak volume seasons, managing resource delegation and process throughput.",
+        "Fostered strong communication, problem-solving, and cross-departmental coordination."
+      ],
+      technologies: ["Team Leadership", "Process Optimization", "Agile Operations", "Cross-Functional Collaboration"]
     }
   ],
   projects: [
