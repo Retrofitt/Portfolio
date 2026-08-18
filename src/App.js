@@ -4,8 +4,6 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import CMSModal from "./components/CMSModal";
-import "./index.css";
-import "./styles/styles.css";
 
 function ToastBanner() {
   const { toast } = usePortfolio();
@@ -31,7 +29,7 @@ function ToastBanner() {
 
 function PortfolioApp() {
   return (
-    <div className="min-h-screen bg-[#060913] text-slate-100 flex flex-col font-sans selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div className="min-h-screen bg-[#050608] text-slate-100 flex flex-col font-sans">
       <Navbar />
       <Home />
       <Footer />
@@ -41,12 +39,10 @@ function PortfolioApp() {
   );
 }
 
-function App() {
+export default function App() {
   return (
     <PortfolioProvider>
       <PortfolioApp />
     </PortfolioProvider>
   );
 }
-
-export default App;

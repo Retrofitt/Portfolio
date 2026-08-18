@@ -6,11 +6,6 @@ import photo5 from "../assets/photos/photo5.jpg";
 import photo6 from "../assets/photos/photo6.jpg";
 import photo7 from "../assets/photos/photo7.jpg";
 import photo8 from "../assets/photos/photo8.jpg";
-
-import ghb from "../assets/projects/githubapi.jpg";
-import raq from "../assets/projects/randomanimequote.jpg";
-import water from "../assets/projects/watermyplants.png";
-
 export const initialPortfolioData = {
   profile: {
     name: "Rafael Mendoza",
@@ -144,7 +139,7 @@ export const initialPortfolioData = {
       featured: true,
       appType: "weather",
       description: "Asynchronous weather forecasting service engineered with Node.js, Express, and Axios. Features live external OpenWeatherMap REST API integration, dynamic Server-Side Rendering (SSR), query parameter sanitation, and secure dotenv credential isolation.",
-      image: raq,
+      image: null,
       techStack: ["Node.js", "Express.js", "Axios", "OpenWeatherMap API", "REST API", "SSR", "Dotenv"],
       metrics: "Live REST API Ingestion • Dynamic Server-Side HTML Rendering",
       highlights: [
@@ -201,7 +196,7 @@ app.listen(port, () => {
       featured: true,
       appType: "todo",
       description: "Full-cycle RESTful task management microservice engineered with Express.js and Node.js. Delivers deterministic CRUD endpoints (Create, Read, Update, Delete), strict HTTP status code semantics (200, 201, 400, 404), JSON body parsing, and route parameter validation.",
-      image: ghb,
+      image: null,
       techStack: ["Node.js", "Express.js", "REST APIs", "CRUD Operations", "Body-Parser", "JSON Middleware", "Microservices"],
       metrics: "100% REST Compliance • Strict Status Code Contract (200, 201, 400, 404)",
       highlights: [
@@ -273,7 +268,7 @@ app.listen(port, () => {
       featured: true,
       appType: "chat",
       description: "Low-latency real-time communication platform powered by Node.js, Express, and Socket.IO. Implements full-duplex WebSocket channels, bi-directional event emission pipelines, active connection lifecycle handling, and instant broadcast synchronization.",
-      image: water,
+      image: null,
       techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven", "JavaScript", "HTML5"],
       metrics: "Sub-15ms Latency • Bi-Directional Full-Duplex Broadcasting",
       highlights: [
