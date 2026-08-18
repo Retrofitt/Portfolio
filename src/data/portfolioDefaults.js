@@ -123,15 +123,15 @@ export const initialPortfolioData = {
     },
     {
       id: "exp-4",
-      role: "Frontend Software Engineer & Fellow",
-      company: "Underdog Devs (Project Underdog)",
+      role: "Frontend Software Engineer & Mentee",
+      company: "Underdog Devs (BloomTech Partnership)",
       period: "2021 — 2022",
       location: "Remote",
-      description: "Selected for the competitive Project Underdog fellowship in partnership with Bloom Institute of Technology, collaborating with senior industry mentors and building community web applications.",
+      description: "Bloom Institute of Technology (then Lambda School) partnered with Underdog Devs, providing the opportunity to work under senior engineering mentorship to gain real-world field experience developing a community web application, pair programming, and shipping production code.",
       highlights: [
-        "Engineered the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to facilitate member scheduling, 1:1 mentorship tracking, and community communication.",
+        "Contributed frontend engineering to the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to support member scheduling and mentorship tracking.",
         "Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs to filter and manage members.",
-        "Participated in 40+ hours/week of rigorous pair programming, technical deep dives, and code reviews alongside engineering peers and senior mentors."
+        "Participated in active 1:1 pair programming, code reviews, and collaborative engineering sprints with industry mentors."
       ],
       technologies: ["React.js", "JavaScript", "CSS3", "Ant-Design", "Pair Programming", "Agile/Scrum", "Git"]
     }

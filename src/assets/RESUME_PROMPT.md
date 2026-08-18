@@ -59,12 +59,12 @@ Versatile Software Engineer with 4+ years of professional production engineering
 - Completed 1,000+ hours of intensive software engineering coursework focused on React, Redux, Node.js, Express, PostgreSQL, data structures, algorithms, and full-stack deployment.
 - Collaborated in cross-functional agile scrums, conducting daily standups, code reviews, and Git version control workflows.
 
-#### 4. Underdog Devs (Project Underdog) | Remote
-**Frontend Software Engineer & Fellow (Partnered with Bloom Institute of Technology)** | *2021 — 2022*
-- Selected for the competitive Project Underdog fellowship in partnership with Bloom Institute of Technology, collaborating with senior industry mentors and building community web applications.
-- Engineered the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to facilitate member scheduling, 1:1 mentorship tracking, and community communication.
+#### 4. Underdog Devs | Remote
+**Frontend Software Engineer & Mentee (BloomTech / Lambda School Partnership)** | *2021 — 2022*
+- Participated in an engineering partnership between Bloom Institute of Technology (then Lambda School) and Underdog Devs to work under senior engineering mentorship, gaining hands-on field experience building and shipping web app code.
+- Contributed frontend engineering to the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to support member scheduling and mentorship tracking.
 - Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs to filter and manage members.
-- Participated in 40+ hours/week of rigorous pair programming, technical deep dives, and code reviews alongside engineering peers and senior mentors.
+- Participated in active 1:1 pair programming, code reviews, and collaborative engineering sprints with industry mentors.
 
 ---
 
