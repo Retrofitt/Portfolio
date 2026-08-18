@@ -27,7 +27,7 @@ export default function Contact() {
 
     setTimeout(() => {
       setIsSubmitting(false);
-      showToast("Message recorded! Rafael will respond within 24 hours.", "success");
+      showToast("Message sent! Rafael will respond shortly.", "success");
       const mailtoUrl = `mailto:${profile.email || "RafaelMendozaJr94@gmail.com"}?subject=${encodeURIComponent(
         `[Portfolio Inquiry - ${formState.subject}] from ${formState.name}`
       )}&body=${encodeURIComponent(
@@ -52,10 +52,10 @@ export default function Contact() {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="section-tag">Direct Communication</span>
-          <h2 className="section-heading mt-2">Let's Build Something Great</h2>
+          <span className="section-tag">Contact</span>
+          <h2 className="section-heading mt-2">Get In Touch</h2>
           <p className="section-subheading mt-3">
-            Open to California opportunities, technical leadership, and collaborative projects.
+            Feel free to reach out about full-time roles, freelance projects, or just to say hello.
           </p>
         </div>
 
@@ -64,10 +64,10 @@ export default function Contact() {
           <div className="lg:col-span-5 space-y-6">
             <div className="glass-card p-8 rounded-2xl">
               <h3 className="text-xl font-bold text-white mb-2">
-                Recruiter &amp; Engineering Inquiries
+                Let's Connect
               </h3>
               <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-                Whether you have an open engineering role, need a custom web application architected, or want to discuss full-stack systems, my inbox is always open.
+                I'm currently available for full-time software engineering roles, hybrid or remote positions, and select freelance web development projects.
               </p>
 
               {/* Status Indicator */}
@@ -88,15 +88,15 @@ export default function Contact() {
                   }}
                 ></div>
                 <div>
-                  <p className="text-xs font-bold text-white">Fast Response Guaranteed</p>
-                  <p className="text-xs text-slate-400" style={{ fontSize: "11px" }}>Typical response time within 24 hours</p>
+                  <p className="text-xs font-bold text-white">Active &amp; Responsive</p>
+                  <p className="text-xs text-slate-400" style={{ fontSize: "11px" }}>Usually replies within 24 hours</p>
                 </div>
               </div>
 
               {/* Copy Email Snippet */}
               <div className="space-y-2 mb-6">
                 <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">
-                  Primary Email
+                  Email
                 </label>
                 <div
                   className="flex items-center justify-between p-3 rounded-xl"
@@ -123,15 +123,21 @@ export default function Contact() {
               </div>
 
               {/* Location & Socials */}
-              <div className="pt-6" style={{ borderTop: "1px solid var(--border-subtle)" }}>
-                <p className="text-xs text-slate-400 mb-3 flex items-center gap-2">
+              <div className="pt-6 space-y-3" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+                <p className="text-xs text-slate-400 flex items-center gap-2">
                   <svg style={{ width: "16px", height: "16px", color: "var(--accent-cyan)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <span>{profile.location || "Corona, CA"} (Pacific Time)</span>
+                  <span>{profile.location || "Long Beach, CA"} (Pacific Time)</span>
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <p className="text-xs text-slate-400 flex items-center gap-2">
+                  <svg style={{ width: "16px", height: "16px", color: "var(--accent-cyan)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <span>Phone available upon request</span>
+                </p>
+                <div className="flex flex-wrap gap-2 pt-2">
                   {socials.map((social) => (
                     <a
                       key={social.name}
@@ -174,7 +180,7 @@ export default function Contact() {
                     <input
                       type="email"
                       required
-                      placeholder="e.g. sarah@techcorp.com"
+                      placeholder="e.g. sarah@example.com"
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                       className="glass-input w-full text-sm"
@@ -184,17 +190,17 @@ export default function Contact() {
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 mb-2">
-                    Inquiry Type
+                    Subject
                   </label>
                   <select
                     value={formState.subject}
                     onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
                     className="glass-input w-full text-sm"
                   >
-                    <option value="Full-Time Engineering Role">Full-Time Engineering Opportunity</option>
-                    <option value="Contract / Project Development">Contract / Custom Web App Project</option>
-                    <option value="Technical Consulting">UI/UX &amp; Architecture Consulting</option>
-                    <option value="Networking & Collaboration">Coffee / Tech Chat</option>
+                    <option value="Full-Time Engineering Role">Full-Time Opportunity</option>
+                    <option value="Contract / Project Development">Freelance / Web Project</option>
+                    <option value="Technical Consulting">Consulting</option>
+                    <option value="General Inquiry">General Message</option>
                   </select>
                 </div>
 
@@ -205,7 +211,7 @@ export default function Contact() {
                   <textarea
                     required
                     rows="5"
-                    placeholder="Tell me about the role, team, or project requirements..."
+                    placeholder="Tell me about the role, project, or question..."
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                     className="glass-input w-full text-sm"
@@ -219,7 +225,7 @@ export default function Contact() {
                   className="btn-primary w-full text-sm font-bold"
                   style={{ width: "100%", padding: "0.85rem" }}
                 >
-                  {isSubmitting ? "Sending Message..." : "Send Direct Message"}
+                  {isSubmitting ? "Sending Message..." : "Send Message"}
                 </button>
               </form>
             </div>

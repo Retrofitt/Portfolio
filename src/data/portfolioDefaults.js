@@ -6,29 +6,31 @@ import photo5 from "../assets/photos/photo5.jpg";
 import photo6 from "../assets/photos/photo6.jpg";
 import photo7 from "../assets/photos/photo7.jpg";
 import photo8 from "../assets/photos/photo8.jpg";
+
 export const initialPortfolioData = {
   profile: {
     name: "Rafael Mendoza",
-    role: "Full-Stack Software Engineer & Creative Developer",
-    statusBadge: "Available for CA & Remote Roles",
-    location: "Corona, CA",
+    role: "Full-Stack Web Developer & Frontend Engineer",
+    statusBadge: "Based in Long Beach, CA • Open to Hybrid & Remote Roles",
+    location: "Long Beach, CA",
+    phoneNote: "Phone number available upon request",
     email: "RafaelMendozaJr94@gmail.com",
-    headline: "Engineering High-Performance Web Systems, Resilient Frontends & Modern Digital Experiences",
-    bioLead: "4+ years of professional production engineering experience. Specializing in modern HTML5, CSS3/Tailwind, JavaScript (ES6+), custom WordPress theme architecture, PHP backend logic, React.js, and Node.js REST/WebSocket APIs.",
-    aboutStory1: "With over 4 years of production software engineering experience at Doctor Genius and freelance studios, I specialize in architecting high-performance client websites, dynamic landing systems, and scalable full-stack applications. My day-to-day focuses on HTML5, CSS3, modern JavaScript, custom WordPress theme development, and PHP backend logic, maintaining a 100% on-time milestone delivery record and 99.9% uptime.",
-    aboutStory2: "I balance a pixel-perfect, artistic eye for creative UI/UX engineering with the critical-thinking rigor required for backend API design, WebSockets, and data management. Whether engineering custom animations, optimizing Core Web Vitals (sub-second LCP), or building RESTful microservices, I build software that performs reliably and feels effortless to use.",
+    headline: "Building Clean Web Applications, Custom Frontends & Reliable Web Solutions",
+    bioLead: "Software engineer with 4+ years of professional experience building and maintaining web applications for clients. Focused on JavaScript, HTML, CSS, WordPress, PHP, React, and Node.js.",
+    aboutStory1: "I'm a web developer based in Long Beach, California with over 4 years of experience building and maintaining client websites at Doctor Genius and through freelance projects. My primary work centers around modern JavaScript, HTML5, CSS3, custom WordPress themes, and PHP backend logic, where I focus on delivering clean code, reliable site performance, and on-time launches.",
+    aboutStory2: "I enjoy both sides of development — crafting clean, responsive user interfaces and building straightforward backend APIs and integrations. When I'm not coding, I pursue landscape and street photography, which gives me an appreciation for clean layout, visual balance, and attention to detail.",
     disciplines: [
-      "Frontend & UI/UX Engineering",
-      "WordPress & PHP Architecture",
+      "Frontend Web Development",
+      "WordPress & PHP Development",
       "JavaScript & React.js",
-      "RESTful APIs & WebSockets",
-      "Performance & Core Web Vitals",
-      "Creative Direction & Photography"
+      "Node.js & REST APIs",
+      "Responsive UI Design",
+      "Web Performance & SEO"
     ],
     stats: [
-      { label: "Years Production Exp", value: "4+" },
+      { label: "Years Experience", value: "4+" },
       { label: "Client Sites Delivered", value: "100+" },
-      { label: "Core Technologies", value: "20+" },
+      { label: "Core Technologies", value: "15+" },
       { label: "On-Time Milestone Rate", value: "100%" }
     ],
     resumeUrl: "/Rafael_Mendoza_Resume.pdf"
@@ -56,7 +58,7 @@ export const initialPortfolioData = {
     { name: "JavaScript (ES6+)", category: "Frontend", level: 95, icon: "javascript" },
     { name: "React.js", category: "Frontend", level: 94, icon: "react" },
     { name: "WordPress (Theme Dev & CMS)", category: "Frontend", level: 95, icon: "figma" },
-    { name: "UI/UX & Responsive Design", category: "Frontend", level: 94, icon: "figma" },
+    { name: "Responsive UI Design", category: "Frontend", level: 94, icon: "figma" },
     { name: "Redux & Context API", category: "Frontend", level: 88, icon: "redux" },
     
     { name: "PHP", category: "Backend", level: 90, icon: "php" },
@@ -66,9 +68,9 @@ export const initialPortfolioData = {
     { name: "WebSockets (Socket.IO)", category: "Backend", level: 90, icon: "graphql" },
     { name: "PostgreSQL & SQL", category: "Backend", level: 85, icon: "postgres" },
     
-    { name: "Git & GitHub CI/CD", category: "Tools & DevOps", level: 94, icon: "git" },
+    { name: "Git & GitHub", category: "Tools & DevOps", level: 94, icon: "git" },
     { name: "VS Code & Debugging", category: "Tools & DevOps", level: 95, icon: "test" },
-    { name: "SEO & Core Web Vitals", category: "Tools & DevOps", level: 92, icon: "cloud" },
+    { name: "Web Performance & SEO", category: "Tools & DevOps", level: 92, icon: "cloud" },
     { name: "Vercel / Netlify", category: "Tools & DevOps", level: 95, icon: "cloud" },
     { name: "Docker", category: "Tools & DevOps", level: 82, icon: "docker" },
     { name: "Figma", category: "Tools & DevOps", level: 90, icon: "figma" }
@@ -76,34 +78,34 @@ export const initialPortfolioData = {
   experience: [
     {
       id: "exp-1",
-      role: "Production Software Engineer & Web Developer",
+      role: "Software Engineer / Web Developer",
       company: "Doctor Genius",
       period: "March 2022 — Present",
       location: "Irvine, CA",
-      description: "Spearheaded client web development, custom feature engineering, and ongoing maintenance for high-volume client websites, ensuring 100% on-time milestone delivery and 99.9% uptime.",
+      description: "Responsible for developing, maintaining, and updating client websites on WordPress. Build custom frontend components, handle client-requested feature updates, optimize page load performance, and ensure on-time delivery.",
       highlights: [
-        "Engineered reusable frontend components, custom landing pages, and responsive UI layouts using HTML5, CSS3, and modern vanilla JavaScript.",
-        "Developed, customized, and maintained robust WordPress themes, templates, and PHP backend logic to streamline dynamic content rendering and client requests.",
-        "Managed ongoing CMS architecture, automated content pipelines, monthly digital content syndication, and SEO optimization to elevate client search visibility.",
-        "Resolved critical cross-browser compatibility issues, optimized Core Web Vitals (sub-second LCP, CLS reduction), and refactored legacy codebases."
+        "Built and maintained client websites using HTML, CSS, JavaScript, PHP, and WordPress.",
+        "Developed custom page templates, styling adjustments, and dynamic features based on client requirements.",
+        "Handled monthly site content updates and maintained SEO best practices across client portfolios.",
+        "Fixed cross-browser layout bugs and improved Core Web Vitals performance scores."
       ],
       technologies: ["WordPress", "HTML5", "CSS3", "JavaScript", "PHP", "SEO", "Core Web Vitals"]
     },
     {
       id: "exp-2",
-      role: "Freelance Software Engineer & Web Developer",
+      role: "Freelance Web Developer",
       company: "W Brand Studio",
       period: "January 2022 — Present",
       location: "Costa Mesa, CA",
-      description: "Architected and delivered bespoke web applications and interactive client websites utilizing WordPress, PHP, JavaScript, React.js, and CSS3.",
+      description: "Built and maintained responsive client websites and landing pages using WordPress, React, PHP, and modern CSS.",
       highlights: [
-        "Collaborated closely with creative directors and stakeholders to translate Figma design mockups into pixel-perfect, accessible, and performant web interfaces.",
-        "Integrated RESTful APIs, third-party webhook automations, and custom form handlers, boosting client lead capture efficiency by over 30%.",
-        "Maintained client web infrastructure, providing continuous performance profiling and rapid turnaround for feature enhancements."
+        "Turned design mockups into responsive, fast-loading web pages and custom WordPress themes.",
+        "Integrated contact forms, third-party APIs, and automation webhooks to streamline client workflows.",
+        "Provided ongoing website maintenance, bug fixes, and performance updates."
       ],
       technologies: ["WordPress", "React", "PHP", "JavaScript", "CSS3", "Figma", "REST APIs"]
     },
-        {
+    {
       id: "exp-3",
       role: "Frontend Software Engineer & Mentee",
       company: "Underdog Devs (BloomTech Partnership)",
@@ -134,18 +136,18 @@ export const initialPortfolioData = {
   projects: [
     {
       id: "weather-app",
-      title: "Weather App with API Integration",
-      category: "API & SSR",
+      title: "Weather Forecast Web App",
+      category: "Full-Stack / API",
       featured: true,
       appType: "weather",
-      description: "Asynchronous weather forecasting service engineered with Node.js, Express, and Axios. Features live external OpenWeatherMap REST API integration, dynamic Server-Side Rendering (SSR), query parameter sanitation, and secure dotenv credential isolation.",
+      description: "A weather forecasting web application built with Node.js, Express, and Axios. Fetches live weather data from OpenWeatherMap and renders clean HTML templates on the server with environment variable protection.",
       image: null,
       techStack: ["Node.js", "Express.js", "Axios", "OpenWeatherMap API", "REST API", "SSR", "Dotenv"],
-      metrics: "Live REST API Ingestion • Dynamic Server-Side HTML Rendering",
+      metrics: "OpenWeatherMap REST API • Server-Side Rendered Templates",
       highlights: [
-        "Architected asynchronous Promise-based API hydration using Axios with automatic metric unit conversion.",
-        "Engineered server-side rendered HTML generation with city-level query parameter defaults and graceful 500 error catching.",
-        "Implemented strict environment variable abstraction (dotenv) for zero-exposure API credential management."
+        "Fetched real-time weather data using Axios and handled API query parameters cleanly.",
+        "Rendered server-side HTML views with temperature conversions and weather conditions.",
+        "Kept API keys and configuration secure using dotenv environment variables."
       ],
       codeSnippet: `// WeatherApp.js
 const express = require('express');
@@ -191,18 +193,18 @@ app.listen(port, () => {
     },
     {
       id: "todo-crud-app",
-      title: "Todo List with CRUD Operations",
-      category: "RESTful API",
+      title: "Todo List REST API",
+      category: "Backend / API",
       featured: true,
       appType: "todo",
-      description: "Full-cycle RESTful task management microservice engineered with Express.js and Node.js. Delivers deterministic CRUD endpoints (Create, Read, Update, Delete), strict HTTP status code semantics (200, 201, 400, 404), JSON body parsing, and route parameter validation.",
+      description: "A RESTful Todo API microservice built with Node.js and Express. Implements standard CRUD operations (Create, Read, Update, Delete) with JSON request parsing and structured error handling.",
       image: null,
       techStack: ["Node.js", "Express.js", "REST APIs", "CRUD Operations", "Body-Parser", "JSON Middleware", "Microservices"],
-      metrics: "100% REST Compliance • Strict Status Code Contract (200, 201, 400, 404)",
+      metrics: "Full CRUD Endpoints • JSON Request Validation",
       highlights: [
-        "Engineered RESTful endpoints supporting parameterized route mutations (GET, POST, PUT, DELETE /todos/:id).",
-        "Implemented defensive input validation, ID type casting, and structured 400/404 HTTP error handling.",
-        "Integrated body-parser JSON middleware for robust in-memory payload mutations ready for database adapters."
+        "Implemented REST routes for GET, POST, PUT, and DELETE operations.",
+        "Used Express and body-parser to parse JSON payloads and validate incoming request data.",
+        "Returned appropriate HTTP status codes (200, 201, 400, 404) for reliable client communication."
       ],
       codeSnippet: `// TodoApp.js
 const express = require('express');
@@ -263,18 +265,18 @@ app.listen(port, () => {
     },
     {
       id: "websocket-chat-app",
-      title: "Simple Chat Application with WebSockets",
+      title: "Real-Time Chat Application",
       category: "WebSockets",
       featured: true,
       appType: "chat",
-      description: "Low-latency real-time communication platform powered by Node.js, Express, and Socket.IO. Implements full-duplex WebSocket channels, bi-directional event emission pipelines, active connection lifecycle handling, and instant broadcast synchronization.",
+      description: "A real-time messaging application built with Node.js, Express, and Socket.IO. Enables instant, bi-directional communication between connected browser clients.",
       image: null,
       techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven", "JavaScript", "HTML5"],
-      metrics: "Sub-15ms Latency • Bi-Directional Full-Duplex Broadcasting",
+      metrics: "Socket.IO WebSockets • Real-Time Event Broadcasting",
       highlights: [
-        "Architected an event-driven WebSocket communication layer using Socket.IO for low-latency bi-directional messaging.",
-        "Implemented connection lifecycle hooks (connection, disconnect, send_message, receive_message) with instant broadcasting.",
-        "Constructed client-side event listeners dynamically hydrating chat message list with zero layout shift."
+        "Set up Socket.IO WebSocket connections for instant client-to-server and server-to-client messaging.",
+        "Broadcasted new chat messages immediately to all active users without page reloads.",
+        "Handled client connection and disconnection lifecycle events gracefully."
       ],
       codeSnippet: `// ChatApp.js
 const express = require('express');
@@ -313,26 +315,26 @@ io.on('connection', (socket) => {
 <body>
   <h1>Chat App</h1>
   <input type="text" id="messageInput" placeholder="Type a message...">
-  <button onclick="sendMessage()">Send</button>
-  <ul id="messages"></ul>
-
+  <button id="sendButton">Send</button>
+  <ul id="messagesList"></ul>
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
+    const input = document.getElementById('messageInput');
+    const button = document.getElementById('sendButton');
+    const list = document.getElementById('messagesList');
 
-    function sendMessage() {
-      const input = document.getElementById('messageInput');
-      if (input.value) {
+    button.addEventListener('click', () => {
+      if (input.value.trim()) {
         socket.emit('send_message', { message: input.value });
         input.value = '';
       }
-    }
+    });
 
-    socket.on('receive_message', data => {
-      const messagesList = document.getElementById('messages');
-      const item = document.createElement('li');
-      item.textContent = data.message;
-      messagesList.appendChild(item);
+    socket.on('receive_message', (data) => {
+      const li = document.createElement('li');
+      li.textContent = data.message;
+      list.appendChild(li);
     });
   </script>
 </body>

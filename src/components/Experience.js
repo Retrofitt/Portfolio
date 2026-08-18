@@ -14,10 +14,10 @@ export default function Experience() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="section-tag">Career Track Record</span>
-          <h2 className="section-heading mt-2">Work Experience &amp; Impact</h2>
+          <span className="section-tag">Experience</span>
+          <h2 className="section-heading mt-2">Work History</h2>
           <p className="section-subheading mt-3">
-            Proven history of delivering high-performance web systems and engineering solutions in production.
+            Professional web development and engineering experience across client agencies and freelance work.
           </p>
         </div>
 

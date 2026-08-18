@@ -46,7 +46,7 @@ export default function Footer() {
                 {profile.name}
               </p>
               <p className="text-xs text-slate-400">
-                {profile.role} • {profile.location || "California"}
+                {profile.role} • {profile.location || "Long Beach, CA"}
               </p>
             </div>
           </div>
@@ -92,11 +92,11 @@ export default function Footer() {
           </button>
         </div>
 
-        {/* Bottom copyright & tech details */}
+        {/* Bottom copyright */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
           <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
           <p className="flex items-center gap-2">
-            <span>Designed &amp; Engineered with React, Slate Glass &amp; Precision</span>
+            <span>Built with React &amp; JavaScript</span>
           </p>
         </div>
       </div>

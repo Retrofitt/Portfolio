@@ -47,7 +47,7 @@ function WeatherAppDemo() {
       <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
         <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-          Live Sandbox (Express + Axios SSR Emulation)
+          Interactive Demo
         </span>
         <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10">
           Port :3000
@@ -159,7 +159,7 @@ function TodoAppDemo() {
       <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
         <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          Live Sandbox (REST API CRUD Emulation)
+          Interactive Demo
         </span>
         <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10">
           Port :3001
@@ -172,7 +172,7 @@ function TodoAppDemo() {
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add a new task (POST /todos)..."
+          placeholder="Add a new task..."
           className="flex-1 px-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-950 text-white border border-slate-700/80 focus:outline-none focus:border-emerald-400 transition-colors"
         />
         <button
@@ -184,10 +184,10 @@ function TodoAppDemo() {
         </button>
       </form>
 
-      {/* Todo List View (GET /todos, PUT /todos/:id, DELETE /todos/:id) */}
+      {/* Todo List View */}
       <div className="space-y-2.5 max-h-60 overflow-y-auto pr-1">
         {todos.length === 0 ? (
-          <p className="text-xs text-slate-500 py-4 text-center">No tasks currently registered. Add one above!</p>
+          <p className="text-xs text-slate-500 py-4 text-center">No tasks registered. Add one above!</p>
         ) : (
           todos.map((todo) => (
             <div
@@ -233,7 +233,7 @@ function TodoAppDemo() {
                   <button
                     onClick={() => handleStartEdit(todo)}
                     className="p-1.5 rounded-lg text-xs text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition-colors"
-                    title="Edit task (PUT)"
+                    title="Edit task"
                   >
                     ✏️
                   </button>
@@ -241,7 +241,7 @@ function TodoAppDemo() {
                 <button
                   onClick={() => handleDeleteTodo(todo.id)}
                   className="p-1.5 rounded-lg text-xs text-red-400 hover:text-red-300 bg-red-950/40 hover:bg-red-900/60 transition-colors"
-                  title="Delete task (DELETE)"
+                  title="Delete task"
                 >
                   ✕
                 </button>
@@ -259,7 +259,7 @@ function ChatAppDemo() {
   const [messages, setMessages] = useState([
     { id: 1, sender: "System", text: "WebSocket connection established.", time: "10:00 AM" },
     { id: 2, sender: "Client A", text: "Hello! Testing real-time broadcast.", time: "10:01 AM" },
-    { id: 3, sender: "Client B", text: "Received with sub-15ms latency!", time: "10:01 AM" },
+    { id: 3, sender: "Client B", text: "Message received in real-time!", time: "10:01 AM" },
   ]);
   const [inputMessage, setInputMessage] = useState("");
   const [activeUser, setActiveUser] = useState("Client A");
@@ -281,14 +281,14 @@ function ChatAppDemo() {
     <div
       className="p-5 sm:p-7 rounded-2xl"
       style={{
-        background: "radial-gradient(circle at top left, rgba(168, 85, 247, 0.09), rgba(11, 15, 23, 0.98))",
-        border: "1px solid rgba(168, 85, 247, 0.22)",
+        background: "radial-gradient(circle at top left, rgba(217, 70, 239, 0.09), rgba(11, 15, 23, 0.98))",
+        border: "1px solid rgba(217, 70, 239, 0.22)",
       }}
     >
       <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
         <span className="text-xs font-bold uppercase tracking-wider text-purple-400 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
-          Live Sandbox (Socket.IO WebSocket Emulation)
+          Interactive Demo
         </span>
         <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10">
           Port :3002

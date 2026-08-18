@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { initialPortfolioData } from "../data/portfolioDefaults";
 
-const STORAGE_KEY = "retro_portfolio_data_v8";
+const STORAGE_KEY = "retro_portfolio_data_v9";
 const AUTH_KEY = "retro_cms_auth_session";
 
 const PortfolioContext = createContext(null);
@@ -59,10 +59,10 @@ export function PortfolioProvider({ children }) {
     if (cleanUser === "retro1" && cleanPass === "1234") {
       setIsAuthenticated(true);
       sessionStorage.setItem(AUTH_KEY, "true");
-      showToast("Welcome back, Rafael! CMS Studio unlocked.", "success");
+      showToast("CMS Studio unlocked.", "success");
       return true;
     }
-    showToast("Invalid credentials. Try username: retro1 / password: 1234", "error");
+    showToast("Invalid username or password.", "error");
     return false;
   };
 

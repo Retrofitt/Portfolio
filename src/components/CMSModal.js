@@ -188,7 +188,7 @@ export default function CMSModal() {
               </h3>
               <p className="text-xs text-slate-400">
                 {isAuthenticated
-                  ? "Logged in as retro1 • Live preview active"
+                  ? "Admin Session Active"
                   : "Authentication Required"}
               </p>
             </div>
@@ -244,7 +244,7 @@ export default function CMSModal() {
             </div>
             <h4 className="text-xl font-bold text-white mb-2">CMS Admin Login</h4>
             <p className="text-xs text-slate-400 mb-6 leading-relaxed">
-              Enter your admin credentials to manage photos, text, experience, and projects.
+              Enter your credentials to access the portfolio content editor.
             </p>
 
             <form onSubmit={handleLoginSubmit} className="w-full space-y-4 text-left">
@@ -255,7 +255,7 @@ export default function CMSModal() {
                 <input
                   type="text"
                   required
-                  placeholder="e.g. retro1"
+                  placeholder="Username"
                   value={usernameInput}
                   onChange={(e) => setUsernameInput(e.target.value)}
                   className="glass-input w-full text-sm font-mono"
@@ -269,28 +269,15 @@ export default function CMSModal() {
                 <input
                   type="password"
                   required
-                  placeholder="••••"
+                  placeholder="Password"
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
                   className="glass-input w-full text-sm font-mono"
                 />
               </div>
 
-              <div
-                className="p-3 rounded-lg text-xs"
-                style={{
-                  background: "rgba(6, 8, 14, 0.9)",
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
-                  color: "#94a3b8"
-                }}
-              >
-                <span>Default Credentials: </span>
-                <span className="font-mono text-cyan-400 font-semibold">retro1</span> /{" "}
-                <span className="font-mono text-cyan-400 font-semibold">1234</span>
-              </div>
-
               <button type="submit" className="btn-primary w-full text-sm font-bold mt-2" style={{ width: "100%" }}>
-                Unlock CMS Studio
+                Sign In
               </button>
             </form>
           </div>

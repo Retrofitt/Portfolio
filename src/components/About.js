@@ -18,10 +18,10 @@ export default function About() {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="section-tag">About The Engineer</span>
-          <h2 className="section-heading mt-2">Architecture &amp; Precision</h2>
+          <span className="section-tag">About Me</span>
+          <h2 className="section-heading mt-2">Background &amp; Experience</h2>
           <p className="section-subheading mt-3">
-            Building resilient digital products that balance clean code, performance, and aesthetic excellence.
+            Building reliable client websites and applications with clean code, good performance, and attention to detail.
           </p>
         </div>
 
@@ -36,7 +36,7 @@ export default function About() {
             >
               <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <span className="text-cyan-400 font-mono">01.</span>
-                <span>Engineering Philosophy</span>
+                <span>My Approach</span>
               </h3>
               <p className="text-slate-300 text-base leading-relaxed mb-4">
                 {profile.aboutStory1}
@@ -60,7 +60,7 @@ export default function About() {
                     backgroundColor: "var(--accent-cyan)"
                   }}
                 ></span>
-                <span>Core Competencies &amp; Disciplines</span>
+                <span>Core Focus Areas</span>
               </h4>
               <div className="flex flex-wrap gap-2">
                 {(profile.disciplines || []).map((discipline) => (
@@ -80,7 +80,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* Stats & Recruiter Card / Right Column */}
+          {/* Stats & Quick Card / Right Column */}
           <div className="lg:col-span-5 space-y-6">
             {/* Stat Counters Grid */}
             <div className="grid grid-cols-2 gap-4">
@@ -106,7 +106,7 @@ export default function About() {
               ))}
             </div>
 
-            {/* Recruiter Quick Card */}
+            {/* Opportunity Card */}
             <div
               className="p-6 rounded-2xl"
               style={{
@@ -134,12 +134,12 @@ export default function About() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white mb-0.5">Looking for Top Talent?</h4>
-                  <p className="text-xs text-slate-400">Ready to onboard and make immediate impact</p>
+                  <h4 className="text-sm font-bold text-white mb-0.5">Open to Opportunities</h4>
+                  <p className="text-xs text-slate-400">Available for Full-Time, Hybrid &amp; Remote Roles</p>
                 </div>
               </div>
               <p className="text-xs text-slate-300 mb-4 leading-relaxed">
-                Open to Full-Time, Contract-to-Hire, and High-Impact Engineering roles across California and US Remote.
+                Based in Long Beach, CA. Interested in frontend, full-stack, and web development opportunities.
               </p>
               <div className="flex flex-col sm:flex-row gap-2">
                 <a
@@ -147,7 +147,7 @@ export default function About() {
                   className="btn-primary text-xs flex-1 text-center"
                   style={{ padding: "0.65rem 1rem" }}
                 >
-                  <span>Direct Recruiter Inquiry</span>
+                  <span>Send a Message</span>
                   <svg style={{ width: "14px", height: "14px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>

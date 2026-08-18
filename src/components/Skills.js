@@ -21,10 +21,10 @@ export default function Skills() {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="section-tag">Tech Stack &amp; Tooling</span>
-          <h2 className="section-heading mt-2">Technical Proficiency</h2>
+          <span className="section-tag">Skills</span>
+          <h2 className="section-heading mt-2">Tech Stack</h2>
           <p className="section-subheading mt-3">
-            Core technologies and development stacks leveraged to build scalable production applications.
+            Technologies and tools I use to build and maintain websites and web applications.
           </p>
         </div>
 

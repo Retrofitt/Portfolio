@@ -11,13 +11,13 @@ ET
 BT
 /F1 9.5 Tf
 50 730 Td
-(Full-Stack Software Engineer & Creative Developer | Corona, CA | RafaelMendozaJr94@gmail.com) Tj
+(Full-Stack Web Developer & Frontend Engineer | Long Beach, CA | RafaelMendozaJr94@gmail.com) Tj
 ET
 
 BT
 /F1 9 Tf
 50 718 Td
-(GitHub: github.com/Retrofitt | LinkedIn: linkedin.com/in/rafael-mendoza-webdev | Portfolio: rafaelmendoza.dev) Tj
+(Phone: Available upon request | GitHub: github.com/Retrofitt | LinkedIn: linkedin.com/in/rafael-mendoza-webdev) Tj
 ET
 
 0.2 0.2 0.2 RG
@@ -35,13 +35,13 @@ BT
 /F1 9 Tf
 0.1 0.1 0.1 rg
 50 680 Td
-(Versatile Software Engineer with 4+ years of professional production experience architecting high-performance web) Tj
+(Web Developer and Software Engineer with 4+ years of professional experience building and maintaining client websites) Tj
 50 668 Td
-(systems, responsive frontends, and client-centric digital experiences. Specialized in JavaScript, HTML5, CSS3/Tailwind,) Tj
+(and web applications. Proficient in HTML, CSS, JavaScript, WordPress, PHP, React.js, and Node.js. Experienced in) Tj
 50 656 Td
-(WordPress, PHP, React.js, and Node.js. Proven track record delivering 100% on-time client milestones, optimizing Core) Tj
+(developing custom WordPress themes, responsive UI components, and RESTful APIs with a strong focus on clean code,) Tj
 50 644 Td
-(Web Vitals, maintaining scalable CMS architectures, and executing both creative UI/UX and critical backend workflows.) Tj
+(site performance, and on-time project delivery.) Tj
 ET
 
 BT
@@ -54,11 +54,11 @@ ET
 BT
 /F1 8.5 Tf
 50 612 Td
-(Frontend: JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, React.js, WordPress Theme Dev, Redux, UI/UX, Axios, Ant-Design) Tj
+(Frontend: JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, React.js, WordPress Theme Dev, Redux, Responsive UI, Axios) Tj
 50 600 Td
-(Backend: PHP, Node.js, Express.js, RESTful APIs, WebSockets (Socket.IO), PostgreSQL, SQL, Server-Side Rendering (SSR)) Tj
+(Backend: PHP, Node.js, Express.js, RESTful APIs, WebSockets (Socket.IO), PostgreSQL, SQL, Server-Side Rendering) Tj
 50 588 Td
-(Tools & DevOps: Git, GitHub CI/CD, VS Code, Vercel, Docker, NPM, Figma, Agile/Scrum, Debugging, SEO & Core Web Vitals) Tj
+(Tools & Workflow: Git, GitHub, VS Code, Vercel, Docker, NPM, Figma, Agile/Scrum, Debugging, Web Performance & SEO) Tj
 ET
 
 BT
@@ -81,178 +81,154 @@ ET
 BT
 /F3 9 Tf
 50 544 Td
-(Production Software Engineer & Web Developer) Tj
+(Software Engineer / Web Developer) Tj
 ET
 
 BT
 /F1 8.5 Tf
 50 530 Td
-(- Spearheaded web architecture and ongoing feature development for high-volume client sites with 100% on-time delivery.) Tj
+(- Built and maintained client websites on WordPress using HTML, CSS, JavaScript, PHP, and custom page templates.) Tj
 50 518 Td
-(- Engineered custom frontend components, dynamic landing pages, and responsive UI layouts using HTML5, CSS3, and JavaScript.) Tj
+(- Developed custom frontend components and layout modifications tailored to specific client requests and brand guides.) Tj
 50 506 Td
-(- Developed and maintained custom WordPress themes and PHP backend logic to streamline content rendering and client requests.) Tj
+(- Managed ongoing monthly site updates and ensured consistent SEO best practices across client accounts.) Tj
 50 494 Td
-(- Managed ongoing CMS pipelines, monthly digital content syndication, and SEO optimization to elevate client search visibility.) Tj
-50 482 Td
-(- Resolved cross-browser compatibility issues, optimized Core Web Vitals (sub-second LCP), and refactored legacy codebases.) Tj
+(- Resolved cross-browser styling issues, optimized site load speeds, and improved Core Web Vitals scores.) Tj
 ET
 
 BT
 /F2 9.5 Tf
-50 464 Td
+50 476 Td
 (W Brand Studio - Costa Mesa, CA) Tj
 ET
 BT
 /F1 9 Tf
-420 464 Td
+420 476 Td
 (January 2022 - Present) Tj
 ET
 BT
 /F3 9 Tf
-50 452 Td
-(Freelance Software Engineer & Web Developer) Tj
+50 464 Td
+(Freelance Web Developer) Tj
 ET
 
 BT
 /F1 8.5 Tf
+50 450 Td
+(- Built and maintained responsive client websites and landing pages using WordPress, React, PHP, and modern CSS.) Tj
 50 438 Td
-(- Architected and shipped bespoke web applications and interactive client websites utilizing WordPress, PHP, JavaScript, and React.) Tj
+(- Translated Figma design mockups into fast-loading, mobile-friendly web pages and custom WordPress themes.) Tj
 50 426 Td
-(- Translated Figma design mockups into pixel-perfect, accessible, performant web interfaces with fluid responsive layouts.) Tj
-50 414 Td
-(- Integrated RESTful APIs, third-party webhook automations, and custom form handlers, increasing lead capture efficiency by 30%.) Tj
+(- Integrated contact forms, third-party APIs, and automation webhooks to streamline client workflows.) Tj
+ET
+
+BT
+/F2 9.5 Tf
+50 408 Td
+(Underdog Devs - Remote) Tj
+ET
+BT
+/F1 9 Tf
+420 408 Td
+(Nov 2021 - Dec 2021) Tj
+ET
+BT
+/F3 9 Tf
+50 396 Td
+(Frontend Software Engineer & Mentee (BloomTech Partnership)) Tj
+ET
+
+BT
+/F1 8.5 Tf
+50 382 Td
+(- Partnered through BloomTech to gain hands-on field experience building web applications under senior mentorship.) Tj
+50 370 Td
+(- Built UI components, navigation sidebars, and modal dialogs for open-source Underdog Devs platform in React.) Tj
+50 358 Td
+(- Participated in 1:1 pair programming, active code reviews, and collaborative engineering sprints.) Tj
 ET
 
 BT
 /F2 10.5 Tf
 0 0 0 rg
-50 396 Td
-(FEATURED SOFTWARE PROJECTS) Tj
-ET
-
-BT
-/F2 9 Tf
-50 382 Td
-(Weather App with API Integration) Tj
-ET
-BT
-/F1 8.5 Tf
-230 382 Td
-(| Node.js, Express.js, Axios, OpenWeatherMap REST API, SSR, Dotenv) Tj
-ET
-BT
-/F1 8.5 Tf
-50 370 Td
-(- Built asynchronous weather forecasting service featuring dynamic Server-Side Rendering (SSR) and strict dotenv security.) Tj
-ET
-
-BT
-/F2 9 Tf
-50 354 Td
-(Todo List with CRUD Operations) Tj
-ET
-BT
-/F1 8.5 Tf
-225 354 Td
-(| Node.js, Express.js, RESTful APIs, Body-Parser, JSON Middleware) Tj
-ET
-BT
-/F1 8.5 Tf
-50 342 Td
-(- Developed full-cycle REST microservice supporting parameterized mutations (GET, POST, PUT, DELETE) and status contracts.) Tj
+50 340 Td
+(FEATURED PROJECTS) Tj
 ET
 
 BT
 /F2 9 Tf
 50 326 Td
-(Simple Chat Application with WebSockets) Tj
+(Weather Forecast Web App) Tj
 ET
 BT
 /F1 8.5 Tf
-265 326 Td
-(| Node.js, Express.js, Socket.IO, WebSockets, Event-Driven) Tj
+200 326 Td
+(| Node.js, Express.js, Axios, OpenWeatherMap API, Dotenv) Tj
 ET
 BT
 /F1 8.5 Tf
 50 314 Td
-(- Engineered real-time communication platform using Socket.IO with bi-directional event emission and sub-15ms broadcast latency.) Tj
+(- Built weather app fetching live forecast data with Axios and rendering dynamic HTML templates on the server.) Tj
 ET
 
 BT
 /F2 9 Tf
 50 298 Td
-(UnderDog Devs Platform) Tj
+(Todo List REST API) Tj
 ET
 BT
 /F1 8.5 Tf
 175 298 Td
-(| React.js, JavaScript, CSS3, Ant-Design, Agile Scrum) Tj
+(| Node.js, Express.js, RESTful APIs, Body-Parser, JSON) Tj
 ET
 BT
 /F1 8.5 Tf
 50 286 Td
-(- Contributed UI/UX engineering to non-profit developer app: dynamic sidebar navigation, admin modals, and role-based filtering.) Tj
+(- Built REST API supporting standard CRUD endpoints with body-parser JSON parsing and clean HTTP error status codes.) Tj
+ET
+
+BT
+/F2 9 Tf
+50 270 Td
+(Real-Time Chat Application) Tj
+ET
+BT
+/F1 8.5 Tf
+200 270 Td
+(| Node.js, Express.js, Socket.IO, WebSockets, JavaScript) Tj
+ET
+BT
+/F1 8.5 Tf
+50 258 Td
+(- Created real-time messaging application enabling instant bi-directional communication between connected clients.) Tj
 ET
 
 BT
 /F2 10.5 Tf
 0 0 0 rg
-50 268 Td
+50 240 Td
 (EDUCATION & TRAINING) Tj
 ET
 
 BT
 /F2 9 Tf
-50 254 Td
-(BloomTech (FKA Lambda School)) Tj
+50 226 Td
+(BloomTech (FKA Lambda School) - Remote) Tj
 ET
 BT
 /F1 9 Tf
-420 254 Td
+420 226 Td
 (Jun 2021 - Dec 2021) Tj
 ET
 BT
 /F3 8.5 Tf
-50 242 Td
+50 214 Td
 (Graduate, Full-Time Program in Full Stack Web Development & Computer Science) Tj
 ET
 BT
 /F1 8.5 Tf
-50 230 Td
-(- 1,000+ hours of immersive software engineering training covering React, Node.js, Express, PostgreSQL, data structures, and algorithms.) Tj
-ET
-
-BT
-/F2 10.5 Tf
-0 0 0 rg
-50 212 Td
-(COMMUNITY & APPRENTICESHIP EXPERIENCE) Tj
-ET
-
-BT
-/F2 9 Tf
-50 198 Td
-(Underdog Devs - Remote) Tj
-ET
-BT
-/F1 9 Tf
-420 198 Td
-(Nov 2021 - Dec 2021) Tj
-ET
-BT
-/F3 8.5 Tf
-50 186 Td
-(Frontend Software Engineer & Mentee (BloomTech / Lambda School Partnership)) Tj
-ET
-BT
-/F1 8.5 Tf
-50 174 Td
-(- Partnered through BloomTech to gain real-world field experience building web apps under senior mentorship.) Tj
-50 162 Td
-(- Engineered dynamic UI components, role-based navigation, and modals for open-source Underdog Devs platform in React.) Tj
-50 150 Td
-(- Participated in 1:1 pair programming, active code reviews, and agile sprints to ship production code.) Tj
+50 202 Td
+(- 1,000+ hours of full-stack coursework covering JavaScript, React, Node.js, Express, PostgreSQL, and algorithms.) Tj
 ET`;
 
   const streamLength = Buffer.byteLength(contentStream, 'utf-8');
