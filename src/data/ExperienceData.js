@@ -16,7 +16,7 @@ export const initialPortfolioData = {
     statusBadge: "Based in Long Beach, CA • Open to Hybrid & Remote Roles",
     location: "Long Beach, CA",
     phoneNote: "Phone number available upon request",
-    email: "RafaelMendozaJr94@gmail.com",
+    email: "rafaelmendozajr94.coding@gmail.com",
     headline: "Building Clean Web Applications, Custom Frontends & Reliable Web Solutions",
     bioLead: "Software engineer with 4+ years of professional experience building and maintaining web applications for clients. Focused on JavaScript, HTML, CSS, WordPress, PHP, React, and Node.js.",
     aboutStory1: "I'm a web developer based in Long Beach, California with over 4 years of experience building and maintaining client websites at Doctor Genius and through freelance projects. My primary work centers around modern JavaScript, HTML5, CSS3, custom WordPress themes, and PHP backend logic, where I focus on delivering clean code, reliable site performance, and on-time launches.",
@@ -50,7 +50,7 @@ export const initialPortfolioData = {
     },
     {
       name: "Email",
-      url: "mailto:RafaelMendozaJr94@gmail.com",
+      url: "mailto:rafaelmendozajr94.coding@gmail.com",
       icon: "email"
     }
   ],
@@ -356,7 +356,7 @@ io.on('connection', (socket) => {
   ]
 };
 
-const STORAGE_KEY = "retro_portfolio_data_v9";
+const STORAGE_KEY = "retro_portfolio_data_v10";
 const AUTH_KEY = "retro_cms_auth_session";
 
 const PortfolioContext = createContext(null);

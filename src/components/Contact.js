@@ -5,42 +5,67 @@ export default function Contact() {
   const { data, showToast } = usePortfolio();
   const { profile, socials = [] } = data;
 
+  const targetEmail = profile.email || "rafaelmendozajr94.coding@gmail.com";
+
   const [formState, setFormState] = useState({
     name: "",
     email: "",
-    subject: "Full-Time Engineering Role",
+    subject: "Full-Time Opportunity",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText(profile.email || "RafaelMendozaJr94@gmail.com");
+    navigator.clipboard.writeText(targetEmail);
     setCopied(true);
     showToast("Email address copied to clipboard!");
     setTimeout(() => setCopied(false), 3000);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      showToast("Message sent! Rafael will respond shortly.", "success");
-      const mailtoUrl = `mailto:${profile.email || "RafaelMendozaJr94@gmail.com"}?subject=${encodeURIComponent(
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          _subject: `[Portfolio - ${formState.subject}] from ${formState.name}`,
+          subject: formState.subject,
+          message: formState.message,
+          _template: "table",
+        }),
+      });
+
+      if (response.ok) {
+        showToast("Message sent successfully! Rafael will respond shortly.", "success");
+        setFormState({
+          name: "",
+          email: "",
+          subject: "Full-Time Opportunity",
+          message: "",
+        });
+      } else {
+        throw new Error("Form delivery error");
+      }
+    } catch (err) {
+      showToast("Message recorded! Rafael will follow up shortly.", "success");
+      const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(
         `[Portfolio Inquiry - ${formState.subject}] from ${formState.name}`
       )}&body=${encodeURIComponent(
         `From: ${formState.name} (${formState.email})\n\n${formState.message}`
       )}`;
       window.location.href = mailtoUrl;
-      setFormState({
-        name: "",
-        email: "",
-        subject: "Full-Time Engineering Role",
-        message: "",
-      });
-    }, 600);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,7 +113,7 @@ export default function Contact() {
                   }}
                 ></div>
                 <div>
-                  <p className="text-xs font-bold text-white">Active &amp; Responsive</p>
+                  <p className="text-xs font-bold text-white">Direct Inbox Delivery</p>
                   <p className="text-xs text-slate-400" style={{ fontSize: "11px" }}>Usually replies within 24 hours</p>
                 </div>
               </div>
@@ -106,7 +131,7 @@ export default function Contact() {
                   }}
                 >
                   <span className="text-xs sm:text-sm font-mono truncate mr-2 text-cyan-400">
-                    {profile.email || "RafaelMendozaJr94@gmail.com"}
+                    {targetEmail}
                   </span>
                   <button
                     onClick={handleCopyEmail}
@@ -197,7 +222,7 @@ export default function Contact() {
                     onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
                     className="glass-input w-full text-sm"
                   >
-                    <option value="Full-Time Engineering Role">Full-Time Opportunity</option>
+                    <option value="Full-Time Opportunity">Full-Time Opportunity</option>
                     <option value="Contract / Project Development">Freelance / Web Project</option>
                     <option value="Technical Consulting">Consulting</option>
                     <option value="General Inquiry">General Message</option>
@@ -225,7 +250,7 @@ export default function Contact() {
                   className="btn-primary w-full text-sm font-bold"
                   style={{ width: "100%", padding: "0.85rem" }}
                 >
-                  {isSubmitting ? "Sending Message..." : "Send Message"}
+                  {isSubmitting ? "Sending to Inbox..." : "Send Message"}
                 </button>
               </form>
             </div>

@@ -10,7 +10,7 @@ Please generate a clean, modern, and professional one-page software engineering 
 - **Name**: Rafael Mendoza
 - **Title**: Full-Stack Web Developer & Frontend Engineer
 - **Location**: Long Beach, CA (Open to Hybrid & Remote Roles)
-- **Email**: RafaelMendozaJr94@gmail.com
+- **Email**: rafaelmendozajr94.coding@gmail.com
 - **Phone**: Available upon request
 - **GitHub**: https://github.com/Retrofitt
 - **LinkedIn**: https://www.linkedin.com/in/rafael-mendoza-webdev/
