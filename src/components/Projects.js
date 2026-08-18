@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { usePortfolio } from "../context/PortfolioContext";
+import { usePortfolio } from "../data/ExperienceData";
 import ProjectModal from "./ProjectModal";
 
 // Themed Metadata Helper for Personalized Color Palettes

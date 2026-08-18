@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { usePortfolio } from "../context/PortfolioContext";
+import { usePortfolio } from "../data/ExperienceData";
 
 const navItems = [
   { label: "About", href: "#about" },

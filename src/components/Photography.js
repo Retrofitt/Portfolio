@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { usePortfolio } from "../context/PortfolioContext";
+import { usePortfolio } from "../data/ExperienceData";
 import Lightbox from "./Lightbox";
 
 export default function Photography() {

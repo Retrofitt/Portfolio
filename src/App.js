@@ -1,5 +1,5 @@
 import React from "react";
-import { PortfolioProvider, usePortfolio } from "./context/PortfolioContext";
+import { PortfolioProvider, usePortfolio } from "./data/ExperienceData";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
