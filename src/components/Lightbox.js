@@ -137,16 +137,11 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
           }}
         />
 
-        {/* Caption & Category */}
+        {/* Caption */}
         <div className="mt-4 text-center">
           <h4 className="text-base font-bold text-white mb-0.5">
             {photo.title || "Visual Artistry"}
           </h4>
-          {photo.category && (
-            <span className="text-xs text-cyan-400 font-medium">
-              {photo.category}
-            </span>
-          )}
         </div>
       </div>
     </div>
