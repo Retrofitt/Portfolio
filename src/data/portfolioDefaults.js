@@ -113,7 +113,7 @@ export const initialPortfolioData = {
       appType: "weather",
       description: "Asynchronous weather forecasting service engineered with Node.js, Express, and Axios. Features live external OpenWeatherMap REST API integration, dynamic Server-Side Rendering (SSR), query parameter sanitation, and secure dotenv credential isolation.",
       image: raq,
-      techStack: ["Node.js", "Express.js", "Axios", "RESTful API", "Server-Side Rendering", "Dotenv", "OpenWeatherMap"],
+      techStack: ["Node.js", "Express.js", "Axios", "OpenWeatherMap API", "REST API", "SSR", "Dotenv"],
       metrics: "Live REST API Ingestion • Dynamic Server-Side HTML Rendering",
       highlights: [
         "Architected asynchronous Promise-based API hydration using Axios with automatic metric unit conversion.",
@@ -170,7 +170,7 @@ app.listen(port, () => {
       appType: "todo",
       description: "Full-cycle RESTful task management microservice engineered with Express.js and Node.js. Delivers deterministic CRUD endpoints (Create, Read, Update, Delete), strict HTTP status code semantics (200, 201, 400, 404), JSON body parsing, and route parameter validation.",
       image: ghb,
-      techStack: ["Node.js", "Express.js", "REST APIs", "CRUD Operations", "Body-Parser", "JSON Protocol", "Microservices"],
+      techStack: ["Node.js", "Express.js", "REST APIs", "CRUD Operations", "Body-Parser", "JSON Middleware", "Microservices"],
       metrics: "100% REST Compliance • Strict Status Code Contract (200, 201, 400, 404)",
       highlights: [
         "Engineered RESTful endpoints supporting parameterized route mutations (GET, POST, PUT, DELETE /todos/:id).",
@@ -242,7 +242,7 @@ app.listen(port, () => {
       appType: "chat",
       description: "Low-latency real-time communication platform powered by Node.js, Express, and Socket.IO. Implements full-duplex WebSocket channels, bi-directional event emission pipelines, active connection lifecycle handling, and instant broadcast synchronization.",
       image: water,
-      techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven", "HTML5 / DOM", "Real-Time Sync"],
+      techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven", "JavaScript", "HTML5"],
       metrics: "Sub-15ms Latency • Bi-Directional Full-Duplex Broadcasting",
       highlights: [
         "Architected an event-driven WebSocket communication layer using Socket.IO for low-latency bi-directional messaging.",
