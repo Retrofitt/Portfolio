@@ -126,9 +126,9 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
       >
         <img
           src={photo.image}
-          alt={photo.alt || photo.title}
+          alt={photo.alt || "Photography item"}
           style={{
-            maxHeight: "75vh",
+            maxHeight: "80vh",
             width: "auto",
             objectFit: "contain",
             borderRadius: "0.75rem",
@@ -136,13 +136,6 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
             boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.9)"
           }}
         />
-
-        {/* Caption */}
-        <div className="mt-4 text-center">
-          <h4 className="text-base font-bold text-white mb-0.5">
-            {photo.title || "Visual Artistry"}
-          </h4>
-        </div>
       </div>
     </div>
   );

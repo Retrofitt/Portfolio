@@ -78,7 +78,7 @@ export default function Photography() {
             >
               <img
                 src={photo.image}
-                alt={photo.alt || photo.title}
+                alt={photo.alt || "Photography item"}
                 loading="lazy"
                 className="w-full h-full"
                 style={{
@@ -86,22 +86,9 @@ export default function Photography() {
                   display: "block",
                   transition: "transform 0.5s ease"
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.08)")}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.06)")}
                 onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
               />
-
-              {/* Gradient & Hover Caption */}
-              <div
-                className="absolute inset-0 flex flex-col justify-end p-4 transition-opacity duration-300"
-                style={{
-                  background: "linear-gradient(to top, rgba(5, 7, 12, 0.92) 0%, rgba(5, 7, 12, 0.2) 60%, transparent 100%)",
-                  pointerEvents: "none"
-                }}
-              >
-                <p className="text-sm font-bold text-white leading-tight">
-                  {photo.title || "Capture View"}
-                </p>
-              </div>
             </div>
           ))}
         </div>
