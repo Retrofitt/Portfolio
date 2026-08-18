@@ -48,7 +48,7 @@ Web Developer and Software Engineer with 4+ years of professional experience bui
 #### 3. Underdog Devs | Remote
 **Frontend Software Engineer & Mentee (BloomTech Partnership)** | *November 2021 — December 2021*
 - Partnered through BloomTech to gain hands-on field experience building web applications under senior mentorship.
-
+- Built UI components, navigation sidebars, and modal dialogs for open-source Underdog Devs platform in React.
 - Participated in 1:1 pair programming, active code reviews, and collaborative engineering sprints.
 
 #### 4. BloomTech (FKA Lambda School) | Remote

@@ -4,10 +4,13 @@
     "role": "Full-Stack Web Developer & Frontend Engineer",
     "statusBadge": "Based in Long Beach, CA • Open to Hybrid & Remote Roles",
     "location": "Long Beach, CA",
-    "phoneNote": "Phone number available upon request",
+    "phoneNote": "Available upon request",
     "email": "rafaelmendozajr94.coding@gmail.com",
+    "github": "https://github.com/Retrofitt",
+    "linkedin": "https://www.linkedin.com/in/rafael-mendoza-webdev/",
+    "portfolio": "https://retrofitt.github.io/Portfolio",
     "headline": "Building Clean Web Applications, Custom Frontends & Reliable Web Solutions",
-    "bioLead": "Software engineer with 4+ years of professional experience building and maintaining web applications for clients. Focused on JavaScript, HTML, CSS, WordPress, PHP, React, and Node.js.",
+    "bioLead": "Web Developer and Software Engineer with 4+ years of professional experience building and maintaining client websites and web applications. Proficient in HTML, CSS, JavaScript, WordPress, PHP, React.js, and Node.js. Experienced in developing custom WordPress themes, responsive UI components, and RESTful APIs with a strong focus on clean code, site performance, and on-time project delivery.",
     "aboutStory1": "I'm a web developer based in Long Beach, California with over 4 years of experience building and maintaining client websites at Doctor Genius and through freelance projects. My primary work centers around modern JavaScript, HTML5, CSS3, custom WordPress themes, and PHP backend logic, where I focus on delivering clean code, reliable site performance, and on-time launches.",
     "aboutStory2": "I enjoy both sides of development — crafting clean, responsive user interfaces and building straightforward backend APIs and integrations. When I'm not coding, I pursue landscape and street photography, which gives me an appreciation for clean layout, visual balance, and attention to detail.",
     "disciplines": [
@@ -31,21 +34,112 @@
     { "name": "LinkedIn", "url": "https://www.linkedin.com/in/rafael-mendoza-webdev/", "icon": "linkedin" },
     { "name": "Email", "url": "mailto:rafaelmendozajr94.coding@gmail.com", "icon": "email" }
   ],
+  "skills": {
+    "Frontend": [
+      "JavaScript (ES6+)",
+      "React.js",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "WordPress Theme Development",
+      "Redux",
+      "Context API",
+      "Responsive UI Design",
+      "Axios",
+      "SCSS"
+    ],
+    "Backend & APIs": [
+      "PHP",
+      "Node.js",
+      "Express.js",
+      "RESTful APIs",
+      "WebSockets (Socket.IO)",
+      "PostgreSQL",
+      "SQL",
+      "Server-Side Rendering (SSR)"
+    ],
+    "Tools & Workflow": [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Vercel",
+      "Docker",
+      "NPM",
+      "Figma",
+      "Agile/Scrum",
+      "Debugging",
+      "Web Performance & SEO"
+    ]
+  },
   "experience": [
+    {
+      "id": "exp-1",
+      "role": "Software Engineer / Web Developer",
+      "company": "Doctor Genius",
+      "period": "March 2022 — Present",
+      "location": "Irvine, CA",
+      "highlights": [
+        "Built and maintained client websites on WordPress using HTML, CSS, JavaScript, PHP, and custom page templates.",
+        "Developed custom frontend components and layout modifications tailored to specific client requests and brand guides.",
+        "Managed ongoing monthly site updates and ensured consistent SEO best practices across client accounts.",
+        "Resolved cross-browser styling issues, optimized site load speeds, and improved Core Web Vitals scores."
+      ],
+      "technologies": ["WordPress", "HTML5", "CSS3", "JavaScript", "PHP", "SEO", "Core Web Vitals"]
+    },
+    {
+      "id": "exp-2",
+      "role": "Freelance Web Developer",
+      "company": "W Brand Studio",
+      "period": "January 2022 — Present",
+      "location": "Costa Mesa, CA",
+      "highlights": [
+        "Built and maintained responsive client websites and landing pages using WordPress, React, PHP, and modern CSS.",
+        "Translated Figma design mockups into fast-loading, mobile-friendly web pages and custom WordPress themes.",
+        "Integrated contact forms, third-party APIs, and automation webhooks to streamline client workflows."
+      ],
+      "technologies": ["WordPress", "React", "PHP", "JavaScript", "CSS3", "Figma", "REST APIs"]
+    },
     {
       "id": "exp-3",
       "role": "Frontend Software Engineer & Mentee",
       "company": "Underdog Devs (BloomTech Partnership)",
       "period": "November 2021 — December 2021",
       "location": "Remote",
-      "description": "Bloom Institute of Technology (then Lambda School) partnered with Underdog Devs, providing the opportunity to work under senior engineering mentorship to gain real-world field experience developing a community web application, pair programming, and shipping production code.",
       "highlights": [
-        "Built UI components, navigation sidebars, and modal dialogs for the open-source Underdog Devs platform in React.",
-        "Contributed frontend engineering to the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to support member scheduling and mentorship tracking.",
-        "Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs to filter and manage members.",
-        "Participated in active 1:1 pair programming, code reviews, and collaborative engineering sprints with industry mentors."
+        "Partnered through BloomTech to gain hands-on field experience building web applications under senior mentorship.",
+        "Built UI components, navigation sidebars, and modal dialogs for open-source Underdog Devs platform in React.",
+        "Participated in 1:1 pair programming, active code reviews, and collaborative engineering sprints."
       ],
       "technologies": ["React.js", "JavaScript", "CSS3", "Ant-Design", "Pair Programming", "Agile/Scrum", "Git"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "weather-app",
+      "title": "Weather Forecast Web App",
+      "techStack": "Node.js, Express.js, Axios, OpenWeatherMap API, Dotenv",
+      "description": "Built a weather application fetching real-time forecast data via Axios and dynamically rendering HTML templates on the server with environment variable protection."
+    },
+    {
+      "id": "todo-crud-app",
+      "title": "Todo List REST API",
+      "techStack": "Node.js, Express.js, RESTful APIs, Body-Parser, JSON",
+      "description": "Created a RESTful API supporting standard CRUD endpoints with body-parser JSON request parsing and structured HTTP error handling."
+    },
+    {
+      "id": "websocket-chat-app",
+      "title": "Real-Time Chat Application",
+      "techStack": "Node.js, Express.js, Socket.IO, WebSockets, JavaScript",
+      "description": "Engineered a real-time messaging application enabling instant bi-directional communication between multiple connected browser clients."
+    }
+  ],
+  "education": [
+    {
+      "institution": "BloomTech (FKA Lambda School)",
+      "degree": "Full-Stack Web Development Certificate",
+      "period": "June 2021 — December 2021",
+      "location": "Remote",
+      "details": "Completed 1,000+ hours of full-stack coursework covering JavaScript, React, Node.js, Express, PostgreSQL, data structures, and algorithms."
     }
   ]
 }
