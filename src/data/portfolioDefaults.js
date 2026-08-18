@@ -108,8 +108,22 @@ export const initialPortfolioData = {
       ],
       technologies: ["WordPress", "React", "PHP", "JavaScript", "CSS3", "Figma", "REST APIs"]
     },
-    {
+        {
       id: "exp-3",
+      role: "Frontend Software Engineer & Mentee",
+      company: "Underdog Devs (BloomTech Partnership)",
+      period: "November 2021 — December 2021",
+      location: "Remote",
+      description: "Bloom Institute of Technology (then Lambda School) partnered with Underdog Devs, providing the opportunity to work under senior engineering mentorship to gain real-world field experience developing a community web application, pair programming, and shipping production code.",
+      highlights: [
+        "Contributed frontend engineering to the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to support member scheduling and mentorship tracking.",
+        "Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs to filter and manage members.",
+        "Participated in active 1:1 pair programming, code reviews, and collaborative engineering sprints with industry mentors."
+      ],
+      technologies: ["React.js", "JavaScript", "CSS3", "Ant-Design", "Pair Programming", "Agile/Scrum", "Git"]
+    },
+    {
+      id: "exp-4",
       role: "Full-Stack Software Engineering Graduate",
       company: "BloomTech (FKA Lambda School)",
       period: "June 2021 — December 2021",
@@ -120,20 +134,6 @@ export const initialPortfolioData = {
         "Collaborated in cross-functional agile scrums, conducting daily standups, peer code reviews, and sprint retrospectives."
       ],
       technologies: ["React", "Redux", "Node.js", "Express", "PostgreSQL", "Git", "Jest"]
-    },
-    {
-      id: "exp-4",
-      role: "Frontend Software Engineer & Mentee",
-      company: "Underdog Devs (BloomTech Partnership)",
-      period: "2021 — 2022",
-      location: "Remote",
-      description: "Bloom Institute of Technology (then Lambda School) partnered with Underdog Devs, providing the opportunity to work under senior engineering mentorship to gain real-world field experience developing a community web application, pair programming, and shipping production code.",
-      highlights: [
-        "Contributed frontend engineering to the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to support member scheduling and mentorship tracking.",
-        "Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs to filter and manage members.",
-        "Participated in active 1:1 pair programming, code reviews, and collaborative engineering sprints with industry mentors."
-      ],
-      technologies: ["React.js", "JavaScript", "CSS3", "Ant-Design", "Pair Programming", "Agile/Scrum", "Git"]
     }
   ],
   projects: [
