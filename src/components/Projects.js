@@ -6,13 +6,13 @@ import ProjectModal from "./ProjectModal";
 function WeatherVisualPreview({ category }) {
   return (
     <div
-      className="w-full h-full p-4 flex flex-col justify-between select-none pointer-events-none"
+      className="w-full h-full p-4 flex flex-col justify-between select-none pointer-events-none box-border"
       style={{
         background: "radial-gradient(circle at top right, rgba(56, 189, 248, 0.16) 0%, rgba(6, 10, 18, 0.98) 100%)",
       }}
     >
-      {/* Top Banner Row */}
-      <div className="flex items-center justify-between gap-2">
+      {/* Top Banner Row (Exact same height across all 3 previews) */}
+      <div className="h-6 flex items-center justify-between gap-2 shrink-0">
         <span
           className="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider"
           style={{
@@ -37,7 +37,7 @@ function WeatherVisualPreview({ category }) {
       </div>
 
       {/* Center live metrics display */}
-      <div className="my-auto py-1.5 flex items-center justify-between px-1">
+      <div className="flex-1 flex items-center justify-between px-1 my-auto py-1">
         <div>
           <div className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-baseline gap-1">
             22.5<span className="text-cyan-400 text-base sm:text-lg font-bold">°C</span>
@@ -50,8 +50,8 @@ function WeatherVisualPreview({ category }) {
         </div>
       </div>
 
-      {/* Bottom protocol pill */}
-      <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-2 border-t border-white/5">
+      {/* Bottom protocol pill (Exact same height across all 3 previews) */}
+      <div className="h-6 flex items-center justify-between text-[10px] font-mono text-slate-400 pt-2 border-t border-white/5 shrink-0">
         <span className="flex items-center gap-1.5 text-cyan-300 font-semibold truncate">
           <span>⚡</span> GET /?city=New+York
         </span>
@@ -67,13 +67,13 @@ function WeatherVisualPreview({ category }) {
 function TodoVisualPreview({ category }) {
   return (
     <div
-      className="w-full h-full p-4 flex flex-col justify-between select-none pointer-events-none"
+      className="w-full h-full p-4 flex flex-col justify-between select-none pointer-events-none box-border"
       style={{
         background: "radial-gradient(circle at top right, rgba(16, 185, 129, 0.15) 0%, rgba(6, 12, 10, 0.98) 100%)",
       }}
     >
-      {/* Top Banner Row */}
-      <div className="flex items-center justify-between gap-2">
+      {/* Top Banner Row (Exact same height across all 3 previews) */}
+      <div className="h-6 flex items-center justify-between gap-2 shrink-0">
         <span
           className="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider"
           style={{
@@ -98,14 +98,14 @@ function TodoVisualPreview({ category }) {
       </div>
 
       {/* Center mock tasks */}
-      <div className="my-auto space-y-1.5 py-1">
-        <div className="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-900/80 border border-white/5 text-[11px]">
+      <div className="flex-1 flex flex-col justify-center space-y-1.5 px-0.5 my-auto py-1">
+        <div className="flex items-center justify-between px-2.5 py-1 rounded-lg bg-slate-900/80 border border-white/5 text-[11px]">
           <span className="text-slate-200 flex items-center gap-2 truncate">
             <span className="text-emerald-400 font-bold">✓</span> POST /todos → 201 Created
           </span>
           <span className="font-mono text-[10px] text-slate-500 shrink-0">#0</span>
         </div>
-        <div className="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-900/80 border border-white/5 text-[11px]">
+        <div className="flex items-center justify-between px-2.5 py-1 rounded-lg bg-slate-900/80 border border-white/5 text-[11px]">
           <span className="text-slate-200 flex items-center gap-2 truncate">
             <span className="text-cyan-400 font-bold">●</span> PUT /todos/:id → 200 OK
           </span>
@@ -113,8 +113,8 @@ function TodoVisualPreview({ category }) {
         </div>
       </div>
 
-      {/* Bottom protocol pill */}
-      <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-2 border-t border-white/5">
+      {/* Bottom protocol pill (Exact same height across all 3 previews) */}
+      <div className="h-6 flex items-center justify-between text-[10px] font-mono text-slate-400 pt-2 border-t border-white/5 shrink-0">
         <span className="flex items-center gap-1.5 text-emerald-300 font-semibold truncate">
           <span>⚡</span> Body-Parser JSON
         </span>
@@ -130,13 +130,13 @@ function TodoVisualPreview({ category }) {
 function ChatVisualPreview({ category }) {
   return (
     <div
-      className="w-full h-full p-4 flex flex-col justify-between select-none pointer-events-none"
+      className="w-full h-full p-4 flex flex-col justify-between select-none pointer-events-none box-border"
       style={{
         background: "radial-gradient(circle at top right, rgba(168, 85, 247, 0.16) 0%, rgba(10, 6, 18, 0.98) 100%)",
       }}
     >
-      {/* Top Banner Row */}
-      <div className="flex items-center justify-between gap-2">
+      {/* Top Banner Row (Exact same height across all 3 previews) */}
+      <div className="h-6 flex items-center justify-between gap-2 shrink-0">
         <span
           className="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider"
           style={{
@@ -161,7 +161,7 @@ function ChatVisualPreview({ category }) {
       </div>
 
       {/* Center chat bubbles */}
-      <div className="my-auto space-y-1.5 py-1 text-[11px]">
+      <div className="flex-1 flex flex-col justify-center space-y-1.5 px-0.5 my-auto py-1 text-[11px]">
         <div className="flex justify-start">
           <div className="bg-slate-800/90 text-slate-200 px-2.5 py-1 rounded-xl rounded-tl-none border border-white/5 max-w-[85%] truncate">
             <span className="text-[9px] font-bold text-purple-400 block font-mono">Client A</span>
@@ -176,8 +176,8 @@ function ChatVisualPreview({ category }) {
         </div>
       </div>
 
-      {/* Bottom protocol pill */}
-      <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-2 border-t border-white/5">
+      {/* Bottom protocol pill (Exact same height across all 3 previews) */}
+      <div className="h-6 flex items-center justify-between text-[10px] font-mono text-slate-400 pt-2 border-t border-white/5 shrink-0">
         <span className="flex items-center gap-1.5 text-purple-300 font-semibold truncate">
           <span>⚡</span> wss://socket.io:3002
         </span>
@@ -272,38 +272,38 @@ export default function Projects() {
           )}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {/* Projects Grid: Equal Box Heights with Grid stretch */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="glass-card rounded-2xl overflow-hidden flex flex-col justify-between w-full"
+              className="glass-card rounded-2xl overflow-hidden flex flex-col justify-between h-full w-full"
               style={{
                 background: "rgba(11, 14, 22, 0.85)",
                 border: "1px solid rgba(255, 255, 255, 0.08)",
                 boxShadow: "0 16px 36px -10px rgba(0, 0, 0, 0.8)",
               }}
             >
-              {/* Aesthetic Non-Interactive Component Preview Banner */}
+              {/* Aesthetic Non-Interactive Component Preview Banner: Exactly Equal Heights (h-52) */}
               <div
-                className="relative h-48 sm:h-52 w-full overflow-hidden border-b border-white/10 shrink-0"
+                className="relative h-52 w-full overflow-hidden border-b border-white/10 shrink-0"
                 style={{ backgroundColor: "#020305" }}
               >
                 {renderProjectVisual(project)}
               </div>
 
-              {/* Card Details */}
+              {/* Card Details: Continuous Vertical Harmony & Equal Baseline Alignment */}
               <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
-                <div>
-                  {/* Title (Above CTA Button) */}
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-3.5 break-words">
+                <div className="flex-1 flex flex-col">
+                  {/* Title (Aligned baseline with min-height) */}
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-3.5 min-h-[3.5rem] flex items-start break-words">
                     {project.title}
                   </h3>
 
-                  {/* Single CTA Button to Open Modal */}
+                  {/* Single CTA Button to Open Modal (Identical vertical alignment across all cards) */}
                   <button
                     onClick={() => handleOpenModal(project)}
-                    className="w-full mb-4 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 tracking-wide transition-all shadow-md"
+                    className="w-full mb-4 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 tracking-wide transition-all shadow-md shrink-0"
                     style={{
                       background: "linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(56, 189, 248, 0.08) 100%)",
                       border: "1px solid rgba(56, 189, 248, 0.4)",
@@ -318,17 +318,18 @@ export default function Projects() {
                     </svg>
                   </button>
 
-                  {/* Small Description (Below CTA button, containing stack & recruiter buzzwords) */}
-                  <p className="text-xs sm:text-sm text-slate-300 mb-5 leading-relaxed break-words">
+                  {/* Small Description (Expands flexibly to balance card height) */}
+                  <p className="text-xs sm:text-sm text-slate-300 mb-5 leading-relaxed break-words flex-1">
                     {project.description}
                   </p>
                 </div>
 
-                <div>
-                  {/* Performance / Metric Highlight */}
+                {/* Bottom Segment: Metrics & Tech Stack Docked Together */}
+                <div className="shrink-0 pt-2">
+                  {/* Performance / Metric Highlight (Uniform height) */}
                   {project.metrics && (
                     <div
-                      className="py-2 px-3 rounded-lg text-xs font-medium mb-4 flex items-center gap-2"
+                      className="py-2 px-3 rounded-lg text-xs font-medium mb-4 flex items-center gap-2 min-h-[2.25rem]"
                       style={{
                         background: "rgba(6, 8, 14, 0.9)",
                         border: "1px solid rgba(56, 189, 248, 0.15)",
@@ -340,9 +341,9 @@ export default function Projects() {
                     </div>
                   )}
 
-                  {/* Verified Stack Tags */}
+                  {/* Verified Stack Tags (Uniform min-height) */}
                   <div
-                    className="flex flex-wrap gap-1.5 pt-3.5"
+                    className="flex flex-wrap gap-1.5 pt-3.5 min-h-[3.25rem] items-center"
                     style={{ borderTop: "1px solid rgba(255, 255, 255, 0.06)" }}
                   >
                     {(project.techStack || []).map((tech) => (
