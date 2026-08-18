@@ -266,82 +266,92 @@ app.listen(port, () => {
 });`
     },
     {
-      id: "websocket-chat-app",
-      title: "Real-Time Chat Application",
-      category: "WebSockets",
+      id: "clicker-game",
+      title: "Multiplayer Real-Time Clicker Game",
+      category: "WebSockets / Full-Stack",
       featured: true,
-      appType: "chat",
-      description: "A real-time messaging application built with Node.js, Express, and Socket.IO. Enables instant, bi-directional communication between connected browser clients.",
+      appType: "clicker",
+      description: "A real-time multiplayer clicker game built with React, Node.js, and Socket.IO. Features instant bi-directional click synchronization, automated score degradation timers upon inactivity, and live leaderboard API integration.",
       image: null,
-      techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven", "JavaScript", "HTML5"],
-      metrics: "Socket.IO WebSockets • Real-Time Event Broadcasting",
+      techStack: ["React.js", "Node.js", "Express.js", "Socket.IO", "WebSockets", "REST APIs", "Event-Driven"],
+      metrics: "Socket.IO WebSockets • Real-Time Leaderboard & Score Decay",
       highlights: [
-        "Set up Socket.IO WebSocket connections for instant client-to-server and server-to-client messaging.",
-        "Broadcasted new chat messages immediately to all active users without page reloads.",
-        "Handled client connection and disconnection lifecycle events gracefully."
+        "Engineered real-time client-to-server click synchronization using Socket.IO events (send_click / receive_click).",
+        "Implemented an active countdown timer that triggers score decay upon user inactivity to encourage rapid gameplay.",
+        "Built an asynchronous REST API endpoint (/api/leaderboard) to fetch and broadcast real-time player leaderboards."
       ],
-      codeSnippet: `// ChatApp.js
-const express = require('express');
-const socketIO = require('socket.io');
-require("dotenv").config();
-const app = express();
+      codeSnippet: `// ClickerGame.jsx
+import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
 
-const server = app.listen(process.env.PORT || 3002, () => {
-    console.log(\`Chat app listening at http://localhost:\${process.env.PORT}\`);
-});
+const ClickerGame = () => {
+  const [score, setScore] = useState(0);
+  const [timer, setTimer] = useState(null);
+  const [username, setUsername] = useState('User' + Math.floor(Math.random() * 100));
+  const [leaderboard, setLeaderboard] = useState([]);
 
-app.use(express.static('public'));
+  useEffect(() => {
+    const socket = io('http://localhost:3002');
 
-const io = socketIO(server);
-
-io.on('connection', (socket) => {
-    console.log('New client connected');
-
-    socket.on('disconnect', () => {
-        console.log('Client disconnected');
+    socket.on('receive_click', (data) => {
+      fetchLeaderboard();
     });
 
-    socket.on('send_message', (data) => {
-        io.emit('receive_message', data);
-    });
-});
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
-// public/index.html
-/*
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Simple Chat</title>
-</head>
-<body>
-  <h1>Chat App</h1>
-  <input type="text" id="messageInput" placeholder="Type a message...">
-  <button id="sendButton">Send</button>
-  <ul id="messagesList"></ul>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const socket = io();
-    const input = document.getElementById('messageInput');
-    const button = document.getElementById('sendButton');
-    const list = document.getElementById('messagesList');
+  const handleClick = () => {
+    setScore((prev) => prev + 1);
+    resetTimer();
 
-    button.addEventListener('click', () => {
-      if (input.value.trim()) {
-        socket.emit('send_message', { message: input.value });
-        input.value = '';
-      }
-    });
+    socket.emit('send_click', { username, score: score + 1 });
+  };
 
-    socket.on('receive_message', (data) => {
-      const li = document.createElement('li');
-      li.textContent = data.message;
-      list.appendChild(li);
-    });
-  </script>
-</body>
-</html>
-*/`
+  const resetTimer = () => {
+    clearTimeout(timer);
+    setTimer(
+      setTimeout(() => {
+        setScore((prev) => Math.max(0, prev - 1));
+        resetTimer();
+      }, 1000)
+    );
+  };
+
+  useEffect(() => {
+    fetchLeaderboard();
+  }, [score]);
+
+  const fetchLeaderboard = async () => {
+    try {
+      const response = await fetch('/api/leaderboard');
+      const data = await response.json();
+      setLeaderboard(data);
+    } catch (error) {
+      console.error('Error fetching leaderboard:', error);
+    }
+  };
+
+  return (
+    <div className="clicker-game-container">
+      <h2>Multiplayer Clicker Game</h2>
+      <div className="player-badge">Player: {username}</div>
+      <div className="score-display">Score: {score}</div>
+      <button className="click-btn" onClick={handleClick}>⚡ Click Me!</button>
+      <div className="leaderboard">
+        <h3>Top Players</h3>
+        <ul>
+          {leaderboard.map((player, idx) => (
+            <li key={idx}>{player.username}: {player.score} pts</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default ClickerGame;`
     }
   ],
   photos: [
@@ -356,7 +366,7 @@ io.on('connection', (socket) => {
   ]
 };
 
-const STORAGE_KEY = "retro_portfolio_data_v15";
+const STORAGE_KEY = "retro_portfolio_data_v16";
 const AUTH_KEY = "retro_cms_auth_session";
 
 const PortfolioContext = createContext(null);

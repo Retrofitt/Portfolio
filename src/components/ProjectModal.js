@@ -254,27 +254,125 @@ function TodoAppDemo() {
   );
 }
 
-// Interactive Chat App Component
-function ChatAppDemo() {
-  const [messages, setMessages] = useState([
-    { id: 1, sender: "System", text: "WebSocket connection established.", time: "10:00 AM" },
-    { id: 2, sender: "Client A", text: "Hello! Testing real-time broadcast.", time: "10:01 AM" },
-    { id: 3, sender: "Client B", text: "Message received in real-time!", time: "10:01 AM" },
-  ]);
-  const [inputMessage, setInputMessage] = useState("");
-  const [activeUser, setActiveUser] = useState("Client A");
+// Interactive Multiplayer Clicker Game Component
+function ClickerGameDemo() {
+  const [score, setScore] = useState(0);
+  const [username, setUsername] = useState(() => "Player_" + Math.floor(10 + Math.random() * 90));
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [tempName, setTempName] = useState("");
+  const [combo, setCombo] = useState(0);
+  const [clicksPerSec, setClicksPerSec] = useState(0);
+  const [lastClickTime, setLastClickTime] = useState(Date.now());
+  const [decayActive, setDecayActive] = useState(false);
+  const [clickEffect, setClickEffect] = useState(false);
 
-  const handleSendMessage = (e) => {
+  // Simulated Live Leaderboard with AI players
+  const [leaderboard, setLeaderboard] = useState([
+    { username: "Retrofitt", score: 85, badge: "🥇" },
+    { username: "CyberPulse", score: 62, badge: "🥈" },
+    { username: "NeonKnight", score: 44, badge: "🥉" },
+    { username: "DevMentee", score: 28, badge: "4" },
+  ]);
+
+  // Live Socket.IO Packet Log
+  const [socketLogs, setSocketLogs] = useState([
+    { id: 1, text: "WSS connected to :3002 • Room 'multiplayer-clicker'", type: "system" },
+    { id: 2, text: "REST GET /api/leaderboard -> 200 OK (4 players loaded)", type: "api" },
+  ]);
+
+  // Score Decay Timer upon Inactivity (Decays by 1 every second after 1.5s idle)
+  useEffect(() => {
+    const decayInterval = setInterval(() => {
+      const timeSinceClick = Date.now() - lastClickTime;
+      if (timeSinceClick > 1500) {
+        setDecayActive(true);
+        setCombo(0);
+        setClicksPerSec(0);
+        setScore((prev) => {
+          if (prev > 0) {
+            return prev - 1;
+          }
+          setDecayActive(false);
+          return 0;
+        });
+      } else {
+        setDecayActive(false);
+      }
+    }, 1000);
+
+    return () => clearInterval(decayInterval);
+  }, [lastClickTime]);
+
+  // Sync Current User Score to Leaderboard
+  useEffect(() => {
+    setLeaderboard((prev) => {
+      const exists = prev.some((p) => p.username === username);
+      let updated;
+      if (exists) {
+        updated = prev.map((p) => (p.username === username ? { ...p, score } : p));
+      } else {
+        updated = [...prev, { username, score, badge: "" }];
+      }
+      // Sort descending
+      return updated.sort((a, b) => b.score - a.score).map((item, idx) => ({
+        ...item,
+        badge: idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}`,
+      }));
+    });
+  }, [score, username]);
+
+  // Simulate Occasional Multiplayer Socket Events from Other Active Players
+  useEffect(() => {
+    const opponentInterval = setInterval(() => {
+      const opponents = ["Retrofitt", "CyberPulse", "NeonKnight", "DevMentee"];
+      const randomOpponent = opponents[Math.floor(Math.random() * opponents.length)];
+      if (randomOpponent !== username) {
+        setLeaderboard((prev) =>
+          prev.map((p) => (p.username === randomOpponent ? { ...p, score: p.score + 1 } : p))
+        );
+        setSocketLogs((prev) => [
+          ...prev.slice(-7),
+          {
+            id: Date.now(),
+            text: `[WSS IN] receive_click from '${randomOpponent}' • Leaderboard refreshed`,
+            type: "opponent",
+          },
+        ]);
+      }
+    }, 4000);
+
+    return () => clearInterval(opponentInterval);
+  }, [username]);
+
+  // Handle Main Click Event
+  const handleClick = () => {
+    const now = Date.now();
+    setLastClickTime(now);
+    setScore((prev) => prev + 1);
+    setCombo((prev) => prev + 1);
+    setClickEffect(true);
+    setTimeout(() => setClickEffect(false), 120);
+
+    // Calculate approximate click speed
+    setClicksPerSec((prev) => Math.min(15, prev + 1));
+
+    // Emit simulated socket packet
+    setSocketLogs((prev) => [
+      ...prev.slice(-7),
+      {
+        id: Date.now(),
+        text: `[WSS OUT] send_click { user: '${username}', score: ${score + 1} }`,
+        type: "client",
+      },
+    ]);
+  };
+
+  const handleSaveName = (e) => {
     e.preventDefault();
-    if (!inputMessage.trim()) return;
-    const newMsg = {
-      id: Date.now(),
-      sender: activeUser,
-      text: inputMessage.trim(),
-      time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-    };
-    setMessages((prev) => [...prev, newMsg]);
-    setInputMessage("");
+    if (tempName.trim()) {
+      setUsername(tempName.trim());
+    }
+    setIsEditingName(false);
   };
 
   return (
@@ -282,91 +380,217 @@ function ChatAppDemo() {
       className="p-5 sm:p-7 rounded-2xl"
       style={{
         background: "radial-gradient(circle at top left, rgba(217, 70, 239, 0.09), rgba(11, 15, 23, 0.98))",
-        border: "1px solid rgba(217, 70, 239, 0.22)",
+        border: "1px solid rgba(217, 70, 239, 0.25)",
       }}
     >
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
-        <span className="text-xs font-bold uppercase tracking-wider text-purple-400 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
-          Interactive Demo
+      {/* Top Header Controls */}
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
+        <span className="text-xs font-bold uppercase tracking-wider text-fuchsia-400 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-pulse"></span>
+          Live Multiplayer Sandbox
         </span>
-        <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10">
-          Port :3002
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2.5 py-0.5 rounded border border-white/10">
+            Socket.IO Port :3002
+          </span>
+          <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
+            ● 4 Connected
+          </span>
+        </div>
       </div>
 
-      {/* User Switcher */}
-      <div className="flex items-center gap-2.5 mb-4">
-        <span className="text-xs text-slate-400 font-semibold">Active Client:</span>
-        {["Client A", "Client B"].map((u) => (
-          <button
-            key={u}
-            onClick={() => setActiveUser(u)}
-            className="px-3 py-1 rounded-full text-xs font-bold transition-all"
+      {/* Main Game Interface: 2-Column Responsive Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Left Column: Interactive Clicker Stage (7 cols) */}
+        <div className="lg:col-span-7 flex flex-col justify-between space-y-5">
+          {/* Player Profile & Active Status */}
+          <div
+            className="p-4 rounded-xl flex items-center justify-between gap-3"
+            style={{ background: "#06080e", border: "1px solid rgba(255, 255, 255, 0.08)" }}
+          >
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs"
+                style={{ background: "linear-gradient(135deg, #d946ef, #a855f7)", color: "#050608" }}
+              >
+                🎮
+              </div>
+              <div className="min-w-0">
+                {isEditingName ? (
+                  <form onSubmit={handleSaveName} className="flex items-center gap-1.5">
+                    <input
+                      type="text"
+                      value={tempName}
+                      onChange={(e) => setTempName(e.target.value)}
+                      className="px-2 py-0.5 rounded bg-slate-900 border border-fuchsia-400 text-white text-xs"
+                      autoFocus
+                    />
+                    <button type="submit" className="px-2 py-0.5 bg-fuchsia-500 text-slate-950 rounded text-xs font-bold">
+                      Save
+                    </button>
+                  </form>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-extrabold text-white truncate">{username}</span>
+                    <button
+                      onClick={() => {
+                        setTempName(username);
+                        setIsEditingName(true);
+                      }}
+                      className="text-[10px] text-fuchsia-400 hover:text-fuchsia-300 underline cursor-pointer"
+                    >
+                      (edit)
+                    </button>
+                  </div>
+                )}
+                <span className="text-[10px] text-slate-400 font-mono">Status: Connected</span>
+              </div>
+            </div>
+
+            {/* Inactivity Decay Indicator */}
+            <div className="flex items-center gap-1.5 text-[11px] font-mono">
+              <span
+                className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                  decayActive
+                    ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                    : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                }`}
+              >
+                {decayActive ? "⚠️ Score Decay Active" : "⚡ Clicker Ready"}
+              </span>
+            </div>
+          </div>
+
+          {/* Central Clicker Hero Box */}
+          <div
+            className="p-6 rounded-2xl flex flex-col items-center justify-center text-center relative overflow-hidden"
             style={{
-              background: activeUser === u ? "#a855f7" : "rgba(255, 255, 255, 0.06)",
-              color: activeUser === u ? "#050608" : "#cbd5e1",
-              border: activeUser === u ? "1px solid #a855f7" : "1px solid rgba(255, 255, 255, 0.1)",
-              cursor: "pointer",
+              background: "linear-gradient(180deg, rgba(20, 14, 30, 0.95) 0%, rgba(10, 8, 18, 0.98) 100%)",
+              border: "1px solid rgba(217, 70, 239, 0.25)",
+              boxShadow: clickEffect
+                ? "0 0 35px rgba(217, 70, 239, 0.4), inset 0 0 20px rgba(217, 70, 239, 0.2)"
+                : "0 10px 30px rgba(0, 0, 0, 0.6)",
+              transition: "all 0.15s ease",
             }}
           >
-            {u}
-          </button>
-        ))}
-      </div>
+            {/* Score Display */}
+            <span className="text-[11px] font-bold uppercase tracking-widest text-fuchsia-400 mb-1">
+              Current Player Score
+            </span>
+            <div
+              className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-2 select-none"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                textShadow: "0 0 25px rgba(217, 70, 239, 0.5)",
+              }}
+            >
+              {score} <span className="text-xl text-fuchsia-400 font-normal">pts</span>
+            </div>
 
-      {/* Message Feed */}
-      <div
-        className="p-4 rounded-xl space-y-2.5 max-h-52 overflow-y-auto mb-4"
-        style={{
-          background: "#06080e",
-          border: "1px solid rgba(255, 255, 255, 0.08)",
-        }}
-      >
-        {messages.map((m) => (
-          <div
-            key={m.id}
-            className={`flex flex-col ${m.sender === "System" ? "items-center" : m.sender === activeUser ? "items-end" : "items-start"}`}
-          >
-            {m.sender === "System" ? (
-              <span className="text-xs text-slate-500 font-mono py-1">{m.text}</span>
-            ) : (
-              <div
-                className="max-w-[85%] p-3 rounded-xl text-xs sm:text-sm"
-                style={{
-                  background: m.sender === activeUser ? "rgba(168, 85, 247, 0.22)" : "rgba(30, 41, 59, 0.65)",
-                  border: m.sender === activeUser ? "1px solid rgba(168, 85, 247, 0.4)" : "1px solid rgba(255, 255, 255, 0.08)",
-                  color: "#f8fafc",
-                }}
-              >
-                <div className="flex items-center justify-between gap-3 text-[11px] mb-1 opacity-75">
-                  <span className="font-bold">{m.sender}</span>
-                  <span className="font-mono">{m.time}</span>
-                </div>
-                <p className="leading-relaxed">{m.text}</p>
-              </div>
-            )}
+            {/* Combo & Speed Badges */}
+            <div className="flex items-center gap-2 mb-6">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-fuchsia-950/80 text-fuchsia-300 border border-fuchsia-500/30">
+                Combo: x{combo}
+              </span>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono text-slate-400 bg-slate-900 border border-white/10">
+                Speed: {clicksPerSec} cps
+              </span>
+            </div>
+
+            {/* Massive Tactile Interactive Click Button */}
+            <button
+              onClick={handleClick}
+              className="w-44 h-44 rounded-full font-extrabold text-white flex flex-col items-center justify-center gap-1 shadow-2xl transition-all select-none hover:scale-105 active:scale-95"
+              style={{
+                background: "linear-gradient(135deg, #d946ef 0%, #a855f7 50%, #7c3aed 100%)",
+                boxShadow: clickEffect
+                  ? "0 0 50px rgba(217, 70, 239, 0.8), 0 0 20px #ffffff"
+                  : "0 15px 35px rgba(217, 70, 239, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4)",
+                border: "3px solid rgba(255, 255, 255, 0.3)",
+                cursor: "pointer",
+              }}
+            >
+              <span className="text-3xl">⚡</span>
+              <span className="text-base tracking-wider uppercase font-black">CLICK ME!</span>
+              <span className="text-[10px] font-mono opacity-80">+1 pt / emit</span>
+            </button>
+
+            <p className="text-[11px] text-slate-400 mt-5 max-w-xs leading-relaxed">
+              Click rapidly to accumulate points! Stop clicking and your score decays by 1 pt/sec automatically.
+            </p>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Send Message Form */}
-      <form onSubmit={handleSendMessage} className="flex flex-col sm:flex-row gap-3">
-        <input
-          type="text"
-          value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)}
-          placeholder={`Type message as ${activeUser} (send_message event)...`}
-          className="flex-1 px-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-950 text-white border border-slate-700/80 focus:outline-none focus:border-purple-400 transition-colors"
-        />
-        <button
-          type="submit"
-          className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-purple-500 hover:bg-purple-400 text-slate-950 transition-all shrink-0 shadow-lg shadow-purple-500/20"
-          style={{ cursor: "pointer" }}
-        >
-          Broadcast
-        </button>
-      </form>
+        {/* Right Column: Live Leaderboard & Socket Stream (5 cols) */}
+        <div className="lg:col-span-5 flex flex-col space-y-4">
+          {/* Live Leaderboard Card */}
+          <div
+            className="p-4 rounded-xl flex-1 flex flex-col"
+            style={{ background: "#06080e", border: "1px solid rgba(255, 255, 255, 0.08)" }}
+          >
+            <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-slate-800/80">
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                <span>🏆</span> Live Leaderboard
+              </h4>
+              <span className="text-[10px] font-mono text-fuchsia-400 bg-fuchsia-950/60 px-2 py-0.5 rounded border border-fuchsia-500/20">
+                REST /api/leaderboard
+              </span>
+            </div>
+
+            {/* Players List */}
+            <div className="space-y-2 flex-1">
+              {leaderboard.map((player, idx) => {
+                const isCurrent = player.username === username;
+                return (
+                  <div
+                    key={idx}
+                    className={`flex items-center justify-between p-2.5 rounded-lg text-xs transition-all ${
+                      isCurrent
+                        ? "bg-fuchsia-500/15 border border-fuchsia-500/40 text-white font-bold"
+                        : "bg-slate-900/60 border border-white/5 text-slate-300"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <span className="text-xs font-mono w-4 text-center shrink-0">{player.badge}</span>
+                      <span className="truncate">{player.username} {isCurrent && "(You)"}</span>
+                    </div>
+                    <span className="font-mono font-bold text-fuchsia-300 shrink-0">
+                      {player.score} pts
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Socket.IO Event Packet Console */}
+          <div
+            className="p-3.5 rounded-xl font-mono text-[10px] space-y-1.5 max-h-36 overflow-y-auto"
+            style={{ background: "#040508", border: "1px solid rgba(255, 255, 255, 0.06)" }}
+          >
+            <div className="text-slate-400 font-bold uppercase tracking-wider text-[9px] pb-1 border-b border-slate-800 flex items-center justify-between">
+              <span>WSS Event Packet Stream</span>
+              <span className="text-emerald-400">● LIVE</span>
+            </div>
+            {socketLogs.map((log) => (
+              <div
+                key={log.id}
+                className={`truncate ${
+                  log.type === "client"
+                    ? "text-fuchsia-400"
+                    : log.type === "opponent"
+                    ? "text-cyan-400"
+                    : log.type === "api"
+                    ? "text-emerald-400"
+                    : "text-slate-400"
+                }`}
+              >
+                {log.text}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -579,7 +803,9 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             <div className="space-y-6">
               {project.id === "weather-app" && <WeatherAppDemo />}
               {project.id === "todo-crud-app" && <TodoAppDemo />}
-              {project.id === "websocket-chat-app" && <ChatAppDemo />}
+              {(project.id === "clicker-game" || project.appType === "clicker" || project.id === "websocket-chat-app") && (
+                <ClickerGameDemo />
+              )}
 
               {/* Stack Chips */}
               <div className="pt-2">

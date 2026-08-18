@@ -71,7 +71,7 @@ function getProjectTheme(project) {
     };
   }
   return {
-    cardClass: "project-card-chat",
+    cardClass: "project-card-clicker",
     categoryBg: "rgba(217, 70, 239, 0.14)",
     categoryColor: "#e879f9",
     categoryBorder: "rgba(217, 70, 239, 0.35)",
@@ -88,16 +88,16 @@ function getProjectTheme(project) {
     banner: {
       gradient: "radial-gradient(circle at top right, rgba(217, 70, 239, 0.18) 0%, rgba(168, 85, 247, 0.05) 60%, rgba(12, 6, 20, 0.98) 100%)",
       endpoint: "WSS /socket.io:3002",
-      status: "CONNECTED",
+      status: "LIVE MULTIPLAYER",
       statusColor: "#e879f9",
       statusBg: "rgba(217, 70, 239, 0.15)",
       statusBorder: "rgba(217, 70, 239, 0.35)",
-      primaryIcon: "⚡",
-      primaryTitle: "Live Messaging Active",
-      primaryDetail: "Bi-directional WebSocket connection",
-      logLine: "Socket.IO Server Ready • Port 3002",
+      primaryIcon: "🎮",
+      primaryTitle: "Multiplayer Click Sync Active",
+      primaryDetail: "send_click • Score Decay Engine • Leaderboard API",
+      logLine: "WSS Event: send_click • Score Decay Active • Port 3002",
       logColor: "#c084fc",
-      engine: "Node.js & Socket.IO",
+      engine: "React & Socket.IO",
       engineColor: "#e879f9",
     },
   };
