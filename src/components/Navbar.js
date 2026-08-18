@@ -260,10 +260,10 @@ export default function Navbar() {
             ))}
             <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
               <a
-                href={data.profile.resumeUrl || "/Rafael_Mendoza_Resume.pdf"}
+                href={data.profile.resumeUrl || "/Rafael_Mendoza_Resume-2608.pdf"}
                 target="_blank"
                 rel="noopener noreferrer"
-                download="Rafael_Mendoza_Resume.pdf"
+                download="Rafael_Mendoza_Resume-2608.pdf"
                 onClick={() => setMobileMenuOpen(false)}
                 className="btn-outline w-full text-center py-2.5 text-sm flex items-center justify-center gap-2"
               >

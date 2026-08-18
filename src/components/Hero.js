@@ -106,10 +106,10 @@ export default function Hero() {
           </a>
 
           <a
-            href={profile.resumeUrl || "/Rafael_Mendoza_Resume.pdf"}
+            href={profile.resumeUrl || "/Rafael_Mendoza_Resume-2608.pdf"}
             target="_blank"
             rel="noopener noreferrer"
-            download="Rafael_Mendoza_Resume.pdf"
+            download="Rafael_Mendoza_Resume-2608.pdf"
             className="btn-outline"
             style={{ padding: "0.75rem 1.25rem" }}
             title="Download PDF Resume"

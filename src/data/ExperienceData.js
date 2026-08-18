@@ -35,7 +35,7 @@ export const initialPortfolioData = {
       { label: "Core Technologies", value: "15+" },
       { label: "On-Time Milestone Rate", value: "100%" }
     ],
-    resumeUrl: "/Rafael_Mendoza_Resume.pdf"
+    resumeUrl: "/Rafael_Mendoza_Resume-2608.pdf"
   },
   socials: [
     {
@@ -356,7 +356,7 @@ io.on('connection', (socket) => {
   ]
 };
 
-const STORAGE_KEY = "retro_portfolio_data_v12";
+const STORAGE_KEY = "retro_portfolio_data_v13";
 const AUTH_KEY = "retro_cms_auth_session";
 
 const PortfolioContext = createContext(null);

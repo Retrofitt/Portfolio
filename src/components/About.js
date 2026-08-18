@@ -153,10 +153,10 @@ export default function About() {
                   </svg>
                 </a>
                 <a
-                  href={profile.resumeUrl || "/Rafael_Mendoza_Resume.pdf"}
+                  href={profile.resumeUrl || "/Rafael_Mendoza_Resume-2608.pdf"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  download="Rafael_Mendoza_Resume.pdf"
+                  download="Rafael_Mendoza_Resume-2608.pdf"
                   className="btn-outline text-xs text-center flex items-center justify-center gap-1.5"
                   style={{ padding: "0.65rem 1rem" }}
                   title="Download PDF Resume"
