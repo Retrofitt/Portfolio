@@ -123,16 +123,17 @@ export const initialPortfolioData = {
     },
     {
       id: "exp-4",
-      role: "Process Guide & Seasonal Team Lead",
-      company: "Amazon Fulfillment / Zumiez / Saddle Creek",
-      period: "2015 — 2017",
-      location: "Inland Empire, CA",
-      description: "Directed and mentored cross-functional teams under strict turnaround deadlines, standardizing operational workflows and upholding safety and quality metrics.",
+      role: "Frontend Software Engineer & Fellow",
+      company: "Underdog Devs (Project Underdog)",
+      period: "2021 — 2022",
+      location: "Remote",
+      description: "Selected for the competitive Project Underdog fellowship in partnership with Bloom Institute of Technology, collaborating with senior industry mentors and building community web applications.",
       highlights: [
-        "Led teams of associates during peak volume seasons, managing resource delegation and process throughput.",
-        "Fostered strong communication, problem-solving, and cross-departmental coordination."
+        "Engineered the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to facilitate member scheduling, 1:1 mentorship tracking, and community communication.",
+        "Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs to filter and manage members.",
+        "Participated in 40+ hours/week of rigorous pair programming, technical deep dives, and code reviews alongside engineering peers and senior mentors."
       ],
-      technologies: ["Team Leadership", "Process Optimization", "Agile Operations", "Cross-Functional Collaboration"]
+      technologies: ["React.js", "JavaScript", "CSS3", "Ant-Design", "Pair Programming", "Agile/Scrum", "Git"]
     }
   ],
   projects: [

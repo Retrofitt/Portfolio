@@ -59,9 +59,12 @@ Versatile Software Engineer with 4+ years of professional production engineering
 - Completed 1,000+ hours of intensive software engineering coursework focused on React, Redux, Node.js, Express, PostgreSQL, data structures, algorithms, and full-stack deployment.
 - Collaborated in cross-functional agile scrums, conducting daily standups, code reviews, and Git version control workflows.
 
-#### 4. Leadership & Operational Foundation (Amazon Fulfillment / Zumiez / Saddle Creek)
-**Process Guide & Seasonal Team Lead** | *2015 — 2017*
-- Directed and mentored cross-functional teams under strict operational deadlines, standardizing workflows and upholding safety and quality metrics.
+#### 4. Underdog Devs (Project Underdog) | Remote
+**Frontend Software Engineer & Fellow (Partnered with Bloom Institute of Technology)** | *2021 — 2022*
+- Selected for the competitive Project Underdog fellowship in partnership with Bloom Institute of Technology, collaborating with senior industry mentors and building community web applications.
+- Engineered the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to facilitate member scheduling, 1:1 mentorship tracking, and community communication.
+- Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs to filter and manage members.
+- Participated in 40+ hours/week of rigorous pair programming, technical deep dives, and code reviews alongside engineering peers and senior mentors.
 
 ---
 

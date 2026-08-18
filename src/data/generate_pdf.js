@@ -227,28 +227,32 @@ BT
 /F2 10.5 Tf
 0 0 0 rg
 50 212 Td
-(PRIOR LEADERSHIP & OPERATIONS) Tj
+(COMMUNITY & FELLOWSHIP EXPERIENCE) Tj
 ET
 
 BT
 /F2 9 Tf
 50 198 Td
-(Amazon Fulfillment / Zumiez / Saddle Creek - Inland Empire, CA) Tj
+(Underdog Devs / Project Underdog - Remote) Tj
 ET
 BT
 /F1 9 Tf
 420 198 Td
-(2015 - 2017) Tj
+(2021 - 2022) Tj
 ET
 BT
 /F3 8.5 Tf
 50 186 Td
-(Process Guide & Seasonal Team Lead) Tj
+(Frontend Software Engineer & Fellow (Partnered with Bloom Institute of Technology)) Tj
 ET
 BT
 /F1 8.5 Tf
 50 174 Td
-(- Led and trained cross-functional teams during peak volume operations; enforced safety protocols and streamlined process execution.) Tj
+(- Built open-source scheduling and mentorship tracking web app in React.js, JavaScript, and Ant-Design.) Tj
+50 162 Td
+(- Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs.) Tj
+50 150 Td
+(- Participated in 40+ hrs/wk of pair programming, code reviews, and technical deep-dives with senior mentors.) Tj
 ET`;
 
   const streamLength = Buffer.byteLength(contentStream, 'utf-8');
