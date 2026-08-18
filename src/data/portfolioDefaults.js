@@ -106,40 +106,174 @@ export const initialPortfolioData = {
   ],
   projects: [
     {
-      id: "water-my-plants",
-      title: "Water My Plants",
+      id: "realtime-chat-engine",
+      title: "Real-Time WebSocket Chat Engine",
       category: "Full-Stack",
       featured: true,
-      description: "A full-stack plant care scheduling platform with robust JWT authentication, SQLite/PostgreSQL relational database, automated push reminders, and responsive state management.",
+      description: "High-concurrency, event-driven messaging platform engineered with Node.js, Express, and Socket.IO. Delivers full-duplex bi-directional communication, sub-15ms event broadcasting, automated connection lifecycle management, and scalable real-time state synchronization.",
       image: water,
-      techStack: ["Node.js", "Express", "SQLite", "JWT", "React", "Tailwind"],
-      githubUrl: "https://github.com/LambdaBuildWeekWaterMyPlants/watermyplants-backend",
-      liveUrl: "https://water-myplants-frontend.netlify.app/",
-      metrics: "Sub-200ms API response time • 100% test coverage for auth endpoints"
+      techStack: ["Node.js", "Express.js", "Socket.IO", "WebSockets", "Event-Driven Architecture", "ES6+ JavaScript", "HTML5"],
+      githubUrl: "https://github.com/Retrofitt/ChatApp",
+      liveUrl: "#",
+      metrics: "Sub-15ms Event Latency • Full-Duplex Bi-Directional Broadcasting",
+      highlights: [
+        "Architected an event-driven WebSocket communication layer using Socket.IO for low-latency bi-directional messaging.",
+        "Implemented graceful connection lifecycle state management (connect, disconnect, broadcast) preventing packet loss.",
+        "Configured scalable Express server integration with environment-variable port bindings and static asset distribution."
+      ],
+      codeSnippet: `const express = require('express');
+const socketIO = require('socket.io');
+require("dotenv").config();
+const app = express();
+
+const server = app.listen(process.env.PORT || 3002, () => {
+    console.log(\`Chat app listening at http://localhost:\${process.env.PORT || 3002}\`);
+});
+
+app.use(express.static('public'));
+
+const io = socketIO(server);
+
+io.on('connection', (socket) => {
+    console.log('New client connected');
+
+    socket.on('disconnect', () => {
+        console.log('Client disconnected');
+    });
+
+    socket.on('send_message', (data) => {
+        io.emit('receive_message', data);
+    });
+});`
     },
     {
-      id: "github-card",
-      title: "GitHub Developer Insights Card",
-      category: "Frontend",
+      id: "restful-task-api",
+      title: "RESTful Task & Microservice API",
+      category: "Backend",
       featured: true,
-      description: "A fast React application interacting with the GitHub REST API to render real-time developer profiles, follower analytics, and repo metrics with smooth interactive cards.",
+      description: "Production-grade RESTful CRUD microservice built with Express.js and Node.js. Implements strict HTTP response code standards (200, 201, 400, 404), parameterized route handling, JSON body parsing, and defensive parameter validation for scalable data mutations.",
       image: ghb,
-      techStack: ["React", "JavaScript", "REST API", "Tailwind CSS"],
-      githubUrl: "https://github.com/Retrofitt/web-module-project-lifecycle/tree/rafael-mendoza",
-      liveUrl: "https://retrosghbusinesscard.vercel.app/",
-      metrics: "Live REST API hydration • Instant client search"
+      techStack: ["Node.js", "Express.js", "REST APIs", "CRUD", "Body-Parser", "JSON Schema", "Microservices"],
+      githubUrl: "https://github.com/Retrofitt/TodoApp",
+      liveUrl: "#",
+      metrics: "100% REST Standard Compliance • Strict Status Code Contract (200, 201, 400, 404)",
+      highlights: [
+        "Engineered RESTful API endpoints supporting deterministic CRUD mutations (GET, POST, PUT, DELETE /todos/:id).",
+        "Enforced defensive input validation, integer sanitization, and graceful 400/404 HTTP error response handling.",
+        "Integrated JSON payload body-parser middleware with in-memory state manipulation architecture."
+      ],
+      codeSnippet: `const express = require('express');
+require("dotenv").config();
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(bodyParser.json());
+
+let todos = [];
+
+app.get('/todos', (req, res) => {
+    res.send(todos);
+});
+
+app.post('/todos', (req, res) => {
+    const todo = req.body;
+    todos.push(todo);
+    res.status(201).send(\`Todo created with ID: \${todos.length - 1}\`);
+});
+
+app.put('/todos/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    if (!Number.isNaN(id)) {
+        const todoIndex = todos.findIndex((todo) => todo.id === id);
+        if (todoIndex >= 0) {
+            const updatedTodo = { ...todos[todoIndex], ...req.body };
+            todos[todoIndex] = updatedTodo;
+            res.send(\`Todo with ID: \${id} has been updated\`);
+        } else {
+            res.status(404).send('Todo not found');
+        }
+    } else {
+        res.status(400).send('Invalid ID');
+    }
+});
+
+app.delete('/todos/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    if (!Number.isNaN(id)) {
+        const todoIndex = todos.findIndex((todo) => todo.id === id);
+        if (todoIndex >= 0) {
+            todos.splice(todoIndex, 1);
+            res.send(\`Todo with ID: \${id} has been deleted\`);
+        } else {
+            res.status(404).send('Todo not found');
+        }
+    } else {
+        res.status(400).send('Invalid ID');
+    }
+});
+
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => {
+    console.log(\`Todo app listening at http://localhost:\${port}\`);
+});`
     },
     {
-      id: "anime-quote",
-      title: "Anime Quote Engine & Redux State",
-      category: "Web App",
+      id: "weather-ssr-engine",
+      title: "Dynamic Weather API & SSR Dashboard",
+      category: "Full-Stack",
       featured: true,
-      description: "An asynchronous state-driven application leveraging Redux Thunk and async actions to fetch, cache, and curate dynamic quotes with responsive typography.",
+      description: "Asynchronous weather forecasting service integrating OpenWeatherMap REST API with Node.js, Express, and Axios. Features server-side rendering (SSR), dynamic query parameter parsing, secure environment credential isolation via Dotenv, and resilient 500 error catching.",
       image: raq,
-      techStack: ["React", "Redux", "Async/Await", "REST API", "Tailwind"],
-      githubUrl: "https://github.com/Retrofitt/web-module-project-async-redux/tree/main",
-      liveUrl: "https://random-anime-quote.vercel.app/",
-      metrics: "Global async state management • Zero layout shift"
+      techStack: ["Node.js", "Express.js", "Axios", "REST API", "SSR", "Dotenv", "OpenWeatherMap"],
+      githubUrl: "https://github.com/Retrofitt/WeatherApp",
+      liveUrl: "#",
+      metrics: "Server-Side Rendered Output • Secure External REST API Aggregation",
+      highlights: [
+        "Implemented asynchronous external REST API consumption using Axios with metric unit conversion.",
+        "Isolated sensitive API keys and configuration using dotenv environment variables.",
+        "Built resilient dynamic server-side template generation with fallback query defaulting and centralized error handling."
+      ],
+      codeSnippet: `const express = require('express');
+require("dotenv").config();
+const axios = require('axios');
+
+const app = express();
+app.use(express.static('public'));
+
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+    const city = req.query.city || 'New York';
+    
+    axios.get(\`https://api.openweathermap.org/data/2.5/weather?q=\${city}&appid=\${process.env.WEATHER_API_KEY}&units=metric\`)
+        .then(response => {
+            const weatherData = response.data;
+            res.send(\`
+                <!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>Weather App</title>
+                    </head>
+                    <body>
+                        <h1>Current Weather in \${city}</h1>
+                        <p><strong>Description:</strong> \${weatherData.weather[0].description}</p>
+                        <p><strong>Temperature:</strong> \${weatherData.main.temp}°C</p>
+                        <p><strong>Humidity:</strong> \${weatherData.main.humidity}%</p>
+                    </body>
+                </html>
+            \`);
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).send('Error fetching weather data');
+        });
+});
+
+app.listen(port, () => {
+    console.log(\`Weather app listening at http://localhost:\${port}\`);
+});`
     }
   ],
   photos: [

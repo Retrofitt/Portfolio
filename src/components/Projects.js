@@ -15,6 +15,11 @@ export default function Projects() {
     ? projects
     : projects.filter((p) => (p.category || "Full-Stack") === activeFilter);
 
+  const handleOpenModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
   return (
     <section
       id="projects"
@@ -22,7 +27,7 @@ export default function Projects() {
       style={{
         backgroundColor: "#07090e",
         borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.05)"
+        borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
       }}
     >
       <div className="container-custom relative z-10">
@@ -31,7 +36,7 @@ export default function Projects() {
           <span className="section-tag">Featured Engineering</span>
           <h2 className="section-heading mt-2">Production Projects</h2>
           <p className="section-subheading mt-3">
-            Real-world systems engineered with performance, security, and responsive architecture in mind.
+            High-performance web systems, real-time architectures, and scalable RESTful microservices.
           </p>
         </div>
 
@@ -48,7 +53,7 @@ export default function Projects() {
                 backgroundColor: activeFilter === cat ? "#38bdf8" : "rgba(13, 17, 26, 0.8)",
                 color: activeFilter === cat ? "#050608" : "#94a3b8",
                 border: activeFilter === cat ? "1px solid #38bdf8" : "1px solid rgba(255, 255, 255, 0.08)",
-                boxShadow: activeFilter === cat ? "0 0 15px rgba(56, 189, 248, 0.3)" : "none"
+                boxShadow: activeFilter === cat ? "0 0 15px rgba(56, 189, 248, 0.3)" : "none",
               }}
             >
               {cat}
@@ -62,7 +67,7 @@ export default function Projects() {
                 background: "rgba(56, 189, 248, 0.1)",
                 border: "1px solid rgba(56, 189, 248, 0.3)",
                 color: "#38bdf8",
-                cursor: "pointer"
+                cursor: "pointer",
               }}
             >
               <span>+ Add Project</span>
@@ -77,11 +82,11 @@ export default function Projects() {
               key={project.id}
               className="glass-card rounded-2xl overflow-hidden flex flex-col justify-between"
               style={{
-                background: "rgba(11, 14, 22, 0.7)",
-                border: "1px solid rgba(255, 255, 255, 0.08)"
+                background: "rgba(11, 14, 22, 0.75)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
               }}
             >
-              {/* Image Preview Container */}
+              {/* Image Preview Banner */}
               <div className="relative aspect-video overflow-hidden" style={{ backgroundColor: "#020305" }}>
                 <img
                   src={project.image}
@@ -93,11 +98,11 @@ export default function Projects() {
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: "linear-gradient(to top, rgba(11, 14, 22, 0.95) 0%, rgba(11, 14, 22, 0.2) 60%, transparent 100%)"
+                    background: "linear-gradient(to top, rgba(11, 14, 22, 0.95) 0%, rgba(11, 14, 22, 0.2) 60%, transparent 100%)",
                   }}
                 ></div>
-                
-                {/* Category Pill on Image */}
+
+                {/* Category Pill */}
                 <div className="absolute" style={{ top: "0.75rem", left: "0.75rem" }}>
                   <span
                     className="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider"
@@ -105,38 +110,41 @@ export default function Projects() {
                       background: "rgba(5, 7, 12, 0.9)",
                       color: "#38bdf8",
                       border: "1px solid rgba(56, 189, 248, 0.3)",
-                      backdropFilter: "blur(8px)"
+                      backdropFilter: "blur(8px)",
                     }}
                   >
                     {project.category || "Full-Stack"}
                   </span>
-                </div>
-
-                {/* Quick Action Overlay */}
-                <div className="absolute flex items-center gap-2" style={{ bottom: "0.75rem", right: "0.75rem" }}>
-                  <div className="absolute flex items-center gap-2" style={{ bottom: "0.75rem", right: "0.75rem" }}>
-  <button
-    onClick={() => { setSelectedProject(project); setIsModalOpen(true); }}
-    className="px-3 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5"
-    style={{
-      background: "rgba(56, 189, 248, 0.1)",
-      border: "1px solid rgba(56, 189, 248, 0.3)",
-      color: "#38bdf8",
-      cursor: "pointer"
-    }}
-  >
-    Learn More
-  </button>
-</div>
                 </div>
               </div>
 
               {/* Card Details */}
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-2">
+                  {/* Title (Above CTA Button) */}
+                  <h3 className="text-xl font-extrabold text-white tracking-tight mb-3">
                     {project.title}
                   </h3>
+
+                  {/* Single CTA Button to Open Modal */}
+                  <button
+                    onClick={() => handleOpenModal(project)}
+                    className="w-full mb-4 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 tracking-wide transition-all"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0.05) 100%)",
+                      border: "1px solid rgba(56, 189, 248, 0.35)",
+                      color: "#38bdf8",
+                      cursor: "pointer",
+                      boxShadow: "0 4px 15px rgba(56, 189, 248, 0.1)",
+                    }}
+                  >
+                    <span>View Project & Architecture</span>
+                    <svg style={{ width: "16px", height: "16px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+
+                  {/* Small Description (Below CTA button, containing stack & recruiter buzzwords) */}
                   <p className="text-xs sm:text-sm text-slate-300 mb-4 leading-relaxed">
                     {project.description}
                   </p>
@@ -150,7 +158,7 @@ export default function Projects() {
                       style={{
                         background: "rgba(6, 8, 14, 0.9)",
                         border: "1px solid rgba(56, 189, 248, 0.15)",
-                        color: "#38bdf8"
+                        color: "#38bdf8",
                       }}
                     >
                       <span>⚡</span>
@@ -170,7 +178,7 @@ export default function Projects() {
                         style={{
                           background: "rgba(6, 8, 14, 0.9)",
                           color: "#cbd5e1",
-                          border: "1px solid rgba(255, 255, 255, 0.08)"
+                          border: "1px solid rgba(255, 255, 255, 0.08)",
                         }}
                       >
                         {tech}
@@ -183,6 +191,18 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      {/* Project Details Modal */}
+      {isModalOpen && selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false);
+            setSelectedProject(null);
+          }}
+        />
+      )}
     </section>
   );
 }
