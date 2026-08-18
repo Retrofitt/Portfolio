@@ -400,6 +400,42 @@ export default function ProjectModal({ project, isOpen, onClose }) {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const getModalTheme = () => {
+    if (project.id === "weather-app" || project.appType === "weather") {
+      return {
+        accent: "#38bdf8",
+        border: "rgba(0, 242, 254, 0.3)",
+        shadow: "0 30px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 242, 254, 0.15)",
+        badgeBg: "rgba(0, 242, 254, 0.15)",
+        badgeColor: "#38bdf8",
+        badgeBorder: "rgba(0, 242, 254, 0.35)",
+        tabColor: "#38bdf8",
+      };
+    }
+    if (project.id === "todo-crud-app" || project.appType === "todo") {
+      return {
+        accent: "#34d399",
+        border: "rgba(0, 245, 160, 0.3)",
+        shadow: "0 30px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 245, 160, 0.15)",
+        badgeBg: "rgba(0, 245, 160, 0.15)",
+        badgeColor: "#34d399",
+        badgeBorder: "rgba(0, 245, 160, 0.35)",
+        tabColor: "#34d399",
+      };
+    }
+    return {
+      accent: "#e879f9",
+      border: "rgba(217, 70, 239, 0.3)",
+      shadow: "0 30px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(217, 70, 239, 0.15)",
+      badgeBg: "rgba(217, 70, 239, 0.15)",
+      badgeColor: "#e879f9",
+      badgeBorder: "rgba(217, 70, 239, 0.35)",
+      tabColor: "#e879f9",
+    };
+  };
+
+  const modalTheme = getModalTheme();
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 overflow-y-auto"
@@ -416,8 +452,8 @@ export default function ProjectModal({ project, isOpen, onClose }) {
         style={{
           maxHeight: "88vh",
           backgroundColor: "#0a0d14",
-          border: "1px solid rgba(56, 189, 248, 0.25)",
-          boxShadow: "0 30px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(56, 189, 248, 0.12)",
+          border: `1px solid ${modalTheme.border}`,
+          boxShadow: modalTheme.shadow,
           animation: "scaleUp 0.25s ease-out forwards",
         }}
         onClick={(e) => e.stopPropagation()}
@@ -435,9 +471,9 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               <span
                 className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
                 style={{
-                  background: "rgba(56, 189, 248, 0.15)",
-                  color: "#38bdf8",
-                  border: "1px solid rgba(56, 189, 248, 0.3)",
+                  background: modalTheme.badgeBg,
+                  color: modalTheme.badgeColor,
+                  border: `1px solid ${modalTheme.badgeBorder}`,
                 }}
               >
                 {project.category || "Full-Stack"}
@@ -455,7 +491,10 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 </span>
               )}
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight">
+            <h2
+              className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
               {project.title}
             </h2>
           </div>
@@ -488,8 +527,8 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             onClick={() => setActiveTab("playground")}
             className="px-4 py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
             style={{
-              color: activeTab === "playground" ? "#38bdf8" : "#94a3b8",
-              borderBottom: activeTab === "playground" ? "2px solid #38bdf8" : "2px solid transparent",
+              color: activeTab === "playground" ? modalTheme.tabColor : "#94a3b8",
+              borderBottom: activeTab === "playground" ? `2px solid ${modalTheme.tabColor}` : "2px solid transparent",
               cursor: "pointer",
               background: "transparent",
               borderTop: "none",
@@ -503,8 +542,8 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             onClick={() => setActiveTab("overview")}
             className="px-4 py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
             style={{
-              color: activeTab === "overview" ? "#38bdf8" : "#94a3b8",
-              borderBottom: activeTab === "overview" ? "2px solid #38bdf8" : "2px solid transparent",
+              color: activeTab === "overview" ? modalTheme.tabColor : "#94a3b8",
+              borderBottom: activeTab === "overview" ? `2px solid ${modalTheme.tabColor}` : "2px solid transparent",
               cursor: "pointer",
               background: "transparent",
               borderTop: "none",
@@ -519,8 +558,8 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               onClick={() => setActiveTab("code")}
               className="px-4 py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
               style={{
-                color: activeTab === "code" ? "#38bdf8" : "#94a3b8",
-                borderBottom: activeTab === "code" ? "2px solid #38bdf8" : "2px solid transparent",
+                color: activeTab === "code" ? modalTheme.tabColor : "#94a3b8",
+                borderBottom: activeTab === "code" ? `2px solid ${modalTheme.tabColor}` : "2px solid transparent",
                 cursor: "pointer",
                 background: "transparent",
                 borderTop: "none",
