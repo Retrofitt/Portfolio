@@ -13,7 +13,7 @@ Please generate a clean, modern, and professional one-page software engineering 
 - **Email**: rafaelmendozajr94.coding@gmail.com
 - **Phone**: Available upon request
 - **GitHub**: https://github.com/Retrofitt
-- **LinkedIn**: https://www.linkedin.com/in/rafael-mendoza-webdev/
+- **LinkedIn**: https://www.linkedin.com/in/rafael-mendoza-29a142215/
 - **Portfolio**: https://github.com/Retrofitt/Portfolio
 
 ---

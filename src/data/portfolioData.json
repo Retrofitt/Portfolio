@@ -7,7 +7,7 @@
     "phoneNote": "Available upon request",
     "email": "rafaelmendozajr94.coding@gmail.com",
     "github": "https://github.com/Retrofitt",
-    "linkedin": "https://www.linkedin.com/in/rafael-mendoza-webdev/",
+    "linkedin": "https://www.linkedin.com/in/rafael-mendoza-29a142215/",
     "portfolio": "https://retrofitt.github.io/Portfolio",
     "headline": "Building Clean Web Applications, Custom Frontends & Reliable Web Solutions",
     "bioLead": "Web Developer and Software Engineer with 4+ years of professional experience building and maintaining client websites and web applications. Proficient in HTML, CSS, JavaScript, WordPress, PHP, React.js, and Node.js. Experienced in developing custom WordPress themes, responsive UI components, and RESTful APIs with a strong focus on clean code, site performance, and on-time project delivery.",
@@ -31,7 +31,7 @@
   },
   "socials": [
     { "name": "GitHub", "url": "https://github.com/Retrofitt", "icon": "github" },
-    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/rafael-mendoza-webdev/", "icon": "linkedin" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/rafael-mendoza-29a142215/", "icon": "linkedin" },
     { "name": "Email", "url": "mailto:rafaelmendozajr94.coding@gmail.com", "icon": "email" }
   ],
   "skills": {

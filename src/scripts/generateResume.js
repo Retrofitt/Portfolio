@@ -83,7 +83,7 @@ function generateResume() {
   doc.moveDown(0.2);
 
   // Clickable Contact Row
-  const contactText = `${profile.location}   •   ${profile.email}   •   linkedin.com/in/rafael-mendoza-webdev   •   github.com/Retrofitt`;
+  const contactText = `${profile.location}   •   ${profile.email}   •   linkedin.com/in/rafael-mendoza-29a142215   •   github.com/Retrofitt`;
   doc.fontSize(8.25).font('Helvetica').fillColor(MUTED).text(contactText, {
     align: 'center'
   });

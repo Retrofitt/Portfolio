@@ -45,7 +45,7 @@ export const initialPortfolioData = {
     },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/rafael-mendoza-webdev/",
+      url: "https://www.linkedin.com/in/rafael-mendoza-29a142215/",
       icon: "linkedin"
     },
     {
@@ -356,7 +356,7 @@ io.on('connection', (socket) => {
   ]
 };
 
-const STORAGE_KEY = "retro_portfolio_data_v11";
+const STORAGE_KEY = "retro_portfolio_data_v12";
 const AUTH_KEY = "retro_cms_auth_session";
 
 const PortfolioContext = createContext(null);
