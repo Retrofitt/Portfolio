@@ -238,7 +238,7 @@ ET
 BT
 /F1 9 Tf
 420 198 Td
-(2021 - 2022) Tj
+(Nov 2021 - Dec 2021) Tj
 ET
 BT
 /F3 8.5 Tf

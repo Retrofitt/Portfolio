@@ -3,13 +3,13 @@ import { usePortfolio } from "../context/PortfolioContext";
 
 export default function Experience() {
   const { data } = usePortfolio();
-  const { experience } = data;
+  const { experience = [] } = data;
 
   return (
     <section
       id="experience"
       className="py-24 relative overflow-hidden"
-      style={{ backgroundColor: "#050608" }}
+      style={{ backgroundColor: "var(--bg-primary)" }}
     >
       <div className="container-custom">
         {/* Section Header */}
@@ -24,13 +24,12 @@ export default function Experience() {
         {/* Timeline Container */}
         <div className="max-w-4xl mx-auto relative">
           <div className="space-y-8">
-            {(experience || []).map((item, index) => (
+            {experience.map((item, index) => (
               <div
                 key={item.id || index}
                 className="glass-card p-6 sm:p-8 rounded-2xl relative"
                 style={{
-                  borderLeft: "4px solid #38bdf8",
-                  background: "rgba(11, 14, 21, 0.7)"
+                  borderLeft: "4px solid var(--accent-cyan)",
                 }}
               >
                 {/* Header Badge: Period & Location */}
@@ -39,14 +38,14 @@ export default function Experience() {
                     className="px-3 py-1 rounded-full text-xs font-semibold"
                     style={{
                       backgroundColor: "rgba(56, 189, 248, 0.12)",
-                      border: "1px solid rgba(56, 189, 248, 0.25)",
-                      color: "#38bdf8"
+                      border: "1px solid var(--border-glow)",
+                      color: "var(--accent-cyan)"
                     }}
                   >
                     {item.period}
                   </span>
                   <span className="text-xs text-slate-400 flex items-center gap-1 font-medium">
-                    <svg style={{ width: "14px", height: "14px", color: "#64748b" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg style={{ width: "14px", height: "14px", color: "var(--text-dim)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
@@ -85,16 +84,16 @@ export default function Experience() {
                 {item.technologies && item.technologies.length > 0 && (
                   <div
                     className="flex flex-wrap gap-1.5 pt-3"
-                    style={{ borderTop: "1px solid rgba(255, 255, 255, 0.06)" }}
+                    style={{ borderTop: "1px solid var(--border-subtle)" }}
                   >
                     {item.technologies.map((tech) => (
                       <span
                         key={tech}
                         className="text-xs font-medium px-2.5 py-1 rounded"
                         style={{
-                          background: "rgba(8, 10, 16, 0.9)",
-                          border: "1px solid rgba(255, 255, 255, 0.08)",
-                          color: "#cbd5e1"
+                          background: "var(--bg-surface)",
+                          border: "1px solid var(--border-subtle)",
+                          color: "var(--text-secondary)"
                         }}
                       >
                         {tech}

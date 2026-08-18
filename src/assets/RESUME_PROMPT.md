@@ -60,7 +60,7 @@ Versatile Software Engineer with 4+ years of professional production engineering
 - Collaborated in cross-functional agile scrums, conducting daily standups, code reviews, and Git version control workflows.
 
 #### 4. Underdog Devs | Remote
-**Frontend Software Engineer & Mentee (BloomTech / Lambda School Partnership)** | *2021 — 2022*
+**Frontend Software Engineer & Mentee (BloomTech / Lambda School Partnership)** | *November 2021 — December 2021*
 - Participated in an engineering partnership between Bloom Institute of Technology (then Lambda School) and Underdog Devs to work under senior engineering mentorship, gaining hands-on field experience building and shipping web app code.
 - Contributed frontend engineering to the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to support member scheduling and mentorship tracking.
 - Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs to filter and manage members.

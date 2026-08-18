@@ -3,7 +3,7 @@ import { usePortfolio } from "../context/PortfolioContext";
 
 export default function Contact() {
   const { data, showToast } = usePortfolio();
-  const { profile, socials } = data;
+  const { profile, socials = [] } = data;
 
   const [formState, setFormState] = useState({
     name: "",
@@ -15,7 +15,7 @@ export default function Contact() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText(profile.email || "mendoza.rafael28@gmail.com");
+    navigator.clipboard.writeText(profile.email || "RafaelMendozaJr94@gmail.com");
     setCopied(true);
     showToast("Email address copied to clipboard!");
     setTimeout(() => setCopied(false), 3000);
@@ -28,7 +28,7 @@ export default function Contact() {
     setTimeout(() => {
       setIsSubmitting(false);
       showToast("Message recorded! Rafael will respond within 24 hours.", "success");
-      const mailtoUrl = `mailto:${profile.email}?subject=${encodeURIComponent(
+      const mailtoUrl = `mailto:${profile.email || "RafaelMendozaJr94@gmail.com"}?subject=${encodeURIComponent(
         `[Portfolio Inquiry - ${formState.subject}] from ${formState.name}`
       )}&body=${encodeURIComponent(
         `From: ${formState.name} (${formState.email})\n\n${formState.message}`
@@ -47,7 +47,7 @@ export default function Contact() {
     <section
       id="contact"
       className="py-24 relative overflow-hidden"
-      style={{ backgroundColor: "#050608" }}
+      style={{ backgroundColor: "var(--bg-primary)" }}
     >
       <div className="container-custom relative z-10">
         {/* Section Header */}
@@ -62,10 +62,7 @@ export default function Contact() {
         <div className="grid lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
           {/* Contact Details & Info (Left) */}
           <div className="lg:col-span-5 space-y-6">
-            <div
-              className="glass-card p-8 rounded-2xl"
-              style={{ background: "rgba(11, 14, 21, 0.7)" }}
-            >
+            <div className="glass-card p-8 rounded-2xl">
               <h3 className="text-xl font-bold text-white mb-2">
                 Recruiter &amp; Engineering Inquiries
               </h3>
@@ -77,8 +74,8 @@ export default function Contact() {
               <div
                 className="p-4 rounded-xl mb-6 flex items-center gap-3"
                 style={{
-                  background: "rgba(6, 8, 14, 0.9)",
-                  border: "1px solid rgba(56, 189, 248, 0.2)"
+                  background: "var(--bg-surface)",
+                  border: "1px solid var(--border-glow)"
                 }}
               >
                 <div
@@ -86,8 +83,8 @@ export default function Contact() {
                     width: "8px",
                     height: "8px",
                     borderRadius: "50%",
-                    backgroundColor: "#38bdf8",
-                    boxShadow: "0 0 10px #38bdf8"
+                    backgroundColor: "var(--accent-cyan)",
+                    boxShadow: "0 0 10px var(--accent-cyan)"
                   }}
                 ></div>
                 <div>
@@ -104,12 +101,12 @@ export default function Contact() {
                 <div
                   className="flex items-center justify-between p-3 rounded-xl"
                   style={{
-                    background: "rgba(6, 8, 14, 0.95)",
-                    border: "1px solid rgba(255, 255, 255, 0.1)"
+                    background: "var(--bg-surface)",
+                    border: "1px solid var(--border-medium)"
                   }}
                 >
                   <span className="text-xs sm:text-sm font-mono truncate mr-2 text-cyan-400">
-                    {profile.email || "mendoza.rafael28@gmail.com"}
+                    {profile.email || "RafaelMendozaJr94@gmail.com"}
                   </span>
                   <button
                     onClick={handleCopyEmail}
@@ -126,15 +123,15 @@ export default function Contact() {
               </div>
 
               {/* Location & Socials */}
-              <div className="pt-6" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
+              <div className="pt-6" style={{ borderTop: "1px solid var(--border-subtle)" }}>
                 <p className="text-xs text-slate-400 mb-3 flex items-center gap-2">
-                  <svg style={{ width: "16px", height: "16px", color: "#38bdf8" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{ width: "16px", height: "16px", color: "var(--accent-cyan)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <span>{profile.location || "California, USA"} (Pacific Time)</span>
+                  <span>{profile.location || "Corona, CA"} (Pacific Time)</span>
                 </p>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   {socials.map((social) => (
                     <a
                       key={social.name}
@@ -154,10 +151,7 @@ export default function Contact() {
 
           {/* Contact Message Form (Right) */}
           <div className="lg:col-span-7">
-            <div
-              className="glass-card p-8 rounded-2xl"
-              style={{ background: "rgba(11, 14, 21, 0.7)" }}
-            >
+            <div className="glass-card p-8 rounded-2xl">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>

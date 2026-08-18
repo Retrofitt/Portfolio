@@ -10,9 +10,9 @@ export default function About() {
       id="about"
       className="py-24 relative overflow-hidden"
       style={{
-        backgroundColor: "#07090e",
-        borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.05)"
+        backgroundColor: "var(--bg-secondary)",
+        borderTop: "1px solid var(--border-subtle)",
+        borderBottom: "1px solid var(--border-subtle)"
       }}
     >
       <div className="container-custom relative z-10">
@@ -31,8 +31,7 @@ export default function About() {
             <div
               className="glass-card p-8 rounded-2xl"
               style={{
-                borderLeft: "4px solid #38bdf8",
-                background: "rgba(12, 16, 24, 0.65)"
+                borderLeft: "4px solid var(--accent-cyan)",
               }}
             >
               <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
@@ -51,34 +50,27 @@ export default function About() {
             <div className="glass-panel p-6 rounded-2xl">
               <h4
                 className="text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-2"
-                style={{ color: "#94a3b8" }}
+                style={{ color: "var(--text-muted)" }}
               >
                 <span
                   style={{
                     width: "8px",
                     height: "8px",
                     borderRadius: "50%",
-                    backgroundColor: "#38bdf8"
+                    backgroundColor: "var(--accent-cyan)"
                   }}
                 ></span>
                 <span>Core Competencies &amp; Disciplines</span>
               </h4>
               <div className="flex flex-wrap gap-2">
-                {(profile.disciplines || [
-                  "Full-Stack Architecture",
-                  "UI/UX Engineering",
-                  "Performance Tuning",
-                  "API Design",
-                  "Creative Direction",
-                  "Photography"
-                ]).map((discipline) => (
+                {(profile.disciplines || []).map((discipline) => (
                   <span
                     key={discipline}
                     className="px-3 py-1.5 rounded-lg text-xs font-semibold"
                     style={{
-                      background: "rgba(8, 11, 17, 0.9)",
-                      border: "1px solid rgba(255, 255, 255, 0.08)",
-                      color: "#cbd5e1"
+                      background: "var(--bg-surface)",
+                      border: "1px solid var(--border-subtle)",
+                      color: "var(--text-secondary)"
                     }}
                   >
                     {discipline}
@@ -92,12 +84,7 @@ export default function About() {
           <div className="lg:col-span-5 space-y-6">
             {/* Stat Counters Grid */}
             <div className="grid grid-cols-2 gap-4">
-              {(profile.stats || [
-                { label: "Years Experience", value: "4+" },
-                { label: "Production Apps", value: "15+" },
-                { label: "Core Technologies", value: "25+" },
-                { label: "Client Satisfaction", value: "100%" }
-              ]).map((stat, i) => (
+              {(profile.stats || []).map((stat, i) => (
                 <div
                   key={stat.label || i}
                   className="glass-card p-6 rounded-2xl text-center"
@@ -105,7 +92,7 @@ export default function About() {
                   <p
                     className="text-3xl sm:text-4xl font-black mb-1"
                     style={{
-                      background: "linear-gradient(135deg, #38bdf8 0%, #10b981 100%)",
+                      background: "linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-emerald) 100%)",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent"
                     }}
@@ -124,7 +111,7 @@ export default function About() {
               className="p-6 rounded-2xl"
               style={{
                 background: "linear-gradient(135deg, rgba(13, 17, 26, 0.9) 0%, rgba(8, 11, 17, 0.95) 100%)",
-                border: "1px solid rgba(56, 189, 248, 0.25)",
+                border: "1px solid var(--border-glow)",
                 boxShadow: "0 12px 30px rgba(0, 0, 0, 0.6)"
               }}
             >
@@ -135,11 +122,11 @@ export default function About() {
                     height: "2.25rem",
                     borderRadius: "0.5rem",
                     backgroundColor: "rgba(56, 189, 248, 0.15)",
-                    border: "1px solid rgba(56, 189, 248, 0.3)",
+                    border: "1px solid var(--border-focus)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "#38bdf8"
+                    color: "var(--accent-cyan)"
                   }}
                 >
                   <svg style={{ width: "18px", height: "18px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,7 +161,7 @@ export default function About() {
                   style={{ padding: "0.65rem 1rem" }}
                   title="Download PDF Resume"
                 >
-                  <svg style={{ width: "14px", height: "14px", color: "#38bdf8" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{ width: "14px", height: "14px", color: "var(--accent-cyan)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   <span>PDF Resume</span>

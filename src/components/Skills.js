@@ -3,10 +3,10 @@ import { usePortfolio } from "../context/PortfolioContext";
 
 export default function Skills() {
   const { data } = usePortfolio();
-  const { skills } = data;
+  const { skills = [] } = data;
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const categories = ["All", "Frontend", "Backend", "Databases", "Tools & DevOps"];
+  const categories = ["All", ...Array.from(new Set(skills.map((s) => s.category).filter(Boolean)))];
 
   const filteredSkills = selectedCategory === "All"
     ? skills
@@ -16,7 +16,7 @@ export default function Skills() {
     <section
       id="skills"
       className="py-24 relative overflow-hidden"
-      style={{ backgroundColor: "#050608" }}
+      style={{ backgroundColor: "var(--bg-primary)" }}
     >
       <div className="container-custom relative z-10">
         {/* Section Header */}
@@ -30,23 +30,26 @@ export default function Skills() {
 
         {/* Category Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className="px-4 py-2 rounded-full text-xs font-semibold tracking-wide"
-              style={{
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                backgroundColor: selectedCategory === cat ? "#38bdf8" : "rgba(13, 17, 26, 0.8)",
-                color: selectedCategory === cat ? "#050608" : "#94a3b8",
-                border: selectedCategory === cat ? "1px solid #38bdf8" : "1px solid rgba(255, 255, 255, 0.08)",
-                boxShadow: selectedCategory === cat ? "0 0 15px rgba(56, 189, 248, 0.3)" : "none"
-              }}
-            >
-              {cat}
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const isSelected = selectedCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className="px-4 py-2 rounded-full text-xs font-semibold tracking-wide"
+                style={{
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                  backgroundColor: isSelected ? "var(--accent-cyan)" : "rgba(13, 17, 26, 0.8)",
+                  color: isSelected ? "var(--bg-primary)" : "var(--text-muted)",
+                  border: isSelected ? "1px solid var(--accent-cyan)" : "1px solid var(--border-subtle)",
+                  boxShadow: isSelected ? "0 0 15px var(--accent-cyan-glow)" : "none"
+                }}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
 
         {/* Skills Cards Grid */}
@@ -55,25 +58,21 @@ export default function Skills() {
             <div
               key={skill.name || index}
               className="glass-card p-4 rounded-xl flex flex-col items-center justify-between text-center gap-3"
-              style={{
-                background: "rgba(11, 14, 21, 0.7)",
-                border: "1px solid rgba(255, 255, 255, 0.08)"
-              }}
             >
               <div
                 style={{
                   width: "2.5rem",
                   height: "2.5rem",
                   borderRadius: "0.5rem",
-                  background: "rgba(6, 8, 14, 0.9)",
-                  border: "1px solid rgba(56, 189, 248, 0.25)",
+                  background: "var(--bg-surface)",
+                  border: "1px solid var(--border-glow)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#38bdf8",
+                  color: "var(--accent-cyan)",
                   fontWeight: "bold",
                   fontSize: "0.75rem",
-                  fontFamily: "'JetBrains Mono', monospace"
+                  fontFamily: "var(--font-mono)"
                 }}
               >
                 {skill.name.slice(0, 3).toUpperCase()}
@@ -85,7 +84,7 @@ export default function Skills() {
                 </p>
                 <span
                   className="text-xs uppercase tracking-wider block mb-2"
-                  style={{ color: "#64748b", fontSize: "10px" }}
+                  style={{ color: "var(--text-dim)", fontSize: "10px" }}
                 >
                   {skill.category}
                 </span>
@@ -103,7 +102,7 @@ export default function Skills() {
                       style={{
                         width: `${skill.level}%`,
                         height: "100%",
-                        background: "linear-gradient(90deg, #38bdf8 0%, #10b981 100%)",
+                        background: "linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-emerald) 100%)",
                         borderRadius: "9999px"
                       }}
                     ></div>
