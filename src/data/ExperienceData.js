@@ -115,6 +115,7 @@ export const initialPortfolioData = {
       location: "Remote",
       description: "Bloom Institute of Technology (then Lambda School) partnered with Underdog Devs, providing the opportunity to work under senior engineering mentorship to gain real-world field experience developing a community web application, pair programming, and shipping production code.",
       highlights: [
+        "Built UI components, navigation sidebars, and modal dialogs for the open-source Underdog Devs platform in React.",
         "Contributed frontend engineering to the Underdog Devs open-source web application using React.js, JavaScript, and CSS3 to support member scheduling and mentorship tracking.",
         "Implemented dynamic role-based navigation sidebars, user authentication flows, and administrative modal dialogs to filter and manage members.",
         "Participated in active 1:1 pair programming, code reviews, and collaborative engineering sprints with industry mentors."
