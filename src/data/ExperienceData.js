@@ -13,7 +13,7 @@ export const initialPortfolioData = {
   profile: {
     name: "Rafael Mendoza",
     role: "Full-Stack Software Engineer & Frontend Web Developer",
-    statusBadge: "Based in Long Beach, CA • Open to Hybrid & Remote Roles",
+    statusBadge: "Based in Long Beach, CA • Open to Work",
     location: "Long Beach, CA",
     phoneNote: "Phone number available upon request",
     email: "rafaelmendozajr94.coding@gmail.com",
