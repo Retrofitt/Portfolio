@@ -12,7 +12,7 @@ import photo8 from "../assets/photos/photo8.jpg";
 export const initialPortfolioData = {
   profile: {
     name: "Rafael Mendoza",
-    role: "Full-Stack Web Developer & Frontend Engineer",
+    role: "Full-Stack Software Engineer & Frontend Web Developer",
     statusBadge: "Based in Long Beach, CA • Open to Hybrid & Remote Roles",
     location: "Long Beach, CA",
     phoneNote: "Phone number available upon request",
@@ -22,7 +22,7 @@ export const initialPortfolioData = {
     aboutStory1: "I'm a web developer based in Long Beach, California with over 4 years of experience building and maintaining client websites at Doctor Genius and through freelance projects. My primary work centers around modern JavaScript, HTML5, CSS3, custom WordPress themes, and PHP backend logic, where I focus on delivering clean code, reliable site performance, and on-time launches.",
     aboutStory2: "I enjoy both sides of development — crafting clean, responsive user interfaces and building straightforward backend APIs and integrations. When I'm not coding, I pursue landscape and street photography, which gives me an appreciation for clean layout, visual balance, and attention to detail.",
     disciplines: [
-      "Frontend Web Development",
+      "Full-Stack Software Engineer",
       "WordPress & PHP Development",
       "JavaScript & React.js",
       "Node.js & REST APIs",
@@ -80,7 +80,7 @@ export const initialPortfolioData = {
   experience: [
     {
       id: "exp-1",
-      role: "Software Engineer / Web Developer",
+      role: "Production Engineer / Web Developer",
       company: "Doctor Genius",
       period: "March 2022 — Present",
       location: "Irvine, CA",
