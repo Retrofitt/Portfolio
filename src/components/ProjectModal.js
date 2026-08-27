@@ -61,29 +61,29 @@ function WeatherAppDemo() {
 
   return (
     <div
-      className="p-4 sm:p-7 rounded-2xl"
+      className="p-3.5 sm:p-6 md:p-7 rounded-xl sm:rounded-2xl max-w-full min-w-0 overflow-hidden box-border"
       style={{
         background: "radial-gradient(circle at top left, rgba(56, 189, 248, 0.09), rgba(11, 15, 23, 0.98))",
         border: "1px solid rgba(56, 189, 248, 0.22)",
       }}
     >
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 min-w-0">
         <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
           Interactive Weather Console
         </span>
-        <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10">
+        <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10 shrink-0">
           Port :3000
         </span>
       </div>
 
       {/* Location Input Area with Prominent Interactive Affordance */}
-      <div className="mb-4">
+      <div className="mb-4 min-w-0">
         <label className="block text-[11px] font-bold uppercase tracking-wider text-cyan-300 mb-1.5 flex items-center gap-1.5">
           <span>📍</span> Location Search (Editable Field)
         </label>
-        <form onSubmit={handleFetchWeather} className="flex flex-col sm:flex-row gap-2.5">
-          <div className="relative flex-1">
+        <form onSubmit={handleFetchWeather} className="flex flex-col sm:flex-row gap-2 w-full min-w-0">
+          <div className="relative flex-1 min-w-0 w-full">
             <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">
               🔍
             </span>
@@ -92,13 +92,13 @@ function WeatherAppDemo() {
               value={city}
               onChange={(e) => setCity(e.target.value)}
               placeholder="Type any city (e.g. Tokyo, London, Miami)..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-950 text-white border border-cyan-500/40 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all placeholder:text-slate-500 shadow-inner"
+              className="w-full min-w-0 pl-10 pr-3 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-950 text-white border border-cyan-500/40 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all placeholder:text-slate-500 shadow-inner box-border"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-cyan-500 hover:bg-cyan-400 active:bg-cyan-600 text-slate-950 transition-all shrink-0 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-1.5"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-cyan-500 hover:bg-cyan-400 active:bg-cyan-600 text-slate-950 transition-all shrink-0 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-1.5"
             style={{ cursor: "pointer", minHeight: "42px" }}
           >
             {loading ? "Searching..." : "Fetch Weather"}
@@ -107,17 +107,17 @@ function WeatherAppDemo() {
       </div>
 
       {/* Quick-Select Location Pills (1-Tap for Mobile) */}
-      <div className="mb-5">
+      <div className="mb-4 min-w-0">
         <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-1.5">
           Quick Preset Locations:
         </span>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5 max-w-full">
           {cityPresets.map((preset) => (
             <button
               key={preset.name}
               type="button"
               onClick={() => handlePresetClick(preset.name)}
-              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all shrink-0 ${
                 city.toLowerCase() === preset.name.toLowerCase()
                   ? "bg-cyan-500/25 border border-cyan-400 text-cyan-200 shadow-sm shadow-cyan-500/30"
                   : "bg-slate-900/80 hover:bg-slate-800 border border-white/10 text-slate-300"
@@ -133,33 +133,33 @@ function WeatherAppDemo() {
 
       {/* Simulated SSR HTML Response View */}
       <div
-        className="p-4 sm:p-6 rounded-xl font-mono text-xs sm:text-sm"
+        className="p-3.5 sm:p-5 rounded-xl font-mono text-xs sm:text-sm max-w-full min-w-0 overflow-hidden break-words box-border"
         style={{
           background: "#06080e",
           border: "1px solid rgba(255, 255, 255, 0.08)",
         }}
       >
-        <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800/80">
-          <span className="text-slate-400 font-bold uppercase tracking-wider text-[11px]">
+        <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-800/80 min-w-0">
+          <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] sm:text-[11px] truncate">
             SSR HTML Response Stream
           </span>
-          <span className="text-3xl">{weather.icon}</span>
+          <span className="text-2xl sm:text-3xl shrink-0">{weather.icon}</span>
         </div>
-        <div className="space-y-2 text-slate-200">
-          <h3 className="text-base sm:text-lg font-bold text-white mb-2 break-words">
+        <div className="space-y-1.5 sm:space-y-2 text-slate-200 min-w-0">
+          <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-2 break-words">
             Current Weather in <span className="text-cyan-400">{weather.city}</span>
           </h3>
-          <p className="leading-relaxed">
+          <p className="leading-relaxed break-words">
             <strong className="text-slate-400">Description:</strong> {weather.description}
           </p>
-          <p className="leading-relaxed">
+          <p className="leading-relaxed break-words">
             <strong className="text-slate-400">Temperature:</strong>{" "}
             <span className="text-emerald-400 font-bold">{weather.temp}°C</span>{" "}
             <span className="text-slate-400 font-normal">
               ({((parseFloat(weather.temp) * 9) / 5 + 32).toFixed(1)}°F)
             </span>
           </p>
-          <p className="leading-relaxed">
+          <p className="leading-relaxed break-words">
             <strong className="text-slate-400">Humidity:</strong>{" "}
             <span className="text-cyan-300 font-bold">{weather.humidity}%</span>
           </p>
@@ -220,36 +220,36 @@ function TodoAppDemo() {
 
   return (
     <div
-      className="p-4 sm:p-7 rounded-2xl"
+      className="p-3.5 sm:p-6 md:p-7 rounded-xl sm:rounded-2xl max-w-full min-w-0 overflow-hidden box-border"
       style={{
         background: "radial-gradient(circle at top left, rgba(16, 185, 129, 0.09), rgba(11, 15, 23, 0.98))",
         border: "1px solid rgba(16, 185, 129, 0.22)",
       }}
     >
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 min-w-0">
         <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           Interactive Task Manager (CRUD)
         </span>
-        <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10">
+        <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10 shrink-0">
           Port :3001
         </span>
       </div>
 
       {/* Add Todo (POST /todos) with Prominent Interactive Affordance */}
-      <form onSubmit={handleAddTodo} className="flex flex-col sm:flex-row gap-2.5 mb-4">
-        <div className="relative flex-1">
+      <form onSubmit={handleAddTodo} className="flex flex-col sm:flex-row gap-2 mb-4 w-full min-w-0">
+        <div className="relative flex-1 min-w-0 w-full">
           <input
             type="text"
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
             placeholder="Add a new task (e.g. Implement WebSocket listener)..."
-            className="w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-950 text-white border border-emerald-500/40 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 transition-all placeholder:text-slate-500 shadow-inner"
+            className="w-full min-w-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-950 text-white border border-emerald-500/40 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 transition-all placeholder:text-slate-500 shadow-inner box-border"
           />
         </div>
         <button
           type="submit"
-          className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 text-slate-950 transition-all shrink-0 shadow-lg shadow-emerald-500/20"
+          className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 text-slate-950 transition-all shrink-0 shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-1.5"
           style={{ cursor: "pointer", minHeight: "42px" }}
         >
           + Add Task
@@ -257,13 +257,13 @@ function TodoAppDemo() {
       </form>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-2 mb-3">
+      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-3 max-w-full min-w-0">
         {["all", "active", "completed"].map((tab) => (
           <button
             key={tab}
             type="button"
             onClick={() => setFilter(tab)}
-            className={`px-3 py-1 rounded-lg text-xs font-semibold capitalize transition-all ${
+            className={`px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold capitalize transition-all shrink-0 ${
               filter === tab
                 ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
                 : "bg-slate-900/60 text-slate-400 border border-white/5 hover:text-white"
@@ -276,38 +276,38 @@ function TodoAppDemo() {
       </div>
 
       {/* Todo List View */}
-      <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
+      <div className="space-y-2 max-h-64 overflow-y-auto pr-1 max-w-full min-w-0">
         {filteredTodos.length === 0 ? (
           <p className="text-xs text-slate-500 py-6 text-center">No tasks in this view. Add one above!</p>
         ) : (
           filteredTodos.map((todo) => (
             <div
               key={todo.id}
-              className="p-3 rounded-xl flex items-center justify-between gap-2.5 text-xs sm:text-sm"
+              className="p-2.5 sm:p-3 rounded-xl flex items-center justify-between gap-2 text-xs sm:text-sm max-w-full min-w-0 box-border"
               style={{
                 background: "rgba(6, 8, 14, 0.9)",
                 border: "1px solid rgba(255, 255, 255, 0.07)",
               }}
             >
-              <div className="flex items-center gap-2.5 flex-1 min-w-0">
+              <div className="flex items-center gap-2 flex-1 min-w-0 overflow-hidden">
                 <input
                   type="checkbox"
                   checked={todo.completed}
                   onChange={() => handleToggleTodo(todo.id)}
-                  className="rounded cursor-pointer w-5 h-5 shrink-0 accent-emerald-500"
+                  className="rounded cursor-pointer w-4 h-4 sm:w-5 sm:h-5 shrink-0 accent-emerald-500"
                 />
-                <span className="text-slate-500 font-mono text-[11px] shrink-0">#{todo.id}</span>
+                <span className="text-slate-500 font-mono text-[10px] sm:text-[11px] shrink-0">#{todo.id}</span>
                 {editingId === todo.id ? (
                   <input
                     type="text"
                     value={editText}
                     onChange={(e) => setEditText(e.target.value)}
-                    className="flex-1 px-2.5 py-1 bg-slate-900 border border-emerald-400 rounded-lg text-white text-xs"
+                    className="flex-1 min-w-0 w-full px-2 py-1 bg-slate-900 border border-emerald-400 rounded-lg text-white text-xs box-border"
                     autoFocus
                   />
                 ) : (
                   <span
-                    className={`flex-1 truncate ${
+                    className={`flex-1 truncate min-w-0 ${
                       todo.completed ? "line-through text-slate-500" : "text-slate-200"
                     }`}
                   >
@@ -316,20 +316,20 @@ function TodoAppDemo() {
                 )}
               </div>
 
-              <div className="flex items-center gap-1.5 shrink-0">
+              <div className="flex items-center gap-1 shrink-0 ml-1">
                 {editingId === todo.id ? (
                   <>
                     <button
                       onClick={() => handleSaveEdit(todo.id)}
-                      className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
-                      style={{ minHeight: "36px" }}
+                      className="px-2 py-1 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
+                      style={{ minHeight: "32px" }}
                     >
                       Save
                     </button>
                     <button
                       onClick={() => setEditingId(null)}
                       className="px-2 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white"
-                      style={{ minHeight: "36px" }}
+                      style={{ minHeight: "32px" }}
                     >
                       Cancel
                     </button>
@@ -337,18 +337,18 @@ function TodoAppDemo() {
                 ) : (
                   <button
                     onClick={() => handleStartEdit(todo)}
-                    className="p-2 rounded-lg text-xs text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition-colors"
+                    className="p-1.5 sm:p-2 rounded-lg text-xs text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition-colors"
                     title="Edit task"
-                    style={{ minWidth: "36px", minHeight: "36px" }}
+                    style={{ minWidth: "32px", minHeight: "32px" }}
                   >
                     ✏️
                   </button>
                 )}
                 <button
                   onClick={() => handleDeleteTodo(todo.id)}
-                  className="p-2 rounded-lg text-xs text-red-400 hover:text-red-300 bg-red-950/40 hover:bg-red-900/60 transition-colors"
+                  className="p-1.5 sm:p-2 rounded-lg text-xs text-red-400 hover:text-red-300 bg-red-950/40 hover:bg-red-900/60 transition-colors"
                   title="Delete task"
-                  style={{ minWidth: "36px", minHeight: "36px" }}
+                  style={{ minWidth: "32px", minHeight: "32px" }}
                 >
                   ✕
                 </button>
@@ -565,52 +565,52 @@ function ClickerGameDemo() {
 
   return (
     <div
-      className="p-4 sm:p-7 rounded-2xl"
+      className="p-3.5 sm:p-6 md:p-7 rounded-xl sm:rounded-2xl max-w-full min-w-0 overflow-hidden box-border"
       style={{
         background: "radial-gradient(circle at top left, rgba(217, 70, 239, 0.09), rgba(11, 15, 23, 0.98))",
         border: "1px solid rgba(217, 70, 239, 0.25)",
       }}
     >
       {/* Top Header Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 min-w-0">
         <span className="text-xs font-bold uppercase tracking-wider text-fuchsia-400 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-pulse"></span>
           Live Multiplayer Clicker Arcade
         </span>
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2.5 py-0.5 rounded border border-white/10">
-            Socket.IO Port :3002
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-[11px] sm:text-xs font-mono text-slate-400 bg-slate-900/80 px-2 sm:px-2.5 py-0.5 rounded border border-white/10">
+            Port :3002
           </span>
-          <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
+          <span className="text-[10px] sm:text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
             ● 4 Online
           </span>
         </div>
       </div>
 
       {/* Main Game Interface: Responsive Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 max-w-full min-w-0">
         {/* Left Column: Interactive Clicker Stage (7 cols) */}
-        <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
+        <div className="lg:col-span-7 flex flex-col justify-between space-y-3.5 sm:space-y-4 max-w-full min-w-0">
           {/* Player Profile & Active Status with Clear Edit Affordance */}
           <div
-            className="p-3.5 sm:p-4 rounded-xl flex items-center justify-between gap-3"
+            className="p-3 sm:p-4 rounded-xl flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5 max-w-full min-w-0 box-border"
             style={{ background: "#06080e", border: "1px solid rgba(255, 255, 255, 0.08)" }}
           >
             <div className="flex items-center gap-2.5 min-w-0 flex-1">
               <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-base shrink-0"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center font-bold text-base shrink-0"
                 style={{ background: "linear-gradient(135deg, #d946ef, #a855f7)", color: "#050608" }}
               >
                 🍪
               </div>
               <div className="min-w-0 flex-1">
                 {isEditingName ? (
-                  <form onSubmit={handleSaveName} className="flex items-center gap-1.5">
+                  <form onSubmit={handleSaveName} className="flex items-center gap-1.5 min-w-0">
                     <input
                       type="text"
                       value={tempName}
                       onChange={(e) => setTempName(e.target.value)}
-                      className="px-2 py-1 rounded-lg bg-slate-900 border border-fuchsia-400 text-white text-xs w-full max-w-[140px]"
+                      className="px-2 py-1 rounded-lg bg-slate-900 border border-fuchsia-400 text-white text-xs w-full max-w-[120px] sm:max-w-[140px] box-border"
                       placeholder="Player Name"
                       autoFocus
                     />
@@ -622,8 +622,8 @@ function ClickerGameDemo() {
                     </button>
                   </form>
                 ) : (
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-xs sm:text-sm font-extrabold text-white truncate">
+                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap min-w-0">
+                    <span className="text-xs sm:text-sm font-extrabold text-white truncate max-w-[130px] sm:max-w-none">
                       {username}
                     </span>
                     <button
@@ -631,12 +631,12 @@ function ClickerGameDemo() {
                         setTempName(username);
                         setIsEditingName(true);
                       }}
-                      className="px-2 py-0.5 rounded text-[10px] font-semibold text-fuchsia-300 bg-fuchsia-950/60 hover:bg-fuchsia-900 border border-fuchsia-500/30 flex items-center gap-1 transition-all"
+                      className="px-2 py-0.5 rounded text-[10px] font-semibold text-fuchsia-300 bg-fuchsia-950/60 hover:bg-fuchsia-900 border border-fuchsia-500/30 flex items-center gap-1 transition-all shrink-0"
                       title="Click to change your player name"
                       style={{ cursor: "pointer" }}
                     >
                       <span>✏️</span>
-                      <span>Edit Name</span>
+                      <span>Edit</span>
                     </button>
                   </div>
                 )}
@@ -649,7 +649,7 @@ function ClickerGameDemo() {
             {/* Run State Indicator */}
             <div className="shrink-0">
               <span
-                className={`px-2.5 py-1 rounded-lg text-[10px] sm:text-xs font-mono font-bold ${
+                className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[10px] sm:text-xs font-mono font-bold ${
                   gameState === "running"
                     ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 animate-pulse"
                     : gameState === "ended"
@@ -664,7 +664,7 @@ function ClickerGameDemo() {
 
           {/* Central Clicker Hero Box */}
           <div
-            className="p-5 sm:p-6 rounded-2xl flex flex-col items-center justify-center text-center relative overflow-hidden"
+            className="p-4 sm:p-6 rounded-2xl flex flex-col items-center justify-center text-center relative overflow-hidden max-w-full min-w-0 box-border"
             style={{
               background: "linear-gradient(180deg, rgba(20, 14, 30, 0.95) 0%, rgba(10, 8, 18, 0.98) 100%)",
               border: "1px solid rgba(217, 70, 239, 0.25)",
@@ -674,17 +674,17 @@ function ClickerGameDemo() {
               transition: "all 0.15s ease",
             }}
           >
-            {/* Inactivity Countdown Progress Bar (Shows how much time remains before run concludes) */}
-            <div className="w-full mb-3 px-1">
-              <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1">
-                <span>
+            {/* Inactivity Countdown Progress Bar */}
+            <div className="w-full max-w-full mb-3 px-1 min-w-0">
+              <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-400 mb-1 min-w-0">
+                <span className="truncate">
                   {gameState === "running"
-                    ? `⏱️ Inactivity Timer: ${(timeLeftMs / 1000).toFixed(1)}s`
+                    ? `⏱️ Inactivity: ${(timeLeftMs / 1000).toFixed(1)}s`
                     : gameState === "ended"
                     ? "⏱️ Run Concluded (Idle)"
                     : "⏱️ Inactivity Timeout: 2.5s"}
                 </span>
-                <span className={gameState === "running" && timeLeftMs < 1000 ? "text-red-400 font-bold" : "text-slate-400"}>
+                <span className={`shrink-0 ml-1 ${gameState === "running" && timeLeftMs < 1000 ? "text-red-400 font-bold" : "text-slate-400"}`}>
                   {gameState === "running" ? `${Math.round(timerPercent)}%` : "Ready"}
                 </span>
               </div>
@@ -705,28 +705,28 @@ function ClickerGameDemo() {
             </div>
 
             {/* Score Display */}
-            <span className="text-[11px] font-bold uppercase tracking-widest text-fuchsia-400 mb-0.5">
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-fuchsia-400 mb-0.5">
               {gameState === "ended" ? "Final Run Score" : "Current Run Score"}
             </span>
             <div
-              className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-2 select-none"
+              className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-2 select-none"
               style={{
                 fontFamily: "'Outfit', sans-serif",
                 textShadow: "0 0 25px rgba(217, 70, 239, 0.5)",
               }}
             >
-              {score} <span className="text-xl text-fuchsia-400 font-normal">pts</span>
+              {score} <span className="text-lg sm:text-xl text-fuchsia-400 font-normal">pts</span>
             </div>
 
             {/* Combo & Speed Badges */}
-            <div className="flex items-center gap-2 mb-5">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-fuchsia-950/80 text-fuchsia-300 border border-fuchsia-500/30">
+            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-4 max-w-full">
+              <span className="px-2 sm:px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-fuchsia-950/80 text-fuchsia-300 border border-fuchsia-500/30">
                 Combo: x{combo}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono text-slate-400 bg-slate-900 border border-white/10">
+              <span className="px-2 sm:px-2.5 py-0.5 rounded-full text-[10px] font-mono text-slate-400 bg-slate-900 border border-white/10">
                 Speed: {clicksPerSec} cps
               </span>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30">
+              <span className="px-2 sm:px-2.5 py-0.5 rounded-full text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30">
                 Best: {highScore} pts
               </span>
             </div>
@@ -751,7 +751,7 @@ function ClickerGameDemo() {
 
               <button
                 onClick={handleClick}
-                className="clicker-btn-mobile w-36 h-36 sm:w-44 sm:h-44 rounded-full font-extrabold text-white flex flex-col items-center justify-center gap-1 shadow-2xl select-none active:scale-95 transition-transform"
+                className="clicker-btn-mobile w-28 h-28 sm:w-40 sm:h-40 rounded-full font-extrabold text-white flex flex-col items-center justify-center gap-0.5 sm:gap-1 shadow-2xl select-none active:scale-95 transition-transform shrink-0"
                 style={{
                   background: "linear-gradient(135deg, #d946ef 0%, #a855f7 50%, #7c3aed 100%)",
                   boxShadow: clickEffect
@@ -761,27 +761,27 @@ function ClickerGameDemo() {
                   cursor: "pointer",
                 }}
               >
-                <span className="text-3xl sm:text-4xl">🍪</span>
-                <span className="text-xs sm:text-sm tracking-wider uppercase font-black">
+                <span className="text-2xl sm:text-4xl">🍪</span>
+                <span className="text-[11px] sm:text-sm tracking-wider uppercase font-black">
                   {gameState === "ended" ? "PLAY AGAIN" : "CLICK ME!"}
                 </span>
-                <span className="text-[10px] font-mono opacity-80">+1 pt / click</span>
+                <span className="text-[9px] sm:text-[10px] font-mono opacity-80">+1 pt / click</span>
               </button>
             </div>
 
             {/* Run Ended Banner (Clear Feedback & Easy Restart) */}
             {gameState === "ended" && (
               <div
-                className="mt-4 p-3 rounded-xl w-full max-w-sm flex flex-col items-center gap-2 animate-fadeIn"
+                className="mt-3 p-3 rounded-xl w-full max-w-sm flex flex-col items-center gap-2 animate-fadeIn box-border"
                 style={{
                   background: "rgba(239, 68, 68, 0.12)",
                   border: "1px solid rgba(239, 68, 68, 0.35)",
                 }}
               >
-                <div className="text-xs text-red-300 font-bold">
+                <div className="text-xs text-red-300 font-bold text-center">
                   🏁 Run Ended (Inactivity Timeout)! Score: <span className="text-white font-extrabold">{score} pts</span>
                 </div>
-                <div className="text-[11px] text-slate-300">
+                <div className="text-[11px] text-slate-300 text-center">
                   Your final score was saved to the leaderboard.
                 </div>
                 <button
@@ -795,48 +795,48 @@ function ClickerGameDemo() {
               </div>
             )}
 
-            <p className="text-[11px] text-slate-400 mt-4 max-w-xs leading-relaxed">
-              Click rapidly to build your score! If you stop clicking for 2.5 seconds, your run ends, your score is finalized to the leaderboard, and you can start a fresh run.
+            <p className="text-[10px] sm:text-[11px] text-slate-400 mt-3 max-w-xs leading-relaxed text-center">
+              Click rapidly to build your score! If you stop clicking for 2.5 seconds, your run ends, score is saved, and you can start fresh.
             </p>
           </div>
         </div>
 
         {/* Right Column: Live Leaderboard & Socket Stream (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col space-y-4">
+        <div className="lg:col-span-5 flex flex-col space-y-3.5 sm:space-y-4 max-w-full min-w-0">
           {/* Live Leaderboard Card */}
           <div
-            className="p-4 rounded-xl flex-1 flex flex-col"
+            className="p-3.5 sm:p-4 rounded-xl flex-1 flex flex-col max-w-full min-w-0 box-border"
             style={{ background: "#06080e", border: "1px solid rgba(255, 255, 255, 0.08)" }}
           >
-            <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-slate-800/80">
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+            <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-800/80 min-w-0">
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5 truncate">
                 <span>🏆</span> Live Leaderboard
               </h4>
-              <span className="text-[10px] font-mono text-fuchsia-400 bg-fuchsia-950/60 px-2 py-0.5 rounded border border-fuchsia-500/20">
-                REST /api/leaderboard
+              <span className="text-[9px] sm:text-[10px] font-mono text-fuchsia-400 bg-fuchsia-950/60 px-2 py-0.5 rounded border border-fuchsia-500/20 shrink-0">
+                REST API
               </span>
             </div>
 
             {/* Players List */}
-            <div className="space-y-2 flex-1">
+            <div className="space-y-1.5 flex-1 max-w-full min-w-0">
               {leaderboard.map((player, idx) => {
                 const isCurrent = player.username === username;
                 return (
                   <div
                     key={idx}
-                    className={`flex items-center justify-between p-2.5 rounded-lg text-xs transition-all ${
+                    className={`flex items-center justify-between p-2 rounded-lg text-xs transition-all min-w-0 ${
                       isCurrent
                         ? "bg-fuchsia-500/15 border border-fuchsia-500/40 text-white font-bold"
                         : "bg-slate-900/60 border border-white/5 text-slate-300"
                     }`}
                   >
-                    <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
                       <span className="text-xs font-mono w-4 text-center shrink-0">{player.badge}</span>
-                      <span className="truncate">
+                      <span className="truncate min-w-0">
                         {player.username} {isCurrent && "(You)"}
                       </span>
                     </div>
-                    <span className="font-mono font-bold text-fuchsia-300 shrink-0">
+                    <span className="font-mono font-bold text-fuchsia-300 shrink-0 ml-1">
                       {player.score} pts
                     </span>
                   </div>
@@ -847,12 +847,12 @@ function ClickerGameDemo() {
 
           {/* Socket.IO Event Packet Console */}
           <div
-            className="p-3.5 rounded-xl font-mono text-[10px] space-y-1.5 max-h-36 overflow-y-auto"
+            className="p-3 rounded-xl font-mono text-[10px] space-y-1.5 max-h-36 overflow-y-auto max-w-full min-w-0 box-border"
             style={{ background: "#040508", border: "1px solid rgba(255, 255, 255, 0.06)" }}
           >
-            <div className="text-slate-400 font-bold uppercase tracking-wider text-[9px] pb-1 border-b border-slate-800 flex items-center justify-between">
-              <span>WSS Event Packet Stream</span>
-              <span className="text-emerald-400">● LIVE</span>
+            <div className="text-slate-400 font-bold uppercase tracking-wider text-[9px] pb-1 border-b border-slate-800 flex items-center justify-between min-w-0">
+              <span className="truncate">WSS Event Stream</span>
+              <span className="text-emerald-400 shrink-0">● LIVE</span>
             </div>
             {socketLogs.map((log) => (
               <div
@@ -944,7 +944,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-5 md:p-8 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-8 overflow-y-auto"
       style={{
         backgroundColor: "rgba(3, 5, 10, 0.88)",
         backdropFilter: "blur(20px)",
@@ -954,9 +954,10 @@ export default function ProjectModal({ project, isOpen, onClose }) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col my-auto"
+        className="relative w-full max-w-4xl rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col my-auto box-border"
         style={{
           maxHeight: "92vh",
+          maxWidth: "min(56rem, calc(100vw - 1rem))",
           backgroundColor: "#0a0d14",
           border: `1px solid ${modalTheme.border}`,
           boxShadow: modalTheme.shadow,
@@ -966,16 +967,16 @@ export default function ProjectModal({ project, isOpen, onClose }) {
       >
         {/* Header */}
         <div
-          className="p-4 sm:p-7 md:p-8 flex items-start justify-between gap-3"
+          className="p-3.5 sm:p-6 md:p-8 flex items-start justify-between gap-2.5 shrink-0 min-w-0"
           style={{
             borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
             background: "linear-gradient(to bottom, rgba(14, 19, 30, 0.95), rgba(10, 13, 20, 0.98))",
           }}
         >
           <div className="flex-1 pr-1 min-w-0">
-            <div className="flex flex-wrap items-center gap-2 mb-2">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 min-w-0">
               <span
-                className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider"
+                className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider shrink-0"
                 style={{
                   background: modalTheme.badgeBg,
                   color: modalTheme.badgeColor,
@@ -986,7 +987,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               </span>
               {project.metrics && (
                 <span
-                  className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-medium truncate max-w-[240px] sm:max-w-none"
+                  className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-medium truncate max-w-[200px] sm:max-w-none"
                   style={{
                     background: "rgba(16, 185, 129, 0.12)",
                     color: "#34d399",
@@ -998,7 +999,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               )}
             </div>
             <h2
-              className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight break-words"
+              className="text-base sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight break-words"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               {project.title}
@@ -1007,7 +1008,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
           <button
             onClick={onClose}
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl text-slate-400 hover:text-white transition-all hover:bg-slate-800/80 flex items-center justify-center shrink-0"
+            className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl text-slate-400 hover:text-white transition-all hover:bg-slate-800/80 flex items-center justify-center shrink-0"
             style={{
               background: "rgba(255, 255, 255, 0.05)",
               border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -1015,7 +1016,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             }}
             aria-label="Close modal"
           >
-            <svg style={{ width: "20px", height: "20px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: "18px", height: "18px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -1023,7 +1024,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
         {/* Tab Navigation (Touch Scrollable on Mobile) */}
         <div
-          className="flex items-center px-4 sm:px-8 pt-2 gap-2 overflow-x-auto no-scrollbar"
+          className="flex items-center px-3 sm:px-8 pt-1.5 sm:pt-2 gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar shrink-0 max-w-full"
           style={{
             borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
             backgroundColor: "#0a0d14",
@@ -1031,7 +1032,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
         >
           <button
             onClick={() => setActiveTab("playground")}
-            className="px-3 sm:px-4 py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
+            className="px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
             style={{
               color: activeTab === "playground" ? modalTheme.tabColor : "#94a3b8",
               borderBottom: activeTab === "playground" ? `2px solid ${modalTheme.tabColor}` : "2px solid transparent",
@@ -1040,14 +1041,14 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               borderTop: "none",
               borderLeft: "none",
               borderRight: "none",
-              minHeight: "42px",
+              minHeight: "40px",
             }}
           >
             Local Live Demo
           </button>
           <button
             onClick={() => setActiveTab("overview")}
-            className="px-3 sm:px-4 py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
+            className="px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
             style={{
               color: activeTab === "overview" ? modalTheme.tabColor : "#94a3b8",
               borderBottom: activeTab === "overview" ? `2px solid ${modalTheme.tabColor}` : "2px solid transparent",
@@ -1056,7 +1057,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               borderTop: "none",
               borderLeft: "none",
               borderRight: "none",
-              minHeight: "42px",
+              minHeight: "40px",
             }}
           >
             Architecture & Highlights
@@ -1064,7 +1065,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
           {project.codeSnippet && (
             <button
               onClick={() => setActiveTab("code")}
-              className="px-3 sm:px-4 py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
+              className="px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
               style={{
                 color: activeTab === "code" ? modalTheme.tabColor : "#94a3b8",
                 borderBottom: activeTab === "code" ? `2px solid ${modalTheme.tabColor}` : "2px solid transparent",
@@ -1073,7 +1074,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
-                minHeight: "42px",
+                minHeight: "40px",
               }}
             >
               Source Code
@@ -1081,11 +1082,17 @@ export default function ProjectModal({ project, isOpen, onClose }) {
           )}
         </div>
 
-        {/* Content Body with Generous Padding */}
-        <div className="p-4 sm:p-7 md:p-8 overflow-y-auto space-y-6 flex-1" style={{ color: "#cbd5e1" }}>
+        {/* Content Body with Strict Boundary Containment & Touch Scrolling */}
+        <div
+          className="p-3.5 sm:p-6 md:p-8 overflow-y-auto space-y-5 sm:space-y-6 flex-1 min-w-0 max-w-full box-border"
+          style={{
+            color: "#cbd5e1",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
           {/* Playground Tab */}
           {activeTab === "playground" && (
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6 max-w-full min-w-0">
               {project.id === "weather-app" && <WeatherAppDemo />}
               {project.id === "todo-crud-app" && <TodoAppDemo />}
               {(project.id === "clicker-game" || project.appType === "clicker" || project.id === "websocket-chat-app") && (
@@ -1093,15 +1100,15 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               )}
 
               {/* Stack Chips */}
-              <div className="pt-2">
+              <div className="pt-2 max-w-full min-w-0">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2.5">
                   Production Stack & Tooling
                 </span>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 max-w-full">
                   {(project.techStack || []).map((t) => (
                     <span
                       key={t}
-                      className="px-2.5 py-1 rounded-lg text-xs font-semibold"
+                      className="px-2.5 py-1 rounded-lg text-xs font-semibold shrink-0"
                       style={{
                         background: "rgba(16, 21, 33, 0.9)",
                         color: "#93c5fd",
@@ -1118,35 +1125,35 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
           {/* Overview Tab */}
           {activeTab === "overview" && (
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6 max-w-full min-w-0">
               {/* Executive Summary */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
+              <div className="min-w-0">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
                   Executive Overview
                 </h4>
-                <p className="text-xs sm:text-sm md:text-base leading-relaxed text-slate-200" style={{ lineHeight: "1.75" }}>
+                <p className="text-xs sm:text-sm md:text-base leading-relaxed text-slate-200 break-words" style={{ lineHeight: "1.75" }}>
                   {project.description}
                 </p>
               </div>
 
               {/* Technical Highlights */}
               {project.highlights && project.highlights.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                <div className="min-w-0">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
                     Key Architectural Capabilities & Engineering Design
                   </h4>
-                  <div className="space-y-2.5">
+                  <div className="space-y-2 max-w-full min-w-0">
                     {project.highlights.map((highlight, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3 p-3.5 rounded-xl text-xs sm:text-sm leading-relaxed"
+                        className="flex items-start gap-2.5 p-3 rounded-xl text-xs sm:text-sm leading-relaxed max-w-full min-w-0 box-border"
                         style={{
                           background: "rgba(14, 18, 28, 0.75)",
                           border: "1px solid rgba(255, 255, 255, 0.06)",
                         }}
                       >
-                        <span className="text-emerald-400 font-bold mt-0.5 text-sm">✓</span>
-                        <span className="text-slate-300">{highlight}</span>
+                        <span className="text-emerald-400 font-bold mt-0.5 text-sm shrink-0">✓</span>
+                        <span className="text-slate-300 break-words flex-1 min-w-0">{highlight}</span>
                       </div>
                     ))}
                   </div>
@@ -1154,15 +1161,15 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               )}
 
               {/* Technology Stack */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+              <div className="min-w-0">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
                   Verified Technologies & Frameworks
                 </h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 max-w-full">
                   {(project.techStack || []).map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 rounded-lg text-xs font-semibold"
+                      className="px-2.5 py-1 rounded-lg text-xs font-semibold shrink-0"
                       style={{
                         background: "rgba(16, 21, 33, 0.9)",
                         color: "#93c5fd",
@@ -1179,18 +1186,18 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
           {/* Code Tab */}
           {activeTab === "code" && project.codeSnippet && (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-slate-400">Production Code</span>
+            <div className="space-y-3.5 sm:space-y-4 max-w-full min-w-0">
+              <div className="flex items-center justify-between min-w-0">
+                <span className="text-xs font-mono text-slate-400 truncate">Production Code</span>
                 <button
                   onClick={() => handleCopyCode(project.codeSnippet)}
-                  className="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 shrink-0"
                   style={{
                     background: copied ? "rgba(16, 185, 129, 0.2)" : "rgba(255, 255, 255, 0.07)",
                     border: copied ? "1px solid #10b981" : "1px solid rgba(255, 255, 255, 0.12)",
                     color: copied ? "#34d399" : "#cbd5e1",
                     cursor: "pointer",
-                    minHeight: "36px",
+                    minHeight: "34px",
                   }}
                 >
                   <span>{copied ? "✓ Copied!" : "📋 Copy Code"}</span>
@@ -1198,16 +1205,15 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               </div>
 
               <div
-                className="rounded-xl overflow-hidden p-4 sm:p-5 font-mono text-xs leading-relaxed overflow-x-auto"
+                className="rounded-xl overflow-x-auto p-3 sm:p-5 font-mono text-xs leading-relaxed max-w-full min-w-0 box-border"
                 style={{
                   background: "#05070c",
                   border: "1px solid rgba(255, 255, 255, 0.08)",
                   maxHeight: "380px",
                   color: "#e2e8f0",
-                  whiteSpace: "pre",
                 }}
               >
-                <code>{project.codeSnippet}</code>
+                <code style={{ display: "block", minWidth: "100%", whiteSpace: "pre" }}>{project.codeSnippet}</code>
               </div>
             </div>
           )}
@@ -1215,22 +1221,22 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
         {/* Footer Actions */}
         <div
-          className="p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+          className="p-3 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0 min-w-0"
           style={{
             borderTop: "1px solid rgba(255, 255, 255, 0.08)",
             background: "rgba(10, 13, 20, 0.98)",
           }}
         >
-          <span className="text-xs text-slate-500 font-mono text-center sm:text-left">
+          <span className="text-[11px] sm:text-xs text-slate-500 font-mono text-center sm:text-left truncate max-w-full">
             Hosted & Executed Locally in Portfolio App
           </span>
           <button
             onClick={onClose}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 active:bg-slate-900 transition-colors shadow-md flex items-center justify-center"
+            className="w-full sm:w-auto px-6 py-2 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 active:bg-slate-900 transition-colors shadow-md flex items-center justify-center shrink-0"
             style={{
               border: "1px solid rgba(255, 255, 255, 0.15)",
               cursor: "pointer",
-              minHeight: "42px",
+              minHeight: "38px",
             }}
           >
             Close

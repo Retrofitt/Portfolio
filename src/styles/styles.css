@@ -517,10 +517,13 @@ code, pre {
   background: rgba(3, 4, 7, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  box-sizing: border-box;
 }
 
 .modal-content {
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .toast-banner {
@@ -667,6 +670,19 @@ code, pre {
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
   }
+
+  /* Modal Dialog Full Containment */
+  .fixed.inset-0.z-50 {
+    padding: 0.75rem;
+    box-sizing: border-box;
+  }
+
+  .fixed.inset-0.z-50 > div {
+    max-height: 90vh !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
 }
 
 /* Large iPhone Models: iPhone 15 Plus, 15 Pro Max, 16 Plus, 16 Pro Max (<= 440px) */
@@ -732,6 +748,15 @@ code, pre {
   .email-copy-box {
     padding: 0.625rem 0.75rem !important;
   }
+
+  .fixed.inset-0.z-50 {
+    padding: 0.5rem;
+  }
+
+  .fixed.inset-0.z-50 > div {
+    max-height: 92vh !important;
+    border-radius: 1rem;
+  }
 }
 
 /* Compact Mobile Viewports (<= 375px e.g. iPhone SE 2nd/3rd gen, iPhone 12/13 mini) */
@@ -780,10 +805,15 @@ code, pre {
     padding: 0.375rem !important;
   }
 
+  .fixed.inset-0.z-50 > div {
+    max-height: 94vh !important;
+    border-radius: 0.875rem;
+  }
+
   /* Interactive Demos on <= 375px */
   .clicker-btn-mobile {
-    width: 7.5rem !important;
-    height: 7.5rem !important;
+    width: 7rem !important;
+    height: 7rem !important;
   }
 
   /* Buttons on compact screens */
