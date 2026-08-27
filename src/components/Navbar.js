@@ -200,28 +200,15 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Trigger */}
-        <div className="flex items-center gap-2 md:hidden">
-          <button
-            onClick={() => setIsCMSOpen(true)}
-            className="p-2 rounded-lg"
-            style={{
-              background: "rgba(15, 20, 30, 0.8)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              color: "#cbd5e1"
-            }}
-            aria-label="CMS Login"
-          >
-            <svg style={{ width: "16px", height: "16px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zM10 7a2 2 0 114 0v4H10V7z" />
-            </svg>
-          </button>
+        <div className="flex items-center md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-lg"
+            className="p-2.5 rounded-lg transition-colors"
             style={{
               background: "rgba(15, 20, 30, 0.9)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              color: "#ffffff"
+              border: "1px solid rgba(255, 255, 255, 0.12)",
+              color: "#ffffff",
+              cursor: "pointer"
             }}
             aria-label="Toggle navigation menu"
           >

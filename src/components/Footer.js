@@ -52,7 +52,7 @@ export default function Footer() {
           </div>
 
           {/* Socials & Actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             {socials.map((s) => (
               <a
                 key={s.name}
@@ -67,7 +67,7 @@ export default function Footer() {
             ))}
             <button
               onClick={() => setIsCMSOpen(true)}
-              className="text-xs font-semibold ml-2"
+              className="text-xs font-semibold"
               style={{
                 color: "#64748b",
                 background: "none",

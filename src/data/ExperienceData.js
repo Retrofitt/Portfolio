@@ -271,57 +271,60 @@ app.listen(port, () => {
       category: "WebSockets / Full-Stack",
       featured: true,
       appType: "clicker",
-      description: "A real-time multiplayer clicker game built with React, Node.js, and Socket.IO. Features instant bi-directional click synchronization, automated score degradation timers upon inactivity, and live leaderboard API integration.",
+      description: "A real-time multiplayer arcade clicker game built with React, Node.js, and Socket.IO. Features instant bi-directional click synchronization, active inactivity countdown run lifecycle, final score updates to live leaderboards, and mobile touch optimization.",
       image: null,
       techStack: ["React.js", "Node.js", "Express.js", "Socket.IO", "WebSockets", "REST APIs", "Event-Driven"],
-      metrics: "Socket.IO WebSockets • Real-Time Leaderboard & Score Decay",
+      metrics: "Socket.IO WebSockets • Inactivity Run Timer & Live Leaderboard",
       highlights: [
         "Engineered real-time client-to-server click synchronization using Socket.IO events (send_click / receive_click).",
-        "Implemented an active countdown timer that triggers score decay upon user inactivity to encourage rapid gameplay.",
-        "Built an asynchronous REST API endpoint (/api/leaderboard) to fetch and broadcast real-time player leaderboards."
+        "Implemented an inactivity countdown run lifecycle: rapid clicks build combo and score, while 2.5s idle completes the run and commits the final score to the leaderboard.",
+        "Built an asynchronous REST API endpoint (/api/leaderboard) to fetch, sort, and broadcast real-time player rankings and high scores."
       ],
       codeSnippet: `// ClickerGame.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 
 const ClickerGame = () => {
   const [score, setScore] = useState(0);
-  const [timer, setTimer] = useState(null);
-  const [username, setUsername] = useState('User' + Math.floor(Math.random() * 100));
+  const [highScore, setHighScore] = useState(0);
+  const [gameState, setGameState] = useState('idle'); // 'idle' | 'running' | 'ended'
+  const [username, setUsername] = useState('Player_' + Math.floor(Math.random() * 100));
   const [leaderboard, setLeaderboard] = useState([]);
+  const [lastClickTime, setLastClickTime] = useState(null);
+  const socketRef = useRef(null);
+
+  const INACTIVITY_TIMEOUT = 2500; // 2.5s
 
   useEffect(() => {
-    const socket = io('http://localhost:3002');
-
-    socket.on('receive_click', (data) => {
-      fetchLeaderboard();
-    });
-
-    return () => {
-      socket.disconnect();
-    };
+    socketRef.current = io('http://localhost:3002');
+    socketRef.current.on('receive_click', () => fetchLeaderboard());
+    return () => socketRef.current.disconnect();
   }, []);
 
-  const handleClick = () => {
-    setScore((prev) => prev + 1);
-    resetTimer();
-
-    socket.emit('send_click', { username, score: score + 1 });
-  };
-
-  const resetTimer = () => {
-    clearTimeout(timer);
-    setTimer(
-      setTimeout(() => {
-        setScore((prev) => Math.max(0, prev - 1));
-        resetTimer();
-      }, 1000)
-    );
-  };
-
+  // Inactivity countdown: concludes run on idle (no score degradation)
   useEffect(() => {
-    fetchLeaderboard();
-  }, [score]);
+    if (gameState !== 'running') return;
+    const interval = setInterval(() => {
+      if (Date.now() - lastClickTime >= INACTIVITY_TIMEOUT) {
+        setGameState('ended');
+        setHighScore((prev) => Math.max(prev, score));
+        socketRef.current?.emit('run_ended', { username, finalScore: score });
+      }
+    }, 50);
+    return () => clearInterval(interval);
+  }, [gameState, lastClickTime, score, username]);
+
+  const handleClick = () => {
+    const now = Date.now();
+    if (gameState === 'ended' || gameState === 'idle') {
+      setScore(1);
+      setGameState('running');
+    } else {
+      setScore((prev) => prev + 1);
+    }
+    setLastClickTime(now);
+    socketRef.current?.emit('send_click', { username, score: score + 1 });
+  };
 
   const fetchLeaderboard = async () => {
     try {
@@ -336,17 +339,12 @@ const ClickerGame = () => {
   return (
     <div className="clicker-game-container">
       <h2>Multiplayer Clicker Game</h2>
-      <div className="player-badge">Player: {username}</div>
-      <div className="score-display">Score: {score}</div>
-      <button className="click-btn" onClick={handleClick}>⚡ Click Me!</button>
-      <div className="leaderboard">
-        <h3>Top Players</h3>
-        <ul>
-          {leaderboard.map((player, idx) => (
-            <li key={idx}>{player.username}: {player.score} pts</li>
-          ))}
-        </ul>
-      </div>
+      <div className="player-badge">Player: {username} | Best: {highScore} pts</div>
+      <div className="score-display">Score: {score} pts</div>
+      <div className="run-status">Status: {gameState}</div>
+      <button className="click-btn" onClick={handleClick}>
+        {gameState === 'ended' ? '🍪 Play Again' : '⚡ Click Me!'}
+      </button>
     </div>
   );
 };

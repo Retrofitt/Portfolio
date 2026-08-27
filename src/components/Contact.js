@@ -124,24 +124,33 @@ export default function Contact() {
                   Email
                 </label>
                 <div
-                  className="flex items-center justify-between p-3 rounded-xl"
+                  className="flex items-center justify-between p-3 rounded-xl gap-2.5"
                   style={{
                     background: "var(--bg-surface)",
                     border: "1px solid var(--border-medium)"
                   }}
                 >
-                  <span className="text-xs sm:text-sm font-mono truncate mr-2 text-cyan-400">
+                  <span className="min-w-0 flex-1 text-xs sm:text-sm font-mono truncate text-cyan-400 select-all">
                     {targetEmail}
                   </span>
                   <button
                     onClick={handleCopyEmail}
-                    className="btn-outline text-xs"
+                    className="btn-outline text-xs shrink-0"
                     type="button"
+                    style={{
+                      whiteSpace: "nowrap",
+                      flexShrink: 0,
+                      minWidth: "78px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "0.45rem 0.75rem"
+                    }}
                   >
                     {copied ? (
-                      <span className="text-cyan-400 font-bold">✓ Copied</span>
+                      <span className="text-cyan-400 font-bold" style={{ whiteSpace: "nowrap" }}>✓ Copied</span>
                     ) : (
-                      <span>Copy</span>
+                      <span style={{ whiteSpace: "nowrap" }}>Copy</span>
                     )}
                   </button>
                 </div>

@@ -74,22 +74,18 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
           e.stopPropagation();
           onPrev();
         }}
-        className="absolute z-20 flex items-center justify-center rounded-full"
+        className="absolute z-20 flex items-center justify-center rounded-full left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12"
         style={{
-          left: "1rem",
-          top: "50%",
-          transform: "translateY(-50%)",
-          width: "3rem",
-          height: "3rem",
           background: "rgba(9, 12, 18, 0.85)",
           border: "1px solid rgba(255, 255, 255, 0.15)",
           color: "#ffffff",
           cursor: "pointer",
-          backdropFilter: "blur(12px)"
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)"
         }}
         aria-label="Previous Photo"
       >
-        <svg style={{ width: "24px", height: "24px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg style={{ width: "20px", height: "20px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
@@ -99,22 +95,18 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
           e.stopPropagation();
           onNext();
         }}
-        className="absolute z-20 flex items-center justify-center rounded-full"
+        className="absolute z-20 flex items-center justify-center rounded-full right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12"
         style={{
-          right: "1rem",
-          top: "50%",
-          transform: "translateY(-50%)",
-          width: "3rem",
-          height: "3rem",
           background: "rgba(9, 12, 18, 0.85)",
           border: "1px solid rgba(255, 255, 255, 0.15)",
           color: "#ffffff",
           cursor: "pointer",
-          backdropFilter: "blur(12px)"
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)"
         }}
         aria-label="Next Photo"
       >
-        <svg style={{ width: "24px", height: "24px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg style={{ width: "20px", height: "20px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
@@ -128,7 +120,8 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
           src={photo.image}
           alt={photo.alt || "Photography item"}
           style={{
-            maxHeight: "80vh",
+            maxHeight: "75vh",
+            maxWidth: "92vw",
             width: "auto",
             objectFit: "contain",
             borderRadius: "0.75rem",

@@ -58,7 +58,7 @@ export default function Hero() {
 
         {/* Hero Headline */}
         <h1
-          className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight mb-4"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-4"
           style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: "-0.03em" }}
         >
           Hi, I'm{" "}
@@ -75,7 +75,7 @@ export default function Hero() {
 
         {/* Role Subheading */}
         <h2
-          className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-200 mb-6 tracking-tight"
+          className="text-lg sm:text-2xl md:text-3xl font-bold text-slate-200 mb-6 tracking-tight"
           style={{ color: "#94a3b8" }}
         >
           {profile.role}
@@ -83,14 +83,14 @@ export default function Hero() {
 
         {/* Bio summary */}
         <p
-          className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10"
+          className="text-sm sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10"
           style={{ color: "#8492a6" }}
         >
           {profile.bioLead}
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-14">
           <a href="#projects" className="btn-primary">
             <span>Explore Featured Work</span>
             <svg style={{ width: "16px", height: "16px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">

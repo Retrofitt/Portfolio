@@ -83,14 +83,14 @@ export default function About() {
           {/* Stats & Quick Card / Right Column */}
           <div className="lg:col-span-5 space-y-6">
             {/* Stat Counters Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {(profile.stats || []).map((stat, i) => (
                 <div
                   key={stat.label || i}
-                  className="glass-card p-6 rounded-2xl text-center"
+                  className="glass-card p-4 sm:p-6 rounded-2xl text-center"
                 >
                   <p
-                    className="text-3xl sm:text-4xl font-black mb-1"
+                    className="text-2xl sm:text-4xl font-black mb-1"
                     style={{
                       background: "linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-emerald) 100%)",
                       WebkitBackgroundClip: "text",
@@ -99,7 +99,7 @@ export default function About() {
                   >
                     {stat.value}
                   </p>
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  <p className="text-[11px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     {stat.label}
                   </p>
                 </div>

@@ -94,8 +94,8 @@ function getProjectTheme(project) {
       statusBorder: "rgba(217, 70, 239, 0.35)",
       primaryIcon: "🎮",
       primaryTitle: "Multiplayer Click Sync Active",
-      primaryDetail: "send_click • Score Decay Engine • Leaderboard API",
-      logLine: "WSS Event: send_click • Score Decay Active • Port 3002",
+      primaryDetail: "send_click • Inactivity Run Timer • Leaderboard API",
+      logLine: "WSS Event: send_click • Session Run Scoring • Port 3002",
       logColor: "#c084fc",
       engine: "React & Socket.IO",
       engineColor: "#e879f9",
@@ -109,13 +109,13 @@ function UnifiedProjectBanner({ project, theme }) {
 
   return (
     <div
-      className="w-full h-full p-4 flex flex-col justify-between select-none pointer-events-none box-border"
+      className="w-full h-full p-3.5 sm:p-4 flex flex-col justify-between select-none pointer-events-none box-border"
       style={{
         background: banner.gradient,
       }}
     >
       {/* 1. Window Header Bar (Traffic Dots + Route + Status) */}
-      <div className="h-7 flex items-center justify-between gap-2 shrink-0 border-b border-white/5 pb-2">
+      <div className="h-7 flex items-center justify-between gap-1.5 sm:gap-2 shrink-0 border-b border-white/5 pb-2">
         {/* Terminal traffic light dots */}
         <div className="flex items-center gap-1.5 shrink-0">
           <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
@@ -124,13 +124,13 @@ function UnifiedProjectBanner({ project, theme }) {
         </div>
 
         {/* Monospace Route Pill */}
-        <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-slate-950/80 border border-white/10 font-mono text-[10px] text-slate-300 truncate max-w-[55%]">
-          <span>{banner.endpoint}</span>
+        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-slate-950/80 border border-white/10 font-mono text-[10px] text-slate-300 truncate max-w-[42%] sm:max-w-[55%]">
+          <span className="truncate">{banner.endpoint}</span>
         </div>
 
         {/* Status Pill */}
         <span
-          className="px-2 py-0.5 rounded text-[10px] font-mono font-bold shrink-0"
+          className="px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold shrink-0"
           style={{
             color: banner.statusColor,
             backgroundColor: banner.statusBg,
@@ -297,9 +297,9 @@ export default function Projects() {
                       </span>
                     </div>
 
-                    {/* Title (Aligned baseline with min-height & modern heading font) */}
+                    {/* Title (Aligned baseline with min-height on sm+ & modern heading font) */}
                     <h3
-                      className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-3.5 min-h-[3.75rem] flex items-start break-words"
+                      className="text-lg sm:text-xl md:text-2xl font-extrabold text-white tracking-tight mb-3 sm:min-h-[3.75rem] flex items-start break-words"
                       style={{ fontFamily: "'Outfit', sans-serif" }}
                     >
                       {project.title}
