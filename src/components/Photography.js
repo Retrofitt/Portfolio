@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, Suspense, lazy } from "react";
 import { usePortfolio } from "../data/ExperienceData";
-import Lightbox from "./Lightbox";
+
+const Lightbox = lazy(() => import("./Lightbox"));
 
 export default function Photography() {
   const { data, isAuthenticated, setIsCMSOpen } = usePortfolio();
@@ -80,6 +81,7 @@ export default function Photography() {
                 src={photo.image}
                 alt={photo.alt || "Photography item"}
                 loading="lazy"
+                decoding="async"
                 className="w-full h-full"
                 style={{
                   objectFit: "cover",
@@ -95,15 +97,19 @@ export default function Photography() {
       </div>
 
       {/* Fullscreen Lightbox Modal */}
-      <Lightbox
-        isOpen={selectedPhotoIndex !== null}
-        photo={selectedPhotoIndex !== null ? photos[selectedPhotoIndex] : null}
-        currentIndex={selectedPhotoIndex || 0}
-        totalCount={photos.length}
-        onClose={closeLightbox}
-        onPrev={handlePrev}
-        onNext={handleNext}
-      />
+      {selectedPhotoIndex !== null && (
+        <Suspense fallback={null}>
+          <Lightbox
+            isOpen={selectedPhotoIndex !== null}
+            photo={photos[selectedPhotoIndex]}
+            currentIndex={selectedPhotoIndex}
+            totalCount={photos.length}
+            onClose={closeLightbox}
+            onPrev={handlePrev}
+            onNext={handleNext}
+          />
+        </Suspense>
+      )}
     </section>
   );
 }

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { PortfolioProvider, usePortfolio } from "./data/ExperienceData";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-import CMSModal from "./components/CMSModal";
+
+const CMSModal = lazy(() => import("./components/CMSModal"));
 
 function ToastBanner() {
   const { toast } = usePortfolio();
@@ -31,7 +32,9 @@ function PortfolioApp() {
       <Navbar />
       <Home />
       <Footer />
-      <CMSModal />
+      <Suspense fallback={null}>
+        <CMSModal />
+      </Suspense>
       <ToastBanner />
     </div>
   );

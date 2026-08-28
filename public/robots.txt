@@ -56,4 +56,4 @@ Allow: /
 # All content is original and property of RamenDev.
 
 # For technical inquiries or partnership opportunities, 
-# please contact rafaelmendoza.dev@gmail.com or visit https://ramendev.io/#contact
+# please contact rafaelmendoza94.coding@gmail.com or visit https://portfolio.ramendev.io/

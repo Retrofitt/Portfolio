@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, Suspense, lazy } from "react";
 import { usePortfolio } from "../data/ExperienceData";
-import ProjectModal from "./ProjectModal";
+
+const ProjectModal = lazy(() => import("./ProjectModal"));
 
 // Apple Titanium Monochrome Theme Configuration
 function getProjectTheme(project) {
@@ -430,14 +431,16 @@ export default function Projects() {
 
       {/* Project Details & Interactive Local Sandbox Modal */}
       {isModalOpen && selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          isOpen={isModalOpen}
-          onClose={() => {
-            setIsModalOpen(false);
-            setSelectedProject(null);
-          }}
-        />
+        <Suspense fallback={null}>
+          <ProjectModal
+            project={selectedProject}
+            isOpen={isModalOpen}
+            onClose={() => {
+              setIsModalOpen(false);
+              setSelectedProject(null);
+            }}
+          />
+        </Suspense>
       )}
     </section>
   );
