@@ -1,7 +1,6 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState } from "react";
 import { usePortfolio } from "../data/ExperienceData";
-
-const Lightbox = lazy(() => import("./Lightbox"));
+import Lightbox from "./Lightbox";
 
 export default function Photography() {
   const { data, isAuthenticated, setIsCMSOpen } = usePortfolio();
@@ -9,7 +8,9 @@ export default function Photography() {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(null);
 
   const openLightbox = (index) => {
-    setSelectedPhotoIndex(index);
+    if (typeof index === "number" && index >= 0 && index < photos.length) {
+      setSelectedPhotoIndex(index);
+    }
   };
 
   const closeLightbox = () => {
@@ -17,12 +18,12 @@ export default function Photography() {
   };
 
   const handlePrev = () => {
-    if (selectedPhotoIndex === null) return;
+    if (selectedPhotoIndex === null || photos.length === 0) return;
     setSelectedPhotoIndex((prev) => (prev > 0 ? prev - 1 : photos.length - 1));
   };
 
   const handleNext = () => {
-    if (selectedPhotoIndex === null) return;
+    if (selectedPhotoIndex === null || photos.length === 0) return;
     setSelectedPhotoIndex((prev) => (prev < photos.length - 1 ? prev + 1 : 0));
   };
 
@@ -97,18 +98,16 @@ export default function Photography() {
       </div>
 
       {/* Fullscreen Lightbox Modal */}
-      {selectedPhotoIndex !== null && (
-        <Suspense fallback={null}>
-          <Lightbox
-            isOpen={selectedPhotoIndex !== null}
-            photo={photos[selectedPhotoIndex]}
-            currentIndex={selectedPhotoIndex}
-            totalCount={photos.length}
-            onClose={closeLightbox}
-            onPrev={handlePrev}
-            onNext={handleNext}
-          />
-        </Suspense>
+      {selectedPhotoIndex !== null && photos[selectedPhotoIndex] && (
+        <Lightbox
+          isOpen={selectedPhotoIndex !== null}
+          photo={photos[selectedPhotoIndex]}
+          currentIndex={selectedPhotoIndex}
+          totalCount={photos.length}
+          onClose={closeLightbox}
+          onPrev={handlePrev}
+          onNext={handleNext}
+        />
       )}
     </section>
   );

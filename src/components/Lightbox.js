@@ -4,6 +4,9 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
   useEffect(() => {
     if (!isOpen) return;
 
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") onPrev();
@@ -11,15 +14,14 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = originalOverflow || "";
     };
   }, [isOpen, onClose, onPrev, onNext]);
 
-  if (!isOpen || !photo) return null;
+  if (!isOpen || !photo || !photo.image) return null;
 
   return (
     <div
