@@ -31,17 +31,18 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
 
       {/* Top Bar Controls */}
       <div
-        className="absolute z-20 flex items-center justify-between"
-        style={{ top: "1rem", left: "1rem", right: "1rem", pointerEvents: "none" }}
+        className="absolute z-30 flex items-center justify-between"
+        style={{ top: "1.5rem", left: "1.5rem", right: "1.5rem", pointerEvents: "none" }}
       >
         <div
-          className="px-3.5 py-1.5 rounded-full text-xs font-semibold"
+          className="px-4 py-1.5 rounded-full text-xs font-semibold"
           style={{
             pointerEvents: "auto",
-            background: "rgba(9, 12, 18, 0.9)",
+            background: "rgba(20, 20, 20, 0.9)",
             border: "1px solid rgba(255, 255, 255, 0.15)",
-            color: "#cbd5e1",
-            backdropFilter: "blur(12px)"
+            color: "#f3f4f6",
+            backdropFilter: "blur(16px)",
+            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)"
           }}
         >
           <span>{currentIndex + 1}</span> / <span>{totalCount}</span>
@@ -49,44 +50,56 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
 
         <button
           onClick={onClose}
-          className="flex items-center justify-center rounded-full"
+          className="flex items-center justify-center rounded-full transition-all"
           style={{
             pointerEvents: "auto",
-            width: "2.5rem",
-            height: "2.5rem",
-            background: "rgba(9, 12, 18, 0.9)",
+            width: "2.75rem",
+            height: "2.75rem",
+            background: "rgba(20, 20, 20, 0.9)",
             border: "1px solid rgba(255, 255, 255, 0.15)",
             color: "#ffffff",
             cursor: "pointer",
-            backdropFilter: "blur(12px)"
+            backdropFilter: "blur(16px)",
+            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)"
           }}
           aria-label="Close Lightbox"
         >
-          <svg style={{ width: "20px", height: "20px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg style={{ width: "20px", height: "20px", display: "block" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
 
-      {/* Prev / Next Buttons */}
+      {/* Prev / Next Buttons (Strict Absolute Vertical Centering) */}
       <button
         onClick={(e) => {
           e.stopPropagation();
           onPrev();
         }}
-        className="absolute z-20 flex items-center justify-center rounded-full left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12"
+        className="flex items-center justify-center rounded-full transition-all"
         style={{
-          background: "rgba(9, 12, 18, 0.85)",
+          position: "absolute",
+          top: "50%",
+          left: "1rem",
+          transform: "translateY(-50%)",
+          zIndex: 30,
+          width: "3rem",
+          height: "3rem",
+          background: "rgba(20, 20, 20, 0.88)",
           border: "1px solid rgba(255, 255, 255, 0.15)",
           color: "#ffffff",
           cursor: "pointer",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)"
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.7)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
         }}
         aria-label="Previous Photo"
       >
-        <svg style={{ width: "20px", height: "20px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+        <svg style={{ width: "22px", height: "22px", display: "block" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
@@ -95,25 +108,36 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
           e.stopPropagation();
           onNext();
         }}
-        className="absolute z-20 flex items-center justify-center rounded-full right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12"
+        className="flex items-center justify-center rounded-full transition-all"
         style={{
-          background: "rgba(9, 12, 18, 0.85)",
+          position: "absolute",
+          top: "50%",
+          right: "1rem",
+          transform: "translateY(-50%)",
+          zIndex: 30,
+          width: "3rem",
+          height: "3rem",
+          background: "rgba(20, 20, 20, 0.88)",
           border: "1px solid rgba(255, 255, 255, 0.15)",
           color: "#ffffff",
           cursor: "pointer",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)"
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.7)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
         }}
         aria-label="Next Photo"
       >
-        <svg style={{ width: "20px", height: "20px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+        <svg style={{ width: "22px", height: "22px", display: "block" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
       {/* Lightbox Content Container */}
       <div
-        className="relative z-10 flex flex-col items-center modal-content"
+        className="relative z-10 flex flex-col items-center justify-center modal-content"
         style={{ maxWidth: "80rem", maxHeight: "85vh" }}
       >
         <img
@@ -121,12 +145,12 @@ export default function Lightbox({ isOpen, photo, onClose, onPrev, onNext, curre
           alt={photo.alt || "Photography item"}
           style={{
             maxHeight: "75vh",
-            maxWidth: "92vw",
+            maxWidth: "90vw",
             width: "auto",
             objectFit: "contain",
             borderRadius: "0.75rem",
-            border: "1px solid rgba(255, 255, 255, 0.15)",
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.9)"
+            border: "1px solid rgba(255, 255, 255, 0.12)",
+            boxShadow: "0 25px 60px -15px rgba(0, 0, 0, 0.95)"
           }}
         />
       </div>
