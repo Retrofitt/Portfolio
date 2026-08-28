@@ -84,89 +84,92 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
           {/* Contact Details & Info (Left) */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="glass-card p-8 rounded-2xl">
-              <h3 className="text-xl font-bold text-white mb-2">
-                Let's Connect
-              </h3>
-              <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-                I'm currently available for full-time software engineering roles, hybrid or remote positions, and select freelance web development projects.
-              </p>
+          <div className="lg:col-span-5 flex flex-col h-full">
+            <div className="glass-card p-8 rounded-2xl flex-1 flex flex-col justify-between h-full">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  Let's Connect
+                </h3>
+                <p className="text-sm text-slate-300 mb-6 leading-relaxed">
+                  I'm currently available for full-time software engineering roles, hybrid or remote positions, and select freelance web development projects.
+                </p>
 
-              {/* Status Indicator */}
-              <div
-                className="p-4 rounded-xl mb-6 flex items-center gap-3"
-                style={{
-                  background: "var(--bg-surface)",
-                  border: "1px solid var(--border-glow)"
-                }}
-              >
+                {/* Status Indicator */}
                 <div
+                  className="p-4 rounded-xl mb-6 flex items-center gap-3"
                   style={{
-                    width: "8px",
-                    height: "8px",
-                    borderRadius: "50%",
-                    backgroundColor: "var(--accent-cyan)",
-                    boxShadow: "0 0 10px var(--accent-cyan)"
-                  }}
-                ></div>
-                <div>
-                  <p className="text-xs font-bold text-white">Direct Inbox Delivery</p>
-                  <p className="text-xs text-slate-400" style={{ fontSize: "11px" }}>Usually replies within 24 hours</p>
-                </div>
-              </div>
-
-              {/* Copy Email Snippet */}
-              <div className="space-y-2 mb-6">
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">
-                  Email
-                </label>
-                <div
-                  className="flex items-center justify-between p-3 rounded-xl gap-2.5"
-                  style={{
-                    background: "var(--bg-surface)",
-                    border: "1px solid var(--border-medium)"
+                    background: "rgba(255, 255, 255, 0.03)",
+                    border: "1px solid rgba(255, 255, 255, 0.08)"
                   }}
                 >
-                  <span className="min-w-0 flex-1 text-xs sm:text-sm font-mono truncate text-cyan-400 select-all">
-                    {targetEmail}
-                  </span>
-                  <button
-                    onClick={handleCopyEmail}
-                    className="btn-outline text-xs shrink-0"
-                    type="button"
+                  <div
                     style={{
-                      whiteSpace: "nowrap",
-                      flexShrink: 0,
-                      minWidth: "78px",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "0.45rem 0.75rem"
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "50%",
+                      backgroundColor: "#dc2626",
+                      boxShadow: "0 0 6px rgba(220, 38, 38, 0.4)"
+                    }}
+                  ></div>
+                  <div>
+                    <p className="text-xs font-bold text-white">Direct Inbox Delivery</p>
+                    <p className="text-xs text-slate-400" style={{ fontSize: "11px" }}>Usually replies within 24 hours</p>
+                  </div>
+                </div>
+
+                {/* Copy Email Snippet */}
+                <div className="space-y-2 mb-6">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">
+                    Email
+                  </label>
+                  <div
+                    className="flex items-center justify-between p-3 rounded-xl gap-2.5"
+                    style={{
+                      background: "rgba(255, 255, 255, 0.03)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)"
                     }}
                   >
-                    {copied ? (
-                      <span className="text-cyan-400 font-bold" style={{ whiteSpace: "nowrap" }}>✓ Copied</span>
-                    ) : (
-                      <span style={{ whiteSpace: "nowrap" }}>Copy</span>
-                    )}
-                  </button>
+                    <span className="min-w-0 flex-1 text-xs sm:text-sm font-mono truncate text-white select-all">
+                      {targetEmail}
+                    </span>
+                    <button
+                      onClick={handleCopyEmail}
+                      className="btn-secondary text-xs shrink-0"
+                      type="button"
+                      style={{
+                        whiteSpace: "nowrap",
+                        flexShrink: 0,
+                        minWidth: "78px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: "0.45rem 0.75rem",
+                        borderRadius: "0.5rem"
+                      }}
+                    >
+                      {copied ? (
+                        <span className="text-white font-bold" style={{ whiteSpace: "nowrap" }}>✓ Copied</span>
+                      ) : (
+                        <span style={{ whiteSpace: "nowrap" }}>Copy</span>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
 
               {/* Location & Socials */}
-              <div className="pt-6 space-y-3" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+              <div className="pt-6 space-y-3" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
                 <p className="text-xs text-slate-400 flex items-center gap-2">
-                  <svg style={{ width: "16px", height: "16px", color: "var(--accent-cyan)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{ width: "16px", height: "16px", color: "#ffffff" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <span>{profile.location || "Long Beach, CA"} (Pacific Time)</span>
                 </p>
                 <p className="text-xs text-slate-400 flex items-center gap-2">
-                  <svg style={{ width: "16px", height: "16px", color: "var(--accent-cyan)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{ width: "16px", height: "16px", color: "#ffffff" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                   <span>Phone available upon request</span>
@@ -178,8 +181,8 @@ export default function Contact() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-outline text-xs"
-                      style={{ padding: "0.35rem 0.75rem" }}
+                      className="btn-secondary text-xs"
+                      style={{ padding: "0.35rem 0.75rem", borderRadius: "0.5rem" }}
                     >
                       {social.name}
                     </a>
@@ -190,9 +193,9 @@ export default function Contact() {
           </div>
 
           {/* Contact Message Form (Right) */}
-          <div className="lg:col-span-7">
-            <div className="glass-card p-8 rounded-2xl">
-              <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="lg:col-span-7 flex flex-col h-full">
+            <div className="glass-card p-8 rounded-2xl flex-1 flex flex-col justify-between h-full">
+              <form onSubmit={handleSubmit} className="flex-1 flex flex-col justify-between space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-300 mb-2">
@@ -238,17 +241,17 @@ export default function Contact() {
                   </select>
                 </div>
 
-                <div>
+                <div className="flex-1 flex flex-col">
                   <label className="block text-xs font-semibold text-slate-300 mb-2">
                     Message *
                   </label>
                   <textarea
                     required
-                    rows="5"
+                    rows="4"
                     placeholder="Tell me about the role, project, or question..."
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="glass-input w-full text-sm"
+                    className="glass-input w-full text-sm flex-1 min-h-[130px]"
                     style={{ resize: "none" }}
                   ></textarea>
                 </div>

@@ -29,7 +29,7 @@ export default function Experience() {
                 key={item.id || index}
                 className="glass-card p-6 sm:p-8 rounded-2xl relative"
                 style={{
-                  borderLeft: "4px solid var(--accent-cyan)",
+                  borderLeft: "3px solid #dc2626",
                 }}
               >
                 {/* Header Badge: Period & Location */}
@@ -37,9 +37,9 @@ export default function Experience() {
                   <span
                     className="px-3 py-1 rounded-full text-xs font-semibold"
                     style={{
-                      backgroundColor: "rgba(56, 189, 248, 0.12)",
-                      border: "1px solid var(--border-glow)",
-                      color: "var(--accent-cyan)"
+                      backgroundColor: "rgba(220, 38, 38, 0.08)",
+                      border: "1px solid rgba(220, 38, 38, 0.25)",
+                      color: "#dc2626"
                     }}
                   >
                     {item.period}
@@ -57,7 +57,7 @@ export default function Experience() {
                 <h3 className="text-xl font-bold text-white mb-1">
                   {item.role}
                 </h3>
-                <h4 className="text-sm font-semibold text-cyan-400 mb-4">
+                <h4 className="text-sm font-semibold text-slate-300 mb-4">
                   {item.company}
                 </h4>
 
@@ -73,7 +73,7 @@ export default function Experience() {
                   <ul className="space-y-2 mb-5" style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {item.highlights.map((bullet, bIdx) => (
                       <li key={bIdx} className="text-xs text-slate-300 flex items-start gap-2 leading-relaxed">
-                        <span className="text-cyan-400 font-bold" style={{ marginTop: "1px" }}>▹</span>
+                        <span className="font-bold" style={{ color: "#dc2626", marginTop: "1px" }}>▹</span>
                         <span>{bullet}</span>
                       </li>
                     ))}
@@ -84,15 +84,15 @@ export default function Experience() {
                 {item.technologies && item.technologies.length > 0 && (
                   <div
                     className="flex flex-wrap gap-1.5 pt-3"
-                    style={{ borderTop: "1px solid var(--border-subtle)" }}
+                    style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}
                   >
                     {item.technologies.map((tech) => (
                       <span
                         key={tech}
                         className="text-xs font-medium px-2.5 py-1 rounded"
                         style={{
-                          background: "var(--bg-surface)",
-                          border: "1px solid var(--border-subtle)",
+                          background: "rgba(255, 255, 255, 0.03)",
+                          border: "1px solid rgba(255, 255, 255, 0.08)",
                           color: "var(--text-secondary)"
                         }}
                       >

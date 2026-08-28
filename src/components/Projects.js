@@ -2,182 +2,123 @@ import React, { useState } from "react";
 import { usePortfolio } from "../data/ExperienceData";
 import ProjectModal from "./ProjectModal";
 
-// Themed Metadata Helper for Personalized Color Palettes
+// Apple Titanium Monochrome Theme Configuration
 function getProjectTheme(project) {
   if (project.id === "weather-app" || project.appType === "weather") {
     return {
-      cardClass: "project-card-weather",
-      categoryBg: "rgba(0, 242, 254, 0.12)",
-      categoryColor: "#38bdf8",
-      categoryBorder: "rgba(0, 242, 254, 0.35)",
-      ctaGradient: "linear-gradient(135deg, rgba(0, 242, 254, 0.24) 0%, rgba(56, 189, 248, 0.1) 100%)",
-      ctaColor: "#38bdf8",
-      ctaBorder: "rgba(0, 242, 254, 0.45)",
-      ctaShadow: "0 4px 18px rgba(0, 242, 254, 0.18)",
-      metricBg: "rgba(0, 242, 254, 0.08)",
-      metricBorder: "rgba(0, 242, 254, 0.22)",
-      metricColor: "#38bdf8",
-      tagBg: "rgba(0, 242, 254, 0.08)",
-      tagBorder: "rgba(0, 242, 254, 0.18)",
-      tagColor: "#7dd3fc",
-      banner: {
-        gradient: "radial-gradient(circle at top right, rgba(0, 242, 254, 0.18) 0%, rgba(56, 189, 248, 0.05) 60%, rgba(6, 10, 18, 0.98) 100%)",
-        endpoint: "GET /?city=New+York",
-        status: "200 OK",
-        statusColor: "#34d399",
-        statusBg: "rgba(16, 185, 129, 0.15)",
-        statusBorder: "rgba(16, 185, 129, 0.3)",
-        primaryIcon: "☀️",
-        primaryTitle: "22.5°C (72.5°F) Clear Sky",
-        primaryDetail: "58% Humidity • Metric Units",
-        logLine: "Connected to OpenWeather API • Port 3000",
-        logColor: "#38bdf8",
-        engine: "Node.js & Express",
-        engineColor: "#38bdf8",
+      glow: "radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 55%, transparent 80%)",
+      accent: "#ffffff",
+      accentBg: "rgba(255, 255, 255, 0.06)",
+      accentBorder: "rgba(255, 255, 255, 0.12)",
+      preview: {
+        badge: "Weather Intelligence",
+        mainTitle: "22.5°C",
+        subTitle: "Clear Sky in New York",
+        detail: "58% Humidity • Metric Units",
+        metricTag: "REST API • OpenWeather",
+        icon: "☀️",
       },
     };
   }
   if (project.id === "todo-crud-app" || project.appType === "todo") {
     return {
-      cardClass: "project-card-todo",
-      categoryBg: "rgba(0, 245, 160, 0.12)",
-      categoryColor: "#34d399",
-      categoryBorder: "rgba(0, 245, 160, 0.35)",
-      ctaGradient: "linear-gradient(135deg, rgba(0, 245, 160, 0.24) 0%, rgba(16, 185, 129, 0.1) 100%)",
-      ctaColor: "#34d399",
-      ctaBorder: "rgba(0, 245, 160, 0.45)",
-      ctaShadow: "0 4px 18px rgba(0, 245, 160, 0.18)",
-      metricBg: "rgba(0, 245, 160, 0.08)",
-      metricBorder: "rgba(0, 245, 160, 0.22)",
-      metricColor: "#34d399",
-      tagBg: "rgba(0, 245, 160, 0.08)",
-      tagBorder: "rgba(0, 245, 160, 0.18)",
-      tagColor: "#6ee7b7",
-      banner: {
-        gradient: "radial-gradient(circle at top right, rgba(0, 245, 160, 0.18) 0%, rgba(16, 185, 129, 0.05) 60%, rgba(6, 14, 10, 0.98) 100%)",
-        endpoint: "REST /todos/:id",
-        status: "200 OK",
-        statusColor: "#34d399",
-        statusBg: "rgba(16, 185, 129, 0.15)",
-        statusBorder: "rgba(16, 185, 129, 0.3)",
-        primaryIcon: "✓",
-        primaryTitle: "POST /todos → 201 Created",
-        primaryDetail: "GET, PUT, DELETE Active",
-        logLine: "CRUD Handlers Ready • Port 3001",
-        logColor: "#34d399",
-        engine: "Node.js & Express",
-        engineColor: "#34d399",
+      glow: "radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 55%, transparent 80%)",
+      accent: "#ffffff",
+      accentBg: "rgba(255, 255, 255, 0.06)",
+      accentBorder: "rgba(255, 255, 255, 0.12)",
+      preview: {
+        badge: "RESTful Architecture",
+        mainTitle: "Task Service",
+        subTitle: "GET, POST, PUT, DELETE",
+        detail: "JSON Payload Validation",
+        metricTag: "Node.js & Express API",
+        icon: "✓",
       },
     };
   }
   return {
-    cardClass: "project-card-clicker",
-    categoryBg: "rgba(217, 70, 239, 0.14)",
-    categoryColor: "#e879f9",
-    categoryBorder: "rgba(217, 70, 239, 0.35)",
-    ctaGradient: "linear-gradient(135deg, rgba(217, 70, 239, 0.24) 0%, rgba(168, 85, 247, 0.1) 100%)",
-    ctaColor: "#e879f9",
-    ctaBorder: "rgba(217, 70, 239, 0.45)",
-    ctaShadow: "0 4px 18px rgba(217, 70, 239, 0.18)",
-    metricBg: "rgba(217, 70, 239, 0.08)",
-    metricBorder: "rgba(217, 70, 239, 0.22)",
-    metricColor: "#e879f9",
-    tagBg: "rgba(217, 70, 239, 0.08)",
-    tagBorder: "rgba(217, 70, 239, 0.18)",
-    tagColor: "#f0abfc",
-    banner: {
-      gradient: "radial-gradient(circle at top right, rgba(217, 70, 239, 0.18) 0%, rgba(168, 85, 247, 0.05) 60%, rgba(12, 6, 20, 0.98) 100%)",
-      endpoint: "WSS /socket.io:3002",
-      status: "LIVE MULTIPLAYER",
-      statusColor: "#e879f9",
-      statusBg: "rgba(217, 70, 239, 0.15)",
-      statusBorder: "rgba(217, 70, 239, 0.35)",
-      primaryIcon: "🎮",
-      primaryTitle: "Multiplayer Click Sync Active",
-      primaryDetail: "send_click • Inactivity Run Timer • Leaderboard API",
-      logLine: "WSS Event: send_click • Session Run Scoring • Port 3002",
-      logColor: "#c084fc",
-      engine: "React & Socket.IO",
-      engineColor: "#e879f9",
+    glow: "radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 55%, transparent 80%)",
+    accent: "#ffffff",
+    accentBg: "rgba(255, 255, 255, 0.06)",
+    accentBorder: "rgba(255, 255, 255, 0.12)",
+    preview: {
+      badge: "Real-Time WebSockets",
+      mainTitle: "Live Multiplayer",
+      subTitle: "Instant Click Sync",
+      detail: "Leaderboard & Inactivity Timer",
+      metricTag: "Socket.IO Protocol",
+      icon: "⚡",
     },
   };
 }
 
-// Unified Terminal / Sandbox Visual Banner
-function UnifiedProjectBanner({ project, theme }) {
-  const { banner } = theme;
+// Apple-inspired Sleek Project Preview Canvas (No robotic terminals)
+function AppleProjectPreview({ project, theme }) {
+  const { preview, glow, accent } = theme;
 
   return (
     <div
-      className="w-full h-full p-3.5 sm:p-4 flex flex-col justify-between select-none pointer-events-none box-border"
+      className="w-full h-full p-6 flex flex-col justify-between select-none relative overflow-hidden"
       style={{
-        background: banner.gradient,
+        background: glow,
+        backgroundColor: "#111111",
       }}
     >
-      {/* 1. Window Header Bar (Traffic Dots + Route + Status) */}
-      <div className="h-7 flex items-center justify-between gap-1.5 sm:gap-2 shrink-0 border-b border-white/5 pb-2">
-        {/* Terminal traffic light dots */}
-        <div className="flex items-center gap-1.5 shrink-0">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-        </div>
-
-        {/* Monospace Route Pill */}
-        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-slate-950/80 border border-white/10 font-mono text-[10px] text-slate-300 truncate max-w-[42%] sm:max-w-[55%]">
-          <span className="truncate">{banner.endpoint}</span>
-        </div>
-
-        {/* Status Pill */}
+      {/* Top Meta Bar */}
+      <div className="flex items-center justify-between z-10">
         <span
-          className="px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide"
           style={{
-            color: banner.statusColor,
-            backgroundColor: banner.statusBg,
-            border: `1px solid ${banner.statusBorder}`,
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            color: "#e2e8f0",
+            backdropFilter: "blur(12px)",
           }}
         >
-          {banner.status}
-        </span>
-      </div>
-
-      {/* 2. Window Body (Uniform Content Card Structure) */}
-      <div className="flex-1 flex flex-col justify-center py-2 space-y-2">
-        {/* Primary Operational Row */}
-        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 flex items-center justify-between gap-3 shadow-inner">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <span className="text-base shrink-0">{banner.primaryIcon}</span>
-            <div className="min-w-0">
-              <p className="text-xs font-bold text-white truncate">{banner.primaryTitle}</p>
-              <p className="text-[10px] text-slate-400 truncate">{banner.primaryDetail}</p>
-            </div>
-          </div>
           <span
-            className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded shrink-0"
-            style={{
-              backgroundColor: banner.statusBg,
-              color: banner.statusColor,
-              border: `1px solid ${banner.statusBorder}`,
-            }}
-          >
-            ACTIVE
-          </span>
-        </div>
+            className="w-1.5 h-1.5 rounded-full animate-pulse"
+            style={{ backgroundColor: "#dc2626", boxShadow: "0 0 6px rgba(220, 38, 38, 0.4)" }}
+          ></span>
+          {preview.badge}
+        </span>
 
-        {/* Secondary Log Line */}
-        <div className="px-2 text-[10px] font-mono truncate" style={{ color: banner.logColor }}>
-          {banner.logLine}
-        </div>
+        <span
+          className="text-xs font-semibold px-2.5 py-0.5 rounded-full"
+          style={{
+            backgroundColor: "rgba(220, 38, 38, 0.08)",
+            border: "1px solid rgba(220, 38, 38, 0.2)",
+            color: "#dc2626",
+          }}
+        >
+          {preview.metricTag}
+        </span>
       </div>
 
-      {/* 3. Window Footer Bar (Engine Pill + Local Sandbox Badge) */}
-      <div className="h-7 flex items-center justify-between text-[10px] font-mono text-slate-400 pt-2 border-t border-white/5 shrink-0">
-        <span className="flex items-center gap-1.5 truncate" style={{ color: banner.engineColor }}>
-          <span>⚙</span> {banner.engine}
-        </span>
-        <span className="flex items-center gap-1.5 text-emerald-400 shrink-0 font-sans font-semibold">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          Local App
+      {/* Center Visual Mockup */}
+      <div className="flex flex-col items-center justify-center text-center my-auto py-3 z-10">
+        <div
+          className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-lg"
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            backdropFilter: "blur(16px)",
+          }}
+        >
+          {preview.icon}
+        </div>
+        <h4 className="text-xl font-bold text-white tracking-tight">
+          {preview.mainTitle}
+        </h4>
+        <p className="text-xs text-slate-300 font-medium mt-0.5">
+          {preview.subTitle}
+        </p>
+      </div>
+
+      {/* Bottom Status Hint */}
+      <div className="flex items-center justify-between text-xs text-slate-400 pt-3 border-t border-white/5 z-10">
+        <span className="truncate">{preview.detail}</span>
+        <span className="text-slate-300 font-medium flex items-center gap-1 shrink-0">
+          Interactive <span style={{ color: "#dc2626" }}>→</span>
         </span>
       </div>
     </div>
@@ -205,51 +146,53 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 sm:py-28 relative overflow-hidden"
+      className="py-24 sm:py-32 relative overflow-hidden"
       style={{
-        backgroundColor: "#07090e",
-        borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
+        backgroundColor: "var(--bg-primary)",
+        borderTop: "1px solid rgba(255, 255, 255, 0.06)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
       }}
     >
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <span className="section-tag">Interactive Engineering Suite</span>
+          <span className="section-tag">Engineering Suite</span>
           <h2 className="section-heading mt-3">Core Software Projects</h2>
-          <p className="section-subheading mt-3 max-w-2xl mx-auto">
-            Real-time WebSocket systems, RESTful CRUD microservices, and asynchronous API architectures executable locally.
+          <p className="section-subheading mt-3 max-w-2xl mx-auto text-slate-400">
+            Real-time WebSocket platforms, RESTful CRUD microservices, and asynchronous API architectures executable locally in an interactive sandbox.
           </p>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 sm:mb-14">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className="px-4 py-2 rounded-full text-xs font-semibold tracking-wide"
-              style={{
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                backgroundColor: activeFilter === cat ? "#38bdf8" : "rgba(13, 17, 26, 0.8)",
-                color: activeFilter === cat ? "#050608" : "#94a3b8",
-                border: activeFilter === cat ? "1px solid #38bdf8" : "1px solid rgba(255, 255, 255, 0.08)",
-                boxShadow: activeFilter === cat ? "0 0 15px rgba(56, 189, 248, 0.3)" : "none",
-              }}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Apple-style Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-14 sm:mb-16">
+          {categories.map((cat) => {
+            const isActive = activeFilter === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className="px-5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200"
+                style={{
+                  cursor: "pointer",
+                  backgroundColor: isActive ? "#f3f4f6" : "rgba(255, 255, 255, 0.04)",
+                  color: isActive ? "#080808" : "#9ca3af",
+                  border: isActive ? "1px solid rgba(255, 255, 255, 0.9)" : "1px solid rgba(255, 255, 255, 0.08)",
+                  boxShadow: isActive ? "0 4px 20px rgba(0, 0, 0, 0.4)" : "none",
+                }}
+              >
+                {cat}
+              </button>
+            );
+          })}
           {isAuthenticated && (
             <button
               onClick={() => setIsCMSOpen(true)}
-              className="px-3.5 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5"
+              className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all"
               style={{
-                background: "rgba(56, 189, 248, 0.1)",
-                border: "1px solid rgba(56, 189, 248, 0.3)",
-                color: "#38bdf8",
-                cursor: "pointer",
+                background: "rgba(22, 22, 22, 0.9)",
+                border: "1px solid rgba(255, 255, 255, 0.12)",
+                color: "#f3f4f6",
+                cursor: "pointer"
               }}
             >
               <span>+ Add Project</span>
@@ -257,7 +200,7 @@ export default function Projects() {
           )}
         </div>
 
-        {/* Projects Grid: Equal Box Heights with Grid stretch */}
+        {/* Projects Grid: Sleek Apple-inspired Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
           {filteredProjects.map((project) => {
             const theme = getProjectTheme(project);
@@ -265,100 +208,106 @@ export default function Projects() {
             return (
               <div
                 key={project.id}
-                className={`glass-card ${theme.cardClass} rounded-2xl overflow-hidden flex flex-col justify-between h-full w-full`}
+                className="group rounded-2xl overflow-hidden flex flex-col justify-between h-full w-full transition-all duration-300 hover:scale-[1.015]"
                 style={{
-                  background: "rgba(11, 14, 22, 0.88)",
+                  background: "linear-gradient(180deg, rgba(22, 22, 22, 0.8) 0%, rgba(14, 14, 14, 0.95) 100%)",
                   border: "1px solid rgba(255, 255, 255, 0.08)",
-                  boxShadow: "0 16px 36px -10px rgba(0, 0, 0, 0.8)",
+                  boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 20px 40px -15px rgba(0, 0, 0, 0.7)",
+                  backdropFilter: "blur(20px)",
                 }}
               >
-                {/* Aesthetic Non-Interactive Component Preview Banner: Exactly Equal Heights (h-52) */}
+                {/* Visual Preview Banner (Strictly Equal Fixed Height) */}
                 <div
-                  className="relative h-52 w-full overflow-hidden border-b border-white/10 shrink-0"
-                  style={{ backgroundColor: "#020305" }}
+                  className="relative w-full overflow-hidden border-b border-white/5 shrink-0"
+                  style={{
+                    height: "220px",
+                    minHeight: "220px",
+                    maxHeight: "220px",
+                  }}
                 >
-                  <UnifiedProjectBanner project={project} theme={theme} />
+                  <AppleProjectPreview project={project} theme={theme} />
                 </div>
 
-                {/* Card Details: Continuous Vertical Harmony & Equal Baseline Alignment */}
-                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                {/* Card Body with 2vh 2vw Apple-style Padding & Proportions */}
+                <div
+                  className="flex-1 flex flex-col justify-between"
+                  style={{
+                    padding: "clamp(1.75rem, 2.2vh, 2.5rem) clamp(1.5rem, 2vw, 2.25rem)",
+                  }}
+                >
                   <div className="flex-1 flex flex-col">
-                    {/* Category Pill */}
-                    <div className="mb-2.5">
+                    {/* Category Capsule */}
+                    <div className="mb-3.5">
                       <span
-                        className="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider"
+                        className="px-3.5 py-1 rounded-full text-[11px] font-semibold tracking-wide inline-block"
                         style={{
-                          background: theme.categoryBg,
-                          color: theme.categoryColor,
-                          border: `1px solid ${theme.categoryBorder}`,
+                          backgroundColor: theme.accentBg,
+                          color: theme.accent,
+                          border: `1px solid ${theme.accentBorder}`,
                         }}
                       >
                         {project.category || "Full-Stack"}
                       </span>
                     </div>
 
-                    {/* Title (Aligned baseline with min-height on sm+ & modern heading font) */}
+                    {/* Project Title */}
                     <h3
-                      className="text-lg sm:text-xl md:text-2xl font-extrabold text-white tracking-tight mb-3 sm:min-h-[3.75rem] flex items-start break-words"
+                      className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3.5 sm:min-h-[3.5rem] flex items-start break-words"
                       style={{ fontFamily: "'Outfit', sans-serif" }}
                     >
                       {project.title}
                     </h3>
 
-                    {/* Single CTA Button to Open Modal (Themed gradient & colors) */}
-                    <button
-                      onClick={() => handleOpenModal(project)}
-                      className="w-full mb-4 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 tracking-wide transition-all shrink-0 hover:scale-[1.02]"
-                      style={{
-                        background: theme.ctaGradient,
-                        border: `1px solid ${theme.ctaBorder}`,
-                        color: theme.ctaColor,
-                        cursor: "pointer",
-                        boxShadow: theme.ctaShadow,
-                      }}
-                    >
-                      <span>Launch App & View Architecture</span>
-                      <svg style={{ width: "16px", height: "16px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </button>
-
-                    {/* Small Description (Expands flexibly to balance card height) */}
-                    <p className="text-xs sm:text-sm text-slate-300 mb-5 leading-relaxed break-words flex-1">
+                    {/* Clean Descriptive Copy */}
+                    <p className="text-xs sm:text-sm text-slate-400 mb-5 leading-relaxed break-words flex-1 font-normal">
                       {project.description}
                     </p>
+
+                    {/* Launch Action Button (Docked below description & styled squared) */}
+                    <button
+                      onClick={() => handleOpenModal(project)}
+                      className="w-full mb-4 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 text-slate-100 hover:text-white bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 active:scale-[0.98]"
+                      style={{
+                        cursor: "pointer",
+                        backdropFilter: "blur(12px)",
+                        boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)",
+                      }}
+                    >
+                      <span>Launch Sandbox & Architecture</span>
+                      <svg style={{ width: "15px", height: "15px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </button>
                   </div>
 
-                  {/* Bottom Segment: Metrics & Tech Stack Docked Together */}
-                  <div className="shrink-0 pt-2">
-                    {/* Performance / Metric Highlight (Themed) */}
+                  {/* Docked Metric & Tech Stack */}
+                  <div className="shrink-0 pt-1">
                     {project.metrics && (
                       <div
-                        className="py-2 px-3 rounded-lg text-xs font-medium mb-4 flex items-center gap-2 min-h-[2.25rem]"
+                        className="py-2.5 px-4 rounded-xl text-xs font-medium mb-3.5 flex items-center gap-2.5"
                         style={{
-                          background: theme.metricBg,
-                          border: `1px solid ${theme.metricBorder}`,
-                          color: theme.metricColor,
+                          backgroundColor: "rgba(255, 255, 255, 0.03)",
+                          border: "1px solid rgba(255, 255, 255, 0.06)",
+                          color: "#cbd5e1",
                         }}
                       >
-                        <span>⚡</span>
+                        <span style={{ color: theme.accent }}>⚡</span>
                         <span className="truncate">{project.metrics}</span>
                       </div>
                     )}
 
-                    {/* Verified Stack Tags (Themed & Uniform min-height) */}
+                    {/* Verified Tech Stack Chips */}
                     <div
-                      className="flex flex-wrap gap-1.5 pt-3.5 min-h-[3.5rem] items-center"
+                      className="flex flex-wrap gap-2 pt-3.5 items-center"
                       style={{ borderTop: "1px solid rgba(255, 255, 255, 0.06)" }}
                     >
                       {(project.techStack || []).map((tech) => (
                         <span
                           key={tech}
-                          className="text-xs font-semibold px-2.5 py-0.5 rounded-md"
+                          className="text-xs font-medium px-3 py-1 rounded-full text-slate-300"
                           style={{
-                            background: theme.tagBg,
-                            color: theme.tagColor,
-                            border: `1px solid ${theme.tagBorder}`,
+                            backgroundColor: "rgba(255, 255, 255, 0.04)",
+                            border: "1px solid rgba(255, 255, 255, 0.08)",
                           }}
                         >
                           {tech}
@@ -370,6 +319,112 @@ export default function Projects() {
               </div>
             );
           })}
+        </div>
+
+        {/* Apple-esque Project Spotlight: macros.ramendev.io */}
+        <div
+          className="max-w-6xl mx-auto px-1 sm:px-4"
+          style={{ marginTop: "10vh" }}
+        >
+          <div
+            className="relative rounded-2xl p-8 sm:p-12 md:p-14 overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12"
+            style={{
+              background: "radial-gradient(130% 130% at 50% 0%, rgba(255, 255, 255, 0.05) 0%, rgba(20, 20, 20, 0.88) 60%, rgba(10, 10, 10, 0.96) 100%)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 30px 60px -15px rgba(0, 0, 0, 0.9)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+            }}
+          >
+            {/* Subtle Apple-style Ambient Spotlight Flare */}
+            <div
+              className="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full pointer-events-none opacity-40"
+              style={{
+                background: "radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 70%)",
+              }}
+            ></div>
+
+            {/* Left Content Area */}
+            <div className="space-y-5 max-w-2xl relative z-10">
+              {/* Apple-style Frosted Pill Status Badge (Enhanced Padding) */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md mb-1 shadow-sm">
+                <span
+                  className="w-2 h-2 rounded-full animate-pulse"
+                  style={{ backgroundColor: "#dc2626", boxShadow: "0 0 6px rgba(220, 38, 38, 0.4)" }}
+                ></span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-200 tracking-wide">
+                  Live Project • macros.ramendev.io
+                </span>
+              </div>
+
+              {/* Headline */}
+              <div className="space-y-1.5">
+                <h3
+                  className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.15]"
+                  style={{ fontFamily: "'Outfit', sans-serif" }}
+                >
+                  Macros: TDEE Calc
+                </h3>
+                <p className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-slate-400">
+                  Metabolic Intelligence &amp; Nutrition Suite
+                </p>
+              </div>
+
+              {/* Clean Descriptive Copy */}
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+                A fast, client-side metabolic health calculator engineered with React &amp; Vite. Instantly computes BMR (Mifflin-St Jeor), activity-adjusted TDEE, customized macronutrient distributions, and US Navy circumference body-fat estimates.
+              </p>
+
+              {/* Minimal Apple-style Feature Pills */}
+              <div className="flex flex-wrap gap-2 pt-1">
+                {[
+                  "Zero Latency Engine",
+                  "Mifflin-St Jeor BMR",
+                  "Custom Macro Splits",
+                  "US Navy BF% Formula",
+                ].map((feature) => (
+                  <span
+                    key={feature}
+                    className="text-xs font-medium px-3.5 py-1.5 rounded-full text-slate-200 bg-white/[0.03] border border-white/[0.08]"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Action Button (Apple-style High-Contrast Muted White Button) */}
+            <div className="relative z-10 shrink-0 w-full md:w-auto pt-2 md:pt-0">
+              <a
+                href="https://macros.ramendev.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-sm sm:text-base font-bold transition-all duration-200 shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  textDecoration: "none",
+                  backgroundColor: "#f3f4f6",
+                  color: "#080808",
+                  boxShadow: "0 6px 25px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.5)",
+                  border: "1px solid rgba(255, 255, 255, 0.85)",
+                }}
+              >
+                <span style={{ color: "#080808" }}>Check Out Macro App</span>
+                <svg
+                  style={{ width: "16px", height: "16px", color: "#080808" }}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 

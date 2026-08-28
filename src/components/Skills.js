@@ -40,10 +40,10 @@ export default function Skills() {
                 style={{
                   cursor: "pointer",
                   transition: "all 0.2s ease",
-                  backgroundColor: isSelected ? "var(--accent-cyan)" : "rgba(13, 17, 26, 0.8)",
-                  color: isSelected ? "var(--bg-primary)" : "var(--text-muted)",
-                  border: isSelected ? "1px solid var(--accent-cyan)" : "1px solid var(--border-subtle)",
-                  boxShadow: isSelected ? "0 0 15px var(--accent-cyan-glow)" : "none"
+                  backgroundColor: isSelected ? "#f1f4f9" : "rgba(255, 255, 255, 0.04)",
+                  color: isSelected ? "#0e1117" : "var(--text-muted)",
+                  border: isSelected ? "1px solid rgba(255, 255, 255, 0.9)" : "1px solid rgba(255, 255, 255, 0.08)",
+                  boxShadow: isSelected ? "0 4px 16px rgba(0, 0, 0, 0.4)" : "none"
                 }}
               >
                 {cat}
@@ -64,12 +64,12 @@ export default function Skills() {
                   width: "2.5rem",
                   height: "2.5rem",
                   borderRadius: "0.5rem",
-                  background: "var(--bg-surface)",
-                  border: "1px solid var(--border-glow)",
+                  background: "rgba(255, 255, 255, 0.04)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "var(--accent-cyan)",
+                  color: "var(--text-primary)",
                   fontWeight: "bold",
                   fontSize: "0.75rem",
                   fontFamily: "var(--font-mono)"
@@ -102,7 +102,7 @@ export default function Skills() {
                       style={{
                         width: `${skill.level}%`,
                         height: "100%",
-                        background: "linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-emerald) 100%)",
+                        background: "rgba(255, 255, 255, 0.35)",
                         borderRadius: "9999px"
                       }}
                     ></div>

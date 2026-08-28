@@ -48,7 +48,7 @@ export default function Navbar() {
           : "py-5 bg-transparent"
       }`}
       style={{
-        background: isScrolled ? "rgba(6, 8, 12, 0.85)" : "transparent",
+        background: isScrolled ? "rgba(8, 8, 8, 0.88)" : "transparent",
         backdropFilter: isScrolled ? "blur(16px)" : "none",
         WebkitBackdropFilter: isScrolled ? "blur(16px)" : "none",
         transition: "all 0.3s ease"
@@ -66,14 +66,15 @@ export default function Navbar() {
               width: "2.5rem",
               height: "2.5rem",
               borderRadius: "0.75rem",
-              background: "linear-gradient(135deg, #38bdf8 0%, #10b981 100%)",
+              background: "#f3f4f6",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#050608",
+              color: "#080808",
               fontWeight: "900",
               fontSize: "1.125rem",
-              boxShadow: "0 0 20px rgba(56, 189, 248, 0.25)"
+              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
+              border: "1px solid rgba(255, 255, 255, 0.85)"
             }}
           >
             RM
@@ -82,14 +83,14 @@ export default function Navbar() {
             <span className="font-extrabold text-white text-base tracking-tight">
               {data.profile.name}
             </span>
-            <span className="text-xs text-cyan-400 font-medium flex items-center gap-1.5">
+            <span className="text-xs text-slate-400 font-medium flex items-center gap-1.5">
               <span
                 style={{
                   width: "6px",
                   height: "6px",
                   borderRadius: "50%",
-                  backgroundColor: "#38bdf8",
-                  boxShadow: "0 0 8px #38bdf8"
+                  backgroundColor: "#dc2626",
+                  boxShadow: "0 0 6px rgba(220, 38, 38, 0.4)"
                 }}
               ></span>
               {data.profile.statusBadge || "Available for CA roles"}
@@ -101,7 +102,7 @@ export default function Navbar() {
         <nav
           className="hidden md:flex items-center gap-1 p-1.5 rounded-full"
           style={{
-            background: "rgba(15, 20, 30, 0.75)",
+            background: "rgba(22, 22, 22, 0.75)",
             border: "1px solid rgba(255, 255, 255, 0.08)",
             backdropFilter: "blur(12px)"
           }}
@@ -116,9 +117,9 @@ export default function Navbar() {
                 style={{
                   textDecoration: "none",
                   transition: "all 0.2s ease",
-                  backgroundColor: isActive ? "rgba(56, 189, 248, 0.15)" : "transparent",
-                  color: isActive ? "#38bdf8" : "#94a3b8",
-                  border: isActive ? "1px solid rgba(56, 189, 248, 0.35)" : "1px solid transparent"
+                  backgroundColor: isActive ? "#f3f4f6" : "transparent",
+                  color: isActive ? "#080808" : "#9ca3af",
+                  border: isActive ? "1px solid rgba(255, 255, 255, 0.9)" : "1px solid transparent"
                 }}
               >
                 {item.label}
@@ -134,9 +135,9 @@ export default function Navbar() {
             onClick={() => setIsCMSOpen(true)}
             className="flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border"
             style={{
-              background: isAuthenticated ? "rgba(16, 185, 129, 0.12)" : "rgba(15, 20, 30, 0.8)",
-              borderColor: isAuthenticated ? "rgba(16, 185, 129, 0.4)" : "rgba(255, 255, 255, 0.1)",
-              color: isAuthenticated ? "#34d399" : "#94a3b8",
+              background: "rgba(22, 22, 22, 0.8)",
+              borderColor: "rgba(255, 255, 255, 0.1)",
+              color: "#d1d5db",
               cursor: "pointer"
             }}
             title={isAuthenticated ? "Open CMS Studio" : "Admin Login"}
@@ -170,7 +171,7 @@ export default function Navbar() {
                   width: "6px",
                   height: "6px",
                   borderRadius: "50%",
-                  backgroundColor: "#34d399"
+                  backgroundColor: "#dc2626"
                 }}
               ></span>
             )}
@@ -205,7 +206,7 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2.5 rounded-lg transition-colors"
             style={{
-              background: "rgba(15, 20, 30, 0.9)",
+              background: "rgba(22, 22, 22, 0.9)",
               border: "1px solid rgba(255, 255, 255, 0.12)",
               color: "#ffffff",
               cursor: "pointer"
@@ -228,7 +229,7 @@ export default function Navbar() {
         <div
           className="md:hidden px-6 py-6"
           style={{
-            background: "rgba(6, 8, 12, 0.96)",
+            background: "rgba(8, 8, 8, 0.96)",
             backdropFilter: "blur(20px)",
             borderBottom: "1px solid rgba(255, 255, 255, 0.1)"
           }}
@@ -252,12 +253,12 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 download="Rafael_Mendoza_Resume-2608.pdf"
                 onClick={() => setMobileMenuOpen(false)}
-                className="btn-outline w-full text-center py-2.5 text-sm flex items-center justify-center gap-2"
+                className="btn-secondary w-full text-center py-2.5 text-sm flex items-center justify-center gap-2"
               >
-                <svg style={{ width: "16px", height: "16px", color: "#38bdf8" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg style={{ width: "16px", height: "16px", color: "var(--text-secondary)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <span>Download Resume (PDF)</span>
+                <span>Resume (PDF)</span>
               </a>
               <button
                 onClick={() => {
@@ -266,9 +267,9 @@ export default function Navbar() {
                 }}
                 className="w-full text-center py-2.5 px-4 rounded-lg font-semibold text-sm"
                 style={{
-                  background: "rgba(15, 20, 30, 0.9)",
-                  border: "1px solid rgba(56, 189, 248, 0.3)",
-                  color: "#38bdf8"
+                  background: "rgba(22, 22, 22, 0.9)",
+                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  color: "#f3f4f6"
                 }}
               >
                 {isAuthenticated ? "Open CMS Studio" : "Admin CMS Login"}

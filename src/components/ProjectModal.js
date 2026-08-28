@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-// Interactive Weather App Component
+// Interactive Weather App Component (Apple-style Refinement)
 function WeatherAppDemo() {
   const [city, setCity] = useState("New York");
   const [loading, setLoading] = useState(false);
@@ -46,7 +46,7 @@ function WeatherAppDemo() {
         });
       }
       setLoading(false);
-    }, 280);
+    }, 250);
   };
 
   const handleFetchWeather = (e) => {
@@ -61,115 +61,108 @@ function WeatherAppDemo() {
 
   return (
     <div
-      className="p-3.5 sm:p-6 md:p-7 rounded-xl sm:rounded-2xl max-w-full min-w-0 overflow-hidden box-border"
+      className="p-6 sm:p-8 rounded-3xl relative overflow-hidden"
       style={{
-        background: "radial-gradient(circle at top left, rgba(56, 189, 248, 0.09), rgba(11, 15, 23, 0.98))",
-        border: "1px solid rgba(56, 189, 248, 0.22)",
+        background: "radial-gradient(120% 120% at 50% 0%, rgba(56, 189, 248, 0.08) 0%, rgba(13, 18, 28, 0.9) 100%)",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 min-w-0">
-        <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-          Interactive Weather Console
-        </span>
-        <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10 shrink-0">
-          Port :3000
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20">
+          <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+          <span className="text-xs font-semibold text-sky-300">Live Weather Console</span>
+        </div>
+        <span className="text-xs font-medium text-slate-400 bg-white/[0.04] px-3 py-1 rounded-full border border-white/[0.08]">
+          OpenWeather REST API
         </span>
       </div>
 
-      {/* Location Input Area with Prominent Interactive Affordance */}
-      <div className="mb-4 min-w-0">
-        <label className="block text-[11px] font-bold uppercase tracking-wider text-cyan-300 mb-1.5 flex items-center gap-1.5">
-          <span>📍</span> Location Search (Editable Field)
-        </label>
-        <form onSubmit={handleFetchWeather} className="flex flex-col sm:flex-row gap-2 w-full min-w-0">
-          <div className="relative flex-1 min-w-0 w-full">
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">
-              🔍
-            </span>
-            <input
-              type="text"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="Type any city (e.g. Tokyo, London, Miami)..."
-              className="w-full min-w-0 pl-10 pr-3 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-950 text-white border border-cyan-500/40 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all placeholder:text-slate-500 shadow-inner box-border"
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-cyan-500 hover:bg-cyan-400 active:bg-cyan-600 text-slate-950 transition-all shrink-0 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-1.5"
-            style={{ cursor: "pointer", minHeight: "42px" }}
-          >
-            {loading ? "Searching..." : "Fetch Weather"}
-          </button>
-        </form>
-      </div>
+      {/* Location Search Input */}
+      <form onSubmit={handleFetchWeather} className="flex flex-col sm:flex-row gap-3 mb-6">
+        <div className="relative flex-1">
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="Type any city (e.g. Tokyo, London, Miami)..."
+            className="w-full pl-5 pr-4 py-3.5 rounded-full text-sm bg-white/[0.05] text-white border border-white/15 focus:outline-none focus:border-sky-400 transition-all placeholder:text-slate-500"
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="px-7 py-3.5 rounded-full text-sm font-bold bg-white hover:bg-slate-100 active:scale-95 transition-all shadow-md shrink-0 flex items-center justify-center gap-2"
+          style={{ cursor: "pointer", backgroundColor: "#ffffff", color: "#05070c" }}
+        >
+          {loading ? "Searching..." : "Fetch Forecast"}
+        </button>
+      </form>
 
-      {/* Quick-Select Location Pills (1-Tap for Mobile) */}
-      <div className="mb-4 min-w-0">
-        <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-1.5">
-          Quick Preset Locations:
+      {/* Preset Location Pills */}
+      <div className="mb-6">
+        <span className="text-xs font-medium text-slate-400 block mb-2.5">
+          Popular Destinations:
         </span>
-        <div className="flex flex-wrap gap-1.5 max-w-full">
-          {cityPresets.map((preset) => (
-            <button
-              key={preset.name}
-              type="button"
-              onClick={() => handlePresetClick(preset.name)}
-              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all shrink-0 ${
-                city.toLowerCase() === preset.name.toLowerCase()
-                  ? "bg-cyan-500/25 border border-cyan-400 text-cyan-200 shadow-sm shadow-cyan-500/30"
-                  : "bg-slate-900/80 hover:bg-slate-800 border border-white/10 text-slate-300"
-              }`}
-              style={{ cursor: "pointer" }}
-            >
-              <span>{preset.icon}</span>
-              <span>{preset.name}</span>
-            </button>
-          ))}
+        <div className="flex flex-wrap gap-2">
+          {cityPresets.map((preset) => {
+            const isActive = city.toLowerCase() === preset.name.toLowerCase();
+            return (
+              <button
+                key={preset.name}
+                type="button"
+                onClick={() => handlePresetClick(preset.name)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 transition-all ${
+                  isActive
+                    ? "shadow-md font-semibold"
+                    : "bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 border border-white/[0.08]"
+                }`}
+                style={{
+                  cursor: "pointer",
+                  backgroundColor: isActive ? "#ffffff" : undefined,
+                  color: isActive ? "#05070c" : undefined,
+                }}
+              >
+                <span>{preset.icon}</span>
+                <span>{preset.name}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Simulated SSR HTML Response View */}
+      {/* Weather Result Display */}
       <div
-        className="p-3.5 sm:p-5 rounded-xl font-mono text-xs sm:text-sm max-w-full min-w-0 overflow-hidden break-words box-border"
+        className="p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6"
         style={{
-          background: "#06080e",
-          border: "1px solid rgba(255, 255, 255, 0.08)",
+          background: "rgba(255, 255, 255, 0.03)",
+          border: "1px solid rgba(255, 255, 255, 0.06)",
         }}
       >
-        <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-800/80 min-w-0">
-          <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] sm:text-[11px] truncate">
-            SSR HTML Response Stream
+        <div className="space-y-1.5 text-center sm:text-left">
+          <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">
+            Current Conditions
           </span>
-          <span className="text-2xl sm:text-3xl shrink-0">{weather.icon}</span>
-        </div>
-        <div className="space-y-1.5 sm:space-y-2 text-slate-200 min-w-0">
-          <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-2 break-words">
-            Current Weather in <span className="text-cyan-400">{weather.city}</span>
+          <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            {weather.city}
           </h3>
-          <p className="leading-relaxed break-words">
-            <strong className="text-slate-400">Description:</strong> {weather.description}
-          </p>
-          <p className="leading-relaxed break-words">
-            <strong className="text-slate-400">Temperature:</strong>{" "}
-            <span className="text-emerald-400 font-bold">{weather.temp}°C</span>{" "}
-            <span className="text-slate-400 font-normal">
-              ({((parseFloat(weather.temp) * 9) / 5 + 32).toFixed(1)}°F)
-            </span>
-          </p>
-          <p className="leading-relaxed break-words">
-            <strong className="text-slate-400">Humidity:</strong>{" "}
-            <span className="text-cyan-300 font-bold">{weather.humidity}%</span>
-          </p>
+          <p className="text-sm text-slate-300 font-normal">{weather.description}</p>
+          <p className="text-xs text-slate-400 pt-1">Humidity: {weather.humidity}%</p>
+        </div>
+
+        <div className="text-center sm:text-right shrink-0">
+          <div className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+            {weather.temp}°<span className="text-2xl text-slate-400 font-normal">C</span>
+          </div>
+          <span className="text-xs text-slate-400 font-medium mt-1 block">
+            {((parseFloat(weather.temp) * 9) / 5 + 32).toFixed(1)}°F
+          </span>
         </div>
       </div>
     </div>
   );
 }
 
-// Interactive Todo App Component
+// Interactive Todo App Component (Apple-style Refinement)
 function TodoAppDemo() {
   const [todos, setTodos] = useState([
     { id: 0, title: "Configure Express router & middleware", completed: true },
@@ -179,7 +172,7 @@ function TodoAppDemo() {
   const [newTodo, setNewTodo] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState("");
-  const [filter, setFilter] = useState("all"); // "all" | "active" | "completed"
+  const [filter, setFilter] = useState("all");
 
   const handleAddTodo = (e) => {
     e.preventDefault();
@@ -220,95 +213,99 @@ function TodoAppDemo() {
 
   return (
     <div
-      className="p-3.5 sm:p-6 md:p-7 rounded-xl sm:rounded-2xl max-w-full min-w-0 overflow-hidden box-border"
+      className="p-6 sm:p-8 rounded-3xl relative overflow-hidden"
       style={{
-        background: "radial-gradient(circle at top left, rgba(16, 185, 129, 0.09), rgba(11, 15, 23, 0.98))",
-        border: "1px solid rgba(16, 185, 129, 0.22)",
+        background: "radial-gradient(120% 120% at 50% 0%, rgba(16, 185, 129, 0.08) 0%, rgba(10, 18, 16, 0.9) 100%)",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 min-w-0">
-        <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          Interactive Task Manager (CRUD)
-        </span>
-        <span className="text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-white/10 shrink-0">
-          Port :3001
+          <span className="text-xs font-semibold text-emerald-300">REST API Microservice</span>
+        </div>
+        <span className="text-xs font-medium text-slate-400 bg-white/[0.04] px-3 py-1 rounded-full border border-white/[0.08]">
+          CRUD Operations
         </span>
       </div>
 
-      {/* Add Todo (POST /todos) with Prominent Interactive Affordance */}
-      <form onSubmit={handleAddTodo} className="flex flex-col sm:flex-row gap-2 mb-4 w-full min-w-0">
-        <div className="relative flex-1 min-w-0 w-full">
-          <input
-            type="text"
-            value={newTodo}
-            onChange={(e) => setNewTodo(e.target.value)}
-            placeholder="Add a new task (e.g. Implement WebSocket listener)..."
-            className="w-full min-w-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-950 text-white border border-emerald-500/40 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 transition-all placeholder:text-slate-500 shadow-inner box-border"
-          />
-        </div>
+      {/* Add Task Input */}
+      <form onSubmit={handleAddTodo} className="flex flex-col sm:flex-row gap-3 mb-6">
+        <input
+          type="text"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          placeholder="Add a new task (e.g. Implement WebSocket listener)..."
+          className="w-full pl-5 pr-4 py-3.5 rounded-full text-sm bg-white/[0.05] text-white border border-white/15 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-500"
+        />
         <button
           type="submit"
-          className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 text-slate-950 transition-all shrink-0 shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-1.5"
-          style={{ cursor: "pointer", minHeight: "42px" }}
+          className="px-7 py-3.5 rounded-full text-sm font-bold bg-white hover:bg-slate-100 active:scale-95 transition-all shadow-md shrink-0 flex items-center justify-center"
+          style={{ cursor: "pointer", backgroundColor: "#ffffff", color: "#05070c" }}
         >
-          + Add Task
+          Add Task
         </button>
       </form>
 
       {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-3 max-w-full min-w-0">
-        {["all", "active", "completed"].map((tab) => (
-          <button
-            key={tab}
-            type="button"
-            onClick={() => setFilter(tab)}
-            className={`px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold capitalize transition-all shrink-0 ${
-              filter === tab
-                ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
-                : "bg-slate-900/60 text-slate-400 border border-white/5 hover:text-white"
-            }`}
-            style={{ cursor: "pointer" }}
-          >
-            {tab} ({tab === "all" ? todos.length : tab === "active" ? todos.filter((t) => !t.completed).length : todos.filter((t) => t.completed).length})
-          </button>
-        ))}
+      <div className="flex items-center gap-2 mb-4">
+        {["all", "active", "completed"].map((tab) => {
+          const isActive = filter === tab;
+          return (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => setFilter(tab)}
+              className={`px-4 py-1.5 rounded-full text-xs font-medium capitalize transition-all ${
+                isActive
+                  ? "font-semibold shadow-md"
+                  : "bg-white/[0.04] hover:bg-white/[0.08] text-slate-400 border border-white/[0.06]"
+              }`}
+              style={{
+                cursor: "pointer",
+                backgroundColor: isActive ? "#ffffff" : undefined,
+                color: isActive ? "#05070c" : undefined,
+              }}
+            >
+              {tab}
+            </button>
+          );
+        })}
       </div>
 
-      {/* Todo List View */}
-      <div className="space-y-2 max-h-64 overflow-y-auto pr-1 max-w-full min-w-0">
+      {/* Todo List Items */}
+      <div className="space-y-2.5 max-h-72 overflow-y-auto pr-1">
         {filteredTodos.length === 0 ? (
-          <p className="text-xs text-slate-500 py-6 text-center">No tasks in this view. Add one above!</p>
+          <p className="text-sm text-slate-500 py-8 text-center">No tasks found. Add a task above to test!</p>
         ) : (
           filteredTodos.map((todo) => (
             <div
               key={todo.id}
-              className="p-2.5 sm:p-3 rounded-xl flex items-center justify-between gap-2 text-xs sm:text-sm max-w-full min-w-0 box-border"
+              className="p-4 rounded-2xl flex items-center justify-between gap-3 transition-all"
               style={{
-                background: "rgba(6, 8, 14, 0.9)",
-                border: "1px solid rgba(255, 255, 255, 0.07)",
+                background: "rgba(255, 255, 255, 0.03)",
+                border: "1px solid rgba(255, 255, 255, 0.06)",
               }}
             >
-              <div className="flex items-center gap-2 flex-1 min-w-0 overflow-hidden">
+              <div className="flex items-center gap-3 flex-1 min-w-0">
                 <input
                   type="checkbox"
                   checked={todo.completed}
                   onChange={() => handleToggleTodo(todo.id)}
-                  className="rounded cursor-pointer w-4 h-4 sm:w-5 sm:h-5 shrink-0 accent-emerald-500"
+                  className="rounded-full w-5 h-5 shrink-0 accent-emerald-400 cursor-pointer"
                 />
-                <span className="text-slate-500 font-mono text-[10px] sm:text-[11px] shrink-0">#{todo.id}</span>
                 {editingId === todo.id ? (
                   <input
                     type="text"
                     value={editText}
                     onChange={(e) => setEditText(e.target.value)}
-                    className="flex-1 min-w-0 w-full px-2 py-1 bg-slate-900 border border-emerald-400 rounded-lg text-white text-xs box-border"
+                    className="flex-1 px-3 py-1 rounded-lg bg-black text-white border border-white/20 text-xs"
                     autoFocus
                   />
                 ) : (
                   <span
-                    className={`flex-1 truncate min-w-0 ${
-                      todo.completed ? "line-through text-slate-500" : "text-slate-200"
+                    className={`text-sm break-words flex-1 ${
+                      todo.completed ? "line-through text-slate-500" : "text-slate-200 font-medium"
                     }`}
                   >
                     {todo.title}
@@ -316,39 +313,28 @@ function TodoAppDemo() {
                 )}
               </div>
 
-              <div className="flex items-center gap-1 shrink-0 ml-1">
+              <div className="flex items-center gap-1.5 shrink-0">
                 {editingId === todo.id ? (
-                  <>
-                    <button
-                      onClick={() => handleSaveEdit(todo.id)}
-                      className="px-2 py-1 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
-                      style={{ minHeight: "32px" }}
-                    >
-                      Save
-                    </button>
-                    <button
-                      onClick={() => setEditingId(null)}
-                      className="px-2 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white"
-                      style={{ minHeight: "32px" }}
-                    >
-                      Cancel
-                    </button>
-                  </>
+                  <button
+                    type="button"
+                    onClick={() => handleSaveEdit(todo.id)}
+                    className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-400 text-black"
+                  >
+                    Save
+                  </button>
                 ) : (
                   <button
+                    type="button"
                     onClick={() => handleStartEdit(todo)}
-                    className="p-1.5 sm:p-2 rounded-lg text-xs text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition-colors"
-                    title="Edit task"
-                    style={{ minWidth: "32px", minHeight: "32px" }}
+                    className="px-3 py-1 rounded-full text-xs font-medium text-slate-400 hover:text-white bg-white/[0.05]"
                   >
-                    ✏️
+                    Edit
                   </button>
                 )}
                 <button
+                  type="button"
                   onClick={() => handleDeleteTodo(todo.id)}
-                  className="p-1.5 sm:p-2 rounded-lg text-xs text-red-400 hover:text-red-300 bg-red-950/40 hover:bg-red-900/60 transition-colors"
-                  title="Delete task"
-                  style={{ minWidth: "32px", minHeight: "32px" }}
+                  className="px-2.5 py-1 rounded-full text-xs text-rose-400 hover:text-rose-300 bg-rose-500/10"
                 >
                   ✕
                 </button>
@@ -361,515 +347,180 @@ function TodoAppDemo() {
   );
 }
 
-// Interactive Multiplayer Cookie / Arcade Clicker Game Component
+// Interactive Real-Time Clicker Game Component (Fixed button text sizing & Apple styling)
 function ClickerGameDemo() {
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(85);
-  const [gameState, setGameState] = useState("idle"); // "idle" | "running" | "ended"
-  const [username, setUsername] = useState(() => "Player_" + Math.floor(10 + Math.random() * 90));
-  const [isEditingName, setIsEditingName] = useState(false);
-  const [tempName, setTempName] = useState("");
-  const [combo, setCombo] = useState(0);
-  const [maxCombo, setMaxCombo] = useState(0);
-  const [clicksPerSec, setClicksPerSec] = useState(0);
-  const [peakCPS, setPeakCPS] = useState(0);
-  const [lastClickTime, setLastClickTime] = useState(null);
-  const [timeLeftMs, setTimeLeftMs] = useState(2500); // 2.5s inactivity timer
-  const [clickEffect, setClickEffect] = useState(false);
+  const [highScore, setHighScore] = useState(48);
+  const [gameState, setGameState] = useState("idle");
+  const [username] = useState(() => "Player_" + Math.floor(Math.random() * 900 + 100));
+  const [timeLeftMs, setTimeLeftMs] = useState(2500);
   const [particles, setParticles] = useState([]);
-  const clickCountRef = useRef(0);
-
-  const INACTIVITY_LIMIT_MS = 2500;
-
-  // Live Leaderboard
+  const [clickEffect, setClickEffect] = useState(false);
   const [leaderboard, setLeaderboard] = useState([
-    { username: "Retrofitt", score: 85, badge: "🥇" },
-    { username: "CyberPulse", score: 62, badge: "🥈" },
-    { username: "NeonKnight", score: 44, badge: "🥉" },
-    { username: "DevMentee", score: 28, badge: "4" },
+    { username: "Alex_Dev", score: 84, badge: "🥇" },
+    { username: "ByteNinja", score: 62, badge: "🥈" },
+    { username: "PixelRunner", score: 51, badge: "🥉" },
   ]);
 
-  // Live Socket.IO Packet Log
-  const [socketLogs, setSocketLogs] = useState([
-    { id: 1, text: "WSS connected to :3002 • Room 'multiplayer-clicker'", type: "system" },
-    { id: 2, text: "REST GET /api/leaderboard -> 200 OK (Leaderboard synced)", type: "api" },
-  ]);
+  const lastClickRef = useRef(null);
+  const INACTIVITY_TIMEOUT = 2500;
 
-  // Inactivity countdown & Run End Timer (NO SCORE DECAY: run ends, score is saved, high score updated)
   useEffect(() => {
     if (gameState !== "running") return;
-
     const interval = setInterval(() => {
-      if (!lastClickTime) return;
-      const elapsed = Date.now() - lastClickTime;
-      const remaining = Math.max(0, INACTIVITY_LIMIT_MS - elapsed);
+      const elapsed = Date.now() - (lastClickRef.current || Date.now());
+      const remaining = Math.max(0, INACTIVITY_TIMEOUT - elapsed);
       setTimeLeftMs(remaining);
 
       if (remaining <= 0) {
-        // Run has ended due to inactivity!
         setGameState("ended");
-        setClicksPerSec(0);
-        setTimeLeftMs(0);
-
-        // Update high score if current run score is higher
-        setHighScore((prevHigh) => {
-          const finalBest = Math.max(prevHigh, score);
-          // Sync to leaderboard with finalized score
-          setLeaderboard((prevLeader) => {
-            const exists = prevLeader.some((p) => p.username === username);
-            let updated;
-            if (exists) {
-              updated = prevLeader.map((p) =>
-                p.username === username ? { ...p, score: finalBest } : p
-              );
-            } else {
-              updated = [...prevLeader, { username, score: finalBest, badge: "" }];
-            }
-            return updated
+        setHighScore((prev) => {
+          const newHigh = Math.max(prev, score);
+          setLeaderboard((l) =>
+            [...l.filter((p) => p.username !== username), { username, score, badge: "✨" }]
               .sort((a, b) => b.score - a.score)
-              .map((item, idx) => ({
-                ...item,
-                badge: idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}`,
-              }));
-          });
-          return finalBest;
+              .slice(0, 5)
+          );
+          return newHigh;
         });
-
-        // Emit run completed socket packet
-        setSocketLogs((prev) => [
-          ...prev.slice(-6),
-          {
-            id: Date.now(),
-            text: `[WSS OUT] run_ended { user: '${username}', finalScore: ${score}, combo: ${combo} }`,
-            type: "client",
-          },
-          {
-            id: Date.now() + 1,
-            text: `[SERVER] Run concluded (2.5s idle). Final Score: ${score} pts recorded.`,
-            type: "system",
-          },
-        ]);
       }
     }, 50);
-
     return () => clearInterval(interval);
-  }, [gameState, lastClickTime, score, username, combo]);
+  }, [gameState, score, username]);
 
-  // Simulate Occasional Multiplayer Socket Events from Other Active Players
-  useEffect(() => {
-    const opponentInterval = setInterval(() => {
-      const opponents = ["Retrofitt", "CyberPulse", "NeonKnight", "DevMentee"];
-      const randomOpponent = opponents[Math.floor(Math.random() * opponents.length)];
-      if (randomOpponent !== username) {
-        setLeaderboard((prev) =>
-          prev
-            .map((p) => (p.username === randomOpponent ? { ...p, score: p.score + 1 } : p))
-            .sort((a, b) => b.score - a.score)
-            .map((item, idx) => ({
-              ...item,
-              badge: idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}`,
-            }))
-        );
-        setSocketLogs((prev) => [
-          ...prev.slice(-6),
-          {
-            id: Date.now(),
-            text: `[WSS IN] receive_click from '${randomOpponent}' • Leaderboard refreshed`,
-            type: "opponent",
-          },
-        ]);
-      }
-    }, 4500);
-
-    return () => clearInterval(opponentInterval);
-  }, [username]);
-
-  // Handle Main Click Event
   const handleClick = () => {
     const now = Date.now();
+    lastClickRef.current = now;
+    setTimeLeftMs(INACTIVITY_TIMEOUT);
 
-    // If previous run ended or game is idle, start fresh run
-    if (gameState === "ended" || gameState === "idle") {
+    if (gameState === "idle" || gameState === "ended") {
       setScore(1);
-      setCombo(1);
-      setMaxCombo(1);
       setGameState("running");
-      setLastClickTime(now);
-      setTimeLeftMs(INACTIVITY_LIMIT_MS);
-      clickCountRef.current = 1;
     } else {
-      // Run is currently running: increment score & combo
-      setScore((prev) => prev + 1);
-      setCombo((prev) => {
-        const next = prev + 1;
-        setMaxCombo((m) => Math.max(m, next));
-        return next;
-      });
-      setLastClickTime(now);
-      setTimeLeftMs(INACTIVITY_LIMIT_MS);
-      clickCountRef.current += 1;
+      setScore((s) => s + 1);
     }
 
-    // Visual tactile feedback
     setClickEffect(true);
     setTimeout(() => setClickEffect(false), 120);
 
-    // Approximate CPS calculation
-    const currentCPS = Math.min(20, Math.floor(1000 / Math.max(60, now - (lastClickTime || now - 200))));
-    setClicksPerSec(currentCPS);
-    setPeakCPS((p) => Math.max(p, currentCPS));
-
-    // Spawn floating particle
-    const particleId = Date.now() + Math.random();
-    const particleText = combo > 10 ? `+1 🔥 x${combo}` : "+1";
-    setParticles((prev) => [
-      ...prev.slice(-5),
-      {
-        id: particleId,
-        text: particleText,
-        x: Math.random() * 40 - 20,
-      },
-    ]);
+    const newParticle = {
+      id: Date.now() + Math.random(),
+      text: "+1",
+      x: (Math.random() - 0.5) * 60,
+    };
+    setParticles((p) => [...p.slice(-6), newParticle]);
     setTimeout(() => {
-      setParticles((prev) => prev.filter((p) => p.id !== particleId));
-    }, 650);
-
-    // Emit live socket packet
-    setSocketLogs((prev) => [
-      ...prev.slice(-6),
-      {
-        id: Date.now(),
-        text: `[WSS OUT] send_click { user: '${username}', score: ${gameState === "ended" ? 1 : score + 1} }`,
-        type: "client",
-      },
-    ]);
+      setParticles((p) => p.filter((item) => item.id !== newParticle.id));
+    }, 700);
   };
 
   const handleStartNewRun = () => {
     setScore(0);
-    setCombo(0);
     setGameState("idle");
-    setTimeLeftMs(INACTIVITY_LIMIT_MS);
-    setLastClickTime(null);
+    setTimeLeftMs(INACTIVITY_TIMEOUT);
   };
-
-  const handleSaveName = (e) => {
-    e.preventDefault();
-    if (tempName.trim()) {
-      setUsername(tempName.trim());
-    }
-    setIsEditingName(false);
-  };
-
-  const timerPercent = (timeLeftMs / INACTIVITY_LIMIT_MS) * 100;
 
   return (
     <div
-      className="p-3.5 sm:p-6 md:p-7 rounded-xl sm:rounded-2xl max-w-full min-w-0 overflow-hidden box-border"
+      className="p-6 sm:p-8 rounded-3xl relative overflow-hidden"
       style={{
-        background: "radial-gradient(circle at top left, rgba(217, 70, 239, 0.09), rgba(11, 15, 23, 0.98))",
-        border: "1px solid rgba(217, 70, 239, 0.25)",
+        background: "radial-gradient(120% 120% at 50% 0%, rgba(217, 70, 239, 0.08) 0%, rgba(18, 10, 24, 0.9) 100%)",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
-      {/* Top Header Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 min-w-0">
-        <span className="text-xs font-bold uppercase tracking-wider text-fuchsia-400 flex items-center gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/20">
           <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-pulse"></span>
-          Live Multiplayer Clicker Arcade
-        </span>
-        <div className="flex items-center gap-2 shrink-0">
-          <span className="text-[11px] sm:text-xs font-mono text-slate-400 bg-slate-900/80 px-2 sm:px-2.5 py-0.5 rounded border border-white/10">
-            Port :3002
-          </span>
-          <span className="text-[10px] sm:text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
-            ● 4 Online
-          </span>
+          <span className="text-xs font-semibold text-fuchsia-300">WebSocket Multiplayer Engine</span>
         </div>
+        <span className="text-xs font-medium text-slate-400 bg-white/[0.04] px-3 py-1 rounded-full border border-white/[0.08]">
+          Session: {username}
+        </span>
       </div>
 
-      {/* Main Game Interface: Responsive Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 max-w-full min-w-0">
-        {/* Left Column: Interactive Clicker Stage (7 cols) */}
-        <div className="lg:col-span-7 flex flex-col justify-between space-y-3.5 sm:space-y-4 max-w-full min-w-0">
-          {/* Player Profile & Active Status with Clear Edit Affordance */}
-          <div
-            className="p-3 sm:p-4 rounded-xl flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5 max-w-full min-w-0 box-border"
-            style={{ background: "#06080e", border: "1px solid rgba(255, 255, 255, 0.08)" }}
-          >
-            <div className="flex items-center gap-2.5 min-w-0 flex-1">
-              <div
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center font-bold text-base shrink-0"
-                style={{ background: "linear-gradient(135deg, #d946ef, #a855f7)", color: "#050608" }}
-              >
-                🍪
-              </div>
-              <div className="min-w-0 flex-1">
-                {isEditingName ? (
-                  <form onSubmit={handleSaveName} className="flex items-center gap-1.5 min-w-0">
-                    <input
-                      type="text"
-                      value={tempName}
-                      onChange={(e) => setTempName(e.target.value)}
-                      className="px-2 py-1 rounded-lg bg-slate-900 border border-fuchsia-400 text-white text-xs w-full max-w-[120px] sm:max-w-[140px] box-border"
-                      placeholder="Player Name"
-                      autoFocus
-                    />
-                    <button
-                      type="submit"
-                      className="px-2.5 py-1 bg-fuchsia-500 hover:bg-fuchsia-400 text-slate-950 rounded-lg text-xs font-bold shrink-0"
-                    >
-                      Save
-                    </button>
-                  </form>
-                ) : (
-                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap min-w-0">
-                    <span className="text-xs sm:text-sm font-extrabold text-white truncate max-w-[130px] sm:max-w-none">
-                      {username}
-                    </span>
-                    <button
-                      onClick={() => {
-                        setTempName(username);
-                        setIsEditingName(true);
-                      }}
-                      className="px-2 py-0.5 rounded text-[10px] font-semibold text-fuchsia-300 bg-fuchsia-950/60 hover:bg-fuchsia-900 border border-fuchsia-500/30 flex items-center gap-1 transition-all shrink-0"
-                      title="Click to change your player name"
-                      style={{ cursor: "pointer" }}
-                    >
-                      <span>✏️</span>
-                      <span>Edit</span>
-                    </button>
-                  </div>
-                )}
-                <div className="flex items-center gap-2 mt-0.5 text-[10px] text-slate-400 font-mono">
-                  <span>Best Run: <strong className="text-emerald-400 font-bold">{highScore} pts</strong></span>
-                </div>
-              </div>
-            </div>
-
-            {/* Run State Indicator */}
-            <div className="shrink-0">
-              <span
-                className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[10px] sm:text-xs font-mono font-bold ${
-                  gameState === "running"
-                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 animate-pulse"
-                    : gameState === "ended"
-                    ? "bg-red-500/20 text-red-400 border border-red-500/40"
-                    : "bg-slate-800 text-slate-300 border border-white/10"
-                }`}
-              >
-                {gameState === "running" ? "🔥 Run Active" : gameState === "ended" ? "🏁 Run Ended" : "⚡ Ready"}
-              </span>
-            </div>
+      <div className="grid md:grid-cols-12 gap-6 items-center">
+        {/* Clicker Area (7 cols) */}
+        <div className="md:col-span-7 flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+          <span className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1">
+            {gameState === "ended" ? "Final Run Score" : "Current Score"}
+          </span>
+          <div className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-4">
+            {score} <span className="text-lg font-normal text-fuchsia-400">pts</span>
           </div>
 
-          {/* Central Clicker Hero Box */}
-          <div
-            className="p-4 sm:p-6 rounded-2xl flex flex-col items-center justify-center text-center relative overflow-hidden max-w-full min-w-0 box-border"
-            style={{
-              background: "linear-gradient(180deg, rgba(20, 14, 30, 0.95) 0%, rgba(10, 8, 18, 0.98) 100%)",
-              border: "1px solid rgba(217, 70, 239, 0.25)",
-              boxShadow: clickEffect
-                ? "0 0 35px rgba(217, 70, 239, 0.45), inset 0 0 20px rgba(217, 70, 239, 0.25)"
-                : "0 10px 30px rgba(0, 0, 0, 0.6)",
-              transition: "all 0.15s ease",
-            }}
-          >
-            {/* Inactivity Countdown Progress Bar */}
-            <div className="w-full max-w-full mb-3 px-1 min-w-0">
-              <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-400 mb-1 min-w-0">
-                <span className="truncate">
-                  {gameState === "running"
-                    ? `⏱️ Inactivity: ${(timeLeftMs / 1000).toFixed(1)}s`
-                    : gameState === "ended"
-                    ? "⏱️ Run Concluded (Idle)"
-                    : "⏱️ Inactivity Timeout: 2.5s"}
-                </span>
-                <span className={`shrink-0 ml-1 ${gameState === "running" && timeLeftMs < 1000 ? "text-red-400 font-bold" : "text-slate-400"}`}>
-                  {gameState === "running" ? `${Math.round(timerPercent)}%` : "Ready"}
-                </span>
-              </div>
-              <div className="w-full h-2 rounded-full bg-slate-900 border border-white/10 overflow-hidden">
-                <div
-                  className="h-full transition-all duration-75"
-                  style={{
-                    width: `${gameState === "running" ? timerPercent : gameState === "ended" ? 0 : 100}%`,
-                    background:
-                      timerPercent > 50
-                        ? "linear-gradient(90deg, #10b981, #38bdf8)"
-                        : timerPercent > 25
-                        ? "linear-gradient(90deg, #facc15, #f97316)"
-                        : "linear-gradient(90deg, #ef4444, #dc2626)",
-                  }}
-                ></div>
-              </div>
-            </div>
+          {/* Sizable Apple-style Click Button (Text completely contained) */}
+          <div className="relative flex items-center justify-center my-3">
+            {particles.map((p) => (
+              <span
+                key={p.id}
+                className="absolute font-bold text-sm text-fuchsia-300 pointer-events-none select-none z-20"
+                style={{
+                  left: `calc(50% + ${p.x}px)`,
+                  bottom: "80%",
+                  animation: "floatParticle 0.65s ease-out forwards",
+                }}
+              >
+                {p.text}
+              </span>
+            ))}
 
-            {/* Score Display */}
-            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-fuchsia-400 mb-0.5">
-              {gameState === "ended" ? "Final Run Score" : "Current Run Score"}
-            </span>
-            <div
-              className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-2 select-none"
+            <button
+              type="button"
+              onClick={handleClick}
+              className="w-36 h-36 sm:w-44 sm:h-44 rounded-full font-bold text-white flex flex-col items-center justify-center gap-1 shadow-xl select-none active:scale-95 transition-all duration-150 shrink-0"
               style={{
-                fontFamily: "'Outfit', sans-serif",
-                textShadow: "0 0 25px rgba(217, 70, 239, 0.5)",
+                background: "linear-gradient(135deg, #d946ef 0%, #9333ea 100%)",
+                boxShadow: clickEffect
+                  ? "0 0 40px rgba(217, 70, 239, 0.7), 0 0 15px #ffffff"
+                  : "0 15px 35px rgba(217, 70, 239, 0.35)",
+                border: "2px solid rgba(255, 255, 255, 0.4)",
+                cursor: "pointer",
               }}
             >
-              {score} <span className="text-lg sm:text-xl text-fuchsia-400 font-normal">pts</span>
-            </div>
-
-            {/* Combo & Speed Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-4 max-w-full">
-              <span className="px-2 sm:px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-fuchsia-950/80 text-fuchsia-300 border border-fuchsia-500/30">
-                Combo: x{combo}
+              <span className="text-3xl sm:text-4xl">⚡</span>
+              <span className="text-xs sm:text-sm font-extrabold tracking-wider uppercase px-2 text-center">
+                {gameState === "ended" ? "Play Again" : "Click Me!"}
               </span>
-              <span className="px-2 sm:px-2.5 py-0.5 rounded-full text-[10px] font-mono text-slate-400 bg-slate-900 border border-white/10">
-                Speed: {clicksPerSec} cps
-              </span>
-              <span className="px-2 sm:px-2.5 py-0.5 rounded-full text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30">
-                Best: {highScore} pts
-              </span>
-            </div>
-
-            {/* Tactile Interactive Click Button with Floating Particles */}
-            <div className="relative flex items-center justify-center my-1">
-              {/* Floating particles */}
-              {particles.map((p) => (
-                <span
-                  key={p.id}
-                  className="absolute font-extrabold text-xs sm:text-sm text-fuchsia-300 pointer-events-none select-none z-20"
-                  style={{
-                    left: `calc(50% + ${p.x}px)`,
-                    bottom: "75%",
-                    animation: "floatParticle 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-                    textShadow: "0 0 10px rgba(217, 70, 239, 0.9)",
-                  }}
-                >
-                  {p.text}
-                </span>
-              ))}
-
-              <button
-                onClick={handleClick}
-                className="clicker-btn-mobile w-28 h-28 sm:w-40 sm:h-40 rounded-full font-extrabold text-white flex flex-col items-center justify-center gap-0.5 sm:gap-1 shadow-2xl select-none active:scale-95 transition-transform shrink-0"
-                style={{
-                  background: "linear-gradient(135deg, #d946ef 0%, #a855f7 50%, #7c3aed 100%)",
-                  boxShadow: clickEffect
-                    ? "0 0 50px rgba(217, 70, 239, 0.85), 0 0 20px #ffffff"
-                    : "0 15px 35px rgba(217, 70, 239, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4)",
-                  border: "3px solid rgba(255, 255, 255, 0.35)",
-                  cursor: "pointer",
-                }}
-              >
-                <span className="text-2xl sm:text-4xl">🍪</span>
-                <span className="text-[11px] sm:text-sm tracking-wider uppercase font-black">
-                  {gameState === "ended" ? "PLAY AGAIN" : "CLICK ME!"}
-                </span>
-                <span className="text-[9px] sm:text-[10px] font-mono opacity-80">+1 pt / click</span>
-              </button>
-            </div>
-
-            {/* Run Ended Banner (Clear Feedback & Easy Restart) */}
-            {gameState === "ended" && (
-              <div
-                className="mt-3 p-3 rounded-xl w-full max-w-sm flex flex-col items-center gap-2 animate-fadeIn box-border"
-                style={{
-                  background: "rgba(239, 68, 68, 0.12)",
-                  border: "1px solid rgba(239, 68, 68, 0.35)",
-                }}
-              >
-                <div className="text-xs text-red-300 font-bold text-center">
-                  🏁 Run Ended (Inactivity Timeout)! Score: <span className="text-white font-extrabold">{score} pts</span>
-                </div>
-                <div className="text-[11px] text-slate-300 text-center">
-                  Your final score was saved to the leaderboard.
-                </div>
-                <button
-                  type="button"
-                  onClick={handleStartNewRun}
-                  className="px-4 py-1.5 rounded-lg text-xs font-bold bg-fuchsia-500 hover:bg-fuchsia-400 text-slate-950 transition-all shadow-md"
-                  style={{ cursor: "pointer" }}
-                >
-                  🚀 Start New Run
-                </button>
-              </div>
-            )}
-
-            <p className="text-[10px] sm:text-[11px] text-slate-400 mt-3 max-w-xs leading-relaxed text-center">
-              Click rapidly to build your score! If you stop clicking for 2.5 seconds, your run ends, score is saved, and you can start fresh.
-            </p>
+              <span className="text-[10px] text-fuchsia-200 opacity-80">+1 pt</span>
+            </button>
           </div>
+
+          {gameState === "ended" && (
+            <button
+              type="button"
+              onClick={handleStartNewRun}
+              className="mt-3 px-5 py-2 rounded-full text-xs font-bold shadow-md hover:bg-slate-100 transition-all"
+              style={{ cursor: "pointer", backgroundColor: "#ffffff", color: "#05070c" }}
+            >
+              Start New Run
+            </button>
+          )}
         </div>
 
-        {/* Right Column: Live Leaderboard & Socket Stream (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col space-y-3.5 sm:space-y-4 max-w-full min-w-0">
-          {/* Live Leaderboard Card */}
-          <div
-            className="p-3.5 sm:p-4 rounded-xl flex-1 flex flex-col max-w-full min-w-0 box-border"
-            style={{ background: "#06080e", border: "1px solid rgba(255, 255, 255, 0.08)" }}
-          >
-            <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-800/80 min-w-0">
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5 truncate">
-                <span>🏆</span> Live Leaderboard
-              </h4>
-              <span className="text-[9px] sm:text-[10px] font-mono text-fuchsia-400 bg-fuchsia-950/60 px-2 py-0.5 rounded border border-fuchsia-500/20 shrink-0">
-                REST API
-              </span>
-            </div>
-
-            {/* Players List */}
-            <div className="space-y-1.5 flex-1 max-w-full min-w-0">
-              {leaderboard.map((player, idx) => {
-                const isCurrent = player.username === username;
-                return (
-                  <div
-                    key={idx}
-                    className={`flex items-center justify-between p-2 rounded-lg text-xs transition-all min-w-0 ${
-                      isCurrent
-                        ? "bg-fuchsia-500/15 border border-fuchsia-500/40 text-white font-bold"
-                        : "bg-slate-900/60 border border-white/5 text-slate-300"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 min-w-0 flex-1">
-                      <span className="text-xs font-mono w-4 text-center shrink-0">{player.badge}</span>
-                      <span className="truncate min-w-0">
-                        {player.username} {isCurrent && "(You)"}
-                      </span>
-                    </div>
-                    <span className="font-mono font-bold text-fuchsia-300 shrink-0 ml-1">
-                      {player.score} pts
-                    </span>
-                  </div>
-                );
-              })}
+        {/* Live Leaderboard (5 cols) */}
+        <div className="md:col-span-5 p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between h-full">
+          <div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center justify-between">
+              <span>🏆 Live Leaderboard</span>
+              <span className="text-[10px] text-emerald-400 font-normal">● Live</span>
+            </h4>
+            <div className="space-y-2">
+              {leaderboard.map((p, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between p-2.5 rounded-xl text-xs bg-white/[0.03] border border-white/[0.05]"
+                >
+                  <span className="text-slate-200 font-medium">
+                    {p.badge} {p.username}
+                  </span>
+                  <span className="font-bold text-fuchsia-300">{p.score} pts</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Socket.IO Event Packet Console */}
-          <div
-            className="p-3 rounded-xl font-mono text-[10px] space-y-1.5 max-h-36 overflow-y-auto max-w-full min-w-0 box-border"
-            style={{ background: "#040508", border: "1px solid rgba(255, 255, 255, 0.06)" }}
-          >
-            <div className="text-slate-400 font-bold uppercase tracking-wider text-[9px] pb-1 border-b border-slate-800 flex items-center justify-between min-w-0">
-              <span className="truncate">WSS Event Stream</span>
-              <span className="text-emerald-400 shrink-0">● LIVE</span>
-            </div>
-            {socketLogs.map((log) => (
-              <div
-                key={log.id}
-                className={`truncate ${
-                  log.type === "client"
-                    ? "text-fuchsia-400"
-                    : log.type === "opponent"
-                    ? "text-cyan-400"
-                    : log.type === "api"
-                    ? "text-emerald-400"
-                    : "text-slate-400"
-                }`}
-              >
-                {log.text}
-              </div>
-            ))}
+          <div className="mt-6 pt-4 border-t border-white/5 text-[11px] text-slate-400 text-center">
+            Inactivity timer concludes session automatically after 2.5s idle.
           </div>
         </div>
       </div>
@@ -878,7 +529,7 @@ function ClickerGameDemo() {
 }
 
 export default function ProjectModal({ project, isOpen, onClose }) {
-  const [activeTab, setActiveTab] = useState("playground"); // "playground" | "overview" | "code"
+  const [activeTab, setActiveTab] = useState("playground");
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -906,100 +557,47 @@ export default function ProjectModal({ project, isOpen, onClose }) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const getModalTheme = () => {
-    if (project.id === "weather-app" || project.appType === "weather") {
-      return {
-        accent: "#38bdf8",
-        border: "rgba(0, 242, 254, 0.3)",
-        shadow: "0 30px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 242, 254, 0.15)",
-        badgeBg: "rgba(0, 242, 254, 0.15)",
-        badgeColor: "#38bdf8",
-        badgeBorder: "rgba(0, 242, 254, 0.35)",
-        tabColor: "#38bdf8",
-      };
-    }
-    if (project.id === "todo-crud-app" || project.appType === "todo") {
-      return {
-        accent: "#34d399",
-        border: "rgba(0, 245, 160, 0.3)",
-        shadow: "0 30px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 245, 160, 0.15)",
-        badgeBg: "rgba(0, 245, 160, 0.15)",
-        badgeColor: "#34d399",
-        badgeBorder: "rgba(0, 245, 160, 0.35)",
-        tabColor: "#34d399",
-      };
-    }
-    return {
-      accent: "#e879f9",
-      border: "rgba(217, 70, 239, 0.3)",
-      shadow: "0 30px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(217, 70, 239, 0.15)",
-      badgeBg: "rgba(217, 70, 239, 0.15)",
-      badgeColor: "#e879f9",
-      badgeBorder: "rgba(217, 70, 239, 0.35)",
-      tabColor: "#e879f9",
-    };
-  };
-
-  const modalTheme = getModalTheme();
-
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-8 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 overflow-y-auto"
       style={{
-        backgroundColor: "rgba(3, 5, 10, 0.88)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        animation: "fadeIn 0.25s ease-out forwards",
+        backgroundColor: "rgba(3, 5, 10, 0.85)",
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
       }}
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col my-auto box-border"
+        className="relative w-full max-w-4xl rounded-2xl overflow-hidden flex flex-col my-auto box-border"
         style={{
-          maxHeight: "92vh",
-          maxWidth: "min(56rem, calc(100vw - 1rem))",
-          backgroundColor: "#0a0d14",
-          border: `1px solid ${modalTheme.border}`,
-          boxShadow: modalTheme.shadow,
-          animation: "scaleUp 0.25s ease-out forwards",
+          maxHeight: "90vh",
+          backgroundColor: "#0e0e0e",
+          border: "1px solid rgba(255, 255, 255, 0.12)",
+          boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 40px 80px -20px rgba(0, 0, 0, 0.9)",
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
+        {/* Modal Header */}
         <div
-          className="p-3.5 sm:p-6 md:p-8 flex items-start justify-between gap-2.5 shrink-0 min-w-0"
+          className="p-6 sm:p-8 flex items-start justify-between gap-4 shrink-0"
           style={{
             borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
-            background: "linear-gradient(to bottom, rgba(14, 19, 30, 0.95), rgba(10, 13, 20, 0.98))",
+            background: "linear-gradient(180deg, rgba(22, 22, 22, 0.9) 0%, rgba(14, 14, 14, 0.98) 100%)",
           }}
         >
-          <div className="flex-1 pr-1 min-w-0">
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 min-w-0">
-              <span
-                className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider shrink-0"
-                style={{
-                  background: modalTheme.badgeBg,
-                  color: modalTheme.badgeColor,
-                  border: `1px solid ${modalTheme.badgeBorder}`,
-                }}
-              >
+          <div className="flex-1 pr-2">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-slate-300 bg-white/[0.06] border border-white/10">
                 {project.category || "Full-Stack"}
               </span>
               {project.metrics && (
-                <span
-                  className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-medium truncate max-w-[200px] sm:max-w-none"
-                  style={{
-                    background: "rgba(16, 185, 129, 0.12)",
-                    color: "#34d399",
-                    border: "1px solid rgba(16, 185, 129, 0.25)",
-                  }}
-                >
+                <span className="px-3 py-1 rounded-full text-xs font-medium text-slate-300 bg-white/[0.04] border border-white/[0.08]">
                   ⚡ {project.metrics}
                 </span>
               )}
             </div>
             <h2
-              className="text-base sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight break-words"
+              className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               {project.title}
@@ -1008,111 +606,115 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
           <button
             onClick={onClose}
-            className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl text-slate-400 hover:text-white transition-all hover:bg-slate-800/80 flex items-center justify-center shrink-0"
-            style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              cursor: "pointer",
-            }}
+            className="w-10 h-10 rounded-full text-slate-400 hover:text-white transition-all bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 flex items-center justify-center shrink-0"
+            style={{ cursor: "pointer" }}
             aria-label="Close modal"
           >
-            <svg style={{ width: "18px", height: "18px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            <svg style={{ width: "16px", height: "16px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        {/* Tab Navigation (Touch Scrollable on Mobile) */}
+        {/* Apple-style Tab Bar with Distinct Highlighted Active Tab */}
         <div
-          className="flex items-center px-3 sm:px-8 pt-1.5 sm:pt-2 gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar shrink-0 max-w-full"
+          className="px-6 sm:px-8 pt-3 flex items-center gap-2 overflow-x-auto shrink-0 border-b border-white/10"
           style={{
-            borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
-            backgroundColor: "#0a0d14",
+            backgroundColor: "#0a0a0a",
           }}
         >
-          <button
-            onClick={() => setActiveTab("playground")}
-            className="px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
-            style={{
-              color: activeTab === "playground" ? modalTheme.tabColor : "#94a3b8",
-              borderBottom: activeTab === "playground" ? `2px solid ${modalTheme.tabColor}` : "2px solid transparent",
-              cursor: "pointer",
-              background: "transparent",
-              borderTop: "none",
-              borderLeft: "none",
-              borderRight: "none",
-              minHeight: "40px",
-            }}
-          >
-            Local Live Demo
-          </button>
-          <button
-            onClick={() => setActiveTab("overview")}
-            className="px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
-            style={{
-              color: activeTab === "overview" ? modalTheme.tabColor : "#94a3b8",
-              borderBottom: activeTab === "overview" ? `2px solid ${modalTheme.tabColor}` : "2px solid transparent",
-              cursor: "pointer",
-              background: "transparent",
-              borderTop: "none",
-              borderLeft: "none",
-              borderRight: "none",
-              minHeight: "40px",
-            }}
-          >
-            Architecture & Highlights
-          </button>
-          {project.codeSnippet && (
+          <div className="flex items-center gap-1.5 -mb-px">
             <button
-              onClick={() => setActiveTab("code")}
-              className="px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-bold uppercase tracking-wider relative transition-all shrink-0"
-              style={{
-                color: activeTab === "code" ? modalTheme.tabColor : "#94a3b8",
-                borderBottom: activeTab === "code" ? `2px solid ${modalTheme.tabColor}` : "2px solid transparent",
-                cursor: "pointer",
-                background: "transparent",
-                borderTop: "none",
-                borderLeft: "none",
-                borderRight: "none",
-                minHeight: "40px",
-              }}
+              onClick={() => setActiveTab("playground")}
+              className={`px-4 sm:px-5 py-2.5 rounded-t-xl text-xs sm:text-sm font-semibold transition-all duration-150 flex items-center gap-2 border-t border-x ${
+                activeTab === "playground"
+                  ? "bg-[#141414] text-white border-white/15 border-b-2 border-b-[#141414] shadow-sm"
+                  : "bg-transparent text-slate-400 hover:text-slate-200 border-transparent hover:bg-white/[0.04]"
+              }`}
+              style={{ cursor: "pointer" }}
             >
-              Source Code
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{
+                  backgroundColor: activeTab === "playground" ? "#dc2626" : "#64748b",
+                  boxShadow: activeTab === "playground" ? "0 0 6px rgba(220, 38, 38, 0.4)" : "none"
+                }}
+              ></span>
+              <span>Interactive Sandbox</span>
             </button>
-          )}
+
+            <button
+              onClick={() => setActiveTab("overview")}
+              className={`px-4 sm:px-5 py-2.5 rounded-t-xl text-xs sm:text-sm font-semibold transition-all duration-150 flex items-center gap-2 border-t border-x ${
+                activeTab === "overview"
+                  ? "bg-[#141414] text-white border-white/15 border-b-2 border-b-[#141414] shadow-sm"
+                  : "bg-transparent text-slate-400 hover:text-slate-200 border-transparent hover:bg-white/[0.04]"
+              }`}
+              style={{ cursor: "pointer" }}
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{
+                  backgroundColor: activeTab === "overview" ? "#f3f4f6" : "#64748b",
+                  boxShadow: activeTab === "overview" ? "0 0 6px rgba(255, 255, 255, 0.3)" : "none"
+                }}
+              ></span>
+              <span>Architecture & Details</span>
+            </button>
+
+            {project.codeSnippet && (
+              <button
+                onClick={() => setActiveTab("code")}
+                className={`px-4 sm:px-5 py-2.5 rounded-t-xl text-xs sm:text-sm font-semibold transition-all duration-150 flex items-center gap-2 border-t border-x ${
+                  activeTab === "code"
+                    ? "bg-[#141414] text-white border-white/15 border-b-2 border-b-[#141414] shadow-sm"
+                    : "bg-transparent text-slate-400 hover:text-slate-200 border-transparent hover:bg-white/[0.04]"
+                }`}
+                style={{ cursor: "pointer" }}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{
+                    backgroundColor: activeTab === "code" ? "#f3f4f6" : "#64748b",
+                    boxShadow: activeTab === "code" ? "0 0 6px rgba(255, 255, 255, 0.3)" : "none"
+                  }}
+                ></span>
+                <span>Source Code</span>
+              </button>
+            )}
+          </div>
         </div>
 
-        {/* Content Body with Strict Boundary Containment & Touch Scrolling */}
-        <div
-          className="p-3.5 sm:p-6 md:p-8 overflow-y-auto space-y-5 sm:space-y-6 flex-1 min-w-0 max-w-full box-border"
-          style={{
-            color: "#cbd5e1",
-            WebkitOverflowScrolling: "touch",
-          }}
-        >
+        {/* Modal Body with Generous Spacing */}
+        <div className="p-6 sm:p-8 md:p-10 overflow-y-auto space-y-8 flex-1">
           {/* Playground Tab */}
           {activeTab === "playground" && (
-            <div className="space-y-5 sm:space-y-6 max-w-full min-w-0">
+            <div className="space-y-8">
               {project.id === "weather-app" && <WeatherAppDemo />}
               {project.id === "todo-crud-app" && <TodoAppDemo />}
               {(project.id === "clicker-game" || project.appType === "clicker" || project.id === "websocket-chat-app") && (
                 <ClickerGameDemo />
               )}
 
-              {/* Stack Chips */}
-              <div className="pt-2 max-w-full min-w-0">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2.5">
+              {/* Verified Production Stack Section (Spaced away from edges) */}
+              <div
+                className="p-6 rounded-2xl"
+                style={{
+                  background: "rgba(255, 255, 255, 0.02)",
+                  border: "1px solid rgba(255, 255, 255, 0.06)",
+                }}
+              >
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-3.5">
                   Production Stack & Tooling
                 </span>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 max-w-full">
+                <div className="flex flex-wrap gap-2">
                   {(project.techStack || []).map((t) => (
                     <span
                       key={t}
-                      className="px-2.5 py-1 rounded-lg text-xs font-semibold shrink-0"
+                      className="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-200"
                       style={{
-                        background: "rgba(16, 21, 33, 0.9)",
-                        color: "#93c5fd",
-                        border: "1px solid rgba(56, 189, 248, 0.2)",
+                        background: "rgba(255, 255, 255, 0.05)",
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
                       }}
                     >
                       {t}
@@ -1125,55 +727,71 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
           {/* Overview Tab */}
           {activeTab === "overview" && (
-            <div className="space-y-5 sm:space-y-6 max-w-full min-w-0">
-              {/* Executive Summary */}
-              <div className="min-w-0">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+            <div className="space-y-8">
+              <div
+                className="p-6 sm:p-8 rounded-2xl"
+                style={{
+                  background: "rgba(255, 255, 255, 0.02)",
+                  border: "1px solid rgba(255, 255, 255, 0.06)",
+                }}
+              >
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
                   Executive Overview
                 </h4>
-                <p className="text-xs sm:text-sm md:text-base leading-relaxed text-slate-200 break-words" style={{ lineHeight: "1.75" }}>
+                <p className="text-sm sm:text-base leading-relaxed text-slate-300 font-normal">
                   {project.description}
                 </p>
               </div>
 
-              {/* Technical Highlights */}
+              {/* Highlights */}
               {project.highlights && project.highlights.length > 0 && (
-                <div className="min-w-0">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
-                    Key Architectural Capabilities & Engineering Design
+                <div
+                  className="p-6 sm:p-8 rounded-2xl"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.02)",
+                    border: "1px solid rgba(255, 255, 255, 0.06)",
+                  }}
+                >
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
+                    Key Architectural Capabilities
                   </h4>
-                  <div className="space-y-2 max-w-full min-w-0">
+                  <div className="space-y-3">
                     {project.highlights.map((highlight, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-2.5 p-3 rounded-xl text-xs sm:text-sm leading-relaxed max-w-full min-w-0 box-border"
+                        className="flex items-start gap-3 p-4 rounded-xl text-sm leading-relaxed text-slate-300"
                         style={{
-                          background: "rgba(14, 18, 28, 0.75)",
-                          border: "1px solid rgba(255, 255, 255, 0.06)",
+                          background: "rgba(255, 255, 255, 0.03)",
+                          border: "1px solid rgba(255, 255, 255, 0.05)",
                         }}
                       >
-                        <span className="text-emerald-400 font-bold mt-0.5 text-sm shrink-0">✓</span>
-                        <span className="text-slate-300 break-words flex-1 min-w-0">{highlight}</span>
+                        <span className="text-emerald-400 font-bold mt-0.5">✓</span>
+                        <span className="flex-1">{highlight}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* Technology Stack */}
-              <div className="min-w-0">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
+              {/* Stack */}
+              <div
+                className="p-6 rounded-2xl"
+                style={{
+                  background: "rgba(255, 255, 255, 0.02)",
+                  border: "1px solid rgba(255, 255, 255, 0.06)",
+                }}
+              >
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3.5">
                   Verified Technologies & Frameworks
                 </h4>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 max-w-full">
+                <div className="flex flex-wrap gap-2">
                   {(project.techStack || []).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-lg text-xs font-semibold shrink-0"
+                      className="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-200"
                       style={{
-                        background: "rgba(16, 21, 33, 0.9)",
-                        color: "#93c5fd",
-                        border: "1px solid rgba(56, 189, 248, 0.2)",
+                        background: "rgba(255, 255, 255, 0.05)",
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
                       }}
                     >
                       {tech}
@@ -1186,58 +804,48 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
           {/* Code Tab */}
           {activeTab === "code" && project.codeSnippet && (
-            <div className="space-y-3.5 sm:space-y-4 max-w-full min-w-0">
-              <div className="flex items-center justify-between min-w-0">
-                <span className="text-xs font-mono text-slate-400 truncate">Production Code</span>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium text-slate-400">Production Code</span>
                 <button
                   onClick={() => handleCopyCode(project.codeSnippet)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 shrink-0"
-                  style={{
-                    background: copied ? "rgba(16, 185, 129, 0.2)" : "rgba(255, 255, 255, 0.07)",
-                    border: copied ? "1px solid #10b981" : "1px solid rgba(255, 255, 255, 0.12)",
-                    color: copied ? "#34d399" : "#cbd5e1",
-                    cursor: "pointer",
-                    minHeight: "34px",
-                  }}
+                  className="px-4 py-2 rounded-full text-xs font-bold hover:bg-slate-100 transition-all flex items-center gap-1.5 shadow-sm"
+                  style={{ cursor: "pointer", backgroundColor: "#ffffff", color: "#05070c" }}
                 >
-                  <span>{copied ? "✓ Copied!" : "📋 Copy Code"}</span>
+                  <span style={{ color: "#05070c" }}>{copied ? "✓ Copied" : "Copy Code"}</span>
                 </button>
               </div>
 
               <div
-                className="rounded-xl overflow-x-auto p-3 sm:p-5 font-mono text-xs leading-relaxed max-w-full min-w-0 box-border"
+                className="rounded-2xl overflow-x-auto p-5 font-mono text-xs leading-relaxed"
                 style={{
-                  background: "#05070c",
+                  background: "#04060a",
                   border: "1px solid rgba(255, 255, 255, 0.08)",
-                  maxHeight: "380px",
+                  maxHeight: "400px",
                   color: "#e2e8f0",
                 }}
               >
-                <code style={{ display: "block", minWidth: "100%", whiteSpace: "pre" }}>{project.codeSnippet}</code>
+                <code style={{ display: "block", whiteSpace: "pre" }}>{project.codeSnippet}</code>
               </div>
             </div>
           )}
         </div>
 
-        {/* Footer Actions */}
+        {/* Modal Footer */}
         <div
-          className="p-3 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0 min-w-0"
+          className="p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0"
           style={{
             borderTop: "1px solid rgba(255, 255, 255, 0.08)",
-            background: "rgba(10, 13, 20, 0.98)",
+            background: "rgba(8, 11, 18, 0.98)",
           }}
         >
-          <span className="text-[11px] sm:text-xs text-slate-500 font-mono text-center sm:text-left truncate max-w-full">
-            Hosted & Executed Locally in Portfolio App
+          <span className="text-xs text-slate-400 font-medium">
+            Executed locally inside React Sandbox Environment
           </span>
           <button
             onClick={onClose}
-            className="w-full sm:w-auto px-6 py-2 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 active:bg-slate-900 transition-colors shadow-md flex items-center justify-center shrink-0"
-            style={{
-              border: "1px solid rgba(255, 255, 255, 0.15)",
-              cursor: "pointer",
-              minHeight: "38px",
-            }}
+            className="w-full sm:w-auto px-7 py-2.5 rounded-full text-xs font-semibold text-white bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 transition-all"
+            style={{ cursor: "pointer" }}
           >
             Close
           </button>

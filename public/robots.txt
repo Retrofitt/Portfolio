@@ -1,3 +1,59 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+# Allow all standard web crawlers
+User-agent: *
+
+# Allow Google, Bing, etc. to index everything
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Enable sitemap for search engines
+Sitemap: https://ramendev.io/sitemap-index.xml
+
+# ==========================================
+# BLOCKING FOR PERFORMANCE & PRIVACY
+# ==========================================
+
+# Disallow staging/dev environments
+User-agent: *
+Disallow: /staging/
+Disallow: /dev/
+Disallow: /api/v1/
+Disallow: /api/docs/
+
+# Optional: Block social media bots from your site
+# (Uncomment if you don't want Facebook/Twitter crawling your content)
+# User-agent: facebookexternalhit
+# Disallow: /
+#
+# User-agent: Twitterbot
+# Disallow: /
+
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /secret/
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: dotbot
+Allow: /
+
+# This is a developer portfolio showcasing projects, 
+# technical skills, and professional experience.
+# All content is original and property of RamenDev.
+
+# For technical inquiries or partnership opportunities, 
+# please contact rafaelmendoza.dev@gmail.com or visit https://ramendev.io/#contact

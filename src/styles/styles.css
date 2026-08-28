@@ -5,34 +5,36 @@
    ========================================================================== */
 
 :root {
-  /* Surfaces & Backgrounds */
-  --bg-primary: #050608;
-  --bg-secondary: #090b10;
-  --bg-surface: rgba(8, 10, 15, 0.95);
-  --bg-card: rgba(13, 16, 23, 0.72);
-  --bg-card-hover: rgba(20, 25, 36, 0.85);
-  --bg-input: rgba(8, 10, 15, 0.85);
+  /* Apple-inspired Deep Muted Black Surfaces (#080808 / #0e0e0e) */
+  --bg-primary: #080808;
+  --bg-secondary: #0e0e0e;
+  --bg-surface: rgba(18, 18, 18, 0.92);
+  --bg-card: rgba(22, 22, 22, 0.72);
+  --bg-card-hover: rgba(32, 32, 32, 0.85);
+  --bg-input: rgba(16, 16, 16, 0.85);
   
-  /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-focus: rgba(56, 189, 248, 0.4);
-  --border-glow: rgba(56, 189, 248, 0.2);
+  /* Precision Frosted Glass Borders */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --border-focus: rgba(220, 38, 38, 0.45);
+  --border-glow: rgba(220, 38, 38, 0.2);
   
-  /* Accents */
-  --accent-cyan: #38bdf8;
-  --accent-cyan-glow: rgba(56, 189, 248, 0.25);
-  --accent-emerald: #10b981;
-  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
-  --accent-purple: #c084fc;
-  --accent-purple-glow: rgba(192, 132, 252, 0.25);
-  --accent-red: #f87171;
+  /* Deep Velvet Blood Red Accents (High Contrast & Legible) */
+  --accent-red: #dc2626;
+  --accent-red-light: #ef4444;
+  --accent-red-dark: #991b1b;
+  --accent-red-glow: rgba(220, 38, 38, 0.25);
+  --accent-cyan: #e2e8f0;
+  --accent-cyan-glow: rgba(255, 255, 255, 0.12);
+  --accent-emerald: #e2e8f0;
+  --accent-emerald-glow: rgba(255, 255, 255, 0.12);
+  --accent-purple: #e2e8f0;
   
-  /* Text Tokens */
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  /* Muted Whites & Neutral Typography (Soft & Muted, Not Stark Pure White) */
+  --text-primary: #f3f4f6;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
   
   /* Typography */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -256,10 +258,10 @@ code, pre {
 
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-subtle);
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   word-break: break-word;
@@ -268,26 +270,9 @@ code, pre {
 
 .glass-card:hover {
   background: var(--bg-card-hover);
-  transform: translateY(-5px);
-  border-color: var(--border-focus);
-  box-shadow: 0 20px 48px -12px var(--accent-cyan-glow), 0 0 24px -6px rgba(0, 0, 0, 0.8);
-}
-
-/* Individual Project Theme Card Glows */
-.project-card-weather:hover {
-  border-color: rgba(0, 242, 254, 0.5) !important;
-  box-shadow: 0 22px 50px -12px rgba(0, 242, 254, 0.22), 0 0 28px -6px rgba(0, 242, 254, 0.12) !important;
-}
-
-.project-card-todo:hover {
-  border-color: rgba(0, 245, 160, 0.5) !important;
-  box-shadow: 0 22px 50px -12px rgba(0, 245, 160, 0.22), 0 0 28px -6px rgba(0, 245, 160, 0.12) !important;
-}
-
-.project-card-chat:hover,
-.project-card-clicker:hover {
-  border-color: rgba(217, 70, 239, 0.5) !important;
-  box-shadow: 0 22px 50px -12px rgba(217, 70, 239, 0.22), 0 0 28px -6px rgba(217, 70, 239, 0.12) !important;
+  transform: translateY(-4px);
+  border-color: var(--border-medium);
+  box-shadow: 0 22px 48px -10px rgba(0, 0, 0, 0.7);
 }
 
 .glass-input {
@@ -302,9 +287,9 @@ code, pre {
 }
 
 .glass-input:focus {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px var(--border-glow);
-  background: rgba(12, 16, 24, 0.95);
+  border-color: rgba(225, 29, 72, 0.6);
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.2);
+  background: rgba(22, 27, 38, 0.95);
 }
 
 /* Section Headings */
@@ -316,11 +301,12 @@ code, pre {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
+  backdrop-filter: blur(12px);
 }
 
 .section-heading {
@@ -377,13 +363,15 @@ code, pre {
 .text-slate-300 { color: var(--text-secondary); }
 .text-slate-400 { color: var(--text-muted); }
 .text-slate-500 { color: var(--text-dim); }
-.text-slate-950 { color: #020617; }
+.text-slate-950 { color: #0e1117; }
 .text-emerald-300 { color: #6ee7b7; }
 .text-emerald-400 { color: #34d399; }
-.text-cyan-300 { color: #7dd3fc; }
-.text-cyan-400 { color: var(--accent-cyan); }
+.text-cyan-300 { color: #cbd5e1; }
+.text-cyan-400 { color: #f1f4f9; }
 .text-red-300 { color: #fca5a5; }
-.text-red-400 { color: var(--accent-red); }
+.text-red-400 { color: var(--accent-red-light); }
+.text-crimson { color: #fb7185; }
+.text-velvet { color: #e11d48; }
 
 .tracking-tight { letter-spacing: -0.025em; }
 .tracking-wide { letter-spacing: 0.025em; }
@@ -393,20 +381,20 @@ code, pre {
 .leading-tight { line-height: 1.25; }
 .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-/* Buttons */
+/* Buttons: Apple High-Contrast Muted White & Titanium Glass */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: #020617;
+  background: #f1f4f9;
+  color: #0e1117 !important;
   font-weight: 700;
   font-size: 0.875rem;
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 20px var(--accent-emerald-glow);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -416,9 +404,9 @@ code, pre {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
-  color: #020617;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  background: #ffffff;
+  color: #0e1117 !important;
 }
 
 .btn-secondary {
@@ -426,14 +414,14 @@ code, pre {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: rgba(17, 24, 39, 0.75);
-  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.05);
+  color: #f1f4f9;
   font-weight: 600;
   font-size: 0.875rem;
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
-  border: 1px solid var(--border-subtle);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -442,8 +430,8 @@ code, pre {
 }
 
 .btn-secondary:hover {
-  background: rgba(31, 41, 55, 0.9);
-  border-color: var(--border-focus);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.24);
   transform: translateY(-2px);
   color: #ffffff;
 }
@@ -468,9 +456,9 @@ code, pre {
 }
 
 .btn-outline:hover {
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .btn-danger {
@@ -499,9 +487,9 @@ code, pre {
 /* Background Gradients & Effects */
 .bg-mesh {
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 90% 30%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 50% 90%, rgba(30, 41, 59, 0.4) 0%, transparent 60%);
+    radial-gradient(circle at 50% -15%, rgba(255, 255, 255, 0.04) 0%, transparent 65%),
+    radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 15% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
 }
 
 .glow-orb {

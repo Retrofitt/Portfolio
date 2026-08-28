@@ -30,9 +30,9 @@ export default function Photography() {
       id="photography"
       className="py-24 relative overflow-hidden"
       style={{
-        backgroundColor: "#07090e",
-        borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.05)"
+        backgroundColor: "var(--bg-secondary)",
+        borderTop: "1px solid rgba(255, 255, 255, 0.06)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.06)"
       }}
     >
       <div className="container-custom relative z-10">
@@ -50,9 +50,9 @@ export default function Photography() {
                 onClick={() => setIsCMSOpen(true)}
                 className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5"
                 style={{
-                  background: "rgba(56, 189, 248, 0.1)",
-                  border: "1px solid rgba(56, 189, 248, 0.3)",
-                  color: "#38bdf8",
+                  background: "rgba(22, 22, 22, 0.9)",
+                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  color: "#f3f4f6",
                   cursor: "pointer"
                 }}
               >
@@ -72,7 +72,7 @@ export default function Photography() {
               style={{
                 cursor: "pointer",
                 padding: "0",
-                background: "rgba(11, 14, 21, 0.8)",
+                background: "rgba(22, 22, 22, 0.8)",
                 border: "1px solid rgba(255, 255, 255, 0.08)"
               }}
             >

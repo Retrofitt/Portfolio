@@ -10,13 +10,13 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center pt-32 pb-20 bg-mesh overflow-hidden"
     >
-      {/* Dark Ambient Lighting Orbs */}
+      {/* Subtle Monochrome Ambient Lighting Orbs */}
       <div
         className="glow-orb"
         style={{
           width: "550px",
           height: "550px",
-          backgroundColor: "rgba(56, 189, 248, 0.05)",
+          backgroundColor: "rgba(255, 255, 255, 0.02)",
           top: "-100px",
           left: "15%",
         }}
@@ -26,7 +26,7 @@ export default function Hero() {
         style={{
           width: "500px",
           height: "500px",
-          backgroundColor: "rgba(16, 185, 129, 0.04)",
+          backgroundColor: "rgba(255, 255, 255, 0.015)",
           top: "30%",
           right: "10%",
         }}
@@ -35,22 +35,23 @@ export default function Hero() {
       <div className="container-custom relative z-10 text-center max-w-4xl mx-auto">
         {/* Availability Badge */}
         <div
-          className="section-tag mb-6"
+          className="section-tag mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
           style={{
-            background: "rgba(13, 17, 26, 0.85)",
-            borderColor: "rgba(56, 189, 248, 0.3)",
-            color: "#38bdf8",
-            boxShadow: "0 0 15px rgba(56, 189, 248, 0.15)",
+            background: "rgba(22, 22, 22, 0.85)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            color: "#f3f4f6",
+            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
           }}
         >
           <span
+            className="animate-pulse"
             style={{
               display: "inline-block",
               width: "8px",
               height: "8px",
               borderRadius: "50%",
-              backgroundColor: "#38bdf8",
-              boxShadow: "0 0 10px #38bdf8",
+              backgroundColor: "#dc2626",
+              boxShadow: "0 0 6px rgba(220, 38, 38, 0.4)",
             }}
           ></span>
           <span>{profile.statusBadge || "Available for CA & Remote Roles"}</span>
@@ -61,22 +62,13 @@ export default function Hero() {
           className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-4"
           style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: "-0.03em" }}
         >
-          Hi, I'm{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #38bdf8 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            {profile.name}
-          </span>
+          Hi, I'm <span className="text-white font-black">{profile.name}</span>
         </h1>
 
         {/* Role Subheading */}
         <h2
           className="text-lg sm:text-2xl md:text-3xl font-bold text-slate-200 mb-6 tracking-tight"
-          style={{ color: "#94a3b8" }}
+          style={{ color: "#9ca3af" }}
         >
           {profile.role}
         </h2>
@@ -84,7 +76,7 @@ export default function Hero() {
         {/* Bio summary */}
         <p
           className="text-sm sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10"
-          style={{ color: "#8492a6" }}
+          style={{ color: "#9ca3af" }}
         >
           {profile.bioLead}
         </p>
@@ -99,7 +91,7 @@ export default function Hero() {
           </a>
 
           <a href="#contact" className="btn-secondary">
-            <svg style={{ width: "16px", height: "16px", color: "#38bdf8" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: "16px", height: "16px", color: "var(--text-secondary)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             <span>Direct Inquiry / Contact</span>
@@ -110,14 +102,13 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             download="Rafael_Mendoza_Resume-2608.pdf"
-            className="btn-outline"
-            style={{ padding: "0.75rem 1.25rem" }}
+            className="btn-secondary flex items-center gap-2"
             title="Download PDF Resume"
           >
-            <svg style={{ width: "16px", height: "16px", color: "#38bdf8" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: "16px", height: "16px", color: "var(--text-secondary)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            <span>Download Resume (PDF)</span>
+            <span>Resume (PDF)</span>
           </a>
         </div>
 
@@ -126,7 +117,7 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-center gap-3 pt-6"
           style={{ borderTop: "1px solid rgba(255, 255, 255, 0.06)" }}
         >
-          <span className="text-xs font-semibold uppercase tracking-wider mr-2" style={{ color: "#64748b" }}>
+          <span className="text-xs font-semibold uppercase tracking-wider mr-2" style={{ color: "#6b7280" }}>
             Connect:
           </span>
           {socials.map((social) => (
@@ -137,9 +128,12 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="btn-outline"
               style={{
-                background: "rgba(10, 13, 19, 0.8)",
+                background: "rgba(22, 22, 22, 0.8)",
+                borderColor: "rgba(255, 255, 255, 0.1)",
+                color: "#d1d5db",
                 fontSize: "0.75rem",
-                padding: "0.35rem 0.75rem"
+                padding: "0.4rem 0.85rem",
+                borderRadius: "0.6rem"
               }}
             >
               {social.icon === "github" && (

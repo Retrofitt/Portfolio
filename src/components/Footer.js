@@ -13,14 +13,14 @@ export default function Footer() {
     <footer
       className="py-12 relative overflow-hidden"
       style={{
-        backgroundColor: "#030407",
-        borderTop: "1px solid rgba(255, 255, 255, 0.05)"
+        backgroundColor: "var(--bg-primary)",
+        borderTop: "1px solid rgba(255, 255, 255, 0.06)"
       }}
     >
       <div className="container-custom">
         <div
           className="flex flex-col md:flex-row items-center justify-between gap-8 pb-8"
-          style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.05)" }}
+          style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.06)" }}
         >
           {/* Brand Info */}
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
@@ -29,14 +29,15 @@ export default function Footer() {
                 width: "2.5rem",
                 height: "2.5rem",
                 borderRadius: "0.75rem",
-                background: "linear-gradient(135deg, #38bdf8 0%, #10b981 100%)",
+                background: "#f3f4f6",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#050608",
+                color: "#080808",
                 fontWeight: "900",
                 fontSize: "1.125rem",
-                boxShadow: "0 0 15px rgba(56, 189, 248, 0.25)"
+                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
+                border: "1px solid rgba(255, 255, 255, 0.85)"
               }}
             >
               RM
@@ -60,7 +61,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs font-semibold"
-                style={{ color: "#94a3b8", textDecoration: "none" }}
+                style={{ color: "#9ca3af", textDecoration: "none" }}
               >
                 {s.name}
               </a>
@@ -69,7 +70,7 @@ export default function Footer() {
               onClick={() => setIsCMSOpen(true)}
               className="text-xs font-semibold"
               style={{
-                color: "#64748b",
+                color: "#6b7280",
                 background: "none",
                 border: "none",
                 cursor: "pointer"
@@ -82,8 +83,8 @@ export default function Footer() {
           {/* Back to Top */}
           <button
             onClick={scrollToTop}
-            className="btn-outline text-xs"
-            style={{ padding: "0.45rem 0.85rem" }}
+            className="btn-secondary text-xs"
+            style={{ padding: "0.45rem 0.85rem", borderRadius: "0.5rem" }}
           >
             <span>Back to top</span>
             <svg style={{ width: "14px", height: "14px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">

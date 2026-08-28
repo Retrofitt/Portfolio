@@ -150,8 +150,8 @@ export default function CMSModal() {
       <div
         className="relative z-10 w-full max-w-5xl rounded-2xl flex flex-col modal-content my-auto"
         style={{
-          background: "rgba(9, 11, 16, 0.95)",
-          border: "1px solid rgba(56, 189, 248, 0.2)",
+          background: "rgba(14, 14, 14, 0.98)",
+          border: "1px solid rgba(255, 255, 255, 0.12)",
           boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.9)",
           maxHeight: "92vh"
         }}
@@ -160,7 +160,7 @@ export default function CMSModal() {
         <div
           className="flex items-center justify-between px-6 py-4 rounded-t-2xl"
           style={{
-            background: "rgba(6, 8, 12, 0.9)",
+            background: "rgba(10, 10, 10, 0.95)",
             borderBottom: "1px solid rgba(255, 255, 255, 0.08)"
           }}
         >
@@ -170,12 +170,12 @@ export default function CMSModal() {
                 width: "2rem",
                 height: "2rem",
                 borderRadius: "0.5rem",
-                background: "rgba(56, 189, 248, 0.15)",
-                border: "1px solid rgba(56, 189, 248, 0.3)",
+                background: "#f3f4f6",
+                border: "1px solid rgba(255, 255, 255, 0.9)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#38bdf8",
+                color: "#080808",
                 fontWeight: "bold",
                 fontSize: "0.875rem"
               }}
@@ -229,12 +229,12 @@ export default function CMSModal() {
                 width: "3.5rem",
                 height: "3.5rem",
                 borderRadius: "1rem",
-                background: "rgba(56, 189, 248, 0.1)",
-                border: "1px solid rgba(56, 189, 248, 0.3)",
+                background: "rgba(255, 255, 255, 0.06)",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#38bdf8",
+                color: "#f3f4f6",
                 marginBottom: "1.5rem"
               }}
             >
@@ -288,7 +288,7 @@ export default function CMSModal() {
             <div
               className="w-full md:w-56 p-3 flex md:flex-col gap-1 overflow-x-auto shrink-0"
               style={{
-                background: "rgba(6, 8, 12, 0.8)",
+                background: "rgba(10, 10, 10, 0.95)",
                 borderRight: "1px solid rgba(255, 255, 255, 0.08)"
               }}
             >
@@ -306,8 +306,8 @@ export default function CMSModal() {
                   style={{
                     cursor: "pointer",
                     transition: "all 0.2s ease",
-                    background: activeTab === tab.id ? "#38bdf8" : "transparent",
-                    color: activeTab === tab.id ? "#050608" : "#cbd5e1",
+                    background: activeTab === tab.id ? "#f3f4f6" : "transparent",
+                    color: activeTab === tab.id ? "#080808" : "#cbd5e1",
                     border: "none"
                   }}
                 >

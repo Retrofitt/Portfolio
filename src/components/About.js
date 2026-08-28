@@ -31,11 +31,11 @@ export default function About() {
             <div
               className="glass-card p-8 rounded-2xl"
               style={{
-                borderLeft: "4px solid var(--accent-cyan)",
+                borderLeft: "3px solid #dc2626",
               }}
             >
               <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <span className="text-cyan-400 font-mono">01.</span>
+                <span className="font-mono text-sm font-bold" style={{ color: "#dc2626" }}>01.</span>
                 <span>My Approach</span>
               </h3>
               <p className="text-slate-300 text-base leading-relaxed mb-4">
@@ -57,7 +57,8 @@ export default function About() {
                     width: "8px",
                     height: "8px",
                     borderRadius: "50%",
-                    backgroundColor: "var(--accent-cyan)"
+                    backgroundColor: "#dc2626",
+                    boxShadow: "0 0 6px rgba(220, 38, 38, 0.4)"
                   }}
                 ></span>
                 <span>Core Focus Areas</span>
@@ -68,8 +69,8 @@ export default function About() {
                     key={discipline}
                     className="px-3 py-1.5 rounded-lg text-xs font-semibold"
                     style={{
-                      background: "var(--bg-surface)",
-                      border: "1px solid var(--border-subtle)",
+                      background: "rgba(255, 255, 255, 0.03)",
+                      border: "1px solid rgba(255, 255, 255, 0.08)",
                       color: "var(--text-secondary)"
                     }}
                   >
@@ -82,7 +83,7 @@ export default function About() {
 
           {/* Stats & Quick Card / Right Column */}
           <div className="lg:col-span-5 space-y-6">
-            {/* Stat Counters Grid */}
+            {/* Stat Counters Grid with Velvet Blood Red Metrics */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {(profile.stats || []).map((stat, i) => (
                 <div
@@ -90,11 +91,10 @@ export default function About() {
                   className="glass-card p-4 sm:p-6 rounded-2xl text-center"
                 >
                   <p
-                    className="text-2xl sm:text-4xl font-black mb-1"
+                    className="text-2xl sm:text-4xl font-black mb-1 tracking-tight"
                     style={{
-                      background: "linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-emerald) 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent"
+                      color: "#dc2626",
+                      fontFamily: "'Outfit', sans-serif",
                     }}
                   >
                     {stat.value}
@@ -108,11 +108,11 @@ export default function About() {
 
             {/* Opportunity Card */}
             <div
-              className="p-6 rounded-2xl"
+              className="glass-card p-6 rounded-2xl"
               style={{
-                background: "linear-gradient(135deg, rgba(13, 17, 26, 0.9) 0%, rgba(8, 11, 17, 0.95) 100%)",
-                border: "1px solid var(--border-glow)",
-                boxShadow: "0 12px 30px rgba(0, 0, 0, 0.6)"
+                background: "rgba(22, 22, 22, 0.8)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+                boxShadow: "0 16px 36px rgba(0, 0, 0, 0.5)"
               }}
             >
               <div className="flex items-center gap-3 mb-4">
@@ -121,12 +121,12 @@ export default function About() {
                     width: "2.25rem",
                     height: "2.25rem",
                     borderRadius: "0.5rem",
-                    backgroundColor: "rgba(56, 189, 248, 0.15)",
-                    border: "1px solid var(--border-focus)",
+                    backgroundColor: "rgba(220, 38, 38, 0.12)",
+                    border: "1px solid rgba(220, 38, 38, 0.25)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "var(--accent-cyan)"
+                    color: "#dc2626"
                   }}
                 >
                   <svg style={{ width: "18px", height: "18px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,11 +157,11 @@ export default function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   download="Rafael_Mendoza_Resume-2608.pdf"
-                  className="btn-outline text-xs text-center flex items-center justify-center gap-1.5"
+                  className="btn-secondary text-xs text-center flex items-center justify-center gap-1.5"
                   style={{ padding: "0.65rem 1rem" }}
                   title="Download PDF Resume"
                 >
-                  <svg style={{ width: "14px", height: "14px", color: "var(--accent-cyan)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{ width: "14px", height: "14px", color: "var(--text-secondary)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   <span>PDF Resume</span>
