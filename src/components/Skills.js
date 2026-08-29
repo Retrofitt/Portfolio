@@ -58,7 +58,6 @@ function TechCard({ tech }) {
             loading="lazy"
             className="w-5 h-5 object-contain transition-transform group-hover:scale-110"
             onError={(e) => {
-              // Graceful fallback to acronym if image fails to load
               e.currentTarget.style.display = "none";
               if (e.currentTarget.nextSibling) {
                 e.currentTarget.nextSibling.style.display = "block";
@@ -115,49 +114,63 @@ export default function Skills() {
       className="py-24 sm:py-32 relative overflow-hidden"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
-      <div className="container-custom relative z-10 space-y-20">
-        {/* Main Section Header */}
-        <div className="text-center">
+      <div className="container-custom relative z-10">
+        {/* Main Section Header with Generous Bottom Spacing */}
+        <div className="text-center max-w-3xl mx-auto mb-20 sm:mb-24">
           <span className="section-tag">Capabilities</span>
           <h2 className="section-heading mt-2">Technical &amp; Creative Stack</h2>
-          <p className="section-subheading mt-3 max-w-2xl mx-auto">
+          <p className="section-subheading mt-3 text-slate-400">
             A comprehensive overview of my software engineering capabilities, architectural practices, and creative toolset.
           </p>
         </div>
 
-        {/* Grouped Sub-Sections */}
-        {techStackSections.map((section, idx) => (
-          <div key={section.id || idx} className="space-y-8">
-            {/* Sub-Section Header */}
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-4 border-b border-white/10">
-              <div>
-                <span
-                  className="text-xs font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full inline-block mb-2"
-                  style={{
-                    backgroundColor: "rgba(220, 38, 38, 0.1)",
-                    border: "1px solid rgba(220, 38, 38, 0.25)",
-                    color: "#f87171",
-                  }}
-                >
-                  {section.badge}
-                </span>
+        {/* Grouped Sub-Sections with Distinct Spacing & Clean Unified Headers */}
+        <div className="space-y-24 sm:space-y-28 max-w-7xl mx-auto">
+          {techStackSections.map((section, idx) => (
+            <div key={section.id || idx} className="space-y-6">
+              {/* Cohesive Sub-Section Header (Badge + Title + Description naturally stacked) */}
+              <div className="pb-4 border-b border-white/10 flex flex-col items-start">
+                <div className="flex items-center gap-2 mb-2">
+                  <span
+                    className="font-mono text-xs font-bold px-2 py-0.5 rounded"
+                    style={{
+                      backgroundColor: "rgba(220, 38, 38, 0.12)",
+                      border: "1px solid rgba(220, 38, 38, 0.25)",
+                      color: "#dc2626",
+                    }}
+                  >
+                    0{idx + 1}
+                  </span>
+                  <span
+                    className="text-xs font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.05)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      color: "#e2e8f0",
+                    }}
+                  >
+                    {section.badge}
+                  </span>
+                </div>
+
                 <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   {section.title}
                 </h3>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-400 max-w-md sm:text-right font-normal">
-                {section.description}
-              </p>
-            </div>
 
-            {/* Grid of Cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-7xl mx-auto items-stretch">
-              {section.items.map((tech, techIdx) => (
-                <TechCard key={tech.name || techIdx} tech={tech} />
-              ))}
+                <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl font-normal leading-relaxed">
+                  {section.description}
+                </p>
+              </div>
+
+              {/* Grid of Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 items-stretch pt-2">
+                {section.items.map((tech, techIdx) => (
+                  <TechCard key={tech.name || techIdx} tech={tech} />
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
