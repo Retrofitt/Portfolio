@@ -97,8 +97,8 @@ export const architectureAndSystems = [
   {
     name: "RESTful APIs",
     subtitle: "Endpoint Architecture",
-    icon: null,
-    link: null,
+    icon: "https://cdn.simpleicons.org/postman",
+    link: "https://www.postman.com",
     tags: [{ name: "Backend" }, { name: "Architecture" }]
   },
   {
@@ -191,15 +191,15 @@ export const creativeAndDesign = [
   {
     name: "UI Architecture",
     subtitle: "Design Systems & Tokens",
-    icon: null,
-    link: null,
+    icon: "https://cdn.simpleicons.org/storybook",
+    link: "https://storybook.js.org",
     tags: [{ name: "Design Systems" }, { name: "Accessibility" }]
   },
   {
     name: "UX Wireframing",
     subtitle: "User Flows & Layouts",
-    icon: null,
-    link: null,
+    icon: "https://cdn.simpleicons.org/sketch",
+    link: "https://www.sketch.com",
     tags: [{ name: "User Research" }, { name: "Hierarchy" }]
   }
 ];
