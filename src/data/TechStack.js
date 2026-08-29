@@ -170,21 +170,21 @@ export const creativeAndDesign = [
   {
     name: "Adobe Photoshop",
     subtitle: "Asset & Graphic Editing",
-    icon: "https://cdn.simpleicons.org/adobephotoshop/31A8FF",
+    icon: "/icons/photoshop.svg",
     link: "https://www.adobe.com/products/photoshop.html",
     tags: [{ name: "Creative" }, { name: "Raster" }]
   },
   {
     name: "Adobe Lightroom",
     subtitle: "Color Grading & Photo",
-    icon: "https://cdn.simpleicons.org/adobelightroom/31A8FF",
+    icon: "/icons/lightroom.svg",
     link: "https://www.adobe.com/products/photoshop-lightroom.html",
     tags: [{ name: "Visual Arts" }, { name: "Grading" }]
   },
   {
     name: "Adobe Creative Cloud",
     subtitle: "Design Ecosystem",
-    icon: "https://cdn.simpleicons.org/adobecreativecloud/DA1F26",
+    icon: "/icons/creativecloud.svg",
     link: "https://www.adobe.com/creativecloud.html",
     tags: [{ name: "Creative Suite" }]
   },
