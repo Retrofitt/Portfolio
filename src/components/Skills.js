@@ -1,116 +1,126 @@
-import React, { useState } from "react";
-import { usePortfolio } from "../data/ExperienceData";
+import React from "react";
+import { TechStack } from "../data/TechStack";
+
+// Helper to compute acronym-esque fallback label (e.g. "REA", "CSS", "DOC", "HTM")
+function getAcronym(name) {
+  if (!name) return "DEV";
+  const clean = name.replace(/[^a-zA-Z0-9]/g, "");
+  return clean.slice(0, 3).toUpperCase();
+}
 
 export default function Skills() {
-  const { data } = usePortfolio();
-  const { skills = [] } = data;
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const categories = ["All", ...Array.from(new Set(skills.map((s) => s.category).filter(Boolean)))];
-
-  const filteredSkills = selectedCategory === "All"
-    ? skills
-    : skills.filter((s) => s.category === selectedCategory);
-
   return (
     <section
       id="skills"
-      className="py-24 relative overflow-hidden"
+      className="py-24 sm:py-32 relative overflow-hidden"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
       <div className="container-custom relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <span className="section-tag">Skills</span>
-          <h2 className="section-heading mt-2">Tech Stack</h2>
-          <p className="section-subheading mt-3">
-            Technologies and tools I use to build and maintain websites and web applications.
+        <div className="text-center mb-16">
+          <span className="section-tag">Tech Stack</span>
+          <h2 className="section-heading mt-2">Tools &amp; Technologies</h2>
+          <p className="section-subheading mt-3 max-w-2xl mx-auto">
+            Technologies, frameworks, and tools I use to build scalable web applications and high-performance client sites.
           </p>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {categories.map((cat) => {
-            const isSelected = selectedCategory === cat;
+        {/* Tech Stack Cards Grid Generated via Loop */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-7xl mx-auto items-stretch">
+          {TechStack.map((tech, index) => {
+            const acronym = getAcronym(tech.name);
+            const CardWrapper = tech.link ? "a" : "div";
+            const wrapperProps = tech.link
+              ? {
+                  href: tech.link,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  title: `Learn more about ${tech.name}`,
+                }
+              : {};
+
             return (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className="px-4 py-2 rounded-full text-xs font-semibold tracking-wide"
+              <CardWrapper
+                key={tech.name || index}
+                {...wrapperProps}
+                className="group glass-card p-4 rounded-xl flex flex-col items-center justify-between text-center gap-3 transition-all duration-300 hover:scale-[1.02] hover:border-white/20"
                 style={{
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                  backgroundColor: isSelected ? "#f1f4f9" : "rgba(255, 255, 255, 0.04)",
-                  color: isSelected ? "#0e1117" : "var(--text-muted)",
-                  border: isSelected ? "1px solid rgba(255, 255, 255, 0.9)" : "1px solid rgba(255, 255, 255, 0.08)",
-                  boxShadow: isSelected ? "0 4px 16px rgba(0, 0, 0, 0.4)" : "none"
+                  cursor: tech.link ? "pointer" : "default",
+                  textDecoration: "none",
+                  display: "flex",
                 }}
               >
-                {cat}
-              </button>
+                {/* Icon or Acronym-esque Monogram Div */}
+                <div
+                  className="shrink-0 transition-transform duration-300 group-hover:scale-105"
+                  style={{
+                    width: "2.75rem",
+                    height: "2.75rem",
+                    borderRadius: "0.625rem",
+                    background: "rgba(255, 255, 255, 0.04)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "var(--text-primary)",
+                    fontWeight: "700",
+                    fontSize: "0.8rem",
+                    fontFamily: "var(--font-mono)",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+                    overflow: "hidden",
+                  }}
+                >
+                  {tech.icon ? (
+                    <img
+                      src={tech.icon}
+                      alt={tech.name}
+                      className="w-full h-full object-contain p-1.5"
+                    />
+                  ) : (
+                    <span>{acronym}</span>
+                  )}
+                </div>
+
+                {/* Content: Name, Subtitle & Tags */}
+                <div className="w-full flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xs font-bold text-white mb-0.5 tracking-tight group-hover:text-red-400 transition-colors">
+                      {tech.name}
+                    </h3>
+
+                    {/* Subtitle (e.g. "Theme Dev & CMS", "Frontend Library") */}
+                    {tech.subtitle && (
+                      <p
+                        className="text-[11px] text-slate-400 leading-tight mb-2 font-normal line-clamp-2"
+                        title={tech.subtitle}
+                      >
+                        {tech.subtitle}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Tags Array: Badge Pills */}
+                  {Array.isArray(tech.tags) && tech.tags.length > 0 && (
+                    <div className="flex flex-wrap items-center justify-center gap-1 mt-auto pt-2 border-t border-white/5">
+                      {tech.tags.map((tag, tagIdx) => (
+                        <span
+                          key={tag.name || tagIdx}
+                          className="px-1.5 py-0.5 rounded text-[9px] font-medium tracking-wide uppercase"
+                          style={{
+                            backgroundColor: "rgba(255, 255, 255, 0.04)",
+                            border: "1px solid rgba(255, 255, 255, 0.08)",
+                            color: "var(--text-dim)",
+                          }}
+                        >
+                          {tag.name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </CardWrapper>
             );
           })}
-        </div>
-
-        {/* Skills Cards Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
-          {filteredSkills.map((skill, index) => (
-            <div
-              key={skill.name || index}
-              className="glass-card p-4 rounded-xl flex flex-col items-center justify-between text-center gap-3"
-            >
-              <div
-                style={{
-                  width: "2.5rem",
-                  height: "2.5rem",
-                  borderRadius: "0.5rem",
-                  background: "rgba(255, 255, 255, 0.04)",
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "var(--text-primary)",
-                  fontWeight: "bold",
-                  fontSize: "0.75rem",
-                  fontFamily: "var(--font-mono)"
-                }}
-              >
-                {skill.name.slice(0, 3).toUpperCase()}
-              </div>
-
-              <div className="w-full">
-                <p className="text-xs font-bold text-white mb-1 truncate">
-                  {skill.name}
-                </p>
-                <span
-                  className="text-xs uppercase tracking-wider block mb-2"
-                  style={{ color: "var(--text-dim)", fontSize: "10px" }}
-                >
-                  {skill.category}
-                </span>
-
-                {/* Mini Level Bar */}
-                {skill.level && (
-                  <div
-                    className="w-full rounded-full overflow-hidden"
-                    style={{
-                      height: "4px",
-                      backgroundColor: "rgba(255, 255, 255, 0.06)"
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: `${skill.level}%`,
-                        height: "100%",
-                        background: "rgba(255, 255, 255, 0.35)",
-                        borderRadius: "9999px"
-                      }}
-                    ></div>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
