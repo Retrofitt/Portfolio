@@ -24,7 +24,7 @@ function TechCard({ tech }) {
   return (
     <CardWrapper
       {...wrapperProps}
-      className="group glass-card p-4 rounded-xl flex flex-col items-center justify-between text-center gap-3 transition-all duration-300 hover:scale-[1.02] hover:border-white/20"
+      className="group glass-card p-4 sm:p-5 rounded-2xl flex flex-col items-center justify-between text-center transition-all duration-300 hover:scale-[1.02] hover:border-white/20 h-full w-full"
       style={{
         cursor: tech.link ? "pointer" : "default",
         textDecoration: "none",
@@ -33,7 +33,7 @@ function TechCard({ tech }) {
     >
       {/* Apple-style Squircle App Icon Container */}
       <div
-        className="shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:border-white/25"
+        className="shrink-0 mb-3.5 transition-all duration-300 group-hover:scale-105 group-hover:border-white/25"
         style={{
           width: "4.5rem",
           height: "4.5rem",
@@ -71,25 +71,32 @@ function TechCard({ tech }) {
         <span style={{ display: tech.icon ? "none" : "block" }}>{acronym}</span>
       </div>
 
-      {/* Content: Name, Subtitle & Optional Tags */}
-      <div className="w-full flex-1 flex flex-col justify-between pt-1">
-        <div>
+      {/* Content: Uniform Title and Subtitle Containers */}
+      <div className="w-full flex-1 flex flex-col justify-start items-center">
+        {/* Uniform Title Slot (Locks baseline for all cards) */}
+        <div className="w-full min-h-[2.75rem] flex items-center justify-center mb-1">
           <h3
-            className="text-[15px] sm:text-base font-bold text-white mb-1 tracking-tight group-hover:text-red-400 transition-colors"
+            className="text-[15px] sm:text-base font-bold text-white tracking-tight group-hover:text-red-400 transition-colors line-clamp-2"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             {tech.name}
           </h3>
+        </div>
 
-          {tech.subtitle && (
+        {/* Uniform Subtitle Slot (Starts at exact same vertical offset on every card) */}
+        <div className="w-full min-h-[2.25rem] flex items-start justify-center">
+          {tech.subtitle ? (
             <p
               className="text-xs text-slate-400 leading-snug font-normal line-clamp-2"
               title={tech.subtitle}
             >
               {tech.subtitle}
             </p>
+          ) : (
+            <span className="invisible text-xs leading-snug">placeholder</span>
           )}
         </div>
+      </div>
 
 {/* Commented for potential later use */}
         {/* {Array.isArray(tech.tags) && tech.tags.length > 0 && (
