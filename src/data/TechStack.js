@@ -92,6 +92,13 @@ export const coreTechnologies = [
     tags: [{ name: "State" }, { name: "Store" }]
   },
   {
+    name: "Python",
+    subtitle: "Scripting & Backend Logic",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    link: "https://www.python.org",
+    tags: [{ name: "Language" }, { name: "Backend" }]
+  },
+  {
     name: "Next.js",
     subtitle: "React Production Framework",
     icon: "https://cdn.simpleicons.org/nextdotjs/white",
@@ -240,7 +247,7 @@ export const creativeAndDesign = [
   {
     name: "Web Accessibility",
     subtitle: "WCAG & a11y Standards",
-    icon: "/icons/a11y.svg",
+    icon: "/icons/accessibility.svg",
     link: "https://www.w3.org/WAI/standards-guidelines/wcag/",
     tags: [{ name: "Standards" }, { name: "Compliance" }]
   }
