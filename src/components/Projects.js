@@ -3,59 +3,27 @@ import { usePortfolio } from "../data/ExperienceData";
 
 const ProjectModal = lazy(() => import("./ProjectModal"));
 
-// Apple Titanium Monochrome Theme Configuration
-function getProjectTheme(project) {
-  if (project.id === "weather-app" || project.appType === "weather") {
-    return {
-      glow: "radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 55%, transparent 80%)",
-      accent: "#ffffff",
-      accentBg: "rgba(255, 255, 255, 0.06)",
-      accentBorder: "rgba(255, 255, 255, 0.12)",
-      preview: {
-        badge: "Weather Intelligence",
-        mainTitle: "22.5°C",
-        subTitle: "Clear Sky in New York",
-        detail: "58% Humidity • Metric Units",
-        metricTag: "REST API • OpenWeather",
-        icon: "☀️",
-      },
-    };
-  }
-  if (project.id === "todo-crud-app" || project.appType === "todo") {
-    return {
-      glow: "radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 55%, transparent 80%)",
-      accent: "#ffffff",
-      accentBg: "rgba(255, 255, 255, 0.06)",
-      accentBorder: "rgba(255, 255, 255, 0.12)",
-      preview: {
-        badge: "RESTful Architecture",
-        mainTitle: "Task Service",
-        subTitle: "GET, POST, PUT, DELETE",
-        detail: "JSON Payload Validation",
-        metricTag: "Node.js & Express API",
-        icon: "✓",
-      },
-    };
-  }
+// Apple Titanium Theme Configuration
+function getProjectTheme(project = {}) {
   return {
     glow: "radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 55%, transparent 80%)",
     accent: "#ffffff",
     accentBg: "rgba(255, 255, 255, 0.06)",
     accentBorder: "rgba(255, 255, 255, 0.12)",
     preview: {
-      badge: "Real-Time WebSockets",
-      mainTitle: "Live Multiplayer",
-      subTitle: "Instant Click Sync",
-      detail: "Leaderboard & Inactivity Timer",
-      metricTag: "Socket.IO Protocol",
+      badge: project.category || "Web Application",
+      mainTitle: project.title || "Project Showcase",
+      subTitle: project.metrics || "Production Grade System",
+      detail: (project.techStack || []).slice(0, 3).join(" • ") || "Clean Architecture",
+      metricTag: project.category || "Full-Stack",
       icon: "⚡",
     },
   };
 }
 
-// Apple-inspired Sleek Project Preview Canvas (No robotic terminals)
+// Apple-inspired Sleek Project Preview Canvas
 function AppleProjectPreview({ project, theme }) {
-  const { preview, glow, accent } = theme;
+  const { preview, glow } = theme;
 
   return (
     <div
@@ -128,12 +96,12 @@ function AppleProjectPreview({ project, theme }) {
 
 export default function Projects() {
   const { data, isAuthenticated, setIsCMSOpen } = usePortfolio();
-  const { projects } = data;
+  const { projects = [] } = data;
   const [activeFilter, setActiveFilter] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category || "Full-Stack")))];
+  const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category).filter(Boolean)))];
 
   const filteredProjects = activeFilter === "All"
     ? projects
@@ -160,172 +128,178 @@ export default function Projects() {
           <span className="section-tag">Engineering Suite</span>
           <h2 className="section-heading mt-3">Core Software Projects</h2>
           <p className="section-subheading mt-3 max-w-2xl mx-auto text-slate-400">
-            Real-time WebSocket platforms, RESTful CRUD microservices, and asynchronous API architectures executable locally in an interactive sandbox.
+            Engineered web applications, custom platforms, and production-grade software solutions.
           </p>
         </div>
 
-        {/* Apple-style Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-14 sm:mb-16">
-          {categories.map((cat) => {
-            const isActive = activeFilter === cat;
-            return (
+        {/* Dynamic Controls / Filter Tabs (Clean, shown only when multiple categories or admin) */}
+        {(categories.length > 2 || isAuthenticated) && (
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-14 sm:mb-16">
+            {categories.length > 2 &&
+              categories.map((cat) => {
+                const isActive = activeFilter === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveFilter(cat)}
+                    className="px-5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200"
+                    style={{
+                      cursor: "pointer",
+                      backgroundColor: isActive ? "#f3f4f6" : "rgba(255, 255, 255, 0.04)",
+                      color: isActive ? "#080808" : "#9ca3af",
+                      border: isActive ? "1px solid rgba(255, 255, 255, 0.9)" : "1px solid rgba(255, 255, 255, 0.08)",
+                      boxShadow: isActive ? "0 4px 20px rgba(0, 0, 0, 0.4)" : "none",
+                    }}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+
+            {isAuthenticated && (
               <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className="px-5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200"
+                onClick={() => setIsCMSOpen(true)}
+                className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all"
                 style={{
+                  background: "rgba(22, 22, 22, 0.9)",
+                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  color: "#f3f4f6",
                   cursor: "pointer",
-                  backgroundColor: isActive ? "#f3f4f6" : "rgba(255, 255, 255, 0.04)",
-                  color: isActive ? "#080808" : "#9ca3af",
-                  border: isActive ? "1px solid rgba(255, 255, 255, 0.9)" : "1px solid rgba(255, 255, 255, 0.08)",
-                  boxShadow: isActive ? "0 4px 20px rgba(0, 0, 0, 0.4)" : "none",
                 }}
               >
-                {cat}
+                <span>+ Add Project</span>
               </button>
-            );
-          })}
-          {isAuthenticated && (
-            <button
-              onClick={() => setIsCMSOpen(true)}
-              className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all"
-              style={{
-                background: "rgba(22, 22, 22, 0.9)",
-                border: "1px solid rgba(255, 255, 255, 0.12)",
-                color: "#f3f4f6",
-                cursor: "pointer"
-              }}
-            >
-              <span>+ Add Project</span>
-            </button>
-          )}
-        </div>
+            )}
+          </div>
+        )}
 
-        {/* Projects Grid: Sleek Apple-inspired Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
-          {filteredProjects.map((project) => {
-            const theme = getProjectTheme(project);
+        {/* Projects Grid */}
+        {filteredProjects.length > 0 && (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
+            {filteredProjects.map((project) => {
+              const theme = getProjectTheme(project);
 
-            return (
-              <div
-                key={project.id}
-                className="group rounded-2xl overflow-hidden flex flex-col justify-between h-full w-full transition-all duration-300 hover:scale-[1.015]"
-                style={{
-                  background: "linear-gradient(180deg, rgba(22, 22, 22, 0.8) 0%, rgba(14, 14, 14, 0.95) 100%)",
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
-                  boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 20px 40px -15px rgba(0, 0, 0, 0.7)",
-                  backdropFilter: "blur(20px)",
-                }}
-              >
-                {/* Visual Preview Banner (Strictly Equal Fixed Height) */}
+              return (
                 <div
-                  className="relative w-full overflow-hidden border-b border-white/5 shrink-0"
+                  key={project.id}
+                  className="group rounded-2xl overflow-hidden flex flex-col justify-between h-full w-full transition-all duration-300 hover:scale-[1.015]"
                   style={{
-                    height: "220px",
-                    minHeight: "220px",
-                    maxHeight: "220px",
+                    background: "linear-gradient(180deg, rgba(22, 22, 22, 0.8) 0%, rgba(14, 14, 14, 0.95) 100%)",
+                    border: "1px solid rgba(255, 255, 255, 0.08)",
+                    boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 20px 40px -15px rgba(0, 0, 0, 0.7)",
+                    backdropFilter: "blur(20px)",
                   }}
                 >
-                  <AppleProjectPreview project={project} theme={theme} />
-                </div>
-
-                {/* Card Body with 2vh 2vw Apple-style Padding & Proportions */}
-                <div
-                  className="flex-1 flex flex-col justify-between"
-                  style={{
-                    padding: "clamp(1.75rem, 2.2vh, 2.5rem) clamp(1.5rem, 2vw, 2.25rem)",
-                  }}
-                >
-                  <div className="flex-1 flex flex-col">
-                    {/* Category Capsule */}
-                    <div className="mb-3.5">
-                      <span
-                        className="px-3.5 py-1 rounded-full text-[11px] font-semibold tracking-wide inline-block"
-                        style={{
-                          backgroundColor: theme.accentBg,
-                          color: theme.accent,
-                          border: `1px solid ${theme.accentBorder}`,
-                        }}
-                      >
-                        {project.category || "Full-Stack"}
-                      </span>
-                    </div>
-
-                    {/* Project Title */}
-                    <h3
-                      className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3.5 sm:min-h-[3.5rem] flex items-start break-words"
-                      style={{ fontFamily: "'Outfit', sans-serif" }}
-                    >
-                      {project.title}
-                    </h3>
-
-                    {/* Clean Descriptive Copy */}
-                    <p className="text-xs sm:text-sm text-slate-400 mb-5 leading-relaxed break-words flex-1 font-normal">
-                      {project.description}
-                    </p>
-
-                    {/* Launch Action Button (Docked below description & styled squared) */}
-                    <button
-                      onClick={() => handleOpenModal(project)}
-                      className="w-full mb-4 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 text-slate-100 hover:text-white bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 active:scale-[0.98]"
-                      style={{
-                        cursor: "pointer",
-                        backdropFilter: "blur(12px)",
-                        boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)",
-                      }}
-                    >
-                      <span>Launch Sandbox & Architecture</span>
-                      <svg style={{ width: "15px", height: "15px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </button>
+                  {/* Visual Preview Banner */}
+                  <div
+                    className="relative w-full overflow-hidden border-b border-white/5 shrink-0"
+                    style={{
+                      height: "220px",
+                      minHeight: "220px",
+                      maxHeight: "220px",
+                    }}
+                  >
+                    <AppleProjectPreview project={project} theme={theme} />
                   </div>
 
-                  {/* Docked Metric & Tech Stack */}
-                  <div className="shrink-0 pt-1">
-                    {project.metrics && (
-                      <div
-                        className="py-2.5 px-4 rounded-xl text-xs font-medium mb-3.5 flex items-center gap-2.5"
-                        style={{
-                          backgroundColor: "rgba(255, 255, 255, 0.03)",
-                          border: "1px solid rgba(255, 255, 255, 0.06)",
-                          color: "#cbd5e1",
-                        }}
-                      >
-                        <span style={{ color: theme.accent }}>⚡</span>
-                        <span className="truncate">{project.metrics}</span>
-                      </div>
-                    )}
-
-                    {/* Verified Tech Stack Chips */}
-                    <div
-                      className="flex flex-wrap gap-2 pt-3.5 items-center"
-                      style={{ borderTop: "1px solid rgba(255, 255, 255, 0.06)" }}
-                    >
-                      {(project.techStack || []).map((tech) => (
+                  {/* Card Body */}
+                  <div
+                    className="flex-1 flex flex-col justify-between"
+                    style={{
+                      padding: "clamp(1.75rem, 2.2vh, 2.5rem) clamp(1.5rem, 2vw, 2.25rem)",
+                    }}
+                  >
+                    <div className="flex-1 flex flex-col">
+                      {/* Category Capsule */}
+                      <div className="mb-3.5">
                         <span
-                          key={tech}
-                          className="text-xs font-medium px-3 py-1 rounded-full text-slate-300"
+                          className="px-3.5 py-1 rounded-full text-[11px] font-semibold tracking-wide inline-block"
                           style={{
-                            backgroundColor: "rgba(255, 255, 255, 0.04)",
-                            border: "1px solid rgba(255, 255, 255, 0.08)",
+                            backgroundColor: theme.accentBg,
+                            color: theme.accent,
+                            border: `1px solid ${theme.accentBorder}`,
                           }}
                         >
-                          {tech}
+                          {project.category || "Full-Stack"}
                         </span>
-                      ))}
+                      </div>
+
+                      {/* Project Title */}
+                      <h3
+                        className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3.5 sm:min-h-[3.5rem] flex items-start break-words"
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        {project.title}
+                      </h3>
+
+                      {/* Clean Descriptive Copy */}
+                      <p className="text-xs sm:text-sm text-slate-400 mb-5 leading-relaxed break-words flex-1 font-normal">
+                        {project.description}
+                      </p>
+
+                      {/* Launch Action Button */}
+                      <button
+                        onClick={() => handleOpenModal(project)}
+                        className="w-full mb-4 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 text-slate-100 hover:text-white bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 active:scale-[0.98]"
+                        style={{
+                          cursor: "pointer",
+                          backdropFilter: "blur(12px)",
+                          boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)",
+                        }}
+                      >
+                        <span>Launch Sandbox &amp; Architecture</span>
+                        <svg style={{ width: "15px", height: "15px" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {/* Docked Metric & Tech Stack */}
+                    <div className="shrink-0 pt-1">
+                      {project.metrics && (
+                        <div
+                          className="py-2.5 px-4 rounded-xl text-xs font-medium mb-3.5 flex items-center gap-2.5"
+                          style={{
+                            backgroundColor: "rgba(255, 255, 255, 0.03)",
+                            border: "1px solid rgba(255, 255, 255, 0.06)",
+                            color: "#cbd5e1",
+                          }}
+                        >
+                          <span style={{ color: theme.accent }}>⚡</span>
+                          <span className="truncate">{project.metrics}</span>
+                        </div>
+                      )}
+
+                      {/* Tech Stack Chips */}
+                      <div
+                        className="flex flex-wrap gap-2 pt-3.5 items-center"
+                        style={{ borderTop: "1px solid rgba(255, 255, 255, 0.06)" }}
+                      >
+                        {(project.techStack || []).map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-xs font-medium px-3 py-1 rounded-full text-slate-300"
+                            style={{
+                              backgroundColor: "rgba(255, 255, 255, 0.04)",
+                              border: "1px solid rgba(255, 255, 255, 0.08)",
+                            }}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
 
-        {/* Apple-esque Project Spotlight: macros.ramendev.io */}
+        {/* Spotlight Featured Application: macros.ramendev.io */}
         <div
           className="max-w-6xl mx-auto px-1 sm:px-4"
-          style={{ marginTop: "10vh" }}
+          style={{ marginTop: filteredProjects.length > 0 ? "10vh" : "0" }}
         >
           <div
             className="relative rounded-2xl p-8 sm:p-12 md:p-14 overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12"
@@ -337,7 +311,7 @@ export default function Projects() {
               WebkitBackdropFilter: "blur(24px)",
             }}
           >
-            {/* Subtle Apple-style Ambient Spotlight Flare */}
+            {/* Ambient Spotlight Flare */}
             <div
               className="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full pointer-events-none opacity-40"
               style={{
@@ -347,7 +321,6 @@ export default function Projects() {
 
             {/* Left Content Area */}
             <div className="space-y-5 max-w-2xl relative z-10">
-              {/* Apple-style Frosted Pill Status Badge (Enhanced Padding) */}
               <div className="inline-flex items-center gap-2.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md mb-1 shadow-sm">
                 <span
                   className="w-2 h-2 rounded-full animate-pulse"
@@ -371,12 +344,12 @@ export default function Projects() {
                 </p>
               </div>
 
-              {/* Clean Descriptive Copy */}
+              {/* Description */}
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                 A fast, client-side metabolic health calculator engineered with React &amp; Vite. Instantly computes BMR (Mifflin-St Jeor), activity-adjusted TDEE, customized macronutrient distributions, and US Navy circumference body-fat estimates.
               </p>
 
-              {/* Minimal Apple-style Feature Pills */}
+              {/* Minimal Feature Pills */}
               <div className="flex flex-wrap gap-2 pt-1">
                 {[
                   "Zero Latency Engine",
@@ -394,13 +367,13 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Right Action Button (Apple-style High-Contrast Muted White Button) */}
+            {/* Right Action Button */}
             <div className="relative z-10 shrink-0 w-full md:w-auto pt-2 md:pt-0">
               <a
                 href="https://macros.ramendev.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-sm sm:text-base font-bold transition-all duration-200 shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                className="group/btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-sm sm:text-base font-bold transition-all duration-200 shadow-xl hover:scale-[1.02] active:scale-[0.98]"
                 style={{
                   textDecoration: "none",
                   backgroundColor: "#f3f4f6",
@@ -411,16 +384,26 @@ export default function Projects() {
               >
                 <span style={{ color: "#080808" }}>Check Out Macro App</span>
                 <svg
-                  style={{ width: "16px", height: "16px", color: "#080808" }}
+                  style={{
+                    width: "16px",
+                    height: "16px",
+                    minWidth: "16px",
+                    minHeight: "16px",
+                    maxWidth: "16px",
+                    maxHeight: "16px",
+                    color: "#080808",
+                    display: "inline-block",
+                  }}
+                  className="shrink-0 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
                   fill="none"
                   stroke="currentColor"
+                  strokeWidth="2.5"
                   viewBox="0 0 24 24"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    d="M7 17L17 7M17 7H7M17 7V17"
                   />
                 </svg>
               </a>
@@ -429,7 +412,7 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Project Details & Interactive Local Sandbox Modal */}
+      {/* Project Details Modal */}
       {isModalOpen && selectedProject && (
         <Suspense fallback={null}>
           <ProjectModal

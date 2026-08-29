@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="115" fill="#101828"/>
+  <rect x="8" y="8" width="496" height="496" rx="107" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
+  <!-- API Connection nodes and arrows -->
+  <path fill="#38BDF8" d="M160 160h192c17.7 0 32 14.3 32 32v128c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V192c0-17.7 14.3-32 32-32z" opacity="0.15"/>
+  <rect x="128" y="160" width="256" height="192" rx="24" fill="none" stroke="#38BDF8" stroke-width="20"/>
+  <!-- Endpoint brackets / code glyph -->
+  <path fill="none" stroke="#38BDF8" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" d="M210 220l-36 36 36 36M302 220l36 36-36 36M266 210l-20 92"/>
+  <!-- Cloud pulse indicators -->
+  <circle cx="256" cy="110" r="16" fill="#6366F1"/>
+  <line x1="256" y1="126" x2="256" y2="160" stroke="#6366F1" stroke-width="12" stroke-dasharray="6 6"/>
+  <circle cx="256" cy="402" r="16" fill="#10B981"/>
+  <line x1="256" y1="352" x2="256" y2="386" stroke="#10B981" stroke-width="12" stroke-dasharray="6 6"/>
+</svg>
