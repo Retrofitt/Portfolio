@@ -75,7 +75,7 @@ function TechCard({ tech }) {
       <div className="w-full flex-1 flex flex-col justify-between pt-1">
         <div>
           <h3
-            className="text-base sm:text-lg font-extrabold text-white mb-1.5 tracking-tight group-hover:text-red-400 transition-colors"
+            className="text-[15px] sm:text-base font-bold text-white mb-1 tracking-tight group-hover:text-red-400 transition-colors"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             {tech.name}
@@ -83,7 +83,7 @@ function TechCard({ tech }) {
 
           {tech.subtitle && (
             <p
-              className="text-xs sm:text-sm text-slate-400 leading-snug font-normal line-clamp-2"
+              className="text-xs text-slate-400 leading-snug font-normal line-clamp-2"
               title={tech.subtitle}
             >
               {tech.subtitle}
@@ -137,9 +137,9 @@ export default function Skills() {
             <div key={section.id || idx} className="space-y-6">
               {/* Cohesive Sub-Section Header (Badge + Title + Description naturally stacked) */}
               <div className="pb-4 border-b border-white/10 flex flex-col items-start">
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-2.5">
                   <span
-                    className="font-mono text-xs font-bold px-2 py-0.5 rounded"
+                    className="font-mono text-xs sm:text-sm font-bold px-2.5 py-0.5 rounded"
                     style={{
                       backgroundColor: "rgba(220, 38, 38, 0.12)",
                       border: "1px solid rgba(220, 38, 38, 0.25)",
@@ -149,7 +149,7 @@ export default function Skills() {
                     0{idx + 1}
                   </span>
                   <span
-                    className="text-xs font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
+                    className="text-xs sm:text-sm font-semibold uppercase tracking-wider px-3 py-1 rounded-full"
                     style={{
                       backgroundColor: "rgba(255, 255, 255, 0.05)",
                       border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -160,11 +160,11 @@ export default function Skills() {
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                   {section.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl font-normal leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-300 mt-1.5 max-w-2xl font-normal leading-relaxed">
                   {section.description}
                 </p>
               </div>
