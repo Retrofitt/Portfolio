@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="115" fill="#18181B"/>
+  <!-- User Profile Icon / Journey Path -->
+  <circle cx="256" cy="180" r="64" fill="#A855F7"/>
+  <path fill="#9333EA" d="M140 370c0-64 52-116 116-116s116 52 116 116v18H140v-18z"/>
+  <!-- Experience Star / Wireframe Flow indicator -->
+  <path fill="#FACC15" d="M380 120l12 24 26 4-19 18 5 26-24-13-24 13 5-26-19-18 26-4z"/>
+  <circle cx="120" cy="160" r="18" fill="#38BDF8"/>
+  <circle cx="100" cy="240" r="12" fill="#34D399"/>
+</svg>

@@ -52,7 +52,7 @@ export const coreTechnologies = [
   {
     name: "CSS3",
     subtitle: "Responsive Styling",
-    icon: "https://cdn.simpleicons.org/css3",
+    icon: "/icons/css3.svg",
     link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
     tags: [{ name: "Frontend" }, { name: "Layout" }]
   },
@@ -97,7 +97,7 @@ export const architectureAndSystems = [
   {
     name: "RESTful APIs",
     subtitle: "Endpoint Architecture",
-    icon: null,
+    icon: "/icons/rest-api.svg",
     link: null,
     tags: [{ name: "Backend" }, { name: "Architecture" }]
   },
@@ -146,7 +146,7 @@ export const architectureAndSystems = [
   {
     name: "SEO & Web Vitals",
     subtitle: "Performance & Indexing",
-    icon: "https://cdn.simpleicons.org/lighthouse",
+    icon: "/icons/lighthouse.svg",
     link: "https://web.dev/vitals/",
     tags: [{ name: "Optimization" }, { name: "Audit" }]
   },
@@ -189,16 +189,16 @@ export const creativeAndDesign = [
     tags: [{ name: "Creative Suite" }]
   },
   {
-    name: "UI Architecture",
+    name: "User Interface (UI)",
     subtitle: "Design Systems & Tokens",
-    icon: null,
+    icon: "/icons/ui.svg",
     link: null,
     tags: [{ name: "Design Systems" }, { name: "Accessibility" }]
   },
   {
-    name: "UX Wireframing",
+    name: "User Experience (UX)",
     subtitle: "User Flows & Layouts",
-    icon: null,
+    icon: "/icons/ux.svg",
     link: null,
     tags: [{ name: "User Research" }, { name: "Hierarchy" }]
   }

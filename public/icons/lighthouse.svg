@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="115" fill="#0D1117"/>
+  <!-- Lighthouse Tower -->
+  <path fill="#F43F5E" d="M216 140h80l24 260H192l24-260z"/>
+  <!-- Light Beam Radiance -->
+  <polygon fill="#F59E0B" opacity="0.3" points="256,120 480,40 500,200 256,160"/>
+  <polygon fill="#F59E0B" opacity="0.3" points="256,120 32,40 12,200 256,160"/>
+  <!-- Lantern Room -->
+  <rect x="224" y="90" width="64" height="50" rx="8" fill="#FBBF24"/>
+  <!-- Dome Top -->
+  <path fill="#E11D48" d="M224 90c0-17.7 14.3-32 32-32s32 14.3 32 32h-64z"/>
+  <!-- Windows & stripes -->
+  <rect x="236" y="200" width="40" height="30" rx="6" fill="#FFFFFF"/>
+  <rect x="236" y="280" width="40" height="30" rx="6" fill="#FFFFFF"/>
+  <!-- Base -->
+  <path fill="#374151" d="M160 400h192v40H160z"/>
+</svg>
