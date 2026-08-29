@@ -1,196 +1,240 @@
 /**
  * TechStack Data Structure
  *
- * Each object adheres to the schema:
- * - name: String (required) - Name of the technology/tool
- * - subtitle: String | null (optional) - Subtitle or focus area (e.g. "Theme Dev & CMS")
- * - icon: String | null (optional) - Path/URL to custom icon (default: null)
- * - link: String | null (optional) - Anchor URL for documentation or reference
- * - tags: Array<{ name: String, [key: String]: any }> - Array of tag objects (0 or more)
+ * Clean, favicon-esque SVGs powered by SimpleIcons CDN (https://cdn.simpleicons.org/<slug>).
+ * Single distinct technologies with no merged names (e.g., CSS3 and Tailwind CSS are separate).
+ * Grouped into recruiter-positive, high-impact categories.
  */
 
-export const TechStack = [
+export const coreTechnologies = [
   {
     name: "React.js",
-    subtitle: "Frontend Library",
-    icon: null,
+    subtitle: "Frontend UI Library",
+    icon: "https://cdn.simpleicons.org/react",
     link: "https://react.dev",
-    tags: [
-      { name: "Frontend" },
-      { name: "UI Architecture" }
-    ]
+    tags: [{ name: "Frontend" }, { name: "SPA" }]
   },
   {
     name: "JavaScript",
-    subtitle: "ES6+ Modern Syntax",
-    icon: null,
+    subtitle: "ES6+ Modern Engine",
+    icon: "https://cdn.simpleicons.org/javascript",
     link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    tags: [
-      { name: "Language" },
-      { name: "Full-Stack" }
-    ]
+    tags: [{ name: "Language" }, { name: "Full-Stack" }]
+  },
+  {
+    name: "TypeScript",
+    subtitle: "Typed JavaScript",
+    icon: "https://cdn.simpleicons.org/typescript",
+    link: "https://www.typescriptlang.org",
+    tags: [{ name: "Language" }, { name: "Type-Safety" }]
   },
   {
     name: "WordPress",
-    subtitle: "Theme Dev & CMS",
-    icon: null,
+    subtitle: "Custom Themes & CMS",
+    icon: "https://cdn.simpleicons.org/wordpress",
     link: "https://wordpress.org",
-    tags: [
-      { name: "CMS" },
-      { name: "PHP" },
-      { name: "Theme Architecture" }
-    ]
+    tags: [{ name: "CMS" }, { name: "Theme Architecture" }]
   },
   {
     name: "PHP",
-    subtitle: "Server & Backend",
-    icon: null,
+    subtitle: "Backend Server Logic",
+    icon: "https://cdn.simpleicons.org/php",
     link: "https://www.php.net",
-    tags: [
-      { name: "Backend" },
-      { name: "Server-Side" }
-    ]
+    tags: [{ name: "Backend" }, { name: "Server" }]
   },
   {
     name: "HTML5",
-    subtitle: "Semantic Web & Accessibility",
-    icon: null,
+    subtitle: "Semantic Structure",
+    icon: "https://cdn.simpleicons.org/html5",
     link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-    tags: [
-      { name: "Frontend" },
-      { name: "Semantic" }
-    ]
+    tags: [{ name: "Frontend" }, { name: "Semantics" }]
   },
   {
-    name: "CSS3 / Tailwind",
-    subtitle: "Modern Responsive Styling",
-    icon: null,
+    name: "CSS3",
+    subtitle: "Responsive Styling",
+    icon: "https://cdn.simpleicons.org/css3",
+    link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    tags: [{ name: "Frontend" }, { name: "Layout" }]
+  },
+  {
+    name: "Tailwind CSS",
+    subtitle: "Utility-First Design",
+    icon: "https://cdn.simpleicons.org/tailwindcss",
     link: "https://tailwindcss.com",
-    tags: [
-      { name: "Frontend" },
-      { name: "Styling" },
-      { name: "UI/UX" }
-    ]
+    tags: [{ name: "Frontend" }, { name: "Styling" }]
   },
   {
     name: "Node.js",
-    subtitle: "JavaScript Runtime",
-    icon: null,
+    subtitle: "Asynchronous Runtime",
+    icon: "https://cdn.simpleicons.org/nodedotjs",
     link: "https://nodejs.org",
-    tags: [
-      { name: "Backend" },
-      { name: "Runtime" }
-    ]
+    tags: [{ name: "Backend" }, { name: "Runtime" }]
   },
   {
     name: "Express.js",
     subtitle: "REST API Framework",
-    icon: null,
+    icon: "https://cdn.simpleicons.org/express/white",
     link: "https://expressjs.com",
-    tags: [
-      { name: "Backend" },
-      { name: "REST API" }
-    ]
+    tags: [{ name: "Backend" }, { name: "Routing" }]
   },
+  {
+    name: "PostgreSQL",
+    subtitle: "Relational SQL Database",
+    icon: "https://cdn.simpleicons.org/postgresql",
+    link: "https://www.postgresql.org",
+    tags: [{ name: "Database" }, { name: "SQL" }]
+  },
+  {
+    name: "Redux",
+    subtitle: "Global State Management",
+    icon: "https://cdn.simpleicons.org/redux",
+    link: "https://redux.js.org",
+    tags: [{ name: "State" }, { name: "Store" }]
+  }
+];
+
+export const architectureAndSystems = [
   {
     name: "RESTful APIs",
     subtitle: "Endpoint Architecture",
     icon: null,
     link: null,
-    tags: [
-      { name: "Backend" },
-      { name: "Architecture" }
-    ]
+    tags: [{ name: "Backend" }, { name: "Architecture" }]
   },
   {
     name: "WebSockets",
-    subtitle: "Socket.IO Real-Time",
-    icon: null,
+    subtitle: "Real-Time Bi-Directional",
+    icon: "https://cdn.simpleicons.org/socketdotio",
     link: "https://socket.io",
-    tags: [
-      { name: "Real-Time" },
-      { name: "Networking" }
-    ]
+    tags: [{ name: "Real-Time" }, { name: "Events" }]
   },
   {
-    name: "PostgreSQL",
-    subtitle: "Relational SQL Databases",
-    icon: null,
-    link: "https://www.postgresql.org",
-    tags: [
-      { name: "Database" },
-      { name: "SQL" }
-    ]
+    name: "Git",
+    subtitle: "Version Control",
+    icon: "https://cdn.simpleicons.org/git",
+    link: "https://git-scm.com",
+    tags: [{ name: "DevOps" }, { name: "VCS" }]
   },
   {
-    name: "Git & GitHub",
-    subtitle: "Version Control & CI/CD",
-    icon: null,
+    name: "GitHub",
+    subtitle: "CI/CD & Collaboration",
+    icon: "https://cdn.simpleicons.org/github/white",
     link: "https://github.com",
-    tags: [
-      { name: "DevOps" },
-      { name: "Tools" }
-    ]
-  },
-  {
-    name: "Redux",
-    subtitle: "State Management",
-    icon: null,
-    link: "https://redux.js.org",
-    tags: [
-      { name: "Frontend" },
-      { name: "State" }
-    ]
+    tags: [{ name: "DevOps" }, { name: "Automation" }]
   },
   {
     name: "Docker",
-    subtitle: "Containerization",
-    icon: null,
+    subtitle: "Container Environments",
+    icon: "https://cdn.simpleicons.org/docker",
     link: "https://www.docker.com",
-    tags: [
-      { name: "DevOps" },
-      { name: "Containers" }
-    ]
+    tags: [{ name: "DevOps" }, { name: "Containers" }]
   },
   {
-    name: "Figma",
-    subtitle: "UI/UX & Wireframing",
-    icon: null,
-    link: "https://www.figma.com",
-    tags: [
-      { name: "Design" },
-      { name: "Prototyping" }
-    ]
-  },
-  {
-    name: "Vercel / Netlify",
-    subtitle: "Cloud Deployment",
-    icon: null,
+    name: "Vercel",
+    subtitle: "Cloud Edge Deployment",
+    icon: "https://cdn.simpleicons.org/vercel/white",
     link: "https://vercel.com",
-    tags: [
-      { name: "Cloud" },
-      { name: "Hosting" }
-    ]
+    tags: [{ name: "Cloud" }, { name: "Hosting" }]
+  },
+  {
+    name: "Netlify",
+    subtitle: "JAMstack & Serverless",
+    icon: "https://cdn.simpleicons.org/netlify",
+    link: "https://netlify.com",
+    tags: [{ name: "Cloud" }, { name: "CI/CD" }]
   },
   {
     name: "SEO & Web Vitals",
-    subtitle: "Performance & Search",
-    icon: null,
-    link: null,
-    tags: [
-      { name: "Optimization" },
-      { name: "Core Web Vitals" }
-    ]
+    subtitle: "Performance & Indexing",
+    icon: "https://cdn.simpleicons.org/googlelighthouse",
+    link: "https://web.dev/vitals/",
+    tags: [{ name: "Optimization" }, { name: "Audit" }]
   },
   {
     name: "VS Code",
-    subtitle: "Debugging & Tooling",
-    icon: null,
+    subtitle: "IDE & Debugging",
+    icon: "https://cdn.simpleicons.org/visualstudiocode",
     link: "https://code.visualstudio.com",
-    tags: [
-      { name: "Tools" }
-    ]
+    tags: [{ name: "Tooling" }]
   }
 ];
 
-export default TechStack;
+export const creativeAndDesign = [
+  {
+    name: "Figma",
+    subtitle: "UI/UX & Prototyping",
+    icon: "https://cdn.simpleicons.org/figma",
+    link: "https://www.figma.com",
+    tags: [{ name: "Design" }, { name: "Prototyping" }]
+  },
+  {
+    name: "Adobe Photoshop",
+    subtitle: "Asset & Graphic Editing",
+    icon: "https://cdn.simpleicons.org/adobephotoshop",
+    link: "https://www.adobe.com/products/photoshop.html",
+    tags: [{ name: "Creative" }, { name: "Raster" }]
+  },
+  {
+    name: "Adobe Lightroom",
+    subtitle: "Color Grading & Photo",
+    icon: "https://cdn.simpleicons.org/adobelightroom",
+    link: "https://www.adobe.com/products/photoshop-lightroom.html",
+    tags: [{ name: "Visual Arts" }, { name: "Grading" }]
+  },
+  {
+    name: "Adobe Creative Cloud",
+    subtitle: "Design Ecosystem",
+    icon: "https://cdn.simpleicons.org/adobecreativecloud",
+    link: "https://www.adobe.com/creativecloud.html",
+    tags: [{ name: "Creative Suite" }]
+  },
+  {
+    name: "UI Architecture",
+    subtitle: "Design Systems & Tokens",
+    icon: null,
+    link: null,
+    tags: [{ name: "Design Systems" }, { name: "Accessibility" }]
+  },
+  {
+    name: "UX Wireframing",
+    subtitle: "User Flows & Layouts",
+    icon: null,
+    link: null,
+    tags: [{ name: "User Research" }, { name: "Hierarchy" }]
+  }
+];
+
+/**
+ * Grouped sections for modular loop rendering
+ */
+export const techStackSections = [
+  {
+    id: "core-engineering",
+    badge: "Core Stack",
+    title: "Software Engineering & Web Development",
+    description: "Languages, runtimes, and frameworks used to build high-performance client websites and scalable applications.",
+    items: coreTechnologies
+  },
+  {
+    id: "architecture-systems",
+    badge: "Architecture & DevOps",
+    title: "Systems, APIs & Infrastructure",
+    description: "Architectural standards, protocols, cloud platforms, and developer tooling for dependable production systems.",
+    items: architectureAndSystems
+  },
+  {
+    id: "design-creative",
+    badge: "Creative Direction",
+    title: "Product Design & Creative Suite",
+    description: "Digital design software, design systems, visual arts, and wireframing for balanced and polished user experiences.",
+    items: creativeAndDesign
+  }
+];
+
+export const TechStack = [
+  ...coreTechnologies,
+  ...architectureAndSystems,
+  ...creativeAndDesign
+];
+
+export default techStackSections;
