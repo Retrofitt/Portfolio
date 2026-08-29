@@ -373,7 +373,7 @@ export default function Projects() {
                 href="https://macros.ramendev.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-sm sm:text-base font-bold transition-all duration-200 shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                className="group/btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-sm sm:text-base font-bold transition-all duration-200 shadow-xl hover:scale-[1.02] active:scale-[0.98]"
                 style={{
                   textDecoration: "none",
                   backgroundColor: "#f3f4f6",
@@ -384,16 +384,17 @@ export default function Projects() {
               >
                 <span style={{ color: "#080808" }}>Check Out Macro App</span>
                 <svg
-                  style={{ width: "16px", height: "16px", color: "#080808" }}
+                  className="w-4 h-4 shrink-0 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                  style={{ color: "#080808" }}
                   fill="none"
                   stroke="currentColor"
+                  strokeWidth="2.5"
                   viewBox="0 0 24 24"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    d="M7 17L17 7M17 7H7M17 7V17"
                   />
                 </svg>
               </a>
