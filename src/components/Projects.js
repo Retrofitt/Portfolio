@@ -384,8 +384,17 @@ export default function Projects() {
               >
                 <span style={{ color: "#080808" }}>Check Out Macro App</span>
                 <svg
-                  className="w-4 h-4 shrink-0 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
-                  style={{ color: "#080808" }}
+                  style={{
+                    width: "16px",
+                    height: "16px",
+                    minWidth: "16px",
+                    minHeight: "16px",
+                    maxWidth: "16px",
+                    maxHeight: "16px",
+                    color: "#080808",
+                    display: "inline-block",
+                  }}
+                  className="shrink-0 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
