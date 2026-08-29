@@ -184,7 +184,7 @@ export const creativeAndDesign = [
   {
     name: "Adobe Creative Cloud",
     subtitle: "Design Ecosystem",
-    icon: "/icons/creativecloud.svg",
+    icon: "/icons/adobe-cc.svg",
     link: "https://www.adobe.com/creativecloud.html",
     tags: [{ name: "Creative Suite" }]
   },
