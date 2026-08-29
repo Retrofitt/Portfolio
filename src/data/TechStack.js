@@ -146,14 +146,14 @@ export const architectureAndSystems = [
   {
     name: "SEO & Web Vitals",
     subtitle: "Performance & Indexing",
-    icon: "https://cdn.simpleicons.org/googlelighthouse",
+    icon: "https://cdn.simpleicons.org/lighthouse",
     link: "https://web.dev/vitals/",
     tags: [{ name: "Optimization" }, { name: "Audit" }]
   },
   {
     name: "VS Code",
     subtitle: "IDE & Debugging",
-    icon: "https://cdn.simpleicons.org/visualstudiocode",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
     link: "https://code.visualstudio.com",
     tags: [{ name: "Tooling" }]
   }
