@@ -72,15 +72,18 @@ function TechCard({ tech }) {
       </div>
 
       {/* Content: Name, Subtitle & Optional Tags */}
-      <div className="w-full flex-1 flex flex-col justify-between">
+      <div className="w-full flex-1 flex flex-col justify-between pt-1">
         <div>
-          <h3 className="text-xs font-bold text-white mb-0.5 tracking-tight group-hover:text-red-400 transition-colors">
+          <h3
+            className="text-sm sm:text-base font-bold text-white mb-1 tracking-tight group-hover:text-red-400 transition-colors"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
             {tech.name}
           </h3>
 
           {tech.subtitle && (
             <p
-              className="text-[11px] text-slate-400 leading-tight font-normal line-clamp-2"
+              className="text-xs text-slate-400 leading-snug font-normal line-clamp-2"
               title={tech.subtitle}
             >
               {tech.subtitle}
