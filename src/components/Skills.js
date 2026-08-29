@@ -35,9 +35,9 @@ function TechCard({ tech }) {
       <div
         className="shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:border-white/25"
         style={{
-          width: "3rem",
-          height: "3rem",
-          borderRadius: "0.75rem",
+          width: "3.5rem",
+          height: "3.5rem",
+          borderRadius: "0.875rem",
           background: "linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)",
           backgroundColor: "#151515",
           border: "1px solid rgba(255, 255, 255, 0.12)",
@@ -46,11 +46,11 @@ function TechCard({ tech }) {
           justifyContent: "center",
           color: "var(--text-primary)",
           fontWeight: "700",
-          fontSize: "0.75rem",
+          fontSize: "0.85rem",
           fontFamily: "var(--font-mono)",
           letterSpacing: "0.04em",
           boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.18), 0 8px 16px -4px rgba(0, 0, 0, 0.6)",
-          padding: "0.6rem",
+          padding: "0.7rem",
           overflow: "hidden",
         }}
       >
