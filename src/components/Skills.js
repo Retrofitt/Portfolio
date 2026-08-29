@@ -116,7 +116,6 @@ function TechCard({ tech }) {
             ))}
           </div>
         )} */}
-      </div>
     </CardWrapper>
   );
 }
