@@ -90,6 +90,20 @@ export const coreTechnologies = [
     icon: "https://cdn.simpleicons.org/redux",
     link: "https://redux.js.org",
     tags: [{ name: "State" }, { name: "Store" }]
+  },
+  {
+    name: "Next.js",
+    subtitle: "React Production Framework",
+    icon: "https://cdn.simpleicons.org/nextdotjs/white",
+    link: "https://nextjs.org",
+    tags: [{ name: "Full-Stack" }, { name: "SSR/SSG" }]
+  },
+  {
+    name: "Vite",
+    subtitle: "Frontend Build Tooling",
+    icon: "https://cdn.simpleicons.org/vite",
+    link: "https://vitejs.dev",
+    tags: [{ name: "Tooling" }, { name: "Bundler" }]
   }
 ];
 
@@ -100,6 +114,20 @@ export const architectureAndSystems = [
     icon: "/icons/rest-api.svg",
     link: null,
     tags: [{ name: "Backend" }, { name: "Architecture" }]
+  },
+  {
+    name: "Postman",
+    subtitle: "API Testing & Inspection",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+    link: "https://www.postman.com",
+    tags: [{ name: "API" }, { name: "Testing" }]
+  },
+  {
+    name: "GraphQL",
+    subtitle: "Data Query Language",
+    icon: "https://cdn.simpleicons.org/graphql",
+    link: "https://graphql.org",
+    tags: [{ name: "API" }, { name: "Schema" }]
   },
   {
     name: "WebSockets",
@@ -128,6 +156,13 @@ export const architectureAndSystems = [
     icon: "https://cdn.simpleicons.org/docker",
     link: "https://www.docker.com",
     tags: [{ name: "DevOps" }, { name: "Containers" }]
+  },
+  {
+    name: "npm",
+    subtitle: "Package & Module Ecosystem",
+    icon: "https://cdn.simpleicons.org/npm",
+    link: "https://www.npmjs.com",
+    tags: [{ name: "Packages" }, { name: "Dependencies" }]
   },
   {
     name: "Vercel",
@@ -201,6 +236,13 @@ export const creativeAndDesign = [
     icon: "/icons/ux.svg",
     link: null,
     tags: [{ name: "User Research" }, { name: "Hierarchy" }]
+  },
+  {
+    name: "Web Accessibility",
+    subtitle: "WCAG & a11y Standards",
+    icon: "/icons/a11y.svg",
+    link: "https://www.w3.org/WAI/standards-guidelines/wcag/",
+    tags: [{ name: "Standards" }, { name: "Compliance" }]
   }
 ];
 
