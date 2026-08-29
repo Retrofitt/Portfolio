@@ -148,7 +148,7 @@ export const initialPortfolioData = {
   ]
 };
 
-const STORAGE_KEY = "retro_portfolio_data_v18";
+const STORAGE_KEY = "retro_portfolio_data_v20";
 const AUTH_KEY = "retro_cms_auth_session";
 
 const PortfolioContext = createContext(null);
@@ -156,13 +156,26 @@ const PortfolioContext = createContext(null);
 export function PortfolioProvider({ children }) {
   const [data, setData] = useState(() => {
     try {
+      // Clean up legacy localStorage keys
+      Object.keys(localStorage).forEach((key) => {
+        if (key.startsWith("retro_portfolio_data_") && key !== STORAGE_KEY) {
+          localStorage.removeItem(key);
+        }
+      });
+
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Merge with initial in case keys were added
+        // Sync default experience entries with latest initialPortfolioData periods
+        const mergedExperience = (parsed.experience || initialPortfolioData.experience).map((exp) => {
+          const defaultMatch = initialPortfolioData.experience.find((d) => d.id === exp.id);
+          return defaultMatch ? { ...defaultMatch, ...exp, period: defaultMatch.period } : exp;
+        });
+
         return {
           ...initialPortfolioData,
           ...parsed,
+          experience: mergedExperience,
           profile: { ...initialPortfolioData.profile, ...(parsed.profile || {}) },
         };
       }
