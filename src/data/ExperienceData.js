@@ -96,7 +96,7 @@ export const initialPortfolioData = {
     {
       id: "exp-2",
       role: "Freelance Web Developer",
-      company: "W Brand Studio",
+      company: "W Brand Studios",
       period: "January 2022 — March 2022",
       location: "Costa Mesa, CA",
       description: "Built and maintained responsive client websites and landing pages using WordPress, React, PHP, and modern CSS.",
