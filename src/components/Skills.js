@@ -31,23 +31,26 @@ function TechCard({ tech }) {
         display: "flex",
       }}
     >
-      {/* Icon or Acronym-esque Monogram Div */}
+      {/* Apple-style Squircle App Icon Container */}
       <div
-        className="shrink-0 transition-transform duration-300 group-hover:scale-105"
+        className="shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:border-white/25"
         style={{
-          width: "2.75rem",
-          height: "2.75rem",
-          borderRadius: "0.625rem",
-          background: "rgba(255, 255, 255, 0.04)",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
+          width: "3rem",
+          height: "3rem",
+          borderRadius: "0.75rem",
+          background: "linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)",
+          backgroundColor: "#151515",
+          border: "1px solid rgba(255, 255, 255, 0.12)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           color: "var(--text-primary)",
           fontWeight: "700",
-          fontSize: "0.8rem",
+          fontSize: "0.75rem",
           fontFamily: "var(--font-mono)",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+          letterSpacing: "0.04em",
+          boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.18), 0 8px 16px -4px rgba(0, 0, 0, 0.6)",
+          padding: "0.6rem",
           overflow: "hidden",
         }}
       >
@@ -56,7 +59,7 @@ function TechCard({ tech }) {
             src={tech.icon}
             alt={tech.name}
             loading="lazy"
-            className="w-5 h-5 object-contain transition-transform group-hover:scale-110"
+            className="w-full h-full object-contain transition-transform duration-200 group-hover:scale-110"
             onError={(e) => {
               e.currentTarget.style.display = "none";
               if (e.currentTarget.nextSibling) {
@@ -85,7 +88,8 @@ function TechCard({ tech }) {
           )}
         </div>
 
-        {Array.isArray(tech.tags) && tech.tags.length > 0 && (
+{/* Commented for potential later use */}
+        {/* {Array.isArray(tech.tags) && tech.tags.length > 0 && (
           <div className="flex flex-wrap items-center justify-center gap-1 mt-auto pt-2 border-t border-white/5">
             {tech.tags.map((tag, tagIdx) => (
               <span
@@ -101,7 +105,7 @@ function TechCard({ tech }) {
               </span>
             ))}
           </div>
-        )}
+        )} */}
       </div>
     </CardWrapper>
   );
