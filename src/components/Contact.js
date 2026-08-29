@@ -93,7 +93,7 @@ export default function Contact() {
                   Let's Connect
                 </h3>
                 <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-                  I'm currently available for full-time software engineering roles, hybrid or remote positions, and select freelance web development projects.
+                  I'm currently available for full-time software engineering roles, in-office, hybrid, or remote positions, and select freelance web development projects.
                 </p>
 
                 {/* Status Indicator */}
