@@ -75,7 +75,7 @@ function TechCard({ tech }) {
       <div className="w-full flex-1 flex flex-col justify-between pt-1">
         <div>
           <h3
-            className="text-sm sm:text-base font-bold text-white mb-1 tracking-tight group-hover:text-red-400 transition-colors"
+            className="text-base sm:text-lg font-extrabold text-white mb-1.5 tracking-tight group-hover:text-red-400 transition-colors"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             {tech.name}
@@ -83,7 +83,7 @@ function TechCard({ tech }) {
 
           {tech.subtitle && (
             <p
-              className="text-xs text-slate-400 leading-snug font-normal line-clamp-2"
+              className="text-xs sm:text-sm text-slate-400 leading-snug font-normal line-clamp-2"
               title={tech.subtitle}
             >
               {tech.subtitle}
